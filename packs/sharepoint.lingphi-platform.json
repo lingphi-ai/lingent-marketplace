@@ -1,0 +1,84 @@
+{
+  "id": "sharepoint-manifest",
+  "version": "1.0.0",
+  "displayName": "SharePoint",
+  "description": "Browse a SharePoint site's lists and search content via the SharePoint REST API (_api), authenticated by the cookie of your open SharePoint tab — no token needed, just stay logged in. Configure one site per platform instance (add more for additional sites). Folder/page tools that need server-relative paths are omitted because IIS rejects encoded slashes; use list and search tools instead.",
+  "iconColor": "bg-w-success/10 text-w-success",
+  "category": "knowledge",
+  "hosts": [
+    "https://*.sharepoint.com/*"
+  ],
+  "baseUrl": "{siteUrl}/_api",
+  "auth": {
+    "type": "cookie"
+  },
+  "transport": {
+    "preferred": "cs"
+  },
+  "credentialFields": [
+    {
+      "name": "siteUrl",
+      "label": "Site URL",
+      "type": "url",
+      "required": true,
+      "placeholder": "https://yourcompany.sharepoint.com/sites/ABC",
+      "description": "Full URL of the SharePoint site, including the /sites/... path. Open it and stay logged in."
+    }
+  ],
+  "tools": [
+    {
+      "name": "sharepoint_get_web",
+      "description": "Get the current site's basic info (title, description, URL).",
+      "method": "GET",
+      "path": "/web",
+      "params": [
+        { "name": "$select", "in": "query", "type": "string", "default": "Title,Description,Url,Created" },
+        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "sharepoint_get_lists",
+      "description": "List the lists and document libraries on the site.",
+      "method": "GET",
+      "path": "/web/lists",
+      "params": [
+        { "name": "$select", "in": "query", "type": "string", "default": "Title,ItemCount,BaseTemplate,Hidden" },
+        { "name": "$filter", "in": "query", "type": "string", "default": "Hidden eq false" },
+        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "sharepoint_list_items",
+      "description": "Query items in a list or library by its display name (e.g. 'Documents', 'Tasks', 'Site Pages'). Use $select / $filter / $top to shape results.",
+      "method": "GET",
+      "path": "/web/lists/getbytitle('{list_name}')/items",
+      "params": [
+        { "name": "list_name", "in": "path", "type": "string", "required": true, "description": "List display name. Spaces are allowed." },
+        { "name": "$select", "in": "query", "type": "string", "default": "Title,Modified,Author/Title" },
+        { "name": "$filter", "in": "query", "type": "string", "description": "OData filter, e.g. \"Title eq 'Report'\"." },
+        { "name": "$top", "in": "query", "type": "number", "default": 20 },
+        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "sharepoint_search",
+      "description": "Full-text search across the site collection. Pass keywords in querytext.",
+      "method": "GET",
+      "path": "/search/query",
+      "params": [
+        { "name": "querytext", "in": "query", "type": "string", "required": true, "description": "Search keywords, wrapped in single quotes by SharePoint automatically — pass plain text like 'quarterly report'." },
+        { "name": "rowlimit", "in": "query", "type": "number", "default": 20 },
+        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+      ],
+      "responseType": "json"
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

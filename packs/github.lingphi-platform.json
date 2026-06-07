@@ -1,0 +1,298 @@
+{
+  "id": "github-manifest",
+  "version": "1.0.0",
+  "displayName": "GitHub",
+  "description": "GitHub REST API via a Personal Access Token — search code, review pull requests, and manage issues. For GitHub Enterprise, change the host and baseUrl to your instance.",
+  "iconColor": "bg-gray-900 text-white",
+  "category": "development",
+  "hosts": [
+    "https://api.github.com/*"
+  ],
+  "baseUrl": "https://api.github.com",
+  "auth": {
+    "type": "bearer",
+    "tokenField": "personalAccessToken",
+    "scheme": "Bearer"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "personalAccessToken",
+      "label": "Personal Access Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "ghp_... or github_pat_...",
+      "description": "Create at https://github.com/settings/tokens. Scopes: repo, read:org, read:user."
+    }
+  ],
+  "tools": [
+    {
+      "name": "github_search_code",
+      "description": "Search code across repositories. Use GitHub code-search qualifiers in q, e.g. \"addEventListener repo:owner/name language:ts\".",
+      "method": "GET",
+      "path": "/search/code",
+      "params": [
+        { "name": "q", "in": "query", "type": "string", "required": true },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_list_prs",
+      "description": "List pull requests in a repository.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/pulls",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "state", "in": "query", "type": "string", "enum": ["open", "closed", "all"], "default": "open" },
+        { "name": "head", "in": "query", "type": "string", "description": "Filter by head branch, e.g. owner:branch." },
+        { "name": "base", "in": "query", "type": "string", "description": "Filter by base branch name." },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_get_pr",
+      "description": "Get pull request details by number.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/pulls/{pull_number}",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "pull_number", "in": "path", "type": "number", "required": true }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_get_pr_diff",
+      "description": "Get the diff of a pull request as a unified diff.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/pulls/{pull_number}",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "pull_number", "in": "path", "type": "number", "required": true },
+        { "name": "Accept", "in": "header", "type": "string", "required": true, "default": "application/vnd.github.v3.diff" }
+      ],
+      "responseType": "text"
+    },
+    {
+      "name": "github_get_pr_comments",
+      "description": "List the conversation comments on a pull request (issue comments, not inline code-review comments).",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/issues/{pull_number}/comments",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "pull_number", "in": "path", "type": "number", "required": true },
+        { "name": "per_page", "in": "query", "type": "number", "default": 30 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_get_pr_reviews",
+      "description": "List the reviews submitted on a pull request.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/pulls/{pull_number}/reviews",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "pull_number", "in": "path", "type": "number", "required": true },
+        { "name": "per_page", "in": "query", "type": "number", "default": 30 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_get_file",
+      "description": "Get a file's contents from a repository. Returns base64-encoded content in the 'content' field; decode to read it.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/contents/{path}",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "path", "in": "path", "type": "string", "required": true, "description": "File path, e.g. src/index.ts" },
+        { "name": "ref", "in": "query", "type": "string", "description": "Branch, tag, or commit SHA. Defaults to the default branch." }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_search_issues",
+      "description": "Search issues and pull requests. Use GitHub search qualifiers in q, e.g. \"repo:owner/name is:issue is:open label:bug\".",
+      "method": "GET",
+      "path": "/search/issues",
+      "params": [
+        { "name": "q", "in": "query", "type": "string", "required": true },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_get_issue",
+      "description": "Get issue details by number.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/issues/{issue_number}",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "issue_number", "in": "path", "type": "number", "required": true }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_list_tree",
+      "description": "List all files in a repository tree (recursive). Pass the tree SHA or a branch name as tree_sha.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/git/trees/{tree_sha}",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "tree_sha", "in": "path", "type": "string", "required": true, "description": "Tree SHA or branch name (e.g. main)." },
+        { "name": "recursive", "in": "query", "type": "string", "default": "1" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_get_commits",
+      "description": "List commits on a branch or for a file path.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/commits",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "sha", "in": "query", "type": "string", "description": "Branch name or starting commit SHA." },
+        { "name": "path", "in": "query", "type": "string", "description": "Only commits touching this path." },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_get_commit",
+      "description": "Get a single commit, including its diff stats and changed files.",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/commits/{ref}",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "ref", "in": "path", "type": "string", "required": true, "description": "Commit SHA, branch, or tag." }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_get_repo",
+      "description": "Get repository metadata (description, default branch, language, topics, open issues count).",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_list_repos",
+      "description": "List repositories for a user or organization.",
+      "method": "GET",
+      "path": "/{ownerKind}/{owner}/repos",
+      "params": [
+        { "name": "ownerKind", "in": "path", "type": "string", "required": true, "enum": ["users", "orgs"], "default": "users", "description": "Use 'users' for a personal account or 'orgs' for an organization." },
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "sort", "in": "query", "type": "string", "enum": ["created", "updated", "pushed", "full_name"], "default": "pushed" },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "github_add_pr_comment",
+      "description": "Post a conversation comment on a pull request.",
+      "method": "POST",
+      "path": "/repos/{owner}/{repo}/issues/{pull_number}/comments",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "pull_number", "in": "path", "type": "number", "required": true },
+        { "name": "body", "in": "body", "type": "object", "required": true, "description": "{ \"body\": \"comment text\" }" }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    },
+    {
+      "name": "github_add_issue_comment",
+      "description": "Post a comment on an issue.",
+      "method": "POST",
+      "path": "/repos/{owner}/{repo}/issues/{issue_number}/comments",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "issue_number", "in": "path", "type": "number", "required": true },
+        { "name": "body", "in": "body", "type": "object", "required": true, "description": "{ \"body\": \"comment text\" }" }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    },
+    {
+      "name": "github_create_issue",
+      "description": "Create a new issue.",
+      "method": "POST",
+      "path": "/repos/{owner}/{repo}/issues",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "issue", "in": "body", "type": "object", "required": true, "description": "{ \"title\": string, \"body\"?: string, \"labels\"?: string[], \"assignees\"?: string[] }" }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    },
+    {
+      "name": "github_update_issue",
+      "description": "Update an issue's state, title, body, or labels.",
+      "method": "PATCH",
+      "path": "/repos/{owner}/{repo}/issues/{issue_number}",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "issue_number", "in": "path", "type": "number", "required": true },
+        { "name": "update", "in": "body", "type": "object", "required": true, "description": "{ \"state\"?: \"open\"|\"closed\", \"title\"?: string, \"body\"?: string, \"labels\"?: string[] }" }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    },
+    {
+      "name": "github_request_review",
+      "description": "Request reviewers on a pull request.",
+      "method": "POST",
+      "path": "/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "pull_number", "in": "path", "type": "number", "required": true },
+        { "name": "reviewers", "in": "body", "type": "object", "required": true, "description": "{ \"reviewers\"?: string[], \"team_reviewers\"?: string[] }" }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    },
+    {
+      "name": "github_merge_pr",
+      "description": "Merge a pull request. Defaults to a merge commit; pass merge_method=squash or rebase to change.",
+      "method": "PUT",
+      "path": "/repos/{owner}/{repo}/pulls/{pull_number}/merge",
+      "params": [
+        { "name": "owner", "in": "path", "type": "string", "required": true },
+        { "name": "repo", "in": "path", "type": "string", "required": true },
+        { "name": "pull_number", "in": "path", "type": "number", "required": true },
+        { "name": "merge", "in": "body", "type": "object", "required": false, "description": "{ \"commit_title\"?: string, \"commit_message\"?: string, \"merge_method\"?: \"merge\"|\"squash\"|\"rebase\" }" }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

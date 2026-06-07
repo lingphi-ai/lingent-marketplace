@@ -1,0 +1,106 @@
+{
+  "id": "azure-arm-manifest",
+  "version": "1.0.0",
+  "displayName": "Azure (ARM)",
+  "description": "Azure Resource Manager read API (management.azure.com) using a bearer access token. Get a token with `az account get-access-token --resource https://management.azure.com` or a service principal. Note: the previous built-in extracted a token from an open Azure Portal tab; this declarative pack uses an explicit ARM token instead. Microsoft Graph and Log Analytics query endpoints (different hosts) are out of scope.",
+  "iconColor": "bg-sky-100 text-sky-700",
+  "category": "cloud-ops",
+  "hosts": [
+    "https://management.azure.com/*"
+  ],
+  "baseUrl": "https://management.azure.com",
+  "auth": {
+    "type": "bearer",
+    "tokenField": "armToken",
+    "scheme": "Bearer"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "armToken",
+      "label": "ARM access token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "eyJ0eXAiOiJKV1Qi...",
+      "description": "Bearer token for https://management.azure.com. From `az account get-access-token --resource https://management.azure.com --query accessToken -o tsv`."
+    }
+  ],
+  "tools": [
+    {
+      "name": "azure_list_subscriptions",
+      "description": "List the subscriptions the token can access.",
+      "method": "GET",
+      "path": "/subscriptions",
+      "params": [
+        { "name": "api-version", "in": "query", "type": "string", "default": "2022-12-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_resource_groups",
+      "description": "List resource groups in a subscription.",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/resourcegroups",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2021-04-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_resources",
+      "description": "List resources in a subscription. Use $filter to narrow, e.g. \"resourceType eq 'Microsoft.Compute/virtualMachines'\".",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/resources",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "$filter", "in": "query", "type": "string", "description": "OData filter, e.g. resourceGroup eq 'my-rg'." },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2021-04-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_alerts",
+      "description": "List active alerts across the subscription.",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/providers/Microsoft.AlertsManagement/alerts",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2019-05-05-preview" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_vms",
+      "description": "List virtual machines in a subscription.",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/providers/Microsoft.Compute/virtualMachines",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2023-03-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_get_activity_log",
+      "description": "Read management activity-log events for a subscription. Pass an OData $filter on eventTimestamp to bound the window.",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/providers/microsoft.insights/eventtypes/management/values",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "$filter", "in": "query", "type": "string", "description": "e.g. eventTimestamp ge '2026-06-01T00:00:00Z'." },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2015-04-01" }
+      ],
+      "responseType": "json"
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

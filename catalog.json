@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updatedAt": "2026-06-07",
+  "version": "1.1.0",
+  "updatedAt": "2026-06-08",
   "categories": [
     {
       "id": "project-management",
@@ -15,6 +15,54 @@
           "allowMultiple": false,
           "defaultLabel": "Jira",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jira-cloud.lingphi-platform.json"
+        }
+      ]
+    },
+    {
+      "id": "development",
+      "label": "Development",
+      "entries": [
+        {
+          "id": "github-manifest",
+          "displayName": "GitHub",
+          "description": "Search code, review pull requests, and manage issues via the GitHub REST API with a Personal Access Token.",
+          "iconColor": "bg-gray-900 text-white",
+          "integrationType": "github-manifest",
+          "allowMultiple": false,
+          "defaultLabel": "GitHub",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/github.lingphi-platform.json"
+        }
+      ]
+    },
+    {
+      "id": "knowledge",
+      "label": "Knowledge & Docs",
+      "entries": [
+        {
+          "id": "sharepoint-manifest",
+          "displayName": "SharePoint",
+          "description": "Browse a SharePoint site's lists and search content via the session cookie of your open SharePoint tab.",
+          "iconColor": "bg-w-success/10 text-w-success",
+          "integrationType": "sharepoint-manifest",
+          "allowMultiple": true,
+          "defaultLabel": "SharePoint",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sharepoint.lingphi-platform.json"
+        }
+      ]
+    },
+    {
+      "id": "cloud-ops",
+      "label": "Cloud Ops",
+      "entries": [
+        {
+          "id": "azure-arm-manifest",
+          "displayName": "Azure (ARM)",
+          "description": "Read Azure Resource Manager resources, alerts, and activity logs with a bearer access token.",
+          "iconColor": "bg-sky-100 text-sky-700",
+          "integrationType": "azure-arm-manifest",
+          "allowMultiple": false,
+          "defaultLabel": "Azure",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/azure-arm.lingphi-platform.json"
         }
       ]
     }
