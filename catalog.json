@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-06-07",
+  "categories": [
+    {
+      "id": "project-management",
+      "label": "Project Management",
+      "entries": [
+        {
+          "id": "jira-cloud-manifest",
+          "displayName": "Jira Cloud",
+          "description": "Jira issues via the session cookie of an open Jira tab — no API token needed.",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "jira-cloud-manifest",
+          "allowMultiple": false,
+          "defaultLabel": "Jira",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jira-cloud.lingphi-platform.json"
+        }
+      ]
+    }
+  ]
+}

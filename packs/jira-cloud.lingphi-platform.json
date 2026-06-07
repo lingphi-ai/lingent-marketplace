@@ -1,0 +1,144 @@
+{
+  "id": "jira-cloud-manifest",
+  "version": "1.1.0",
+  "displayName": "Jira Cloud",
+  "description": "Jira Cloud REST API via the session cookie of an open Jira tab (cookie + CSRF through the content-script bridge). No API token needed — just stay logged in.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "project-management",
+  "hosts": [
+    "https://*.atlassian.net/*"
+  ],
+  "baseUrl": "https://{instanceHost}/rest/api/2",
+  "auth": {
+    "type": "cookie",
+    "csrf": {
+      "source": "meta",
+      "name": "atl-csrf-token",
+      "headerName": "X-Atlassian-Token"
+    }
+  },
+  "transport": {
+    "preferred": "cs"
+  },
+  "credentialFields": [
+    {
+      "name": "instanceHost",
+      "label": "Jira host",
+      "type": "string",
+      "required": true,
+      "placeholder": "your-org.atlassian.net",
+      "description": "Hostname only — no scheme, no path."
+    }
+  ],
+  "tools": [
+    {
+      "name": "jira_get_issue",
+      "description": "Fetch full details of a Jira issue by key (e.g. PROJ-123): summary, status, type, priority, assignee, reporter, description, labels, components, subtasks, links, comments.",
+      "method": "GET",
+      "path": "/issue/{key}",
+      "params": [
+        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
+        { "name": "fields", "in": "query", "type": "string", "default": "summary,status,issuetype,priority,assignee,reporter,project,created,updated,duedate,description,labels,components,parent,issuelinks,subtasks,comment" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jira_search_issues",
+      "description": "Search issues with JQL, e.g. \"project = MYPROJ AND status = Open\". To look up one issue by key, pass jql=\"key = PROJ-123\".",
+      "method": "GET",
+      "path": "/search",
+      "params": [
+        { "name": "jql", "in": "query", "type": "string", "required": true },
+        { "name": "maxResults", "in": "query", "type": "number", "default": 10 },
+        { "name": "fields", "in": "query", "type": "string", "default": "summary,status,issuetype,priority,assignee,updated" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jira_get_my_issues",
+      "description": "List unresolved issues assigned to the current user. Pass a JQL status clause to narrow, e.g. jql=\"status in (Open, 'In Progress')\".",
+      "method": "GET",
+      "path": "/search",
+      "params": [
+        { "name": "jql", "in": "query", "type": "string", "default": "assignee = currentUser() AND resolution = Unresolved ORDER BY updated DESC" },
+        { "name": "maxResults", "in": "query", "type": "number", "default": 20 },
+        { "name": "fields", "in": "query", "type": "string", "default": "summary,status,issuetype,priority,updated" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jira_get_comments",
+      "description": "Fetch comments on an issue, newest first.",
+      "method": "GET",
+      "path": "/issue/{key}/comment",
+      "params": [
+        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
+        { "name": "maxResults", "in": "query", "type": "number", "default": 10 },
+        { "name": "orderBy", "in": "query", "type": "string", "default": "-created" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jira_get_issue_links",
+      "description": "List the linked issues for an issue (blocks, relates to, etc.).",
+      "method": "GET",
+      "path": "/issue/{key}",
+      "params": [
+        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
+        { "name": "fields", "in": "query", "type": "string", "default": "issuelinks" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jira_get_epic_children",
+      "description": "List child issues under an epic. Pass the epic key; returns issues whose parent is that epic.",
+      "method": "GET",
+      "path": "/search",
+      "params": [
+        { "name": "jql", "in": "query", "type": "string", "required": true, "description": "Use \"parent = EPIC-123\" (or \"\\\"Epic Link\\\" = EPIC-123\" on company-managed projects)." },
+        { "name": "maxResults", "in": "query", "type": "number", "default": 50 },
+        { "name": "fields", "in": "query", "type": "string", "default": "summary,status,subtasks" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jira_list_transitions",
+      "description": "List the available status transitions for an issue (each has an id + name). Call this before jira_do_transition to find the transition id for the target status.",
+      "method": "GET",
+      "path": "/issue/{key}/transitions",
+      "params": [
+        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jira_do_transition",
+      "description": "Move an issue to a new status using a transition id from jira_list_transitions.",
+      "method": "POST",
+      "path": "/issue/{key}/transitions",
+      "params": [
+        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
+        { "name": "transition", "in": "body", "type": "object", "required": true, "description": "{ \"transition\": { \"id\": \"<transitionId>\" } }" }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    },
+    {
+      "name": "jira_add_comment",
+      "description": "Post a comment on an issue.",
+      "method": "POST",
+      "path": "/issue/{key}/comment",
+      "params": [
+        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
+        { "name": "body", "in": "body", "type": "object", "required": true, "description": "{ \"body\": \"plain text\" } on Jira API v2." }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
