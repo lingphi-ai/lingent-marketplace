@@ -41,10 +41,10 @@
         {
           "id": "sharepoint-manifest",
           "displayName": "SharePoint",
-          "description": "Browse a SharePoint site's lists and search content via the session cookie of your open SharePoint tab.",
+          "description": "Discover sites, browse libraries, read pages, and search — via the session cookie of your open SharePoint tab. Works across every site in your tenant.",
           "iconColor": "bg-w-success/10 text-w-success",
           "integrationType": "sharepoint-manifest",
-          "allowMultiple": true,
+          "allowMultiple": false,
           "defaultLabel": "SharePoint",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sharepoint.lingphi-platform.json"
         }
@@ -55,14 +55,14 @@
       "label": "Cloud Ops",
       "entries": [
         {
-          "id": "azure-arm-manifest",
-          "displayName": "Azure (ARM)",
-          "description": "Read Azure Resource Manager resources, alerts, and activity logs with a bearer access token.",
+          "id": "azure-manifest",
+          "displayName": "Azure",
+          "description": "Manage Azure resources and read Entra directory data using the session of your open Azure Portal tab — no token to paste.",
           "iconColor": "bg-sky-100 text-sky-700",
-          "integrationType": "azure-arm-manifest",
+          "integrationType": "azure-manifest",
           "allowMultiple": false,
           "defaultLabel": "Azure",
-          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/azure-arm.lingphi-platform.json"
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/azure.lingphi-platform.json"
         }
       ]
     }

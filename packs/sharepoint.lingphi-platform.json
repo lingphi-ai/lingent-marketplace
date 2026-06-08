@@ -1,62 +1,55 @@
 {
   "id": "sharepoint-manifest",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "displayName": "SharePoint",
-  "description": "Browse a SharePoint site's lists and search content via the SharePoint REST API (_api), authenticated by the cookie of your open SharePoint tab — no token needed, just stay logged in. Configure one site per platform instance (add more for additional sites). Folder/page tools that need server-relative paths are omitted because IIS rejects encoded slashes; use list and search tools instead.",
+  "description": "Discover sites, browse lists and document libraries, read pages, and search — all via the SharePoint REST API authenticated by the cookie of your open SharePoint tab. No token needed; just stay logged in. The site is passed per call, so one connection covers every site in your tenant.",
   "iconColor": "bg-w-success/10 text-w-success",
   "category": "knowledge",
   "hosts": [
     "https://*.sharepoint.com/*"
   ],
-  "baseUrl": "{siteUrl}/_api",
+  "baseUrl": "{site_url}/_api",
   "auth": {
     "type": "cookie"
   },
   "transport": {
     "preferred": "cs"
   },
-  "credentialFields": [
-    {
-      "name": "siteUrl",
-      "label": "Site URL",
-      "type": "url",
-      "required": true,
-      "placeholder": "https://yourcompany.sharepoint.com/sites/ABC",
-      "description": "Full URL of the SharePoint site, including the /sites/... path. Open it and stay logged in."
-    }
-  ],
+  "credentialFields": [],
   "tools": [
     {
-      "name": "sharepoint_get_web",
-      "description": "Get the current site's basic info (title, description, URL).",
+      "name": "sharepoint_discover_recent_sites",
+      "description": "List the sites the user has recently visited. Pass the tenant root (e.g. https://yourcompany.sharepoint.com).",
       "method": "GET",
-      "path": "/web",
+      "baseUrl": "{tenant_url}/_api/v2.1",
+      "path": "/insights/recentSites",
       "params": [
-        { "name": "$select", "in": "query", "type": "string", "default": "Title,Description,Url,Created" },
+        { "name": "tenant_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Tenant root URL, e.g. https://yourcompany.sharepoint.com" },
         { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
       ],
       "responseType": "json"
     },
     {
-      "name": "sharepoint_get_lists",
-      "description": "List the lists and document libraries on the site.",
+      "name": "sharepoint_discover_followed_sites",
+      "description": "List the sites the user follows. Pass the tenant root (e.g. https://yourcompany.sharepoint.com).",
       "method": "GET",
-      "path": "/web/lists",
+      "baseUrl": "{tenant_url}/_api/v2.1",
+      "path": "/favorites/followedSites",
       "params": [
-        { "name": "$select", "in": "query", "type": "string", "default": "Title,ItemCount,BaseTemplate,Hidden" },
-        { "name": "$filter", "in": "query", "type": "string", "default": "Hidden eq false" },
+        { "name": "tenant_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Tenant root URL, e.g. https://yourcompany.sharepoint.com" },
         { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
       ],
       "responseType": "json"
     },
     {
       "name": "sharepoint_list_items",
-      "description": "Query items in a list or library by its display name (e.g. 'Documents', 'Tasks', 'Site Pages'). Use $select / $filter / $top to shape results.",
+      "description": "Query items in a list or library by its display name (e.g. 'Documents', 'Tasks'). Pass the site URL and use $select / $filter / $top to shape results.",
       "method": "GET",
       "path": "/web/lists/getbytitle('{list_name}')/items",
       "params": [
+        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
         { "name": "list_name", "in": "path", "type": "string", "required": true, "description": "List display name. Spaces are allowed." },
-        { "name": "$select", "in": "query", "type": "string", "default": "Title,Modified,Author/Title" },
+        { "name": "$select", "in": "query", "type": "string", "default": "Title,Modified,FileRef" },
         { "name": "$filter", "in": "query", "type": "string", "description": "OData filter, e.g. \"Title eq 'Report'\"." },
         { "name": "$top", "in": "query", "type": "number", "default": 20 },
         { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
@@ -64,12 +57,53 @@
       "responseType": "json"
     },
     {
+      "name": "sharepoint_get_page",
+      "description": "Read a modern site page's canvas content. Pass the site URL and the page's server-relative FileRef (e.g. /sites/ABC/SitePages/Home.aspx).",
+      "method": "GET",
+      "path": "/web/lists/getbytitle('Site Pages')/items",
+      "params": [
+        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
+        { "name": "$filter", "in": "query", "type": "string", "required": true, "description": "Target the page, e.g. \"FileRef eq '/sites/ABC/SitePages/Home.aspx'\"." },
+        { "name": "$select", "in": "query", "type": "string", "default": "Title,CanvasContent1,FileRef" },
+        { "name": "$top", "in": "query", "type": "number", "default": 1 },
+        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "sharepoint_list_files",
+      "description": "List files in a document-library folder. Pass the site URL and the folder's server-relative path (e.g. /sites/ABC/Shared Documents).",
+      "method": "GET",
+      "path": "/web/GetFolderByServerRelativePath(decodedurl='{folder_path}')/Files",
+      "params": [
+        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
+        { "name": "folder_path", "in": "path", "type": "string", "required": true, "encode": false, "description": "Server-relative folder path, e.g. /sites/ABC/Shared Documents" },
+        { "name": "$select", "in": "query", "type": "string", "default": "Name,ServerRelativeUrl,TimeLastModified,Length" },
+        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "sharepoint_list_folders",
+      "description": "List subfolders of a document-library folder. Pass the site URL and the folder's server-relative path.",
+      "method": "GET",
+      "path": "/web/GetFolderByServerRelativePath(decodedurl='{folder_path}')/Folders",
+      "params": [
+        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
+        { "name": "folder_path", "in": "path", "type": "string", "required": true, "encode": false, "description": "Server-relative folder path, e.g. /sites/ABC/Shared Documents" },
+        { "name": "$select", "in": "query", "type": "string", "default": "Name,ServerRelativeUrl" },
+        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+      ],
+      "responseType": "json"
+    },
+    {
       "name": "sharepoint_search",
-      "description": "Full-text search across the site collection. Pass keywords in querytext.",
+      "description": "Full-text search across the site collection. Pass the site URL and keywords.",
       "method": "GET",
       "path": "/search/query",
       "params": [
-        { "name": "querytext", "in": "query", "type": "string", "required": true, "description": "Search keywords, wrapped in single quotes by SharePoint automatically — pass plain text like 'quarterly report'." },
+        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
+        { "name": "querytext", "in": "query", "type": "string", "required": true, "description": "Search keywords, e.g. 'quarterly report'." },
         { "name": "rowlimit", "in": "query", "type": "number", "default": 20 },
         { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
       ],

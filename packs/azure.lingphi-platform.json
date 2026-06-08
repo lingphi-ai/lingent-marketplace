@@ -1,0 +1,187 @@
+{
+  "id": "azure-manifest",
+  "version": "2.0.0",
+  "displayName": "Azure",
+  "description": "Manage Azure resources and read Entra (Azure AD) directory data using the session of an open Azure Portal tab — no token to paste. The token is harvested from the Portal's MSAL cache at call time and the request is made for you against Azure Resource Manager (management.azure.com) and Microsoft Graph (graph.microsoft.com). Open https://portal.azure.com and stay logged in.",
+  "iconColor": "bg-sky-100 text-sky-700",
+  "category": "cloud-ops",
+  "hosts": [
+    "https://portal.azure.com/*",
+    "https://management.azure.com/*",
+    "https://graph.microsoft.com/*"
+  ],
+  "baseUrl": "https://management.azure.com",
+  "auth": {
+    "type": "pageToken",
+    "store": "sessionStorage",
+    "entryMatch": [
+      { "field": "credentialType", "equals": "AccessToken" },
+      { "field": "target", "containsRequestHost": true }
+    ],
+    "tokenField": "secret",
+    "scheme": "Bearer"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "tools": [
+    {
+      "name": "azure_list_subscriptions",
+      "description": "List the subscriptions accessible to the signed-in account.",
+      "method": "GET",
+      "path": "/subscriptions",
+      "params": [
+        { "name": "api-version", "in": "query", "type": "string", "default": "2022-12-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_resource_groups",
+      "description": "List resource groups in a subscription.",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/resourcegroups",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2021-04-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_resources",
+      "description": "List resources in a subscription. Use $filter to narrow, e.g. \"resourceType eq 'Microsoft.Compute/virtualMachines'\".",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/resources",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "$filter", "in": "query", "type": "string", "description": "OData filter, e.g. resourceGroup eq 'my-rg'." },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2021-04-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_get_resource",
+      "description": "Get a resource by its full ARM resource ID, e.g. /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Web/sites/{name}.",
+      "method": "GET",
+      "path": "{resource_id}",
+      "params": [
+        { "name": "resource_id", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full ARM resource ID starting with /subscriptions/..." },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2021-04-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_get_metrics",
+      "description": "Read Azure Monitor metrics for a resource. Pass the full ARM resource ID and a comma-separated metric_names list.",
+      "method": "GET",
+      "path": "{resource_id}/providers/microsoft.insights/metrics",
+      "params": [
+        { "name": "resource_id", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full ARM resource ID starting with /subscriptions/..." },
+        { "name": "metricnames", "in": "query", "type": "string", "required": true, "description": "Comma-separated metric names." },
+        { "name": "interval", "in": "query", "type": "string", "description": "ISO 8601 duration, e.g. PT1H." },
+        { "name": "timespan", "in": "query", "type": "string", "description": "startTime/endTime ISO 8601 interval." },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2023-10-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_query_logs",
+      "description": "Run a Kusto (KQL) query against a Log Analytics workspace.",
+      "method": "POST",
+      "path": "/subscriptions/{subscription_id}/resourceGroups/{resource_group}/providers/Microsoft.OperationalInsights/workspaces/{workspace_id}/api/query",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "resource_group", "in": "path", "type": "string", "required": true },
+        { "name": "workspace_id", "in": "path", "type": "string", "required": true, "description": "Workspace resource name." },
+        { "name": "query", "in": "body", "type": "object", "required": true, "description": "{ \"query\": \"<KQL>\", \"timespan\"?: \"<ISO8601 interval>\" }" },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2020-08-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_alerts",
+      "description": "List active alerts across the subscription.",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/providers/Microsoft.AlertsManagement/alerts",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2019-05-05-preview" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_vms",
+      "description": "List virtual machines in a subscription (optionally scoped to a resource group via azure_get_resource-style filtering).",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/providers/Microsoft.Compute/virtualMachines",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2023-03-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_get_activity_log",
+      "description": "Read management activity-log events. Pass an OData $filter on eventTimestamp to bound the window (required by the API).",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/providers/microsoft.insights/eventtypes/management/values",
+      "params": [
+        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
+        { "name": "$filter", "in": "query", "type": "string", "required": true, "description": "e.g. eventTimestamp ge '2026-06-01T00:00:00Z'." },
+        { "name": "api-version", "in": "query", "type": "string", "default": "2015-04-01" }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_entra_users",
+      "description": "List Entra (Azure AD) directory users via Microsoft Graph.",
+      "method": "GET",
+      "baseUrl": "https://graph.microsoft.com/v1.0",
+      "path": "/users",
+      "params": [
+        { "name": "$top", "in": "query", "type": "number", "default": 20 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_list_entra_groups",
+      "description": "List Entra (Azure AD) directory groups via Microsoft Graph.",
+      "method": "GET",
+      "baseUrl": "https://graph.microsoft.com/v1.0",
+      "path": "/groups",
+      "params": [
+        { "name": "$top", "in": "query", "type": "number", "default": 20 }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_get_entra_user",
+      "description": "Get a single Entra (Azure AD) user by id or userPrincipalName via Microsoft Graph.",
+      "method": "GET",
+      "baseUrl": "https://graph.microsoft.com/v1.0",
+      "path": "/users/{user_id}",
+      "params": [
+        { "name": "user_id", "in": "path", "type": "string", "required": true, "description": "Object id or userPrincipalName." }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "azure_api_call",
+      "description": "Make an arbitrary GET to the Azure REST API (management.azure.com) or Microsoft Graph (graph.microsoft.com) when no specific tool fits. GET only. Set api_host to the target host and path to the full path including query string (e.g. \"/subscriptions/{sub}/providers/Microsoft.Web/sites?api-version=2022-03-01\").",
+      "method": "GET",
+      "baseUrl": "https://{api_host}",
+      "path": "{path}",
+      "params": [
+        { "name": "api_host", "in": "path", "type": "string", "required": true, "enum": ["management.azure.com", "graph.microsoft.com"] },
+        { "name": "path", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full path beginning with /, including any ?query string." }
+      ],
+      "responseType": "json"
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}
