@@ -24,8 +24,20 @@
       "baseUrl": "{tenant_url}/_api/v2.1",
       "path": "/insights/recentSites",
       "params": [
-        { "name": "tenant_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Tenant root URL, e.g. https://yourcompany.sharepoint.com" },
-        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+        {
+          "name": "tenant_url",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Tenant root URL, e.g. https://yourcompany.sharepoint.com"
+        },
+        {
+          "name": "Accept",
+          "in": "header",
+          "type": "string",
+          "default": "application/json;odata=nometadata"
+        }
       ],
       "responseType": "json"
     },
@@ -36,8 +48,20 @@
       "baseUrl": "{tenant_url}/_api/v2.1",
       "path": "/favorites/followedSites",
       "params": [
-        { "name": "tenant_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Tenant root URL, e.g. https://yourcompany.sharepoint.com" },
-        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+        {
+          "name": "tenant_url",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Tenant root URL, e.g. https://yourcompany.sharepoint.com"
+        },
+        {
+          "name": "Accept",
+          "in": "header",
+          "type": "string",
+          "default": "application/json;odata=nometadata"
+        }
       ],
       "responseType": "json"
     },
@@ -47,12 +71,45 @@
       "method": "GET",
       "path": "/web/lists/getbytitle('{list_name}')/items",
       "params": [
-        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
-        { "name": "list_name", "in": "path", "type": "string", "required": true, "description": "List display name. Spaces are allowed." },
-        { "name": "$select", "in": "query", "type": "string", "default": "Title,Modified,FileRef" },
-        { "name": "$filter", "in": "query", "type": "string", "description": "OData filter, e.g. \"Title eq 'Report'\"." },
-        { "name": "$top", "in": "query", "type": "number", "default": 20 },
-        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+        {
+          "name": "site_url",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC"
+        },
+        {
+          "name": "list_name",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "List display name. Spaces are allowed."
+        },
+        {
+          "name": "$select",
+          "in": "query",
+          "type": "string",
+          "default": "Title,Modified,FileRef"
+        },
+        {
+          "name": "$filter",
+          "in": "query",
+          "type": "string",
+          "description": "OData filter, e.g. \"Title eq 'Report'\"."
+        },
+        {
+          "name": "$top",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "Accept",
+          "in": "header",
+          "type": "string",
+          "default": "application/json;odata=nometadata"
+        }
       ],
       "responseType": "json"
     },
@@ -62,11 +119,39 @@
       "method": "GET",
       "path": "/web/lists/getbytitle('Site Pages')/items",
       "params": [
-        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
-        { "name": "$filter", "in": "query", "type": "string", "required": true, "description": "Target the page, e.g. \"FileRef eq '/sites/ABC/SitePages/Home.aspx'\"." },
-        { "name": "$select", "in": "query", "type": "string", "default": "Title,CanvasContent1,FileRef" },
-        { "name": "$top", "in": "query", "type": "number", "default": 1 },
-        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+        {
+          "name": "site_url",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC"
+        },
+        {
+          "name": "$filter",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Target the page, e.g. \"FileRef eq '/sites/ABC/SitePages/Home.aspx'\"."
+        },
+        {
+          "name": "$select",
+          "in": "query",
+          "type": "string",
+          "default": "Title,CanvasContent1,FileRef"
+        },
+        {
+          "name": "$top",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        },
+        {
+          "name": "Accept",
+          "in": "header",
+          "type": "string",
+          "default": "application/json;odata=nometadata"
+        }
       ],
       "responseType": "json"
     },
@@ -76,10 +161,34 @@
       "method": "GET",
       "path": "/web/GetFolderByServerRelativePath(decodedurl='{folder_path}')/Files",
       "params": [
-        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
-        { "name": "folder_path", "in": "path", "type": "string", "required": true, "encode": false, "description": "Server-relative folder path, e.g. /sites/ABC/Shared Documents" },
-        { "name": "$select", "in": "query", "type": "string", "default": "Name,ServerRelativeUrl,TimeLastModified,Length" },
-        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+        {
+          "name": "site_url",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC"
+        },
+        {
+          "name": "folder_path",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Server-relative folder path, e.g. /sites/ABC/Shared Documents"
+        },
+        {
+          "name": "$select",
+          "in": "query",
+          "type": "string",
+          "default": "Name,ServerRelativeUrl,TimeLastModified,Length"
+        },
+        {
+          "name": "Accept",
+          "in": "header",
+          "type": "string",
+          "default": "application/json;odata=nometadata"
+        }
       ],
       "responseType": "json"
     },
@@ -89,10 +198,34 @@
       "method": "GET",
       "path": "/web/GetFolderByServerRelativePath(decodedurl='{folder_path}')/Folders",
       "params": [
-        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
-        { "name": "folder_path", "in": "path", "type": "string", "required": true, "encode": false, "description": "Server-relative folder path, e.g. /sites/ABC/Shared Documents" },
-        { "name": "$select", "in": "query", "type": "string", "default": "Name,ServerRelativeUrl" },
-        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+        {
+          "name": "site_url",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC"
+        },
+        {
+          "name": "folder_path",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Server-relative folder path, e.g. /sites/ABC/Shared Documents"
+        },
+        {
+          "name": "$select",
+          "in": "query",
+          "type": "string",
+          "default": "Name,ServerRelativeUrl"
+        },
+        {
+          "name": "Accept",
+          "in": "header",
+          "type": "string",
+          "default": "application/json;odata=nometadata"
+        }
       ],
       "responseType": "json"
     },
@@ -102,10 +235,33 @@
       "method": "GET",
       "path": "/search/query",
       "params": [
-        { "name": "site_url", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC" },
-        { "name": "querytext", "in": "query", "type": "string", "required": true, "description": "Search keywords, e.g. 'quarterly report'." },
-        { "name": "rowlimit", "in": "query", "type": "number", "default": 20 },
-        { "name": "Accept", "in": "header", "type": "string", "default": "application/json;odata=nometadata" }
+        {
+          "name": "site_url",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Full site URL, e.g. https://co.sharepoint.com/sites/ABC"
+        },
+        {
+          "name": "querytext",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Search keywords, e.g. 'quarterly report'."
+        },
+        {
+          "name": "rowlimit",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "Accept",
+          "in": "header",
+          "type": "string",
+          "default": "application/json;odata=nometadata"
+        }
       ],
       "responseType": "json"
     }
@@ -114,5 +270,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "ZV+0FyZ11JrJ5uUTlqon73mTOZWyCPczCGm1KnkuYxtyJC/jEB5zbgXwviORADgYV31zw1c+adJ4zAxvWTB+RMlwv21We1b5UTT0WmNw3xaMAVtE5xWIEUzZk2zD6bvHBAq0iCTY5e1++6DhXm5qUHKkvYU6F1Sq5V9RkDkylRJGC/nOV202bPHw4kXglWsZfeLwYIhC4Fm53ej04DcortCnnIG1cLg+RCSOUfG6t754tgStAouDIDeaoRceszgCc8y1HHi8PAybe58kAbfyP8ryPnFDvE3QSd0YpGZwFyva/bJvPcABTrMZxBaRlLj4bofkmhEpLMPfd+6AzhplUw=="
+  }
 }

@@ -15,8 +15,14 @@
     "type": "pageToken",
     "store": "sessionStorage",
     "entryMatch": [
-      { "field": "credentialType", "equals": "AccessToken" },
-      { "field": "target", "containsRequestHost": true }
+      {
+        "field": "credentialType",
+        "equals": "AccessToken"
+      },
+      {
+        "field": "target",
+        "containsRequestHost": true
+      }
     ],
     "tokenField": "secret",
     "scheme": "Bearer"
@@ -31,7 +37,12 @@
       "method": "GET",
       "path": "/subscriptions",
       "params": [
-        { "name": "api-version", "in": "query", "type": "string", "default": "2022-12-01" }
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2022-12-01"
+        }
       ],
       "responseType": "json"
     },
@@ -41,8 +52,18 @@
       "method": "GET",
       "path": "/subscriptions/{subscription_id}/resourcegroups",
       "params": [
-        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
-        { "name": "api-version", "in": "query", "type": "string", "default": "2021-04-01" }
+        {
+          "name": "subscription_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2021-04-01"
+        }
       ],
       "responseType": "json"
     },
@@ -52,9 +73,24 @@
       "method": "GET",
       "path": "/subscriptions/{subscription_id}/resources",
       "params": [
-        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
-        { "name": "$filter", "in": "query", "type": "string", "description": "OData filter, e.g. resourceGroup eq 'my-rg'." },
-        { "name": "api-version", "in": "query", "type": "string", "default": "2021-04-01" }
+        {
+          "name": "subscription_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "$filter",
+          "in": "query",
+          "type": "string",
+          "description": "OData filter, e.g. resourceGroup eq 'my-rg'."
+        },
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2021-04-01"
+        }
       ],
       "responseType": "json"
     },
@@ -64,8 +100,20 @@
       "method": "GET",
       "path": "{resource_id}",
       "params": [
-        { "name": "resource_id", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full ARM resource ID starting with /subscriptions/..." },
-        { "name": "api-version", "in": "query", "type": "string", "default": "2021-04-01" }
+        {
+          "name": "resource_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Full ARM resource ID starting with /subscriptions/..."
+        },
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2021-04-01"
+        }
       ],
       "responseType": "json"
     },
@@ -75,11 +123,39 @@
       "method": "GET",
       "path": "{resource_id}/providers/microsoft.insights/metrics",
       "params": [
-        { "name": "resource_id", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full ARM resource ID starting with /subscriptions/..." },
-        { "name": "metricnames", "in": "query", "type": "string", "required": true, "description": "Comma-separated metric names." },
-        { "name": "interval", "in": "query", "type": "string", "description": "ISO 8601 duration, e.g. PT1H." },
-        { "name": "timespan", "in": "query", "type": "string", "description": "startTime/endTime ISO 8601 interval." },
-        { "name": "api-version", "in": "query", "type": "string", "default": "2023-10-01" }
+        {
+          "name": "resource_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Full ARM resource ID starting with /subscriptions/..."
+        },
+        {
+          "name": "metricnames",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Comma-separated metric names."
+        },
+        {
+          "name": "interval",
+          "in": "query",
+          "type": "string",
+          "description": "ISO 8601 duration, e.g. PT1H."
+        },
+        {
+          "name": "timespan",
+          "in": "query",
+          "type": "string",
+          "description": "startTime/endTime ISO 8601 interval."
+        },
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2023-10-01"
+        }
       ],
       "responseType": "json"
     },
@@ -89,11 +165,38 @@
       "method": "POST",
       "path": "/subscriptions/{subscription_id}/resourceGroups/{resource_group}/providers/Microsoft.OperationalInsights/workspaces/{workspace_id}/api/query",
       "params": [
-        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
-        { "name": "resource_group", "in": "path", "type": "string", "required": true },
-        { "name": "workspace_id", "in": "path", "type": "string", "required": true, "description": "Workspace resource name." },
-        { "name": "query", "in": "body", "type": "object", "required": true, "description": "{ \"query\": \"<KQL>\", \"timespan\"?: \"<ISO8601 interval>\" }" },
-        { "name": "api-version", "in": "query", "type": "string", "default": "2020-08-01" }
+        {
+          "name": "subscription_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "resource_group",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "workspace_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Workspace resource name."
+        },
+        {
+          "name": "query",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"query\": \"<KQL>\", \"timespan\"?: \"<ISO8601 interval>\" }"
+        },
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2020-08-01"
+        }
       ],
       "responseType": "json"
     },
@@ -103,8 +206,18 @@
       "method": "GET",
       "path": "/subscriptions/{subscription_id}/providers/Microsoft.AlertsManagement/alerts",
       "params": [
-        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
-        { "name": "api-version", "in": "query", "type": "string", "default": "2019-05-05-preview" }
+        {
+          "name": "subscription_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2019-05-05-preview"
+        }
       ],
       "responseType": "json"
     },
@@ -114,8 +227,18 @@
       "method": "GET",
       "path": "/subscriptions/{subscription_id}/providers/Microsoft.Compute/virtualMachines",
       "params": [
-        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
-        { "name": "api-version", "in": "query", "type": "string", "default": "2023-03-01" }
+        {
+          "name": "subscription_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2023-03-01"
+        }
       ],
       "responseType": "json"
     },
@@ -125,9 +248,25 @@
       "method": "GET",
       "path": "/subscriptions/{subscription_id}/providers/microsoft.insights/eventtypes/management/values",
       "params": [
-        { "name": "subscription_id", "in": "path", "type": "string", "required": true },
-        { "name": "$filter", "in": "query", "type": "string", "required": true, "description": "e.g. eventTimestamp ge '2026-06-01T00:00:00Z'." },
-        { "name": "api-version", "in": "query", "type": "string", "default": "2015-04-01" }
+        {
+          "name": "subscription_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "$filter",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "e.g. eventTimestamp ge '2026-06-01T00:00:00Z'."
+        },
+        {
+          "name": "api-version",
+          "in": "query",
+          "type": "string",
+          "default": "2015-04-01"
+        }
       ],
       "responseType": "json"
     },
@@ -138,7 +277,12 @@
       "baseUrl": "https://graph.microsoft.com/v1.0",
       "path": "/users",
       "params": [
-        { "name": "$top", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "$top",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ],
       "responseType": "json"
     },
@@ -149,7 +293,12 @@
       "baseUrl": "https://graph.microsoft.com/v1.0",
       "path": "/groups",
       "params": [
-        { "name": "$top", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "$top",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ],
       "responseType": "json"
     },
@@ -160,7 +309,13 @@
       "baseUrl": "https://graph.microsoft.com/v1.0",
       "path": "/users/{user_id}",
       "params": [
-        { "name": "user_id", "in": "path", "type": "string", "required": true, "description": "Object id or userPrincipalName." }
+        {
+          "name": "user_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Object id or userPrincipalName."
+        }
       ],
       "responseType": "json"
     },
@@ -171,8 +326,24 @@
       "baseUrl": "https://{api_host}",
       "path": "{path}",
       "params": [
-        { "name": "api_host", "in": "path", "type": "string", "required": true, "enum": ["management.azure.com", "graph.microsoft.com"] },
-        { "name": "path", "in": "path", "type": "string", "required": true, "encode": false, "description": "Full path beginning with /, including any ?query string." }
+        {
+          "name": "api_host",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "management.azure.com",
+            "graph.microsoft.com"
+          ]
+        },
+        {
+          "name": "path",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false,
+          "description": "Full path beginning with /, including any ?query string."
+        }
       ],
       "responseType": "json"
     }
@@ -183,5 +354,11 @@
     "baseDelayMs": 1000,
     "maxDelayMs": 10000
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "KFwgWQCkmALsy/dhwEHxCgqrnVlwyIgoRZGKqbXAnTAESJ6qqKA+TNIpClhTvWxn07dRMbAaNTqcbBuDcTWKgNMc1fcbMjpximmmR8BH6TjxnwAY2ECeAnl5zCrcLCVvWcp6PQa8KfsHGv4OA69uCt/tQV7zgUnfnY0evNtO3eZdT1rjrsRJM1L7h/XhkJ/+xjiOFe2J6ZtMsvTQ1ezbjapPYzSCOZ3VCBSbEKBZCrM9hw4LmbvaD9MHBNkgAlHnPD1dDuJoiCMnXO51p8ZiIRwxk+pNAtYywHncR5Afv3iuo8jjwp/Pg49NhfKL0Lq7acBuXpmjigf714HiiRvaHw=="
+  }
 }

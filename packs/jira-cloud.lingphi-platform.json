@@ -37,8 +37,19 @@
       "method": "GET",
       "path": "/issue/{key}",
       "params": [
-        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
-        { "name": "fields", "in": "query", "type": "string", "default": "summary,status,issuetype,priority,assignee,reporter,project,created,updated,duedate,description,labels,components,parent,issuelinks,subtasks,comment" }
+        {
+          "name": "key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "pattern": "^[A-Z][A-Z0-9_]*-\\d+$"
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "summary,status,issuetype,priority,assignee,reporter,project,created,updated,duedate,description,labels,components,parent,issuelinks,subtasks,comment"
+        }
       ],
       "responseType": "json"
     },
@@ -48,9 +59,24 @@
       "method": "GET",
       "path": "/search",
       "params": [
-        { "name": "jql", "in": "query", "type": "string", "required": true },
-        { "name": "maxResults", "in": "query", "type": "number", "default": 10 },
-        { "name": "fields", "in": "query", "type": "string", "default": "summary,status,issuetype,priority,assignee,updated" }
+        {
+          "name": "jql",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "maxResults",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "summary,status,issuetype,priority,assignee,updated"
+        }
       ],
       "responseType": "json"
     },
@@ -60,9 +86,24 @@
       "method": "GET",
       "path": "/search",
       "params": [
-        { "name": "jql", "in": "query", "type": "string", "default": "assignee = currentUser() AND resolution = Unresolved ORDER BY updated DESC" },
-        { "name": "maxResults", "in": "query", "type": "number", "default": 20 },
-        { "name": "fields", "in": "query", "type": "string", "default": "summary,status,issuetype,priority,updated" }
+        {
+          "name": "jql",
+          "in": "query",
+          "type": "string",
+          "default": "assignee = currentUser() AND resolution = Unresolved ORDER BY updated DESC"
+        },
+        {
+          "name": "maxResults",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "summary,status,issuetype,priority,updated"
+        }
       ],
       "responseType": "json"
     },
@@ -72,9 +113,25 @@
       "method": "GET",
       "path": "/issue/{key}/comment",
       "params": [
-        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
-        { "name": "maxResults", "in": "query", "type": "number", "default": 10 },
-        { "name": "orderBy", "in": "query", "type": "string", "default": "-created" }
+        {
+          "name": "key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "pattern": "^[A-Z][A-Z0-9_]*-\\d+$"
+        },
+        {
+          "name": "maxResults",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "orderBy",
+          "in": "query",
+          "type": "string",
+          "default": "-created"
+        }
       ],
       "responseType": "json"
     },
@@ -84,8 +141,19 @@
       "method": "GET",
       "path": "/issue/{key}",
       "params": [
-        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
-        { "name": "fields", "in": "query", "type": "string", "default": "issuelinks" }
+        {
+          "name": "key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "pattern": "^[A-Z][A-Z0-9_]*-\\d+$"
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "issuelinks"
+        }
       ],
       "responseType": "json"
     },
@@ -95,9 +163,25 @@
       "method": "GET",
       "path": "/search",
       "params": [
-        { "name": "jql", "in": "query", "type": "string", "required": true, "description": "Use \"parent = EPIC-123\" (or \"\\\"Epic Link\\\" = EPIC-123\" on company-managed projects)." },
-        { "name": "maxResults", "in": "query", "type": "number", "default": 50 },
-        { "name": "fields", "in": "query", "type": "string", "default": "summary,status,subtasks" }
+        {
+          "name": "jql",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Use \"parent = EPIC-123\" (or \"\\\"Epic Link\\\" = EPIC-123\" on company-managed projects)."
+        },
+        {
+          "name": "maxResults",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "summary,status,subtasks"
+        }
       ],
       "responseType": "json"
     },
@@ -107,7 +191,13 @@
       "method": "GET",
       "path": "/issue/{key}/transitions",
       "params": [
-        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" }
+        {
+          "name": "key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "pattern": "^[A-Z][A-Z0-9_]*-\\d+$"
+        }
       ],
       "responseType": "json"
     },
@@ -117,8 +207,20 @@
       "method": "POST",
       "path": "/issue/{key}/transitions",
       "params": [
-        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
-        { "name": "transition", "in": "body", "type": "object", "required": true, "description": "{ \"transition\": { \"id\": \"<transitionId>\" } }" }
+        {
+          "name": "key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "pattern": "^[A-Z][A-Z0-9_]*-\\d+$"
+        },
+        {
+          "name": "transition",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"transition\": { \"id\": \"<transitionId>\" } }"
+        }
       ],
       "responseType": "json",
       "requiresApproval": true
@@ -129,8 +231,20 @@
       "method": "POST",
       "path": "/issue/{key}/comment",
       "params": [
-        { "name": "key", "in": "path", "type": "string", "required": true, "pattern": "^[A-Z][A-Z0-9_]*-\\d+$" },
-        { "name": "body", "in": "body", "type": "object", "required": true, "description": "{ \"body\": \"plain text\" } on Jira API v2." }
+        {
+          "name": "key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "pattern": "^[A-Z][A-Z0-9_]*-\\d+$"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"body\": \"plain text\" } on Jira API v2."
+        }
       ],
       "responseType": "json",
       "requiresApproval": true
@@ -140,5 +254,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "Th/iHN66i+jJcxnfXFRUDvUtbtuJmBMVJKV6kqMHDH/ZcxvUuz349AJhCnbYj5/z9PoJUuPaROVHD6Z56186jMxxvrXmBnT2RooP7d2TMYUr48v5RrjYovTFlWfSiDXC7S3QYNK9IblvtUEsWmYF8unHpxVWnlMojcgwcOzdtMrtzkw7brHUH60D6t2GtcjMxPXdWMwIy7MvcP6nBkAYbckV2VsnvyYHb9AGvBvU1ybhHB+EjZLrZXvS1GH5KzNzqxfwod54XMV05N4Uq9jAEv6jP+EudpoJ+5mHaZi0zWmYWPmSuXOJLVtVNme9tpBR91VuVJCzo1ZLwbHJhWCWaA=="
+  }
 }

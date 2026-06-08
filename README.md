@@ -30,8 +30,33 @@ https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/catalog.js
 
 These two rely on manifest capabilities added for in-page-bridge parity: `pageToken` auth (harvest a token from a logged-in tab's storage), per-tool `baseUrl` (multi-host: ARM + Graph), param-driven base URLs (per-call site), and `encode: false` path params (server-relative paths).
 
+## Trust & signing
+
+Packs are **signed**. The extension bundles the public key and installs a
+`trustLevel: "verified"` pack only if its signature verifies — so a tampered or
+unofficial pack served from a look-alike URL is rejected. This matters because
+some packs (e.g. Azure) harvest a session token from a logged-in tab.
+
+- `scripts/sign-packs.mjs` signs every `packs/*.lingphi-platform.json` and writes
+  the `signature` block. The signature covers the whole manifest (minus the
+  `signature` field) using RSASSA-PKCS1-v1_5 / SHA-256.
+- `keys/signing-public.pem` is committed; the matching private key lives in CI
+  secrets and is **gitignored** (`keys/signing-private.pem`).
+- The same public key is embedded in the extension at
+  `src/shared/platformManifest/trustedKeys.ts` (keyId `lingphi-official-2026`).
+
+```
+node scripts/sign-packs.mjs          # sign all packs (generates a keypair on first run)
+node scripts/sign-packs.mjs --verify # verify signatures, no writes
+```
+
 ## Adding a platform
 
 1. Add `packs/<id>.lingphi-platform.json`.
 2. Add an entry to `catalog.json` under the right category with a `manifestUrl`
    pointing at the raw pack URL.
+3. Run `node scripts/sign-packs.mjs` to sign it.
+
+> The bundled fallback catalog inside the extension is replaced wholesale by this
+> remote `catalog.json` when reachable — so `catalog.json` also lists the built-in
+> Web Search and the custom MCP / OpenAPI / Web App entries, not just packs.
