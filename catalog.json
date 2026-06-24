@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "updatedAt": "2026-06-08",
+  "updatedAt": "2026-06-24",
   "categories": [
     {
       "id": "project-management",
@@ -47,15 +47,6 @@
           "allowMultiple": false,
           "defaultLabel": "SharePoint",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sharepoint.lingphi-platform.json"
-        },
-        {
-          "id": "external-search",
-          "displayName": "Web Search",
-          "description": "Search the web and fetch page content using Google or Bing.",
-          "iconColor": "bg-rose-100 text-rose-700",
-          "integrationType": "external_search",
-          "allowMultiple": false,
-          "defaultLabel": "Web Search"
         }
       ]
     },
@@ -72,42 +63,6 @@
           "allowMultiple": false,
           "defaultLabel": "Azure",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/azure.lingphi-platform.json"
-        }
-      ]
-    },
-    {
-      "id": "custom",
-      "label": "Custom Integrations",
-      "entries": [
-        {
-          "id": "custom-mcp",
-          "displayName": "MCP Server",
-          "description": "Connect via Model Context Protocol (JSON-RPC over HTTP).",
-          "iconColor": "bg-w-primary/10 text-w-primary-ink",
-          "integrationType": "mcp",
-          "allowMultiple": true,
-          "defaultLabel": "MCP Server",
-          "urlField": { "label": "Server URL", "placeholder": "https://mcp.example.com/mcp", "defaultValue": "" }
-        },
-        {
-          "id": "custom-openapi",
-          "displayName": "OpenAPI",
-          "description": "Use an OpenAPI 3.x spec with optional OAuth2 authentication.",
-          "iconColor": "bg-w-success/10 text-w-success",
-          "integrationType": "openapi",
-          "allowMultiple": true,
-          "defaultLabel": "OpenAPI",
-          "urlField": { "label": "Spec URL", "placeholder": "https://api.example.com/openapi.json", "defaultValue": "" }
-        },
-        {
-          "id": "custom-webapp",
-          "displayName": "Web App",
-          "description": "Automate any web application via an injected content script.",
-          "iconColor": "bg-purple-100 text-purple-700",
-          "integrationType": "content-script",
-          "allowMultiple": true,
-          "defaultLabel": "Web App",
-          "urlField": { "label": "URL Pattern", "placeholder": "https://myapp.example.com/*", "defaultValue": "" }
         }
       ]
     }
