@@ -1,0 +1,82 @@
+{
+  "id": "yuque-manifest",
+  "version": "0.1.0",
+  "displayName": "语雀 Yuque",
+  "description": "Yuque (语雀) docs & knowledge base via the session cookie of your logged-in Yuque tab (session bridge — no API token). Endpoints auto-discovered from www.yuque.com by Claude Code (REST internal API at /api/*). Read-only tools verified against a live logged-in session.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://www.yuque.com/*"
+  ],
+  "baseUrl": "https://www.yuque.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "yuque_me",
+      "description": "Your Yuque account/profile (current user). GET /api/mine.",
+      "method": "GET",
+      "path": "/api/mine",
+      "responseType": "json"
+    },
+    {
+      "name": "yuque_recent_docs",
+      "description": "Your recently edited Yuque documents.",
+      "method": "GET",
+      "path": "/api/recent/list",
+      "params": [
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "action",
+          "in": "query",
+          "type": "string",
+          "default": "Edit",
+          "description": "Edit | Read."
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "default": "Doc",
+          "description": "Doc | Book."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "yuque_common_used",
+      "description": "Your frequently-used Yuque items. GET /api/mine/common_used.",
+      "method": "GET",
+      "path": "/api/mine/common_used",
+      "responseType": "json"
+    },
+    {
+      "name": "yuque_group_quick_links",
+      "description": "Your group quick links. GET /api/mine/group_quick_links.",
+      "method": "GET",
+      "path": "/api/mine/group_quick_links",
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

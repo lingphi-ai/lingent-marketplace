@@ -57,6 +57,16 @@
           "allowMultiple": false,
           "defaultLabel": "SharePoint",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sharepoint.lingphi-platform.json"
+        },
+        {
+          "id": "yuque-manifest",
+          "displayName": "语雀 Yuque",
+          "description": "Yuque docs & knowledge base (session bridge).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "yuque",
+          "allowMultiple": false,
+          "defaultLabel": "语雀",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/yuque.lingphi-platform.json"
         }
       ]
     },
