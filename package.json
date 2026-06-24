@@ -1,0 +1,15 @@
+{
+  "name": "lingent-marketplace",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Platform catalog and declarative platform packs for the Lingent Chrome extension.",
+  "scripts": {
+    "scaffold": "node scripts/scaffold-platform.mjs",
+    "sign": "node scripts/sign-packs.mjs",
+    "verify": "node scripts/sign-packs.mjs --verify"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

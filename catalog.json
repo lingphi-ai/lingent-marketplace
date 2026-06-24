@@ -31,6 +31,16 @@
           "allowMultiple": false,
           "defaultLabel": "GitHub",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/github.lingphi-platform.json"
+        },
+        {
+          "id": "gitee-manifest",
+          "displayName": "Gitee",
+          "description": "DRAFT (unsigned): Gitee repos, issues, and pull requests via the session cookie of an open Gitee tab. Endpoints are unverified placeholders — pending scaffold + sign.",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "gitee",
+          "allowMultiple": false,
+          "defaultLabel": "Gitee",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gitee.lingphi-platform.json"
         }
       ]
     },

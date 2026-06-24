@@ -1,3 +1,5 @@
 keys/signing-private.pem
 *.pem.key
 node_modules/
+.scaffold-profile/
+package-lock.json
