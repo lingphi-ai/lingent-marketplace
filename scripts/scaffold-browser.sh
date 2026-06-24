@@ -16,6 +16,18 @@ PORT="${SCAFFOLD_CHROME_PORT:-9222}"
 PROFILE="${SCAFFOLD_CHROME_PROFILE:-$HOME/.lingent/scaffold-chrome-profile}"
 CHROME="${CHROME_BIN:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 
+# `login` mode: open the SAME persistent profile WITHOUT a remote-debugging port,
+# so it is NOT flagged as automation and Google "Sign in with Google" works. Log
+# into Google + all your platforms here, then QUIT this Chrome and run the script
+# with no argument to relaunch in attach mode — the sessions persist in the profile
+# and the automation just reuses them (no re-login, no Google block).
+if [ "${1:-}" = "login" ]; then
+  mkdir -p "${PROFILE}"
+  echo "Opening persistent profile for HUMAN login (no debug port): ${PROFILE}"
+  echo "  → Log into Google + your platforms, then QUIT this Chrome and run:  bash $0"
+  exec "${CHROME}" --user-data-dir="${PROFILE}" --no-first-run --no-default-browser-check
+fi
+
 if curl -fsS "http://127.0.0.1:${PORT}/json/version" >/dev/null 2>&1; then
   echo "✓ Chrome already live on :${PORT} (profile: ${PROFILE}) — reuse it. Don't relaunch."
   exit 0
