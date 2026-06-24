@@ -32,3 +32,9 @@ Inputs: platform `--url`, an `id` slug (e.g. `gitee`), display `name`, host glob
 - This is the curated half of the strategy; the extension's built-in **deep-scan** agent is the self-service long-tail path for users without a curated pack.
 - Prefer cookie/cs (session bridge) over API-token packs — it reuses the user's existing login, no per-platform token setup (the github pack is the bearer/PAT exception).
 - Batchable: once a platform's login is established in the attached browser, repeat steps 2–5 for additional platforms the user is logged into.
+
+## Persistent browser (reuse logins across platforms + sessions)
+Don't relaunch/close per platform. Keep ONE long-lived logged-in browser:
+- `scripts/scaffold-browser.sh` launches Chrome with a PERSISTENT profile (`$HOME/.lingent/scaffold-chrome-profile`, not /tmp) on a fixed debug port (9222), idempotent. Run once, log into every target platform, leave open.
+- Claude Code ATTACHES over CDP (chrome-devtools MCP, or playwright connectOverCDP to `http://127.0.0.1:9222`) and **only navigates/observes — never `close`** (use disconnect). The browser + logins persist across every onboarding run and across Claude Code sessions (cookies live in the profile dir; only re-login when a platform's session actually expires).
+- Within a single live session, the simplest form: open the browser once, log into all platforms, and DO NOT close it between platforms.
