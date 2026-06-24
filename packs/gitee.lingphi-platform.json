@@ -1,231 +1,87 @@
 {
   "id": "gitee-manifest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Gitee",
-  "description": "DRAFT (UNSIGNED): Gitee repositories, issues, and pull requests via the session cookie of an open Gitee tab (session bridge). No API token needed once you are logged in. Endpoints below mirror Gitee's public REST API (/api/v5) and are best-effort placeholders — verify each one with scaffold-platform against your logged-in session before signing.",
+  "description": "Gitee work overview via the GraphQL API of your logged-in session (session bridge — no API token). Auto-discovered from gitee.com by Claude Code: the modern Gitee web app uses POST /graphql with a session cookie + x-csrf-token header (NOT the /api/v5 REST API). Read-only queries below are verified against a live logged-in session; extend with more operations as needed.",
   "iconColor": "bg-red-100 text-red-700",
   "category": "development",
   "hosts": [
     "https://gitee.com/*"
   ],
-  "baseUrl": "https://gitee.com/api/v5",
+  "baseUrl": "https://gitee.com",
   "auth": {
-    "type": "cookie"
+    "type": "cookie",
+    "csrf": {
+      "source": "cookie",
+      "name": "csrf_token",
+      "headerName": "x-csrf-token"
+    }
   },
   "credentialFields": [],
   "tools": [
     {
-      "name": "gitee_search_repos",
-      "description": "Search public repositories on Gitee by keyword. TODO: verify path/params via scaffold-platform.",
-      "method": "GET",
-      "path": "/search/repositories",
-      "params": [
-        {
-          "name": "q",
-          "in": "query",
-          "type": "string",
-          "required": true,
-          "description": "Search keywords, e.g. 'vue admin'."
-        },
-        {
-          "name": "sort",
-          "in": "query",
-          "type": "string",
-          "default": "stars_count",
-          "description": "TODO: verify allowed sort values."
-        },
-        {
-          "name": "order",
-          "in": "query",
-          "type": "string",
-          "default": "desc"
-        },
-        {
-          "name": "per_page",
-          "in": "query",
-          "type": "number",
-          "default": 20
-        }
-      ],
-      "responseType": "json"
-    },
-    {
-      "name": "gitee_list_my_issues",
-      "description": "List issues assigned to or created by the authenticated user across all repos. TODO: verify path/params via scaffold-platform.",
-      "method": "GET",
-      "path": "/user/issues",
-      "params": [
-        {
-          "name": "filter",
-          "in": "query",
-          "type": "string",
-          "default": "assigned",
-          "description": "TODO: verify — typically assigned | created | all."
-        },
-        {
-          "name": "state",
-          "in": "query",
-          "type": "string",
-          "default": "open"
-        },
-        {
-          "name": "sort",
-          "in": "query",
-          "type": "string",
-          "default": "created"
-        },
-        {
-          "name": "per_page",
-          "in": "query",
-          "type": "number",
-          "default": 20
-        }
-      ],
-      "responseType": "json"
-    },
-    {
-      "name": "gitee_get_repo_issue",
-      "description": "Fetch a single issue in a repo by its number. TODO: verify path/params via scaffold-platform.",
-      "method": "GET",
-      "path": "/repos/{owner}/{repo}/issues/{number}",
-      "params": [
-        {
-          "name": "owner",
-          "in": "path",
-          "type": "string",
-          "required": true,
-          "description": "Repo owner namespace (user or org)."
-        },
-        {
-          "name": "repo",
-          "in": "path",
-          "type": "string",
-          "required": true,
-          "description": "Repository path/name."
-        },
-        {
-          "name": "number",
-          "in": "path",
-          "type": "string",
-          "required": true,
-          "description": "Issue number (Gitee issue ids may be alphanumeric, e.g. I1ABCD)."
-        }
-      ],
-      "responseType": "json"
-    },
-    {
-      "name": "gitee_list_repo_pulls",
-      "description": "List pull requests in a repository. TODO: verify path/params via scaffold-platform.",
-      "method": "GET",
-      "path": "/repos/{owner}/{repo}/pulls",
-      "params": [
-        {
-          "name": "owner",
-          "in": "path",
-          "type": "string",
-          "required": true,
-          "description": "Repo owner namespace (user or org)."
-        },
-        {
-          "name": "repo",
-          "in": "path",
-          "type": "string",
-          "required": true,
-          "description": "Repository path/name."
-        },
-        {
-          "name": "state",
-          "in": "query",
-          "type": "string",
-          "default": "open",
-          "description": "TODO: verify — typically open | closed | merged | all."
-        },
-        {
-          "name": "sort",
-          "in": "query",
-          "type": "string",
-          "default": "created"
-        },
-        {
-          "name": "per_page",
-          "in": "query",
-          "type": "number",
-          "default": 20
-        }
-      ],
-      "responseType": "json"
-    },
-    {
-      "name": "gitee_get_pull_diff",
-      "description": "Fetch the unified diff / file list for a pull request. TODO: verify path (Gitee may expose this as /pulls/{number}/files) via scaffold-platform.",
-      "method": "GET",
-      "path": "/repos/{owner}/{repo}/pulls/{number}/files",
-      "params": [
-        {
-          "name": "owner",
-          "in": "path",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "repo",
-          "in": "path",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "number",
-          "in": "path",
-          "type": "string",
-          "required": true,
-          "description": "Pull request number."
-        }
-      ],
-      "responseType": "json"
-    },
-    {
-      "name": "gitee_create_issue_comment",
-      "description": "Post a comment on an issue. WRITE action — requires approval. TODO: verify path/body via scaffold-platform; cookie-session writes may need a CSRF header (add auth.csrf).",
+      "name": "gitee_my_dashboard",
+      "description": "Your Gitee work overview: counts + your 5 most recent projects, assigned/created issues, and pull requests. GraphQL 'dashboard' operation.",
       "method": "POST",
-      "path": "/repos/{owner}/{repo}/issues/{number}/comments",
+      "path": "/graphql",
       "params": [
         {
-          "name": "owner",
-          "in": "path",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "repo",
-          "in": "path",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "number",
-          "in": "path",
-          "type": "string",
-          "required": true,
-          "description": "Issue number."
-        },
-        {
-          "name": "body",
+          "name": "query",
           "in": "body",
           "type": "string",
           "required": true,
-          "description": "Comment text."
+          "default": "\n    query dashboard($projectName: String, $issueSort: IssueSort = recently_updated, $pullRequestSort: PullRequestSort = created_at_desc) {\n  current_user {\n    id\n    name\n    username\n    projects_count\n    pull_requests_count\n    issues_count\n    starred_count\n    projects(name: $projectName, first: 5) {\n      total_count\n      nodes { id name path path_with_namespace public }\n    }\n    issues(first: 5, sort: $issueSort) {\n      total_count\n      nodes { id ident title show_path updated_at issue_state { title } }\n    }\n    pull_requests(first: 5, sort: $pullRequestSort) {\n      total_count\n      nodes { id title show_path updated_at }\n    }\n  }\n}\n    ",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "operationName",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "dashboard"
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "default": {},
+          "description": "Optional: { issueSort, pullRequestSort, projectName }."
         }
       ],
-      "responseType": "json",
-      "requiresApproval": true
+      "responseType": "json"
+    },
+    {
+      "name": "gitee_unread_count",
+      "description": "Your unread notification counts (messages, infos, referers, total). GraphQL 'unreadCount' operation.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "\n    query unreadCount {\n  current_user {\n    unread_count { infos messages referer total }\n  }\n}\n    ",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "operationName",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "unreadCount"
+        }
+      ],
+      "responseType": "json"
     }
   ],
+  "transport": {
+    "preferred": "cs"
+  },
   "retry": {
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000,
-  "transport": {
-    "preferred": "cs"
-  }
+  "timeoutMs": 30000
 }
