@@ -16,6 +16,18 @@ PORT="${SCAFFOLD_CHROME_PORT:-9222}"
 PROFILE="${SCAFFOLD_CHROME_PROFILE:-$HOME/.lingent/scaffold-chrome-profile}"
 CHROME="${CHROME_BIN:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 
+# Load the Lingent extension (built dist/) so this browser can test generated packs
+# (local manifest install) and run the in-extension deep-scan against your live
+# sessions. Build it first: (cd <chrome-extension> && npm run build).
+EXT_DIR="${LINGENT_DIST:-$HOME/Projects/Lingphi/chrome-extension/dist}"
+EXT_FLAGS=()
+if [ -f "${EXT_DIR}/manifest.json" ]; then
+  EXT_FLAGS=(--load-extension="${EXT_DIR}")
+  echo "↳ loading Lingent extension from ${EXT_DIR}"
+else
+  echo "⚠ extension not loaded: ${EXT_DIR}/manifest.json missing — run 'npm run build' in chrome-extension first (continuing without it)." >&2
+fi
+
 # `login` mode: open the SAME persistent profile WITHOUT a remote-debugging port,
 # so it is NOT flagged as automation and Google "Sign in with Google" works. Log
 # into Google + all your platforms here, then QUIT this Chrome and run the script
@@ -25,7 +37,7 @@ if [ "${1:-}" = "login" ]; then
   mkdir -p "${PROFILE}"
   echo "Opening persistent profile for HUMAN login (no debug port): ${PROFILE}"
   echo "  → Log into Google + your platforms, then QUIT this Chrome and run:  bash $0"
-  exec "${CHROME}" --user-data-dir="${PROFILE}" --no-first-run --no-default-browser-check
+  exec "${CHROME}" "${EXT_FLAGS[@]}" --user-data-dir="${PROFILE}" --no-first-run --no-default-browser-check
 fi
 
 if curl -fsS "http://127.0.0.1:${PORT}/json/version" >/dev/null 2>&1; then
@@ -36,9 +48,10 @@ fi
 mkdir -p "${PROFILE}"
 echo "Launching persistent Chrome on :${PORT}, profile ${PROFILE} ..."
 "${CHROME}" \
+  "${EXT_FLAGS[@]}" \
   --remote-debugging-port="${PORT}" \
   --user-data-dir="${PROFILE}" \
-  --no-first-run --no-default-browser-check --no-default-browser-check \
+  --no-first-run --no-default-browser-check \
   >/dev/null 2>&1 &
 
 # Wait for the debug endpoint to come up.
