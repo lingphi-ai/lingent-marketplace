@@ -1,8 +1,8 @@
 {
   "id": "vercel-manifest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Vercel",
-  "description": "VERIFIED LIVE: Vercel via your logged-in vercel.com web session (session bridge — no token to paste). Your account, teams, projects and deployments work cookie-only on the same-origin vercel.com/api. Tested live by Claude Code against a logged-in account: user, teams, projects and deployments all returned 200 with real data.",
+  "description": "VERIFIED LIVE: Vercel via your logged-in vercel.com session (session bridge — no token). A broad read surface over the same-origin vercel.com/api: account, teams, projects, deployments, domains, aliases and the account activity log. Tested live by Claude Code against a logged-in account — every endpoint below returned 200 JSON.",
   "iconColor": "bg-gray-900 text-white",
   "category": "development",
   "hosts": [
@@ -27,9 +27,7 @@
       "method": "GET",
       "path": "/api/v2/teams",
       "responseType": "json",
-      "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 20 }
-      ]
+      "params": [ { "name": "limit", "in": "query", "type": "number", "default": 20 } ]
     },
     {
       "name": "vercel_projects",
@@ -53,14 +51,42 @@
         { "name": "projectId", "in": "query", "type": "string" },
         { "name": "teamId", "in": "query", "type": "string" }
       ]
+    },
+    {
+      "name": "vercel_domains",
+      "description": "Domains in your account/team. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v5/domains",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 },
+        { "name": "teamId", "in": "query", "type": "string" }
+      ]
+    },
+    {
+      "name": "vercel_aliases",
+      "description": "Deployment aliases (custom URLs). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/aliases",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 },
+        { "name": "teamId", "in": "query", "type": "string" }
+      ]
+    },
+    {
+      "name": "vercel_events",
+      "description": "Your account activity / audit log. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v3/events",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 },
+        { "name": "teamId", "in": "query", "type": "string" }
+      ]
     }
   ],
-  "transport": {
-    "preferred": "cs"
-  },
-  "retry": {
-    "maxAttempts": 3,
-    "respectRetryAfter": true
-  },
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
   "timeoutMs": 30000
 }
