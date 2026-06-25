@@ -1,0 +1,31 @@
+{
+  "id": "jiemian-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "界面新闻 (page reader)",
+  "description": "VERIFIED LIVE: 界面新闻 (Jiemian) via content-script DOM extraction — no login, no API key. Article links use the /article/ path with the headline as link text. Navigate the tab to jiemian.com (home or a channel) and call the tool. Tested live by Claude Code: 82 articles — headline + url extracted correctly.",
+  "iconColor": "bg-blue-100 text-blue-800",
+  "category": "news",
+  "hosts": [
+    "https://www.jiemian.com/*"
+  ],
+  "baseUrl": "https://www.jiemian.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "jiemian_headlines",
+      "description": "Article links on the current 界面新闻 page (home or a channel). Navigate the tab there first. Returns each story's headline and url (/article/<id>). VERIFIED (82 articles).",
+      "dom": {
+        "item": "a[href*=\"/article/\"]",
+        "limit": 40,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

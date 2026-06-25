@@ -1,0 +1,43 @@
+{
+  "id": "segmentfault-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "SegmentFault 思否 (page reader)",
+  "description": "VERIFIED LIVE: SegmentFault (思否) via content-script DOM extraction — no login, no API key. Question links use the /q/ path with the title as link text. Navigate the tab to segmentfault.com (home, a tag, or search) and call the tool. Tested live by Claude Code: 60 question links — title + url extracted correctly.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "development",
+  "hosts": [
+    "https://segmentfault.com/*"
+  ],
+  "baseUrl": "https://segmentfault.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "segmentfault_questions",
+      "description": "Question links on the current SegmentFault page (home, a tag, or search). Navigate the tab there first. Returns each question's title and url (/q/<id>). VERIFIED.",
+      "dom": {
+        "item": "a[href*=\"/q/\"]:not([href*=\"/a-\"])",
+        "limit": 40,
+        "fields": {
+          "title": {},
+          "url": { "attr": "href" }
+        }
+      }
+    },
+    {
+      "name": "segmentfault_articles",
+      "description": "Article links on the current SegmentFault page (/a/<id>). Navigate the tab to a feed/tag first. Returns each article's title and url.",
+      "dom": {
+        "item": "a[href*=\"/a/\"]",
+        "limit": 40,
+        "fields": {
+          "title": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

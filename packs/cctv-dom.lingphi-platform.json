@@ -1,0 +1,32 @@
+{
+  "id": "cctv-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "央视网 (page reader)",
+  "description": "VERIFIED LIVE: 央视网 (CCTV News) via content-script DOM extraction — no login, no API key. Article links carry an ARTI<id> in the path with the headline as link text. Navigate the tab to news.cctv.com (or another cctv.com channel) and call the tool. Tested live by Claude Code: 24 articles — headline + url extracted correctly.",
+  "iconColor": "bg-blue-100 text-blue-800",
+  "category": "news",
+  "hosts": [
+    "https://news.cctv.com/*",
+    "https://*.cctv.com/*"
+  ],
+  "baseUrl": "https://news.cctv.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "cctv_headlines",
+      "description": "Article links on the current 央视网 page (news.cctv.com or another channel). Navigate the tab there first. Returns each story's headline and full article url (the …/ARTI…shtml links). VERIFIED (24 articles).",
+      "dom": {
+        "item": "a[href*=\"ARTI\"]",
+        "limit": 40,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

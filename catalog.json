@@ -251,6 +251,16 @@
           "allowMultiple": false,
           "defaultLabel": "CSDN",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/csdn-dom.lingphi-platform.json"
+        },
+        {
+          "id": "segmentfault-dom-manifest",
+          "displayName": "SegmentFault 思否 (page reader)",
+          "description": "SegmentFault questions + articles via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "segmentfault-dom",
+          "allowMultiple": false,
+          "defaultLabel": "SegmentFault",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/segmentfault-dom.lingphi-platform.json"
         }
       ]
     },
@@ -903,6 +913,26 @@
           "allowMultiple": false,
           "defaultLabel": "人民网",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/people-dom.lingphi-platform.json"
+        },
+        {
+          "id": "jiemian-dom-manifest",
+          "displayName": "界面新闻 (page reader)",
+          "description": "界面新闻 headlines via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-blue-100 text-blue-800",
+          "integrationType": "jiemian-dom",
+          "allowMultiple": false,
+          "defaultLabel": "界面新闻",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jiemian-dom.lingphi-platform.json"
+        },
+        {
+          "id": "cctv-dom-manifest",
+          "displayName": "央视网 (page reader)",
+          "description": "央视网 (CCTV) headlines via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-blue-100 text-blue-800",
+          "integrationType": "cctv-dom",
+          "allowMultiple": false,
+          "defaultLabel": "央视网",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/cctv-dom.lingphi-platform.json"
         }
       ]
     }
