@@ -2,7 +2,7 @@
   "id": "linear-manifest",
   "version": "1.0.0",
   "displayName": "Linear",
-  "description": "Linear GraphQL API via a personal API key — read your assigned issues, search issues, browse teams and projects, and add comments. All tools POST a fixed GraphQL operation to /graphql; pass variables to parameterize.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] Linear GraphQL API via a personal API key — read your assigned issues, search issues, browse teams and projects, and add comments. All tools POST a fixed GraphQL operation to /graphql; pass variables to parameterize.",
   "iconColor": "bg-indigo-100 text-indigo-700",
   "category": "project-management",
   "hosts": [

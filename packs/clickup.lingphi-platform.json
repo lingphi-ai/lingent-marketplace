@@ -2,7 +2,7 @@
   "id": "clickup-manifest",
   "version": "1.0.0",
   "displayName": "ClickUp",
-  "description": "ClickUp API v2 via a personal API token — read your profile, workspaces (teams), spaces, lists, and tasks, and create tasks. The token is sent RAW in the 'Authorization' header (no 'Bearer ' prefix).",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] ClickUp API v2 via a personal API token — read your profile, workspaces (teams), spaces, lists, and tasks, and create tasks. The token is sent RAW in the 'Authorization' header (no 'Bearer ' prefix).",
   "iconColor": "bg-pink-100 text-pink-700",
   "category": "project-management",
   "hosts": [

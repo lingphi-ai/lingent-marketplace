@@ -2,7 +2,7 @@
   "id": "qweather-manifest",
   "version": "1.0.0",
   "displayName": "和风天气 QWeather",
-  "description": "和风天气 (QWeather) API — city lookup, real-time weather, and 7-day forecast. As of 2024+ QWeather issues a per-account API Host; set yours below. The API key is sent as the 'key' query param.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] 和风天气 (QWeather) API — city lookup, real-time weather, and 7-day forecast. As of 2024+ QWeather issues a per-account API Host; set yours below. The API key is sent as the 'key' query param.",
   "iconColor": "bg-cyan-100 text-cyan-700",
   "category": "tools",
   "hosts": [

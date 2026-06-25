@@ -2,7 +2,7 @@
   "id": "figma-manifest",
   "version": "1.0.0",
   "displayName": "Figma",
-  "description": "Figma REST API via a personal access token — read your profile, files, nodes, comments, projects, and teams. Sent in the 'X-Figma-Token' header.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] Figma REST API via a personal access token — read your profile, files, nodes, comments, projects, and teams. Sent in the 'X-Figma-Token' header.",
   "iconColor": "bg-neutral-900 text-white",
   "category": "design",
   "hosts": [

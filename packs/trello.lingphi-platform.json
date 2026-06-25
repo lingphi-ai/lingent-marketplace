@@ -2,7 +2,7 @@
   "id": "trello-manifest",
   "version": "1.0.0",
   "displayName": "Trello",
-  "description": "Trello REST API via an API key + token — read your boards, lists, and cards, search, and create cards. Trello requires BOTH credentials as query params on every request (?key=...&token=...); this manifest carries them in each tool's path and uses no header auth.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] Trello REST API via an API key + token — read your boards, lists, and cards, search, and create cards. Trello requires BOTH credentials as query params on every request (?key=...&token=...); this manifest carries them in each tool's path and uses no header auth.",
   "iconColor": "bg-sky-100 text-sky-700",
   "category": "project-management",
   "hosts": [

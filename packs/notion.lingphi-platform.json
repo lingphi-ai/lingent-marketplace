@@ -2,7 +2,7 @@
   "id": "notion-manifest",
   "version": "1.0.0",
   "displayName": "Notion",
-  "description": "Notion API via an internal integration token — search, read pages and databases, query databases, and create content. Every request also sends the required 'Notion-Version' header. Share the pages/databases you want to access with your integration first.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] Notion API via an internal integration token — search, read pages and databases, query databases, and create content. Every request also sends the required 'Notion-Version' header. Share the pages/databases you want to access with your integration first.",
   "iconColor": "bg-gray-100 text-gray-800",
   "category": "knowledge",
   "hosts": [

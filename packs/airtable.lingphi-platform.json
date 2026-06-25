@@ -2,7 +2,7 @@
   "id": "airtable-manifest",
   "version": "1.0.0",
   "displayName": "Airtable",
-  "description": "Airtable Web API via a Personal Access Token — list bases, read table schemas, query and create records. Sent as 'Authorization: Bearer <token>'.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] Airtable Web API via a Personal Access Token — list bases, read table schemas, query and create records. Sent as 'Authorization: Bearer <token>'.",
   "iconColor": "bg-yellow-100 text-yellow-700",
   "category": "knowledge",
   "hosts": [

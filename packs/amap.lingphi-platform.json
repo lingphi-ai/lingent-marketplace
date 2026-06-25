@@ -2,7 +2,7 @@
   "id": "amap-manifest",
   "version": "1.0.0",
   "displayName": "高德地图 Amap",
-  "description": "高德地图 (Amap) Web Service API — geocoding, reverse geocoding, place search, driving routes, and weather. The Web Service API key is sent as the 'key' query param.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] 高德地图 (Amap) Web Service API — geocoding, reverse geocoding, place search, driving routes, and weather. The Web Service API key is sent as the 'key' query param.",
   "iconColor": "bg-blue-100 text-blue-700",
   "category": "tools",
   "hosts": [

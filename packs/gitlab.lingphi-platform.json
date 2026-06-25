@@ -2,7 +2,7 @@
   "id": "gitlab-manifest",
   "version": "1.0.0",
   "displayName": "GitLab",
-  "description": "GitLab REST API (v4) via a Personal Access Token — search projects, review merge requests, and track issues and pipelines. For self-managed GitLab, change the host and baseUrl to your instance.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] GitLab REST API (v4) via a Personal Access Token — search projects, review merge requests, and track issues and pipelines. For self-managed GitLab, change the host and baseUrl to your instance.",
   "iconColor": "bg-orange-100 text-orange-700",
   "category": "development",
   "hosts": [

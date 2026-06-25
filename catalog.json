@@ -263,6 +263,22 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/qweather.lingphi-platform.json"
         }
       ]
+    },
+    {
+      "id": "social",
+      "label": "社区 / 内容 Social",
+      "entries": [
+        {
+          "id": "bilibili-manifest",
+          "displayName": "哔哩哔哩 Bilibili",
+          "description": "Bilibili user data (session bridge).",
+          "iconColor": "bg-pink-100 text-pink-700",
+          "integrationType": "bilibili",
+          "allowMultiple": false,
+          "defaultLabel": "B站",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/bilibili.lingphi-platform.json"
+        }
+      ]
     }
   ]
 }

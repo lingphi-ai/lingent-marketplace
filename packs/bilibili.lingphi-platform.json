@@ -1,0 +1,71 @@
+{
+  "id": "bilibili-manifest",
+  "version": "0.1.0",
+  "displayName": "哔哩哔哩 Bilibili",
+  "description": "VERIFIED LIVE: Bilibili user data via your logged-in session (session bridge — no token). Account/history/messages/following-feed work cookie-only on api.bilibili.com (search/content need wbi signing — not included). Tested live by Claude Code: nav/history/unread/dynamic all returned real data.",
+  "iconColor": "bg-pink-100 text-pink-700",
+  "category": "social",
+  "hosts": [
+    "https://api.bilibili.com/*",
+    "https://www.bilibili.com/*"
+  ],
+  "baseUrl": "https://api.bilibili.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "bili_nav",
+      "description": "Your Bilibili account/login info (uin, level, vip). VERIFIED.",
+      "method": "GET",
+      "path": "/x/web-interface/nav",
+      "responseType": "json"
+    },
+    {
+      "name": "bili_watch_history",
+      "description": "Your recent watch history. VERIFIED.",
+      "method": "GET",
+      "path": "/x/web-interface/history/cursor",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "ps",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ]
+    },
+    {
+      "name": "bili_unread",
+      "description": "Unread message counts (at/reply/like/chat). VERIFIED.",
+      "method": "GET",
+      "path": "/x/msgfeed/unread",
+      "responseType": "json"
+    },
+    {
+      "name": "bili_dynamic_feed",
+      "description": "Your following dynamic feed. VERIFIED.",
+      "method": "GET",
+      "path": "/x/polymer/web-dynamic/v1/feed/all",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "default": "all"
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

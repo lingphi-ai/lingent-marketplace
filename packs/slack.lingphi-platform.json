@@ -2,7 +2,7 @@
   "id": "slack-manifest",
   "version": "1.0.0",
   "displayName": "Slack",
-  "description": "Slack Web API via a bot token (xoxb) — list channels, read history, look up users, search messages, and post messages. Sent as 'Authorization: Bearer <token>'.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] Slack Web API via a bot token (xoxb) — list channels, read history, look up users, search messages, and post messages. Sent as 'Authorization: Bearer <token>'.",
   "iconColor": "bg-purple-100 text-purple-700",
   "category": "comms",
   "hosts": [

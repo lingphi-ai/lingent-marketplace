@@ -2,7 +2,7 @@
   "id": "asana-manifest",
   "version": "1.0.0",
   "displayName": "Asana",
-  "description": "Asana API via a Personal Access Token — read your profile, workspaces, projects, and tasks, search tasks, and create tasks. Sent as 'Authorization: Bearer <token>'.",
+  "description": "[UNVERIFIED — authored from official API docs; test with your API key before signing] Asana API via a Personal Access Token — read your profile, workspaces, projects, and tasks, search tasks, and create tasks. Sent as 'Authorization: Bearer <token>'.",
   "iconColor": "bg-rose-100 text-rose-700",
   "category": "project-management",
   "hosts": [
