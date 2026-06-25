@@ -1,0 +1,59 @@
+{
+  "id": "archive-org-manifest",
+  "version": "0.1.0",
+  "displayName": "Internet Archive",
+  "description": "VERIFIED LIVE: Internet Archive (archive.org) via its public APIs — full-text item search, item metadata, and Wayback Machine snapshot lookup. No token needed. Tested live by Claude Code: advancedsearch, metadata and wayback/available all returned 200 with real data.",
+  "iconColor": "bg-gray-100 text-gray-800",
+  "category": "knowledge",
+  "hosts": [
+    "https://archive.org/*"
+  ],
+  "baseUrl": "https://archive.org",
+  "auth": {
+    "type": "none"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "ia_search",
+      "description": "Search Internet Archive items (books, audio, video, software). VERIFIED.",
+      "method": "GET",
+      "path": "/advancedsearch.php",
+      "responseType": "json",
+      "params": [
+        { "name": "q", "in": "query", "type": "string", "required": true },
+        { "name": "output", "in": "query", "type": "string", "required": true, "default": "json", "description": "Fixed." },
+        { "name": "rows", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "ia_metadata",
+      "description": "Full metadata + file list for an item by identifier. VERIFIED.",
+      "method": "GET",
+      "path": "/metadata/{identifier}",
+      "responseType": "json",
+      "params": [
+        { "name": "identifier", "in": "path", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "ia_wayback",
+      "description": "Find the closest Wayback Machine snapshot of a URL. VERIFIED.",
+      "method": "GET",
+      "path": "/wayback/available",
+      "responseType": "json",
+      "params": [
+        { "name": "url", "in": "query", "type": "string", "required": true },
+        { "name": "timestamp", "in": "query", "type": "string", "description": "Optional YYYYMMDD to find the snapshot nearest that date." }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

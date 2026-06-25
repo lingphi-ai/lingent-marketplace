@@ -219,6 +219,16 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/wikipedia.lingphi-platform.json"
         },
         {
+          "id": "archive-org-manifest",
+          "displayName": "Internet Archive",
+          "description": "Internet Archive item search, item metadata and Wayback Machine snapshot lookup via the public APIs — no token.",
+          "iconColor": "bg-gray-100 text-gray-800",
+          "integrationType": "archive-org",
+          "allowMultiple": false,
+          "defaultLabel": "Internet Archive",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/archive-org.lingphi-platform.json"
+        },
+        {
           "id": "processon-manifest",
           "displayName": "ProcessOn",
           "description": "ProcessOn profile, files/folders, charts and notifications via your logged-in session (session bridge).",
