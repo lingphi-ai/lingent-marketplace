@@ -1,0 +1,33 @@
+{
+  "id": "netease-news-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "网易新闻 (page reader)",
+  "description": "VERIFIED LIVE: 网易新闻 (NetEase News) via content-script DOM extraction — no login, no API key. Article links use the /article/ path with the headline as link text. Navigate the tab to news.163.com (or another 163.com channel) and call the tool. Tested live by Claude Code: many article links — headline + url extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "news",
+  "hosts": [
+    "https://news.163.com/*",
+    "https://www.163.com/*",
+    "https://*.163.com/*"
+  ],
+  "baseUrl": "https://news.163.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "netease_news_headlines",
+      "description": "Article links on the current 网易 page (news.163.com or another channel). Navigate the tab there first. Returns each story's headline and url (163.com/.../article/...html). VERIFIED.",
+      "dom": {
+        "item": "a[href*=\"/article/\"]",
+        "limit": 40,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
