@@ -151,6 +151,16 @@
           "allowMultiple": false,
           "defaultLabel": "Stack Overflow",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/stackoverflow.lingphi-platform.json"
+        },
+        {
+          "id": "npm-manifest",
+          "displayName": "npm",
+          "description": "Search the npm registry, read package metadata and latest versions via the public registry — no token.",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "npm",
+          "allowMultiple": false,
+          "defaultLabel": "npm",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/npm.lingphi-platform.json"
         }
       ]
     },

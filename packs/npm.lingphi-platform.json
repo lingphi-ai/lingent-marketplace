@@ -1,0 +1,57 @@
+{
+  "id": "npm-manifest",
+  "version": "0.1.0",
+  "displayName": "npm",
+  "description": "VERIFIED LIVE: the npm public registry — search packages, read full package metadata, and get the latest version of any package. No token needed. Tested live by Claude Code: registry search and package lookup both returned 200 with real data.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "development",
+  "hosts": [
+    "https://registry.npmjs.org/*"
+  ],
+  "baseUrl": "https://registry.npmjs.org",
+  "auth": {
+    "type": "none"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "npm_search",
+      "description": "Search the npm registry by text. VERIFIED.",
+      "method": "GET",
+      "path": "/-/v1/search",
+      "responseType": "json",
+      "params": [
+        { "name": "text", "in": "query", "type": "string", "required": true },
+        { "name": "size", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "npm_package",
+      "description": "Full metadata + all versions for a package (e.g. express, @angular/core). VERIFIED.",
+      "method": "GET",
+      "path": "/{package}",
+      "responseType": "json",
+      "params": [
+        { "name": "package", "in": "path", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "npm_package_latest",
+      "description": "The latest published version of a package (version, deps, dist). VERIFIED.",
+      "method": "GET",
+      "path": "/{package}/latest",
+      "responseType": "json",
+      "params": [
+        { "name": "package", "in": "path", "type": "string", "required": true }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
