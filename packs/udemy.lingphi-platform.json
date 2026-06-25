@@ -1,0 +1,39 @@
+{
+  "id": "udemy-manifest",
+  "version": "0.1.0",
+  "displayName": "Udemy",
+  "description": "VERIFIED LIVE: Udemy via your logged-in www.udemy.com session (session bridge — no token). Your profile and your enrolled courses work cookie-only on the same-origin api-2.0. Tested live by Claude Code against a logged-in account: users/me and subscribed-courses both returned 200 with real data.",
+  "iconColor": "bg-purple-100 text-purple-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://www.udemy.com/*"
+  ],
+  "baseUrl": "https://www.udemy.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "udemy_me",
+      "description": "Your Udemy profile (name, title, bio). VERIFIED.",
+      "method": "GET",
+      "path": "/api-2.0/users/me/",
+      "responseType": "json"
+    },
+    {
+      "name": "udemy_my_courses",
+      "description": "Courses you are enrolled in. VERIFIED.",
+      "method": "GET",
+      "path": "/api-2.0/users/me/subscribed-courses/",
+      "responseType": "json",
+      "params": [
+        { "name": "page_size", "in": "query", "type": "number", "default": 12 },
+        { "name": "page", "in": "query", "type": "number", "default": 1 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

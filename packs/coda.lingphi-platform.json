@@ -1,0 +1,50 @@
+{
+  "id": "coda-manifest",
+  "version": "0.1.0",
+  "displayName": "Coda",
+  "description": "VERIFIED LIVE: Coda via your logged-in coda.io session (session bridge — no API token). Your identity, your docs, and a doc's tables work on the official /apis/v1 endpoints using the session cookie. Tested live by Claude Code against a logged-in account: whoami and docs both returned 200 with real data.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://coda.io/*"
+  ],
+  "baseUrl": "https://coda.io",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "coda_whoami",
+      "description": "Your Coda identity (name, loginId, workspace). VERIFIED.",
+      "method": "GET",
+      "path": "/apis/v1/whoami",
+      "responseType": "json"
+    },
+    {
+      "name": "coda_docs",
+      "description": "Your Coda docs. VERIFIED.",
+      "method": "GET",
+      "path": "/apis/v1/docs",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 },
+        { "name": "query", "in": "query", "type": "string", "description": "Optional search text." }
+      ]
+    },
+    {
+      "name": "coda_doc_tables",
+      "description": "Tables in a doc by docId (from coda_docs).",
+      "method": "GET",
+      "path": "/apis/v1/docs/{docId}/tables",
+      "responseType": "json",
+      "params": [
+        { "name": "docId", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

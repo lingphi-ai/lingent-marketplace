@@ -309,6 +309,26 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/quizlet.lingphi-platform.json"
         },
         {
+          "id": "udemy-manifest",
+          "displayName": "Udemy",
+          "description": "Udemy profile and enrolled courses via your logged-in session (session bridge).",
+          "iconColor": "bg-purple-100 text-purple-700",
+          "integrationType": "udemy",
+          "allowMultiple": false,
+          "defaultLabel": "Udemy",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/udemy.lingphi-platform.json"
+        },
+        {
+          "id": "coda-manifest",
+          "displayName": "Coda",
+          "description": "Coda identity, docs and doc tables via your logged-in session — no API token (session bridge).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "coda",
+          "allowMultiple": false,
+          "defaultLabel": "Coda",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/coda.lingphi-platform.json"
+        },
+        {
           "id": "processon-manifest",
           "displayName": "ProcessOn",
           "description": "ProcessOn profile, files/folders, charts and notifications via your logged-in session (session bridge).",
