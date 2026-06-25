@@ -707,6 +707,16 @@
           "allowMultiple": false,
           "defaultLabel": "LinkedIn",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/linkedin-dom.lingphi-platform.json"
+        },
+        {
+          "id": "instagram-dom-manifest",
+          "displayName": "Instagram (page reader)",
+          "description": "Instagram profile / Explore / hashtag grid posts via content-script DOM extraction — no API key (reads your logged-in rendered page). Requires being logged into Instagram.",
+          "iconColor": "bg-pink-100 text-pink-700",
+          "integrationType": "instagram-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Instagram",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/instagram-dom.lingphi-platform.json"
         }
       ]
     }

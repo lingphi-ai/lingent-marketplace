@@ -1,0 +1,34 @@
+{
+  "id": "instagram-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Instagram (page reader)",
+  "description": "VERIFIED LIVE: Instagram via content-script DOM extraction. Instagram's API is business-only and it renders nothing logged out — but logged in, every grid page (a profile, Explore, a hashtag) renders post tiles as /p/ and /reel/ links with images, so these tools read them straight from the DOM of your open, logged-in Instagram tab. Navigate the tab to a profile / Explore / hashtag and let it load, then call the tool. Tested live by Claude Code on a profile grid: 12 posts with post url, image url and the image's description/caption (alt text) extracted correctly. Requires being logged into Instagram.",
+  "iconColor": "bg-pink-100 text-pink-700",
+  "category": "social",
+  "hosts": [
+    "https://www.instagram.com/*"
+  ],
+  "baseUrl": "https://www.instagram.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "instagram_grid_posts",
+      "description": "Post tiles on the current Instagram GRID page — a profile (/<username>/), the Explore page (/explore/), or a hashtag (/explore/tags/<tag>/). Navigate the tab there and let it load first. Returns each post's url (/p/… or /reel/…), image url and the image's description/caption (Instagram's alt text). VERIFIED on a profile (12 posts). Scroll to load more.",
+      "dom": {
+        "item": "main a[href*=\"/p/\"], main a[href*=\"/reel/\"]",
+        "limit": 30,
+        "fields": {
+          "url": { "attr": "href" },
+          "image": { "selector": "img", "attr": "src" },
+          "description": { "selector": "img", "attr": "alt" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
