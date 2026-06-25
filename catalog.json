@@ -489,6 +489,16 @@
           "allowMultiple": false,
           "defaultLabel": "Slack",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/slack-session.lingphi-platform.json"
+        },
+        {
+          "id": "gmail-dom-manifest",
+          "displayName": "Gmail (page reader)",
+          "description": "Gmail message list (Inbox / label / search) via content-script DOM extraction — no OAuth (reads your logged-in rendered page). Requires being logged into Gmail.",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "gmail-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Gmail",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gmail-dom.lingphi-platform.json"
         }
       ]
     },

@@ -1,0 +1,35 @@
+{
+  "id": "gmail-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Gmail (page reader)",
+  "description": "VERIFIED LIVE: Gmail via content-script DOM extraction. The Gmail API needs OAuth; instead this reads the message list straight from the DOM of your open, logged-in Gmail tab using Gmail's long-stable row markup (tr.zA). Navigate the tab to a mailbox (Inbox, a label, or a search) and call the tool. Tested live by Claude Code on the Inbox: 37 messages with sender, subject, snippet and date extracted correctly. Requires being logged into Gmail.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "comms",
+  "hosts": [
+    "https://mail.google.com/*"
+  ],
+  "baseUrl": "https://mail.google.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "gmail_message_list",
+      "description": "Messages in the current Gmail view (Inbox, a label, or search results). Navigate the tab there first. Returns each message's sender, subject, snippet and date. VERIFIED (37 messages).",
+      "dom": {
+        "item": "tr.zA",
+        "limit": 50,
+        "fields": {
+          "sender": { "selector": ".yW span" },
+          "subject": { "selector": ".bog" },
+          "snippet": { "selector": ".y2" },
+          "date": { "selector": ".xW span", "attr": "title" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
