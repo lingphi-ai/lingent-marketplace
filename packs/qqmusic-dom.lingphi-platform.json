@@ -1,0 +1,31 @@
+{
+  "id": "qqmusic-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "QQ音乐 (page reader)",
+  "description": "VERIFIED LIVE: QQ音乐 (QQ Music) via content-script DOM extraction — no login, no API key. Song rows on a toplist/album/playlist link to /songDetail/<mid> with the song name as link text. Navigate the tab to y.qq.com (a toplist like /n/ryqq/toplist/26, an album, or a playlist) and call the tool. Tested live by Claude Code: 20 songs — name + url extracted correctly.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "social",
+  "hosts": [
+    "https://y.qq.com/*"
+  ],
+  "baseUrl": "https://y.qq.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "qqmusic_songs",
+      "description": "Songs on the current QQ音乐 page (a toplist, album, or playlist). Navigate the tab there first. Returns each song's name and url (/songDetail/<mid>). VERIFIED (20 songs).",
+      "dom": {
+        "item": "a[href*=\"/songDetail/\"]",
+        "limit": 40,
+        "fields": {
+          "song": { "attr": "title" },
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

@@ -867,6 +867,16 @@
           "allowMultiple": false,
           "defaultLabel": "小红书",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/xiaohongshu-dom.lingphi-platform.json"
+        },
+        {
+          "id": "qqmusic-dom-manifest",
+          "displayName": "QQ音乐 (page reader)",
+          "description": "QQ音乐 toplist/album/playlist songs via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "qqmusic-dom",
+          "allowMultiple": false,
+          "defaultLabel": "QQ音乐",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/qqmusic-dom.lingphi-platform.json"
         }
       ]
     },
