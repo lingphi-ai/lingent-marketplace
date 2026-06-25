@@ -277,6 +277,16 @@
           "allowMultiple": false,
           "defaultLabel": "B站",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/bilibili.lingphi-platform.json"
+        },
+        {
+          "id": "weread-manifest",
+          "displayName": "微信读书 WeRead",
+          "description": "WeRead reading data — profile, bookshelf, book reviews (session bridge).",
+          "iconColor": "bg-sky-100 text-sky-700",
+          "integrationType": "weread",
+          "allowMultiple": false,
+          "defaultLabel": "微信读书",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/weread.lingphi-platform.json"
         }
       ]
     }

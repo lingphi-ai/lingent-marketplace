@@ -1,0 +1,69 @@
+{
+  "id": "weread-manifest",
+  "version": "0.1.0",
+  "displayName": "微信读书 WeRead",
+  "description": "VERIFIED LIVE: WeRead (Tencent) reading data via your logged-in session (session bridge — no token). Profile/bookshelf/book-reviews work cookie-only on weread.qq.com. Tested live by Claude Code: user profile, shelf (67 books) and best-reviews all returned real data.",
+  "iconColor": "bg-sky-100 text-sky-700",
+  "category": "productivity",
+  "hosts": [
+    "https://weread.qq.com/*"
+  ],
+  "baseUrl": "https://weread.qq.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "weread_user",
+      "description": "A WeRead user's public profile (name, avatar, gender). Pass your own userVid for your profile. VERIFIED.",
+      "method": "GET",
+      "path": "/web/user",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "userVid",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "weread_shelf",
+      "description": "Your bookshelf: books, reading progress and finished state. VERIFIED.",
+      "method": "GET",
+      "path": "/web/shelf/sync",
+      "responseType": "json"
+    },
+    {
+      "name": "weread_book_reviews",
+      "description": "Top reviews / highlighted notes for a book by bookId. VERIFIED.",
+      "method": "GET",
+      "path": "/web/review/list/best",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "bookId",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
