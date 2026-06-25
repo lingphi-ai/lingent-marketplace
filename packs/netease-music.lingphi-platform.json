@@ -1,8 +1,8 @@
 {
   "id": "netease-music-manifest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "网易云音乐 NetEase Music",
-  "description": "VERIFIED LIVE: NetEase Cloud Music via your logged-in session (session bridge — no token). Your account, any user's detail, a user's playlists, and listen records work cookie-only on the legacy /api/ paths (no weapi encryption). Tested live by Claude Code against a logged-in session: account, user-detail, playlists and play-record all returned real data.",
+  "description": "VERIFIED LIVE: NetEase Cloud Music via your logged-in session (session bridge — no token). A broad read surface over the legacy /api/ paths (no weapi encryption): your account, any user's detail / playlists / listen-record / follows / cloud-disk, plus playlist, artist, album and song detail. Tested live by Claude Code against a logged-in session; every endpoint below returned 200.",
   "iconColor": "bg-red-100 text-red-700",
   "category": "social",
   "hosts": [
@@ -16,25 +16,18 @@
   "tools": [
     {
       "name": "netease_account",
-      "description": "Your NetEase Music account (id, userName, status). Use the returned id as uid for the other tools. VERIFIED.",
+      "description": "Your NetEase Music account (id, userName). Use the id as uid for user tools. VERIFIED.",
       "method": "POST",
       "path": "/api/nuser/account/get",
       "responseType": "json"
     },
     {
       "name": "netease_user_detail",
-      "description": "A user's profile detail by uid (level, listenSongs count, nickname). VERIFIED.",
+      "description": "A user's profile detail by uid (level, listenSongs, nickname). VERIFIED.",
       "method": "POST",
       "path": "/api/v1/user/detail/{uid}",
       "responseType": "json",
-      "params": [
-        {
-          "name": "uid",
-          "in": "path",
-          "type": "string",
-          "required": true
-        }
-      ]
+      "params": [ { "name": "uid", "in": "path", "type": "string", "required": true } ]
     },
     {
       "name": "netease_user_playlists",
@@ -43,24 +36,20 @@
       "path": "/api/user/playlist",
       "responseType": "json",
       "params": [
-        {
-          "name": "uid",
-          "in": "query",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "limit",
-          "in": "query",
-          "type": "number",
-          "default": 30
-        },
-        {
-          "name": "offset",
-          "in": "query",
-          "type": "number",
-          "default": 0
-        }
+        { "name": "uid", "in": "query", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 30 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "netease_user_follows",
+      "description": "Who a user follows, by uid. VERIFIED.",
+      "method": "POST",
+      "path": "/api/user/follows/{uid}",
+      "responseType": "json",
+      "params": [
+        { "name": "uid", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 30 }
       ]
     },
     {
@@ -70,27 +59,55 @@
       "path": "/api/v1/play/record",
       "responseType": "json",
       "params": [
-        {
-          "name": "uid",
-          "in": "query",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "type",
-          "in": "query",
-          "type": "number",
-          "default": 1
-        }
+        { "name": "uid", "in": "query", "type": "string", "required": true },
+        { "name": "type", "in": "query", "type": "number", "default": 1 }
       ]
+    },
+    {
+      "name": "netease_cloud_disk",
+      "description": "Your uploaded cloud-disk songs. VERIFIED.",
+      "method": "POST",
+      "path": "/api/v1/user/cloud",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 30 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "netease_playlist_detail",
+      "description": "A playlist's detail and track ids by playlist id. VERIFIED.",
+      "method": "POST",
+      "path": "/api/playlist/detail",
+      "responseType": "json",
+      "params": [ { "name": "id", "in": "query", "type": "string", "required": true } ]
+    },
+    {
+      "name": "netease_song_detail",
+      "description": "Song detail for one or more ids, e.g. [5267060]. VERIFIED.",
+      "method": "POST",
+      "path": "/api/song/detail",
+      "responseType": "json",
+      "params": [ { "name": "ids", "in": "query", "type": "string", "required": true, "description": "JSON array string like [5267060]." } ]
+    },
+    {
+      "name": "netease_artist",
+      "description": "An artist's profile + hot songs by artist id. VERIFIED.",
+      "method": "POST",
+      "path": "/api/artist/{artistId}",
+      "responseType": "json",
+      "params": [ { "name": "artistId", "in": "path", "type": "string", "required": true } ]
+    },
+    {
+      "name": "netease_album",
+      "description": "An album's detail + tracklist by album id. VERIFIED.",
+      "method": "POST",
+      "path": "/api/album/{albumId}",
+      "responseType": "json",
+      "params": [ { "name": "albumId", "in": "path", "type": "string", "required": true } ]
     }
   ],
-  "transport": {
-    "preferred": "cs"
-  },
-  "retry": {
-    "maxAttempts": 3,
-    "respectRetryAfter": true
-  },
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
   "timeoutMs": 30000
 }
