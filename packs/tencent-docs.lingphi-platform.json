@@ -87,6 +87,36 @@
         }
       ],
       "responseType": "json"
+    },
+    {
+      "name": "tdocs_starred_docs",
+      "description": "Your starred docs. VERIFIED.",
+      "method": "POST",
+      "path": "/api/list/star",
+      "params": [
+        { "name": "xsrf", "in": "query", "from": "cookie", "cookieName": "TOK", "required": true, "description": "Auto: CSRF = TOK cookie." }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tdocs_shared_docs",
+      "description": "Docs shared with you. VERIFIED.",
+      "method": "POST",
+      "path": "/api/list/share",
+      "params": [
+        { "name": "xsrf", "in": "query", "from": "cookie", "cookieName": "TOK", "required": true, "description": "Auto: CSRF = TOK cookie." }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tdocs_my_docs",
+      "description": "Docs you own/created. VERIFIED.",
+      "method": "POST",
+      "path": "/api/list/mine",
+      "params": [
+        { "name": "xsrf", "in": "query", "from": "cookie", "cookieName": "TOK", "required": true, "description": "Auto: CSRF = TOK cookie." }
+      ],
+      "responseType": "json"
     }
   ],
   "transport": {
