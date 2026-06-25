@@ -1,0 +1,53 @@
+{
+  "id": "bluesky-manifest",
+  "version": "0.1.0",
+  "displayName": "Bluesky",
+  "description": "VERIFIED LIVE: Bluesky via the public AT Protocol AppView (public.api.bsky.app) — look up a profile, search accounts, and read an author's posts. No token needed (public read). Tested live by Claude Code: getProfile, searchActors and getAuthorFeed all returned 200 with real data.",
+  "iconColor": "bg-sky-100 text-sky-700",
+  "category": "social",
+  "hosts": [
+    "https://public.api.bsky.app/*"
+  ],
+  "baseUrl": "https://public.api.bsky.app/xrpc",
+  "auth": {
+    "type": "none"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "bsky_profile",
+      "description": "A Bluesky profile by handle or DID (e.g. bsky.app). VERIFIED.",
+      "method": "GET",
+      "path": "/app.bsky.actor.getProfile",
+      "responseType": "json",
+      "params": [
+        { "name": "actor", "in": "query", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "bsky_search_actors",
+      "description": "Search Bluesky accounts by query. VERIFIED.",
+      "method": "GET",
+      "path": "/app.bsky.actor.searchActors",
+      "responseType": "json",
+      "params": [
+        { "name": "q", "in": "query", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "bsky_author_feed",
+      "description": "Recent posts by an author (handle or DID). VERIFIED.",
+      "method": "GET",
+      "path": "/app.bsky.feed.getAuthorFeed",
+      "responseType": "json",
+      "params": [
+        { "name": "actor", "in": "query", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "sw" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
