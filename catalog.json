@@ -993,6 +993,16 @@
           "allowMultiple": false,
           "defaultLabel": "腾讯网",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/qqnews-dom.lingphi-platform.json"
+        },
+        {
+          "id": "xinhua-dom-manifest",
+          "displayName": "新华网 (page reader)",
+          "description": "新华网 (Xinhua) headlines via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "xinhua-dom",
+          "allowMultiple": false,
+          "defaultLabel": "新华网",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/xinhua-dom.lingphi-platform.json"
         }
       ]
     }

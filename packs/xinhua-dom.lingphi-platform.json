@@ -1,0 +1,33 @@
+{
+  "id": "xinhua-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "新华网 (page reader)",
+  "description": "VERIFIED LIVE: 新华网 (Xinhua) via content-script DOM extraction — no login, no API key. Article links live under a date directory (/202x/…). Navigate the tab to news.cn (home or a channel) and call the tool. Tested live by Claude Code: 223 dated article links — headline + url extracted correctly. Note: the item selector keys on the /202… date path; re-probe if Xinhua changes its URL scheme.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "news",
+  "hosts": [
+    "http://www.news.cn/*",
+    "https://www.news.cn/*",
+    "https://*.news.cn/*"
+  ],
+  "baseUrl": "https://www.news.cn",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "xinhua_headlines",
+      "description": "Dated article links on the current 新华网 page (home or a channel). Navigate the tab there first. Returns each story's headline and full article url. VERIFIED (223 articles).",
+      "dom": {
+        "item": "a[href*=\"/202\"]",
+        "limit": 40,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
