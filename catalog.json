@@ -201,6 +201,16 @@
           "allowMultiple": false,
           "defaultLabel": "DigitalOcean",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/digitalocean.lingphi-platform.json"
+        },
+        {
+          "id": "gitlab-session-manifest",
+          "displayName": "GitLab (session)",
+          "description": "GitLab profile, projects, todos, assigned MRs/issues and groups via your logged-in session — no token (session bridge).",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "gitlab-session",
+          "allowMultiple": false,
+          "defaultLabel": "GitLab",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gitlab-session.lingphi-platform.json"
         }
       ]
     },

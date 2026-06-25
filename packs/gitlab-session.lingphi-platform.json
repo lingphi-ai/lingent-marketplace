@@ -1,0 +1,80 @@
+{
+  "id": "gitlab-session-manifest",
+  "version": "0.1.0",
+  "displayName": "GitLab (session)",
+  "description": "VERIFIED LIVE: GitLab via your logged-in gitlab.com session (session bridge — no Personal Access Token). Your profile, projects, todos, assigned merge requests + issues, and groups work cookie-only on the same-origin /api/v4. Tested live by Claude Code against a logged-in account — every endpoint below returned 200. (For server-to-server use the GitLab token pack instead.)",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "development",
+  "hosts": [
+    "https://gitlab.com/*"
+  ],
+  "baseUrl": "https://gitlab.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "gitlab_user",
+      "description": "Your GitLab account (id, username, name, email). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/user",
+      "responseType": "json"
+    },
+    {
+      "name": "gitlab_projects",
+      "description": "Projects you are a member of. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/projects",
+      "responseType": "json",
+      "params": [
+        { "name": "membership", "in": "query", "type": "boolean", "default": true },
+        { "name": "search", "in": "query", "type": "string" },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "gitlab_todos",
+      "description": "Your GitLab to-do items. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/todos",
+      "responseType": "json",
+      "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
+    },
+    {
+      "name": "gitlab_my_merge_requests",
+      "description": "Merge requests assigned to / created by you. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/merge_requests",
+      "responseType": "json",
+      "params": [
+        { "name": "scope", "in": "query", "type": "string", "enum": ["assigned_to_me", "created_by_me", "all"], "default": "assigned_to_me" },
+        { "name": "state", "in": "query", "type": "string", "enum": ["opened", "closed", "merged", "all"], "default": "opened" },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "gitlab_my_issues",
+      "description": "Issues assigned to / created by you. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/issues",
+      "responseType": "json",
+      "params": [
+        { "name": "scope", "in": "query", "type": "string", "enum": ["assigned_to_me", "created_by_me", "all"], "default": "assigned_to_me" },
+        { "name": "state", "in": "query", "type": "string", "enum": ["opened", "closed", "all"], "default": "opened" },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "gitlab_groups",
+      "description": "Groups you belong to. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/groups",
+      "responseType": "json",
+      "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
