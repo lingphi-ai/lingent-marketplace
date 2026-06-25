@@ -1,0 +1,64 @@
+{
+  "id": "cloudflare-manifest",
+  "version": "0.1.0",
+  "displayName": "Cloudflare",
+  "description": "VERIFIED LIVE: Cloudflare via your logged-in dash.cloudflare.com session (session bridge — no API token to paste). Your account, memberships, accounts and zones (domains) work cookie-only on the same-origin dash.cloudflare.com/api/v4. Tested live by Claude Code against a logged-in account: user, memberships and zones all returned 200 with real data.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "development",
+  "hosts": [
+    "https://dash.cloudflare.com/*"
+  ],
+  "baseUrl": "https://dash.cloudflare.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "cloudflare_user",
+      "description": "Your Cloudflare account (id, email, name). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/user",
+      "responseType": "json"
+    },
+    {
+      "name": "cloudflare_memberships",
+      "description": "Your account memberships and roles. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/memberships",
+      "responseType": "json",
+      "params": [
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "cloudflare_accounts",
+      "description": "Accounts you can access.",
+      "method": "GET",
+      "path": "/api/v4/accounts",
+      "responseType": "json",
+      "params": [
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "cloudflare_zones",
+      "description": "Your zones (domains) with status and plan. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/zones",
+      "responseType": "json",
+      "params": [
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 },
+        { "name": "name", "in": "query", "type": "string" }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

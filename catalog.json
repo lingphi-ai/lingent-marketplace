@@ -131,6 +131,16 @@
           "allowMultiple": false,
           "defaultLabel": "Vercel",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/vercel.lingphi-platform.json"
+        },
+        {
+          "id": "cloudflare-manifest",
+          "displayName": "Cloudflare",
+          "description": "Cloudflare account, memberships, accounts and zones via your logged-in dashboard session (session bridge).",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "cloudflare",
+          "allowMultiple": false,
+          "defaultLabel": "Cloudflare",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/cloudflare.lingphi-platform.json"
         }
       ]
     },
