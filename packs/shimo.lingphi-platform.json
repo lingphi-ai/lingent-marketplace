@@ -64,6 +64,14 @@
       "method": "GET",
       "path": "/lizard-api/notifications/unpeeked_count",
       "responseType": "json"
+    },
+    {
+      "name": "shimo_notifications",
+      "description": "Your notifications (shares, comments, mentions). VERIFIED.",
+      "method": "GET",
+      "path": "/lizard-api/notifications",
+      "responseType": "json",
+      "params": [ { "name": "limit", "in": "query", "type": "number", "default": 20 } ]
     }
   ],
   "transport": {
