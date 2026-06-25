@@ -121,6 +121,16 @@
           "allowMultiple": false,
           "defaultLabel": "掘金",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/juejin.lingphi-platform.json"
+        },
+        {
+          "id": "vercel-manifest",
+          "displayName": "Vercel",
+          "description": "Vercel account, teams, projects and deployments via your logged-in session (session bridge).",
+          "iconColor": "bg-gray-900 text-white",
+          "integrationType": "vercel",
+          "allowMultiple": false,
+          "defaultLabel": "Vercel",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/vercel.lingphi-platform.json"
         }
       ]
     },

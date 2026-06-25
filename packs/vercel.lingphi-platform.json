@@ -1,0 +1,66 @@
+{
+  "id": "vercel-manifest",
+  "version": "0.1.0",
+  "displayName": "Vercel",
+  "description": "VERIFIED LIVE: Vercel via your logged-in vercel.com web session (session bridge — no token to paste). Your account, teams, projects and deployments work cookie-only on the same-origin vercel.com/api. Tested live by Claude Code against a logged-in account: user, teams, projects and deployments all returned 200 with real data.",
+  "iconColor": "bg-gray-900 text-white",
+  "category": "development",
+  "hosts": [
+    "https://vercel.com/*"
+  ],
+  "baseUrl": "https://vercel.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "vercel_user",
+      "description": "Your Vercel account (id, email, username, plan). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v2/user",
+      "responseType": "json"
+    },
+    {
+      "name": "vercel_teams",
+      "description": "Teams you belong to. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v2/teams",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "vercel_projects",
+      "description": "Your projects. Pass teamId to scope to a team. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v9/projects",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 },
+        { "name": "teamId", "in": "query", "type": "string" }
+      ]
+    },
+    {
+      "name": "vercel_deployments",
+      "description": "Recent deployments. Pass projectId/teamId to scope. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v6/deployments",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 },
+        { "name": "projectId", "in": "query", "type": "string" },
+        { "name": "teamId", "in": "query", "type": "string" }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
