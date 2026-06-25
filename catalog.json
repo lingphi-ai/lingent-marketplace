@@ -467,6 +467,16 @@
           "allowMultiple": false,
           "defaultLabel": "edX",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/edx-dom.lingphi-platform.json"
+        },
+        {
+          "id": "icourse163-dom-manifest",
+          "displayName": "中国大学MOOC (page reader)",
+          "description": "中国大学MOOC course listings via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "icourse163-dom",
+          "allowMultiple": false,
+          "defaultLabel": "中国大学MOOC",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/icourse163-dom.lingphi-platform.json"
         }
       ]
     },

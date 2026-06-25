@@ -1,0 +1,31 @@
+{
+  "id": "icourse163-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "中国大学MOOC (page reader)",
+  "description": "VERIFIED LIVE: 中国大学MOOC (icourse163) via content-script DOM extraction — no login, no API key. Course links use the /course/ path with the course name as link text. Navigate the tab to icourse163.org (a category, school, or search) and call the tool. Tested live by Claude Code: course links — name + url extracted correctly. Scroll to load more.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://www.icourse163.org/*"
+  ],
+  "baseUrl": "https://www.icourse163.org",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "icourse163_courses",
+      "description": "Course links on the current 中国大学MOOC page (a category, school page, or search). Navigate the tab there and scroll to load more first. Returns each course's name and url (/course/<id>). VERIFIED.",
+      "dom": {
+        "item": "a[href*=\"/course/\"]",
+        "limit": 40,
+        "fields": {
+          "name": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
