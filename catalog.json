@@ -477,6 +477,16 @@
           "allowMultiple": false,
           "defaultLabel": "中国大学MOOC",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/icourse163-dom.lingphi-platform.json"
+        },
+        {
+          "id": "open163-dom-manifest",
+          "displayName": "网易公开课 (page reader)",
+          "description": "网易公开课 course listings via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "open163-dom",
+          "allowMultiple": false,
+          "defaultLabel": "网易公开课",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/open163-dom.lingphi-platform.json"
         }
       ]
     },
@@ -817,6 +827,36 @@
           "allowMultiple": false,
           "defaultLabel": "Medium",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/medium-dom.lingphi-platform.json"
+        },
+        {
+          "id": "iqiyi-dom-manifest",
+          "displayName": "爱奇艺 (page reader)",
+          "description": "爱奇艺 video links via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "iqiyi-dom",
+          "allowMultiple": false,
+          "defaultLabel": "爱奇艺",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/iqiyi-dom.lingphi-platform.json"
+        },
+        {
+          "id": "youku-dom-manifest",
+          "displayName": "优酷 (page reader)",
+          "description": "优酷 video links via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "youku-dom",
+          "allowMultiple": false,
+          "defaultLabel": "优酷",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youku-dom.lingphi-platform.json"
+        },
+        {
+          "id": "hupu-dom-manifest",
+          "displayName": "虎扑 (page reader)",
+          "description": "虎扑 forum threads via content-script DOM extraction — no login (reads the rendered page).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "hupu-dom",
+          "allowMultiple": false,
+          "defaultLabel": "虎扑",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/hupu-dom.lingphi-platform.json"
         }
       ]
     },

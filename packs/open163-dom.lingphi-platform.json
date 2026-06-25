@@ -1,0 +1,31 @@
+{
+  "id": "open163-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "网易公开课 (page reader)",
+  "description": "VERIFIED LIVE: 网易公开课 (NetEase Open Courses) via content-script DOM extraction — no login, no API key. Course links use the /newview/movie/ path with the course name as link text. Navigate the tab to open.163.com (home or a category) and call the tool. Tested live by Claude Code: 97 course links — name + url extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://open.163.com/*"
+  ],
+  "baseUrl": "https://open.163.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "open163_courses",
+      "description": "Course links on the current 网易公开课 page (home or a category). Navigate the tab there first. Returns each course's name and url (/newview/movie/…). VERIFIED (97 courses).",
+      "dom": {
+        "item": "a[href*=\"/newview/movie/\"]",
+        "limit": 40,
+        "fields": {
+          "name": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

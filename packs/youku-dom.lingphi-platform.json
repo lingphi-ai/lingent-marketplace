@@ -1,0 +1,32 @@
+{
+  "id": "youku-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "优酷 (page reader)",
+  "description": "VERIFIED LIVE: 优酷 (Youku) via content-script DOM extraction — no login, no API key. Video cards link to v.youku.com and carry the title in the link's title attribute. Navigate the tab to youku.com (home or a channel) and call the tool. Tested live by Claude Code: 91 video links — title + url extracted correctly.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "social",
+  "hosts": [
+    "https://www.youku.com/*",
+    "https://v.youku.com/*"
+  ],
+  "baseUrl": "https://www.youku.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "youku_videos",
+      "description": "Video links on the current 优酷 page (home or a channel). Navigate the tab there first. Returns each video's title and url (v.youku.com/...). VERIFIED (91 videos).",
+      "dom": {
+        "item": "a[href*=\"v.youku.com\"]",
+        "limit": 40,
+        "fields": {
+          "title": { "attr": "title" },
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

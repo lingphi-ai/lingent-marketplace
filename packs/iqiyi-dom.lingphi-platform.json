@@ -1,0 +1,31 @@
+{
+  "id": "iqiyi-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "爱奇艺 (page reader)",
+  "description": "VERIFIED LIVE: 爱奇艺 (iQIYI) via content-script DOM extraction — no login, no API key. Video links use the /v_<id>.html path and carry the title in the link's title attribute. Navigate the tab to iqiyi.com (home or a channel like /dianshiju, /dianying) and call the tool. Tested live by Claude Code: video links — title + url extracted correctly. Navigate to a channel/list page for more results.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "social",
+  "hosts": [
+    "https://www.iqiyi.com/*"
+  ],
+  "baseUrl": "https://www.iqiyi.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "iqiyi_videos",
+      "description": "Video links on the current 爱奇艺 page (home or a channel/list). Navigate the tab there first. Returns each video's title and url (/v_<id>.html). VERIFIED.",
+      "dom": {
+        "item": "a[href*=\"/v_\"]",
+        "limit": 40,
+        "fields": {
+          "title": { "attr": "title" },
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

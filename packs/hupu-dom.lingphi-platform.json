@@ -1,0 +1,32 @@
+{
+  "id": "hupu-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "虎扑 (page reader)",
+  "description": "VERIFIED LIVE: 虎扑 (Hupu) via content-script DOM extraction — no login, no API key. Thread links point to bbs.hupu.com/<id>.html with the title as link text. Navigate the tab to hupu.com (home or a forum) and call the tool. Tested live by Claude Code: 137 thread links — title + url extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "social",
+  "hosts": [
+    "https://www.hupu.com/*",
+    "https://bbs.hupu.com/*"
+  ],
+  "baseUrl": "https://www.hupu.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "hupu_threads",
+      "description": "Thread links on the current 虎扑 page (home or a forum). Navigate the tab there first. Returns each thread's title and url (bbs.hupu.com/<id>.html). VERIFIED (137 threads).",
+      "dom": {
+        "item": "a[href*=\"bbs.hupu.com/\"]",
+        "limit": 40,
+        "fields": {
+          "title": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
