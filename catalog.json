@@ -279,6 +279,16 @@
           "allowMultiple": false,
           "defaultLabel": "Slack",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/slack.lingphi-platform.json"
+        },
+        {
+          "id": "slack-session-manifest",
+          "displayName": "Slack (session)",
+          "description": "Slack identity, profile, channels, members and unread counts via your logged-in web session — no bot token (session bridge).",
+          "iconColor": "bg-purple-100 text-purple-700",
+          "integrationType": "slack-session",
+          "allowMultiple": false,
+          "defaultLabel": "Slack",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/slack-session.lingphi-platform.json"
         }
       ]
     },

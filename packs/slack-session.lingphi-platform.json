@@ -1,0 +1,88 @@
+{
+  "id": "slack-session-manifest",
+  "version": "0.1.0",
+  "displayName": "Slack (session)",
+  "description": "VERIFIED LIVE: Slack via your logged-in app.slack.com web session (session bridge — no bot token to paste). Reads your identity, profile, channels, workspace members and unread counts using the xoxc token your Slack web app already holds (read from localConfig_v2) plus the session 'd' cookie. Tested live by Claude Code against a logged-in workspace: auth.test, users.profile.get, conversations.list, users.list and client.counts all returned ok:true with real data. Targets your first signed-in workspace.",
+  "iconColor": "bg-purple-100 text-purple-700",
+  "category": "comms",
+  "hosts": [
+    "https://app.slack.com/*"
+  ],
+  "baseUrl": "https://app.slack.com/api",
+  "auth": {
+    "type": "pageToken",
+    "store": "localStorage",
+    "keyIncludes": "localConfig_v2",
+    "tokenPath": "teams.*.token",
+    "tokenIn": "query",
+    "tokenParam": "token"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "slack_auth_test",
+      "description": "Your Slack identity for the current workspace (team, user, url). VERIFIED.",
+      "method": "POST",
+      "path": "/auth.test",
+      "responseType": "json"
+    },
+    {
+      "name": "slack_profile",
+      "description": "Your Slack profile (real name, title, status, email). VERIFIED.",
+      "method": "POST",
+      "path": "/users.profile.get",
+      "responseType": "json"
+    },
+    {
+      "name": "slack_conversations",
+      "description": "List channels/conversations in the workspace. VERIFIED.",
+      "method": "POST",
+      "path": "/conversations.list",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "types",
+          "in": "query",
+          "type": "string",
+          "default": "public_channel,private_channel"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        }
+      ]
+    },
+    {
+      "name": "slack_users",
+      "description": "List members of the workspace. VERIFIED.",
+      "method": "POST",
+      "path": "/users.list",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        }
+      ]
+    },
+    {
+      "name": "slack_counts",
+      "description": "Your unread/mention counts across channels and threads. VERIFIED.",
+      "method": "POST",
+      "path": "/client.counts",
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
