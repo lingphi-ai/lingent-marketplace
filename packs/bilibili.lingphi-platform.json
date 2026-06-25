@@ -58,6 +58,40 @@
           "default": "all"
         }
       ]
+    },
+    {
+      "name": "bili_my_stat",
+      "description": "Your account stats: following, follower and dynamic counts. VERIFIED.",
+      "method": "GET",
+      "path": "/x/web-interface/nav/stat",
+      "responseType": "json"
+    },
+    {
+      "name": "bili_my_info",
+      "description": "Your full profile (level, coins, vip, sign). VERIFIED.",
+      "method": "GET",
+      "path": "/x/space/myinfo",
+      "responseType": "json"
+    },
+    {
+      "name": "bili_relation_stat",
+      "description": "Following/follower counts for any user by mid (vmid). VERIFIED.",
+      "method": "GET",
+      "path": "/x/relation/stat",
+      "responseType": "json",
+      "params": [
+        { "name": "vmid", "in": "query", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "bili_fav_folders",
+      "description": "Your created favourite folders. VERIFIED.",
+      "method": "GET",
+      "path": "/x/v3/fav/folder/created/list-all",
+      "responseType": "json",
+      "params": [
+        { "name": "up_mid", "in": "query", "type": "string", "required": true, "description": "Your mid (from bili_nav)." }
+      ]
     }
   ],
   "transport": {

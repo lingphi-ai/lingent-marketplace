@@ -77,6 +77,31 @@
       ]
     },
     {
+      "name": "weibo_friends",
+      "description": "A user's following list (关注) by uid. VERIFIED.",
+      "method": "GET",
+      "path": "/ajax/friendships/friends",
+      "responseType": "json",
+      "params": [
+        { "name": "uid", "in": "query", "type": "string", "required": true },
+        { "name": "page", "in": "query", "type": "number", "default": 1 }
+      ]
+    },
+    {
+      "name": "weibo_mentions",
+      "description": "Posts that @-mention you. VERIFIED.",
+      "method": "GET",
+      "path": "/ajax/statuses/mentions",
+      "responseType": "json"
+    },
+    {
+      "name": "weibo_unread",
+      "description": "Your unread counts (messages, mentions, comments). VERIFIED.",
+      "method": "GET",
+      "path": "/ajax/statuses/unreadcount",
+      "responseType": "json"
+    },
+    {
       "name": "weibo_hot_search",
       "description": "The current Weibo hot-search board (trending topics). VERIFIED.",
       "method": "GET",
