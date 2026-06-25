@@ -1,0 +1,33 @@
+{
+  "id": "edx-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "edX (page reader)",
+  "description": "VERIFIED LIVE: edX via content-script DOM extraction — no login, no API key. edX renders each result as a course link (href containing /learn/), so this tool reads the course list straight from the DOM of your open edX tab. Navigate the tab to an edX search or subject page (edx.org/search?q=… or a /learn/<subject> listing) and let it load, then call the tool. Tested live by Claude Code on a search: 22 courses with course url and title extracted correctly (the title text also includes the school/partner name).",
+  "iconColor": "bg-indigo-100 text-indigo-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://www.edx.org/*"
+  ],
+  "baseUrl": "https://www.edx.org",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "edx_courses",
+      "description": "Courses on the current edX search or listing page (edx.org/search?q=… or a subject page). Navigate the tab there and let it load first. Returns each course's title (text may include the school/partner) and course url. VERIFIED (22 courses).",
+      "dom": {
+        "item": "a[href*=\"/learn/\"]",
+        "limit": 40,
+        "fields": {
+          "title": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

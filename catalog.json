@@ -427,6 +427,16 @@
           "allowMultiple": false,
           "defaultLabel": "Airtable",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/airtable.lingphi-platform.json"
+        },
+        {
+          "id": "edx-dom-manifest",
+          "displayName": "edX (page reader)",
+          "description": "edX course search/listing results via content-script DOM extraction — no login, no API key (reads the rendered page).",
+          "iconColor": "bg-indigo-100 text-indigo-700",
+          "integrationType": "edx-dom",
+          "allowMultiple": false,
+          "defaultLabel": "edX",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/edx-dom.lingphi-platform.json"
         }
       ]
     },
