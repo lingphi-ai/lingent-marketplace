@@ -1,0 +1,32 @@
+{
+  "id": "sohu-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "搜狐 (page reader)",
+  "description": "VERIFIED LIVE: 搜狐 (Sohu) via content-script DOM extraction — no login, no API key. Article links carry a /a/<id> path with the headline as link text. Navigate the tab to sohu.com (home or a channel) and call the tool. Tested live by Claude Code: 173 article links — headline + url extracted correctly.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "news",
+  "hosts": [
+    "https://www.sohu.com/*",
+    "https://*.sohu.com/*"
+  ],
+  "baseUrl": "https://www.sohu.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "sohu_headlines",
+      "description": "Article links on the current 搜狐 page (home or a channel). Navigate the tab there first. Returns each story's headline and url (sohu.com/a/<id>). VERIFIED (173 articles).",
+      "dom": {
+        "item": "a[href*=\"/a/\"]",
+        "limit": 40,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
