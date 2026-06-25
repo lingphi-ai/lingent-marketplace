@@ -1,0 +1,165 @@
+{
+  "id": "clickup-manifest",
+  "version": "1.0.0",
+  "displayName": "ClickUp",
+  "description": "ClickUp API v2 via a personal API token — read your profile, workspaces (teams), spaces, lists, and tasks, and create tasks. The token is sent RAW in the 'Authorization' header (no 'Bearer ' prefix).",
+  "iconColor": "bg-pink-100 text-pink-700",
+  "category": "project-management",
+  "hosts": [
+    "https://api.clickup.com/*"
+  ],
+  "baseUrl": "https://api.clickup.com/api/v2",
+  "auth": {
+    "type": "apiKey",
+    "in": "header",
+    "name": "Authorization",
+    "tokenField": "apiToken"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "apiToken",
+      "label": "Personal API Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "pk_...",
+      "description": "Create at ClickUp → Settings → Apps → API Token. ClickUp expects the raw token in the Authorization header WITHOUT a 'Bearer ' prefix — this manifest sends it as 'Authorization: <token>'."
+    }
+  ],
+  "tools": [
+    {
+      "name": "clickup_get_user",
+      "description": "Get the authenticated user's account details.",
+      "method": "GET",
+      "path": "/user",
+      "params": [],
+      "responseType": "json"
+    },
+    {
+      "name": "clickup_list_teams",
+      "description": "List the Workspaces (called 'teams' in the API) the token can access.",
+      "method": "GET",
+      "path": "/team",
+      "params": [],
+      "responseType": "json"
+    },
+    {
+      "name": "clickup_list_spaces",
+      "description": "List the Spaces in a Workspace.",
+      "method": "GET",
+      "path": "/team/{team_id}/space",
+      "params": [
+        {
+          "name": "team_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Workspace id (the API calls Workspaces 'teams'). From clickup_list_teams."
+        },
+        {
+          "name": "archived",
+          "in": "query",
+          "type": "boolean",
+          "default": false
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "clickup_list_tasks",
+      "description": "List tasks in a List (max 100 per page).",
+      "method": "GET",
+      "path": "/list/{list_id}/task",
+      "params": [
+        {
+          "name": "list_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "List id."
+        },
+        {
+          "name": "archived",
+          "in": "query",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "number",
+          "description": "Zero-based page number.",
+          "default": 0
+        },
+        {
+          "name": "subtasks",
+          "in": "query",
+          "type": "boolean",
+          "description": "Include subtasks in the results."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "clickup_get_task",
+      "description": "Get a single task by id.",
+      "method": "GET",
+      "path": "/task/{task_id}",
+      "params": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Task id."
+        },
+        {
+          "name": "custom_task_ids",
+          "in": "query",
+          "type": "boolean",
+          "description": "Set true to look up by a custom task id; then team_id is required."
+        },
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "string",
+          "description": "Workspace id — required only when custom_task_ids is true."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "clickup_create_task",
+      "description": "Create a task in a List.",
+      "method": "POST",
+      "path": "/list/{list_id}/task",
+      "params": [
+        {
+          "name": "list_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "List id to create the task in."
+        },
+        {
+          "name": "task",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"name\": string (required), \"description\"?: string, \"assignees\"?: number[], \"status\"?: string, \"priority\"?: number, \"due_date\"?: number (epoch ms), \"tags\"?: string[] }"
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

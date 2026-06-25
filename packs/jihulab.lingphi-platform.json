@@ -1,0 +1,400 @@
+{
+  "id": "jihulab-manifest",
+  "version": "1.0.0",
+  "displayName": "极狐GitLab JihuLab",
+  "description": "极狐GitLab (jihulab.com) REST API (v4) via a Personal Access Token — search projects, review merge requests, and track issues and pipelines. GitLab-compatible API. For a self-managed 极狐GitLab instance, change the host and baseUrl to your instance.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "development",
+  "hosts": [
+    "https://jihulab.com/*"
+  ],
+  "baseUrl": "https://jihulab.com/api/v4",
+  "auth": {
+    "type": "bearer",
+    "tokenField": "personalAccessToken",
+    "scheme": "Bearer"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "personalAccessToken",
+      "label": "Personal Access Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "glpat-...",
+      "description": "Create at https://jihulab.com/-/user_settings/personal_access_tokens. Scopes: read_api (or api for write actions like adding MR notes). Sent as 'Authorization: Bearer <token>'."
+    }
+  ],
+  "tools": [
+    {
+      "name": "jihulab_get_current_user",
+      "description": "Get the authenticated user (id, username, name, email).",
+      "method": "GET",
+      "path": "/user",
+      "params": [],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_search_projects",
+      "description": "Search projects you can access by name or path.",
+      "method": "GET",
+      "path": "/projects",
+      "params": [
+        {
+          "name": "search",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Search term matched against project name and path."
+        },
+        {
+          "name": "membership",
+          "in": "query",
+          "type": "boolean",
+          "description": "Limit to projects you are a member of.",
+          "default": true
+        },
+        {
+          "name": "order_by",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "id",
+            "name",
+            "path",
+            "created_at",
+            "updated_at",
+            "last_activity_at"
+          ],
+          "default": "last_activity_at"
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_get_project",
+      "description": "Get project metadata by id. The id is the numeric project id, or the URL-encoded full path namespace%2Fname (e.g. mygroup%2Fmyrepo).",
+      "method": "GET",
+      "path": "/projects/{id}",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_list_my_issues",
+      "description": "List issues assigned to you across all projects.",
+      "method": "GET",
+      "path": "/issues",
+      "params": [
+        {
+          "name": "scope",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "created_by_me",
+            "assigned_to_me",
+            "all"
+          ],
+          "default": "assigned_to_me"
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "opened",
+            "closed",
+            "all"
+          ],
+          "default": "opened"
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_list_project_issues",
+      "description": "List issues in a project.",
+      "method": "GET",
+      "path": "/projects/{id}/issues",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "opened",
+            "closed",
+            "all"
+          ],
+          "default": "opened"
+        },
+        {
+          "name": "search",
+          "in": "query",
+          "type": "string",
+          "description": "Search issues against their title and description."
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_list_merge_requests",
+      "description": "List merge requests in a project.",
+      "method": "GET",
+      "path": "/projects/{id}/merge_requests",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "opened",
+            "closed",
+            "merged",
+            "all"
+          ],
+          "default": "opened"
+        },
+        {
+          "name": "target_branch",
+          "in": "query",
+          "type": "string",
+          "description": "Filter by target branch name."
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_get_merge_request",
+      "description": "Get a merge request by its project-scoped internal id (iid).",
+      "method": "GET",
+      "path": "/projects/{id}/merge_requests/{merge_request_iid}",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        },
+        {
+          "name": "merge_request_iid",
+          "in": "path",
+          "type": "number",
+          "required": true,
+          "description": "Project-scoped MR internal id (the !N number shown in the UI)."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_get_merge_request_changes",
+      "description": "Get the diff/changes of a merge request (changed files with diffs).",
+      "method": "GET",
+      "path": "/projects/{id}/merge_requests/{merge_request_iid}/changes",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        },
+        {
+          "name": "merge_request_iid",
+          "in": "path",
+          "type": "number",
+          "required": true,
+          "description": "Project-scoped MR internal id (the !N number shown in the UI)."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_list_merge_request_notes",
+      "description": "List the discussion notes (comments) on a merge request.",
+      "method": "GET",
+      "path": "/projects/{id}/merge_requests/{merge_request_iid}/notes",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        },
+        {
+          "name": "merge_request_iid",
+          "in": "path",
+          "type": "number",
+          "required": true,
+          "description": "Project-scoped MR internal id."
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 30
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_list_pipelines",
+      "description": "List CI/CD pipelines for a project.",
+      "method": "GET",
+      "path": "/projects/{id}/pipelines",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        },
+        {
+          "name": "ref",
+          "in": "query",
+          "type": "string",
+          "description": "Filter by branch or tag name."
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "running",
+            "pending",
+            "success",
+            "failed",
+            "canceled",
+            "skipped"
+          ]
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_get_file",
+      "description": "Get a file's contents from a project repository. Returns base64-encoded content in the 'content' field; decode to read it.",
+      "method": "GET",
+      "path": "/projects/{id}/repository/files/{file_path}",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        },
+        {
+          "name": "file_path",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "URL-encoded file path, e.g. src%2Findex.ts"
+        },
+        {
+          "name": "ref",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Branch, tag, or commit SHA (e.g. main).",
+          "default": "main"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "jihulab_add_merge_request_note",
+      "description": "Post a comment (note) on a merge request.",
+      "method": "POST",
+      "path": "/projects/{id}/merge_requests/{merge_request_iid}/notes",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Numeric project id, or URL-encoded full path 'namespace%2Fname'."
+        },
+        {
+          "name": "merge_request_iid",
+          "in": "path",
+          "type": "number",
+          "required": true,
+          "description": "Project-scoped MR internal id."
+        },
+        {
+          "name": "note",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"body\": \"comment text\" }"
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

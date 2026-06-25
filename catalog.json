@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updatedAt": "2026-06-24",
+  "version": "1.2.0",
+  "updatedAt": "2026-06-25",
   "categories": [
     {
       "id": "project-management",
@@ -35,6 +35,36 @@
           "allowMultiple": false,
           "defaultLabel": "Teambition",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/teambition.lingphi-platform.json"
+        },
+        {
+          "id": "asana-manifest",
+          "displayName": "Asana",
+          "description": "Read your profile, workspaces, projects, and tasks, search tasks, and create tasks via the Asana API with a Personal Access Token.",
+          "iconColor": "bg-rose-100 text-rose-700",
+          "integrationType": "asana",
+          "allowMultiple": false,
+          "defaultLabel": "Asana",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/asana.lingphi-platform.json"
+        },
+        {
+          "id": "trello-manifest",
+          "displayName": "Trello",
+          "description": "Read boards, lists, and cards, search, and create cards via the Trello REST API with an API key + token.",
+          "iconColor": "bg-sky-100 text-sky-700",
+          "integrationType": "trello",
+          "allowMultiple": false,
+          "defaultLabel": "Trello",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/trello.lingphi-platform.json"
+        },
+        {
+          "id": "clickup-manifest",
+          "displayName": "ClickUp",
+          "description": "Read your workspaces, spaces, lists, and tasks, and create tasks via the ClickUp API v2 with a personal API token.",
+          "iconColor": "bg-pink-100 text-pink-700",
+          "integrationType": "clickup",
+          "allowMultiple": false,
+          "defaultLabel": "ClickUp",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/clickup.lingphi-platform.json"
         }
       ]
     },
@@ -71,6 +101,16 @@
           "allowMultiple": false,
           "defaultLabel": "GitLab",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gitlab.lingphi-platform.json"
+        },
+        {
+          "id": "jihulab-manifest",
+          "displayName": "极狐GitLab JihuLab",
+          "description": "极狐GitLab (jihulab.com) — search projects, review merge requests, and track issues and pipelines via the GitLab-compatible REST API with a Personal Access Token.",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "jihulab",
+          "allowMultiple": false,
+          "defaultLabel": "极狐GitLab",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jihulab.lingphi-platform.json"
         }
       ]
     },
@@ -127,6 +167,16 @@
           "allowMultiple": false,
           "defaultLabel": "石墨",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/shimo.lingphi-platform.json"
+        },
+        {
+          "id": "airtable-manifest",
+          "displayName": "Airtable",
+          "description": "List bases, read table schemas, query and create records via the Airtable Web API with a Personal Access Token.",
+          "iconColor": "bg-yellow-100 text-yellow-700",
+          "integrationType": "airtable",
+          "allowMultiple": false,
+          "defaultLabel": "Airtable",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/airtable.lingphi-platform.json"
         }
       ]
     },
@@ -153,6 +203,64 @@
           "allowMultiple": false,
           "defaultLabel": "Tencent Cloud",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/tencent-cloud.lingphi-platform.json"
+        }
+      ]
+    },
+    {
+      "id": "comms",
+      "label": "Communication",
+      "entries": [
+        {
+          "id": "slack-manifest",
+          "displayName": "Slack",
+          "description": "List channels, read history, look up users, search messages, and post messages via the Slack Web API with a bot token.",
+          "iconColor": "bg-purple-100 text-purple-700",
+          "integrationType": "slack",
+          "allowMultiple": false,
+          "defaultLabel": "Slack",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/slack.lingphi-platform.json"
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "label": "Design",
+      "entries": [
+        {
+          "id": "figma-manifest",
+          "displayName": "Figma",
+          "description": "Read your profile, files, nodes, comments, projects, and teams via the Figma REST API with a personal access token.",
+          "iconColor": "bg-neutral-900 text-white",
+          "integrationType": "figma",
+          "allowMultiple": false,
+          "defaultLabel": "Figma",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/figma.lingphi-platform.json"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "label": "Tools & Data",
+      "entries": [
+        {
+          "id": "amap-manifest",
+          "displayName": "高德地图 Amap",
+          "description": "Geocoding, reverse geocoding, place search, driving routes, and weather via the 高德地图 (Amap) Web Service API with a key.",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "amap",
+          "allowMultiple": false,
+          "defaultLabel": "高德地图",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/amap.lingphi-platform.json"
+        },
+        {
+          "id": "qweather-manifest",
+          "displayName": "和风天气 QWeather",
+          "description": "City lookup, real-time weather, and 7-day forecast via the 和风天气 (QWeather) API with a per-account API Host + key.",
+          "iconColor": "bg-cyan-100 text-cyan-700",
+          "integrationType": "qweather",
+          "allowMultiple": false,
+          "defaultLabel": "和风天气",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/qweather.lingphi-platform.json"
         }
       ]
     }

@@ -1,0 +1,191 @@
+{
+  "id": "amap-manifest",
+  "version": "1.0.0",
+  "displayName": "高德地图 Amap",
+  "description": "高德地图 (Amap) Web Service API — geocoding, reverse geocoding, place search, driving routes, and weather. The Web Service API key is sent as the 'key' query param.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "tools",
+  "hosts": [
+    "https://restapi.amap.com/*"
+  ],
+  "baseUrl": "https://restapi.amap.com",
+  "auth": {
+    "type": "apiKey",
+    "in": "query",
+    "name": "key",
+    "tokenField": "apiKey"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "apiKey",
+      "label": "Web Service Key",
+      "type": "secret",
+      "required": true,
+      "placeholder": "32-character key",
+      "description": "Create an application at https://console.amap.com/dev/key/app and add a key of type 'Web服务' (Web Service). Sent as the 'key' query param."
+    }
+  ],
+  "tools": [
+    {
+      "name": "amap_geocode",
+      "description": "Geocode a structured address into coordinates (地理编码).",
+      "method": "GET",
+      "path": "/v3/geocode/geo",
+      "params": [
+        {
+          "name": "address",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Structured address, e.g. 北京市朝阳区阜通东大街6号."
+        },
+        {
+          "name": "city",
+          "in": "query",
+          "type": "string",
+          "description": "City name or adcode to scope the search."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "amap_regeocode",
+      "description": "Reverse-geocode coordinates into an address (逆地理编码).",
+      "method": "GET",
+      "path": "/v3/geocode/regeo",
+      "params": [
+        {
+          "name": "location",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Coordinates as 'lng,lat' (up to 6 decimals), e.g. 116.481488,39.990464."
+        },
+        {
+          "name": "radius",
+          "in": "query",
+          "type": "number",
+          "description": "Search radius in meters (0-3000).",
+          "default": 1000
+        },
+        {
+          "name": "extensions",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "base",
+            "all"
+          ],
+          "default": "base"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "amap_place_text",
+      "description": "Keyword place search (关键字搜索). Supply keywords or types (at least one).",
+      "method": "GET",
+      "path": "/v3/place/text",
+      "params": [
+        {
+          "name": "keywords",
+          "in": "query",
+          "type": "string",
+          "description": "Search keywords, e.g. 北京大学. Required unless 'types' is supplied."
+        },
+        {
+          "name": "types",
+          "in": "query",
+          "type": "string",
+          "description": "POI type codes. Required unless 'keywords' is supplied."
+        },
+        {
+          "name": "city",
+          "in": "query",
+          "type": "string",
+          "description": "City name or adcode to scope the search."
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "description": "Results per page (max 25).",
+          "default": 20
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "amap_driving_route",
+      "description": "Driving route planning between two points (驾车路径规划, v5).",
+      "method": "GET",
+      "path": "/v5/direction/driving",
+      "params": [
+        {
+          "name": "origin",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Start coordinates as 'lng,lat'."
+        },
+        {
+          "name": "destination",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "End coordinates as 'lng,lat'."
+        },
+        {
+          "name": "show_fields",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated extra result fields, e.g. cost,navi,polyline."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "amap_weather",
+      "description": "Weather query by city adcode (天气查询).",
+      "method": "GET",
+      "path": "/v3/weather/weatherInfo",
+      "params": [
+        {
+          "name": "city",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "City adcode, e.g. 110101 (use amap_geocode to resolve an adcode)."
+        },
+        {
+          "name": "extensions",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "base",
+            "all"
+          ],
+          "description": "base = current weather; all = forecast.",
+          "default": "base"
+        }
+      ],
+      "responseType": "json"
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

@@ -1,0 +1,214 @@
+{
+  "id": "slack-manifest",
+  "version": "1.0.0",
+  "displayName": "Slack",
+  "description": "Slack Web API via a bot token (xoxb) — list channels, read history, look up users, search messages, and post messages. Sent as 'Authorization: Bearer <token>'.",
+  "iconColor": "bg-purple-100 text-purple-700",
+  "category": "comms",
+  "hosts": [
+    "https://slack.com/*"
+  ],
+  "baseUrl": "https://slack.com/api",
+  "auth": {
+    "type": "bearer",
+    "tokenField": "botToken",
+    "scheme": "Bearer"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "botToken",
+      "label": "Bot Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "xoxb-...",
+      "description": "Create a Slack app at https://api.slack.com/apps, add OAuth scopes (channels:read, channels:history, users:read, chat:write), and install it to get a Bot User OAuth Token. Sent as 'Authorization: Bearer <token>'. Note: search.messages requires a USER token (xoxp) with search:read — bot tokens do not work for search."
+    }
+  ],
+  "tools": [
+    {
+      "name": "slack_auth_test",
+      "description": "Validate the token and return the authenticated user, team, and URL.",
+      "method": "POST",
+      "path": "/auth.test",
+      "params": [],
+      "responseType": "json"
+    },
+    {
+      "name": "slack_list_conversations",
+      "description": "List channels/conversations in the workspace.",
+      "method": "POST",
+      "path": "/conversations.list",
+      "params": [
+        {
+          "name": "types",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated: public_channel, private_channel, mpim, im.",
+          "default": "public_channel"
+        },
+        {
+          "name": "exclude_archived",
+          "in": "query",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 100
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "type": "string",
+          "description": "Pagination cursor from a previous response's response_metadata.next_cursor."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "slack_conversation_history",
+      "description": "Read the message history of a channel/conversation.",
+      "method": "POST",
+      "path": "/conversations.history",
+      "params": [
+        {
+          "name": "channel",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Channel id, e.g. C0123456789."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 100
+        },
+        {
+          "name": "oldest",
+          "in": "query",
+          "type": "string",
+          "description": "Only messages after this Unix timestamp (inclusive)."
+        },
+        {
+          "name": "latest",
+          "in": "query",
+          "type": "string",
+          "description": "Only messages before this Unix timestamp."
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "type": "string",
+          "description": "Pagination cursor from a previous response."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "slack_list_users",
+      "description": "List members of the workspace.",
+      "method": "POST",
+      "path": "/users.list",
+      "params": [
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 200
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "type": "string",
+          "description": "Pagination cursor from a previous response."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "slack_get_user",
+      "description": "Get information about a single user by id.",
+      "method": "POST",
+      "path": "/users.info",
+      "params": [
+        {
+          "name": "user",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "User id, e.g. U0123456789."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "slack_search_messages",
+      "description": "Search messages across the workspace. REQUIRES a user token (xoxp) with search:read — bot tokens (xoxb) are rejected.",
+      "method": "POST",
+      "path": "/search.messages",
+      "params": [
+        {
+          "name": "query",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Search text; supports Slack search operators like in:#channel from:@user."
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "score",
+            "timestamp"
+          ],
+          "default": "score"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "slack_post_message",
+      "description": "Post a message to a channel.",
+      "method": "POST",
+      "path": "/chat.postMessage",
+      "params": [
+        {
+          "name": "channel",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Channel id or name, e.g. C0123456789 or #general."
+        },
+        {
+          "name": "text",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Message text (Markdown / mrkdwn supported)."
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

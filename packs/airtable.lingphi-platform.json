@@ -1,0 +1,193 @@
+{
+  "id": "airtable-manifest",
+  "version": "1.0.0",
+  "displayName": "Airtable",
+  "description": "Airtable Web API via a Personal Access Token — list bases, read table schemas, query and create records. Sent as 'Authorization: Bearer <token>'.",
+  "iconColor": "bg-yellow-100 text-yellow-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://api.airtable.com/*"
+  ],
+  "baseUrl": "https://api.airtable.com/v0",
+  "auth": {
+    "type": "bearer",
+    "tokenField": "personalAccessToken",
+    "scheme": "Bearer"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "personalAccessToken",
+      "label": "Personal Access Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "pat...",
+      "description": "Create at https://airtable.com/create/tokens. Scopes: data.records:read, schema.bases:read, user.email:read (and data.records:write for creating records). Sent as 'Authorization: Bearer <token>'."
+    }
+  ],
+  "tools": [
+    {
+      "name": "airtable_whoami",
+      "description": "Get the authenticated user's id and granted scopes.",
+      "method": "GET",
+      "path": "/meta/whoami",
+      "params": [],
+      "responseType": "json"
+    },
+    {
+      "name": "airtable_list_bases",
+      "description": "List the bases the token can access (id, name, permissionLevel). Returns up to 1000; paginate with offset.",
+      "method": "GET",
+      "path": "/meta/bases",
+      "params": [
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "string",
+          "description": "Pagination cursor returned in a previous response."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "airtable_get_base_schema",
+      "description": "Get the schema (tables, fields, views) of a base.",
+      "method": "GET",
+      "path": "/meta/bases/{baseId}/tables",
+      "params": [
+        {
+          "name": "baseId",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Base id, starts with 'app...' (from airtable_list_bases)."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "airtable_list_records",
+      "description": "List records from a table. Returns records[] and an offset cursor for the next page.",
+      "method": "GET",
+      "path": "/{baseId}/{tableIdOrName}",
+      "params": [
+        {
+          "name": "baseId",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Base id, starts with 'app...'."
+        },
+        {
+          "name": "tableIdOrName",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Table id ('tbl...') or table name."
+        },
+        {
+          "name": "maxRecords",
+          "in": "query",
+          "type": "number",
+          "description": "Maximum total records to return across pages."
+        },
+        {
+          "name": "pageSize",
+          "in": "query",
+          "type": "number",
+          "description": "Records per page (max 100).",
+          "default": 100
+        },
+        {
+          "name": "view",
+          "in": "query",
+          "type": "string",
+          "description": "View id or name to apply its filters/sort/visible fields."
+        },
+        {
+          "name": "filterByFormula",
+          "in": "query",
+          "type": "string",
+          "description": "Airtable formula to filter records, e.g. {Status}='Done'."
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "string",
+          "description": "Pagination cursor returned in a previous response."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "airtable_get_record",
+      "description": "Get a single record by id.",
+      "method": "GET",
+      "path": "/{baseId}/{tableIdOrName}/{recordId}",
+      "params": [
+        {
+          "name": "baseId",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Base id, starts with 'app...'."
+        },
+        {
+          "name": "tableIdOrName",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Table id ('tbl...') or table name."
+        },
+        {
+          "name": "recordId",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Record id, starts with 'rec...'."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "airtable_create_record",
+      "description": "Create one or more records in a table.",
+      "method": "POST",
+      "path": "/{baseId}/{tableIdOrName}",
+      "params": [
+        {
+          "name": "baseId",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Base id, starts with 'app...'."
+        },
+        {
+          "name": "tableIdOrName",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Table id ('tbl...') or table name."
+        },
+        {
+          "name": "record",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "Single record { \"fields\": { ... } } or multiple { \"records\": [{ \"fields\": { ... } }], \"typecast\"?: boolean }."
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

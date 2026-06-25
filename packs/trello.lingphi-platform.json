@@ -1,0 +1,217 @@
+{
+  "id": "trello-manifest",
+  "version": "1.0.0",
+  "displayName": "Trello",
+  "description": "Trello REST API via an API key + token — read your boards, lists, and cards, search, and create cards. Trello requires BOTH credentials as query params on every request (?key=...&token=...); this manifest carries them in each tool's path and uses no header auth.",
+  "iconColor": "bg-sky-100 text-sky-700",
+  "category": "project-management",
+  "hosts": [
+    "https://api.trello.com/*"
+  ],
+  "baseUrl": "https://api.trello.com/1",
+  "auth": {
+    "type": "none"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "apiKey",
+      "label": "API Key",
+      "type": "secret",
+      "required": true,
+      "placeholder": "32-character API key",
+      "description": "Generate a Power-Up / API key at https://trello.com/power-ups/admin (or https://trello.com/app-key). Sent as the 'key' query param on every request."
+    },
+    {
+      "name": "token",
+      "label": "API Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "64-character token",
+      "description": "Authorize your API key to generate a user token (the 'Token' link next to your API key, or via the OAuth authorize flow). Sent as the 'token' query param on every request."
+    }
+  ],
+  "tools": [
+    {
+      "name": "trello_get_me",
+      "description": "Get the authenticated member (the token's owner).",
+      "method": "GET",
+      "path": "/members/me?key={apiKey}&token={token}",
+      "params": [],
+      "responseType": "json"
+    },
+    {
+      "name": "trello_list_boards",
+      "description": "List the boards the authenticated member can access. Pass filter and fields to control the result.",
+      "method": "GET",
+      "path": "/members/me/boards?key={apiKey}&token={token}&filter={filter}&fields={fields}",
+      "params": [
+        {
+          "name": "filter",
+          "in": "path",
+          "type": "string",
+          "enum": [
+            "all",
+            "open",
+            "closed",
+            "members",
+            "organization",
+            "public",
+            "starred"
+          ],
+          "default": "open"
+        },
+        {
+          "name": "fields",
+          "in": "path",
+          "type": "string",
+          "description": "Comma-separated board fields, e.g. name,url,closed.",
+          "default": "name,url,closed,idOrganization"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "trello_list_board_lists",
+      "description": "List the lists on a board.",
+      "method": "GET",
+      "path": "/boards/{id}/lists?key={apiKey}&token={token}&cards={cards}&fields={fields}",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Board id."
+        },
+        {
+          "name": "cards",
+          "in": "path",
+          "type": "string",
+          "enum": [
+            "none",
+            "open",
+            "closed",
+            "all"
+          ],
+          "description": "Include cards on each list.",
+          "default": "none"
+        },
+        {
+          "name": "fields",
+          "in": "path",
+          "type": "string",
+          "description": "Comma-separated list fields, e.g. name,pos,closed.",
+          "default": "name,pos,closed"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "trello_list_cards",
+      "description": "List the cards in a list.",
+      "method": "GET",
+      "path": "/lists/{id}/cards?key={apiKey}&token={token}&fields={fields}",
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "List id."
+        },
+        {
+          "name": "fields",
+          "in": "path",
+          "type": "string",
+          "description": "Comma-separated card fields, e.g. name,desc,due,labels,url.",
+          "default": "name,desc,due,labels,url,closed"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "trello_search",
+      "description": "Global search across boards, cards, and members.",
+      "method": "GET",
+      "path": "/search?key={apiKey}&token={token}&query={query}&modelTypes={modelTypes}&board_fields={board_fields}&cards_limit={cards_limit}",
+      "params": [
+        {
+          "name": "query",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Search text (supports Trello search operators)."
+        },
+        {
+          "name": "modelTypes",
+          "in": "path",
+          "type": "string",
+          "description": "Comma-separated: actions, boards, cards, members, organizations.",
+          "default": "cards"
+        },
+        {
+          "name": "board_fields",
+          "in": "path",
+          "type": "string",
+          "default": "name,url"
+        },
+        {
+          "name": "cards_limit",
+          "in": "path",
+          "type": "string",
+          "description": "Max cards to return (max 1000).",
+          "default": "20"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "trello_create_card",
+      "description": "Create a card in a list. idList, name, desc, and pos travel as query params; key and token are appended automatically.",
+      "method": "POST",
+      "path": "/cards?key={apiKey}&token={token}&idList={idList}&name={name}&desc={desc}&pos={pos}",
+      "params": [
+        {
+          "name": "idList",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Id of the list to create the card in."
+        },
+        {
+          "name": "name",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Card title."
+        },
+        {
+          "name": "desc",
+          "in": "path",
+          "type": "string",
+          "description": "Card description.",
+          "default": ""
+        },
+        {
+          "name": "pos",
+          "in": "path",
+          "type": "string",
+          "description": "Position: 'top', 'bottom', or a positive number.",
+          "default": "bottom"
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

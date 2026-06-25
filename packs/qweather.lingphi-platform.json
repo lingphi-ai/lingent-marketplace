@@ -1,0 +1,105 @@
+{
+  "id": "qweather-manifest",
+  "version": "1.0.0",
+  "displayName": "和风天气 QWeather",
+  "description": "和风天气 (QWeather) API — city lookup, real-time weather, and 7-day forecast. As of 2024+ QWeather issues a per-account API Host; set yours below. The API key is sent as the 'key' query param.",
+  "iconColor": "bg-cyan-100 text-cyan-700",
+  "category": "tools",
+  "hosts": [
+    "https://*.qweatherapi.com/*",
+    "https://devapi.qweather.com/*",
+    "https://geoapi.qweather.com/*"
+  ],
+  "baseUrl": "https://{apiHost}",
+  "auth": {
+    "type": "apiKey",
+    "in": "query",
+    "name": "key",
+    "tokenField": "apiKey"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "apiHost",
+      "label": "API Host",
+      "type": "string",
+      "required": true,
+      "placeholder": "abc123def.qweatherapi.com",
+      "description": "Your account-specific API Host, found in the QWeather Console under Settings (Project / API Host). Enter the host only, without https:// or a trailing slash. The legacy shared hosts (devapi.qweather.com / geoapi.qweather.com) are deprecated and being retired from 2026."
+    },
+    {
+      "name": "apiKey",
+      "label": "API Key",
+      "type": "secret",
+      "required": true,
+      "placeholder": "32-character key",
+      "description": "Create a project + key in the QWeather Console (https://console.qweather.com). Sent as the 'key' query param. (QWeather plans to rate-limit API-KEY auth from 2027 in favor of JWT.)"
+    }
+  ],
+  "tools": [
+    {
+      "name": "qweather_city_lookup",
+      "description": "Look up a city / location to get its LocationID, name, and coordinates (城市搜索).",
+      "method": "GET",
+      "path": "/geo/v2/city/lookup",
+      "params": [
+        {
+          "name": "location",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "City name (e.g. 北京 or beijing), a LocationID, or coordinates 'lng,lat'."
+        },
+        {
+          "name": "number",
+          "in": "query",
+          "type": "number",
+          "description": "Number of results to return (1-20).",
+          "default": 10
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "qweather_now",
+      "description": "Get real-time weather for a location (实时天气).",
+      "method": "GET",
+      "path": "/v7/weather/now",
+      "params": [
+        {
+          "name": "location",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "LocationID (from qweather_city_lookup) or coordinates 'lng,lat'."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "qweather_forecast_7d",
+      "description": "Get the 7-day weather forecast for a location (7天预报).",
+      "method": "GET",
+      "path": "/v7/weather/7d",
+      "params": [
+        {
+          "name": "location",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "LocationID (from qweather_city_lookup) or coordinates 'lng,lat'."
+        }
+      ],
+      "responseType": "json"
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

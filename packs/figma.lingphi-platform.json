@@ -1,0 +1,159 @@
+{
+  "id": "figma-manifest",
+  "version": "1.0.0",
+  "displayName": "Figma",
+  "description": "Figma REST API via a personal access token — read your profile, files, nodes, comments, projects, and teams. Sent in the 'X-Figma-Token' header.",
+  "iconColor": "bg-neutral-900 text-white",
+  "category": "design",
+  "hosts": [
+    "https://api.figma.com/*"
+  ],
+  "baseUrl": "https://api.figma.com/v1",
+  "auth": {
+    "type": "apiKey",
+    "in": "header",
+    "name": "X-Figma-Token",
+    "tokenField": "accessToken"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "accessToken",
+      "label": "Personal Access Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "figd_...",
+      "description": "Create at https://www.figma.com/settings (Account → Personal access tokens). Sent in the 'X-Figma-Token' header."
+    }
+  ],
+  "tools": [
+    {
+      "name": "figma_get_me",
+      "description": "Get the authenticated user (id, handle, email, img_url).",
+      "method": "GET",
+      "path": "/me",
+      "params": [],
+      "responseType": "json"
+    },
+    {
+      "name": "figma_get_file",
+      "description": "Get a file's document tree and metadata by its file key (the key in figma.com/file/<file_key>/...).",
+      "method": "GET",
+      "path": "/files/{file_key}",
+      "params": [
+        {
+          "name": "file_key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "File key from the file URL."
+        },
+        {
+          "name": "version",
+          "in": "query",
+          "type": "string",
+          "description": "Specific version id to fetch (defaults to current)."
+        },
+        {
+          "name": "depth",
+          "in": "query",
+          "type": "number",
+          "description": "How many levels of the node tree to return (e.g. 1 for pages only)."
+        },
+        {
+          "name": "geometry",
+          "in": "query",
+          "type": "string",
+          "description": "Set to 'paths' to include vector geometry."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "figma_get_file_nodes",
+      "description": "Get specific nodes from a file by their ids.",
+      "method": "GET",
+      "path": "/files/{file_key}/nodes",
+      "params": [
+        {
+          "name": "file_key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "File key from the file URL."
+        },
+        {
+          "name": "ids",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Comma-separated node ids, e.g. 1:2,3:4."
+        },
+        {
+          "name": "depth",
+          "in": "query",
+          "type": "number",
+          "description": "How many levels below each requested node to return."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "figma_get_file_comments",
+      "description": "List the comments on a file.",
+      "method": "GET",
+      "path": "/files/{file_key}/comments",
+      "params": [
+        {
+          "name": "file_key",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "File key from the file URL."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "figma_list_project_files",
+      "description": "List the files in a project.",
+      "method": "GET",
+      "path": "/projects/{project_id}/files",
+      "params": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Project id (from figma_list_team_projects)."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "figma_list_team_projects",
+      "description": "List the projects belonging to a team.",
+      "method": "GET",
+      "path": "/teams/{team_id}/projects",
+      "params": [
+        {
+          "name": "team_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Team id (the number in the figma.com/files/team/<team_id>/... URL)."
+        }
+      ],
+      "responseType": "json"
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

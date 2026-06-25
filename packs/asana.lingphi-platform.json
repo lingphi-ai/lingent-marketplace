@@ -1,0 +1,220 @@
+{
+  "id": "asana-manifest",
+  "version": "1.0.0",
+  "displayName": "Asana",
+  "description": "Asana API via a Personal Access Token — read your profile, workspaces, projects, and tasks, search tasks, and create tasks. Sent as 'Authorization: Bearer <token>'.",
+  "iconColor": "bg-rose-100 text-rose-700",
+  "category": "project-management",
+  "hosts": [
+    "https://app.asana.com/*"
+  ],
+  "baseUrl": "https://app.asana.com/api/1.0",
+  "auth": {
+    "type": "bearer",
+    "tokenField": "personalAccessToken",
+    "scheme": "Bearer"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "personalAccessToken",
+      "label": "Personal Access Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "1/1234567890:abcdef...",
+      "description": "Create at https://app.asana.com/0/my-apps (Personal access tokens). Sent as 'Authorization: Bearer <token>'."
+    }
+  ],
+  "tools": [
+    {
+      "name": "asana_get_me",
+      "description": "Get the authenticated user's profile (the special user gid 'me').",
+      "method": "GET",
+      "path": "/users/me",
+      "params": [
+        {
+          "name": "opt_fields",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated extra fields, e.g. name,email,workspaces."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "asana_list_workspaces",
+      "description": "List the workspaces and organizations you belong to.",
+      "method": "GET",
+      "path": "/workspaces",
+      "params": [
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        },
+        {
+          "name": "opt_fields",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated extra fields, e.g. name,is_organization."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "asana_list_projects",
+      "description": "List projects, optionally scoped to a workspace.",
+      "method": "GET",
+      "path": "/projects",
+      "params": [
+        {
+          "name": "workspace",
+          "in": "query",
+          "type": "string",
+          "description": "Workspace gid to scope the list to."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        },
+        {
+          "name": "opt_fields",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated extra fields, e.g. name,owner,current_status."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "asana_list_tasks",
+      "description": "List tasks. You must supply either 'project', or both 'workspace' and 'assignee'.",
+      "method": "GET",
+      "path": "/tasks",
+      "params": [
+        {
+          "name": "project",
+          "in": "query",
+          "type": "string",
+          "description": "Project gid to list tasks from (alternative to workspace+assignee)."
+        },
+        {
+          "name": "workspace",
+          "in": "query",
+          "type": "string",
+          "description": "Workspace gid (required together with assignee)."
+        },
+        {
+          "name": "assignee",
+          "in": "query",
+          "type": "string",
+          "description": "Assignee gid or 'me' (required together with workspace)."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        },
+        {
+          "name": "opt_fields",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated extra fields, e.g. name,completed,due_on,assignee.name."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "asana_get_task",
+      "description": "Get a single task by its gid.",
+      "method": "GET",
+      "path": "/tasks/{task_gid}",
+      "params": [
+        {
+          "name": "task_gid",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Task gid."
+        },
+        {
+          "name": "opt_fields",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated extra fields, e.g. name,notes,completed,due_on,assignee.name,projects.name."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "asana_search_tasks",
+      "description": "Search tasks within a workspace. Premium feature — free workspaces return 402 Payment Required.",
+      "method": "GET",
+      "path": "/workspaces/{workspace_gid}/tasks/search",
+      "params": [
+        {
+          "name": "workspace_gid",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Workspace gid to search within."
+        },
+        {
+          "name": "text",
+          "in": "query",
+          "type": "string",
+          "description": "Full-text search term matched against task name and notes."
+        },
+        {
+          "name": "completed",
+          "in": "query",
+          "type": "boolean",
+          "description": "Filter by completion state."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        },
+        {
+          "name": "opt_fields",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated extra fields, e.g. name,completed,assignee.name."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "asana_create_task",
+      "description": "Create a new task. The body must establish a workspace context via workspace, projects, or parent.",
+      "method": "POST",
+      "path": "/tasks",
+      "params": [
+        {
+          "name": "data",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"data\": { \"name\": string, \"workspace\"?: string, \"projects\"?: string[], \"parent\"?: string, \"notes\"?: string, \"assignee\"?: string, \"due_on\"?: \"YYYY-MM-DD\" } }"
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}
