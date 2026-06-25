@@ -687,6 +687,16 @@
           "allowMultiple": false,
           "defaultLabel": "Product Hunt",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/producthunt-dom.lingphi-platform.json"
+        },
+        {
+          "id": "x-dom-manifest",
+          "displayName": "X / Twitter (page reader)",
+          "description": "X (Twitter) timeline and search tweets via content-script DOM extraction — no API key (reads your logged-in rendered page). Requires being logged into X.",
+          "iconColor": "bg-neutral-200 text-neutral-900",
+          "integrationType": "x-dom",
+          "allowMultiple": false,
+          "defaultLabel": "X",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/x-dom.lingphi-platform.json"
         }
       ]
     }

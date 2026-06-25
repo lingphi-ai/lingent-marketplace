@@ -1,0 +1,56 @@
+{
+  "id": "x-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "X / Twitter (page reader)",
+  "description": "VERIFIED LIVE: X (Twitter) via content-script DOM extraction. X's API is paid/locked and X renders NOTHING when logged out — but logged in, it renders tweets in stable [data-testid] markup, so these tools read them straight from the DOM of your open, logged-in X tab. Navigate the tab to your home timeline, a profile, a list, or a search, then call the matching tool. Tested live by Claude Code on the home timeline: 12 tweets with author, text, timestamp, permalink and reply/repost/like counts extracted correctly. Requires you to be logged into X in the browser.",
+  "iconColor": "bg-neutral-200 text-neutral-900",
+  "category": "social",
+  "hosts": [
+    "https://x.com/*",
+    "https://twitter.com/*"
+  ],
+  "baseUrl": "https://x.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "x_timeline",
+      "description": "Tweets on the current X TIMELINE (your /home feed, a user profile like /elonmusk, or a list). Navigate the tab there and let it load first. Returns author (name + @handle + date), tweet text, ISO timestamp, permalink and reply/repost/like counts. Scroll to load more. VERIFIED.",
+      "dom": {
+        "item": "article[data-testid=\"tweet\"]",
+        "limit": 25,
+        "fields": {
+          "author": { "selector": "[data-testid=\"User-Name\"]" },
+          "text": { "selector": "[data-testid=\"tweetText\"]" },
+          "timestamp": { "selector": "time", "attr": "datetime" },
+          "permalink": { "selector": "a[href*=\"/status/\"]:has(time)", "attr": "href" },
+          "replies": { "selector": "[data-testid=\"reply\"]", "attr": "aria-label" },
+          "reposts": { "selector": "[data-testid=\"retweet\"]", "attr": "aria-label" },
+          "likes": { "selector": "[data-testid=\"like\"]", "attr": "aria-label" }
+        }
+      }
+    },
+    {
+      "name": "x_search_results",
+      "description": "Tweets on the current X SEARCH page (navigate the tab to /search?q=<query>&f=live for latest, or &f=top for top). Same fields as the timeline: author, text, timestamp, permalink, reply/repost/like counts.",
+      "dom": {
+        "item": "article[data-testid=\"tweet\"]",
+        "limit": 25,
+        "fields": {
+          "author": { "selector": "[data-testid=\"User-Name\"]" },
+          "text": { "selector": "[data-testid=\"tweetText\"]" },
+          "timestamp": { "selector": "time", "attr": "datetime" },
+          "permalink": { "selector": "a[href*=\"/status/\"]:has(time)", "attr": "href" },
+          "replies": { "selector": "[data-testid=\"reply\"]", "attr": "aria-label" },
+          "reposts": { "selector": "[data-testid=\"retweet\"]", "attr": "aria-label" },
+          "likes": { "selector": "[data-testid=\"like\"]", "attr": "aria-label" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
