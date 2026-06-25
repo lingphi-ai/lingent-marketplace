@@ -327,6 +327,16 @@
           "allowMultiple": false,
           "defaultLabel": "知乎",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/zhihu.lingphi-platform.json"
+        },
+        {
+          "id": "netease-music-manifest",
+          "displayName": "网易云音乐 NetEase Music",
+          "description": "NetEase Cloud Music account, user detail, playlists and listen records via your logged-in session (session bridge).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "netease-music",
+          "allowMultiple": false,
+          "defaultLabel": "网易云音乐",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/netease-music.lingphi-platform.json"
         }
       ]
     }
