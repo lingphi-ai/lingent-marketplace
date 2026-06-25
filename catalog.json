@@ -171,6 +171,16 @@
           "allowMultiple": false,
           "defaultLabel": "Hugging Face",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/huggingface.lingphi-platform.json"
+        },
+        {
+          "id": "dockerhub-manifest",
+          "displayName": "Docker Hub",
+          "description": "Search Docker images, read repository details and list tags via the public Docker Hub API — no token.",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "dockerhub",
+          "allowMultiple": false,
+          "defaultLabel": "Docker Hub",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/dockerhub.lingphi-platform.json"
         }
       ]
     },

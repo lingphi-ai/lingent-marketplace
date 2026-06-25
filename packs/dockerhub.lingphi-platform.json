@@ -1,0 +1,60 @@
+{
+  "id": "dockerhub-manifest",
+  "version": "0.1.0",
+  "displayName": "Docker Hub",
+  "description": "VERIFIED LIVE: Docker Hub via its public v2 API — search images, read repository details, and list tags. No token needed for public repos. Tested live by Claude Code: search, repository and tags all returned 200 with real data.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "development",
+  "hosts": [
+    "https://hub.docker.com/*"
+  ],
+  "baseUrl": "https://hub.docker.com",
+  "auth": {
+    "type": "none"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "docker_search",
+      "description": "Search Docker Hub for images. VERIFIED.",
+      "method": "GET",
+      "path": "/v2/search/repositories/",
+      "responseType": "json",
+      "params": [
+        { "name": "query", "in": "query", "type": "string", "required": true },
+        { "name": "page_size", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "docker_repo",
+      "description": "Details of a repository. For official images use namespace 'library' (e.g. library/nginx). VERIFIED.",
+      "method": "GET",
+      "path": "/v2/repositories/{namespace}/{name}/",
+      "responseType": "json",
+      "params": [
+        { "name": "namespace", "in": "path", "type": "string", "required": true, "default": "library" },
+        { "name": "name", "in": "path", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "docker_tags",
+      "description": "List tags for a repository. VERIFIED.",
+      "method": "GET",
+      "path": "/v2/repositories/{namespace}/{name}/tags/",
+      "responseType": "json",
+      "params": [
+        { "name": "namespace", "in": "path", "type": "string", "required": true, "default": "library" },
+        { "name": "name", "in": "path", "type": "string", "required": true },
+        { "name": "page_size", "in": "query", "type": "number", "default": 10 }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
