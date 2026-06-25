@@ -1005,14 +1005,14 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/cctv-dom.lingphi-platform.json"
         },
         {
-          "id": "netease-news-dom-manifest",
-          "displayName": "网易新闻 (page reader)",
-          "description": "网易新闻 headlines via content-script DOM extraction — no login (reads the rendered page).",
+          "id": "netease-news-manifest",
+          "displayName": "网易新闻",
+          "description": "网易新闻 articles via its public JSONP article-list API (no login, no key) — structured + paginated, preferred over DOM.",
           "iconColor": "bg-red-100 text-red-700",
-          "integrationType": "netease-news-dom",
+          "integrationType": "netease-news",
           "allowMultiple": false,
           "defaultLabel": "网易新闻",
-          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/netease-news-dom.lingphi-platform.json"
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/netease-news.lingphi-platform.json"
         },
         {
           "id": "sina-news-dom-manifest",

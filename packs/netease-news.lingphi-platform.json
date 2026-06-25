@@ -1,0 +1,30 @@
+{
+  "id": "netease-news-manifest",
+  "version": "0.2.0",
+  "displayName": "网易新闻",
+  "description": "VERIFIED LIVE: 网易新闻 (NetEase News) via its public JSONP article-list API (no login, no key) — structured + paginated, preferred over DOM. 3g.163.com returns a JSONP-wrapped { <section>: [articles] } (the extension auto-unwraps the artiList(...) wrapper). Each article has docid, title, source, ptime, digest. Open an article at https://www.163.com/news/article/<docid>.html. Tested live by Claude Code: 20 articles for the 头条 section.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "news",
+  "hosts": [
+    "https://3g.163.com/*"
+  ],
+  "baseUrl": "https://3g.163.com",
+  "auth": { "type": "none" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "netease_news_list",
+      "description": "Articles in a 网易 section. Returns a JSONP-wrapped object keyed by the section id, whose value is an array of articles (docid, title, source, ptime, digest). Open an article at https://www.163.com/news/article/<docid>.html. Common section: BBM54PGAwangning (头条/推荐). VERIFIED (20 articles).",
+      "method": "GET",
+      "path": "/touch/reconstruct/article/list/{section}/{range}.html",
+      "responseType": "json",
+      "params": [
+        { "name": "section", "in": "path", "type": "string", "required": true, "default": "BBM54PGAwangning", "description": "Section id; BBM54PGAwangning = 头条/推荐." },
+        { "name": "range", "in": "path", "type": "string", "required": true, "default": "0-20", "description": "Offset-count window, e.g. 0-20 (first 20), 20-20 (next 20)." }
+      ]
+    }
+  ],
+  "transport": { "preferred": "sw" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
