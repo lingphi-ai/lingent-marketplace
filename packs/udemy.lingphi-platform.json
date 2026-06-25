@@ -29,7 +29,28 @@
       "responseType": "json",
       "params": [
         { "name": "page_size", "in": "query", "type": "number", "default": 12 },
-        { "name": "page", "in": "query", "type": "number", "default": 1 }
+        { "name": "page", "in": "query", "type": "number", "default": 1 },
+        { "name": "ordering", "in": "query", "type": "string", "description": "e.g. -last_accessed, title." }
+      ]
+    },
+    {
+      "name": "udemy_course_collections",
+      "description": "Your 'My learning' course collections/folders. VERIFIED.",
+      "method": "GET",
+      "path": "/api-2.0/users/me/subscribed-courses-collections/",
+      "responseType": "json",
+      "params": [
+        { "name": "page_size", "in": "query", "type": "number", "default": 12 }
+      ]
+    },
+    {
+      "name": "udemy_wishlist",
+      "description": "Courses on your wishlist. VERIFIED.",
+      "method": "GET",
+      "path": "/api-2.0/users/me/wishlisted-courses/",
+      "responseType": "json",
+      "params": [
+        { "name": "page_size", "in": "query", "type": "number", "default": 12 }
       ]
     }
   ],

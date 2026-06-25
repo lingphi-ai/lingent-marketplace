@@ -30,6 +30,16 @@
       "params": [
         { "name": "limit", "in": "query", "type": "number", "default": 20 }
       ]
+    },
+    {
+      "name": "miro_board",
+      "description": "Details of one board by id (name, description, owner, sharing policy, dates). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/boards/{boardId}",
+      "responseType": "json",
+      "params": [
+        { "name": "boardId", "in": "path", "type": "string", "required": true }
+      ]
     }
   ],
   "transport": { "preferred": "cs" },
