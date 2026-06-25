@@ -1,0 +1,35 @@
+{
+  "id": "twitch-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Twitch (page reader)",
+  "description": "VERIFIED LIVE: Twitch via content-script DOM extraction (Twitch's GraphQL API is integrity-signed). Twitch renders live-channel cards in stable [data-a-target] markup — no login needed for the public directory — so these tools read them straight from the DOM of your open Twitch tab. Navigate the tab to a directory (/directory/all, /directory/category/<game>, or your /directory/following) and let it load, then call the tool. Tested live by Claude Code on /directory/all: 30 live channels with stream title, channel url, category and viewer count extracted correctly.",
+  "iconColor": "bg-purple-100 text-purple-700",
+  "category": "social",
+  "hosts": [
+    "https://www.twitch.tv/*"
+  ],
+  "baseUrl": "https://www.twitch.tv",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "twitch_directory",
+      "description": "Live channels on the current Twitch DIRECTORY page (/directory/all, a category /directory/category/<game>, or your logged-in /directory/following). Navigate the tab there and let it load first. Returns each live channel's stream title, channel url, category and viewer count. VERIFIED (30 channels).",
+      "dom": {
+        "item": "article",
+        "limit": 30,
+        "fields": {
+          "title": { "selector": "a[data-a-target=\"preview-card-channel-link\"]" },
+          "channelUrl": { "selector": "a[data-a-target=\"preview-card-image-link\"]", "attr": "href" },
+          "category": { "selector": "a[data-a-target=\"preview-card-game-link\"]" },
+          "viewers": { "selector": ".tw-media-card-stat" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

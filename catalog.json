@@ -717,6 +717,16 @@
           "allowMultiple": false,
           "defaultLabel": "Instagram",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/instagram-dom.lingphi-platform.json"
+        },
+        {
+          "id": "twitch-dom-manifest",
+          "displayName": "Twitch (page reader)",
+          "description": "Twitch live-channel directory (all / category / following) via content-script DOM extraction — no API key (reads the rendered page; no login needed for public directory).",
+          "iconColor": "bg-purple-100 text-purple-700",
+          "integrationType": "twitch-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Twitch",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/twitch-dom.lingphi-platform.json"
         }
       ]
     }
