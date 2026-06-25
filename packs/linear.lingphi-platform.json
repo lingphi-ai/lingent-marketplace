@@ -1,0 +1,260 @@
+{
+  "id": "linear-manifest",
+  "version": "1.0.0",
+  "displayName": "Linear",
+  "description": "Linear GraphQL API via a personal API key — read your assigned issues, search issues, browse teams and projects, and add comments. All tools POST a fixed GraphQL operation to /graphql; pass variables to parameterize.",
+  "iconColor": "bg-indigo-100 text-indigo-700",
+  "category": "project-management",
+  "hosts": [
+    "https://api.linear.app/*"
+  ],
+  "baseUrl": "https://api.linear.app",
+  "auth": {
+    "type": "apiKey",
+    "in": "header",
+    "name": "Authorization",
+    "tokenField": "apiKey"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "apiKey",
+      "label": "Personal API Key",
+      "type": "secret",
+      "required": true,
+      "placeholder": "lin_api_...",
+      "description": "Create at https://linear.app/settings/account/security (Personal API keys). Linear expects the raw key in the Authorization header WITHOUT a 'Bearer ' prefix — this manifest sends it as 'Authorization: <key>'."
+    }
+  ],
+  "tools": [
+    {
+      "name": "linear_viewer",
+      "description": "Get the authenticated user (viewer): id, name, email, active teams. GraphQL 'viewer' query.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "query Viewer { viewer { id name email displayName teams(first: 50) { nodes { id key name } } } }",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "default": {},
+          "description": "No variables required."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "linear_my_issues",
+      "description": "List issues assigned to you (the viewer), most recently updated first. GraphQL 'viewer.assignedIssues' query.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "query MyIssues($first: Int = 25, $filter: IssueFilter) { viewer { assignedIssues(first: $first, filter: $filter, orderBy: updatedAt) { nodes { id identifier title priority url updatedAt state { name type } team { key name } } } } }",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "default": {
+            "first": 25
+          },
+          "description": "Optional: { first: number, filter: IssueFilter } e.g. { \"filter\": { \"state\": { \"type\": { \"eq\": \"started\" } } } }."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "linear_search_issues",
+      "description": "Full-text search issues by a query string. GraphQL 'searchIssues' connection.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "query SearchIssues($term: String!, $first: Int = 25) { searchIssues(term: $term, first: $first) { nodes { id identifier title url priority updatedAt state { name type } assignee { name } team { key name } } } }",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "default": {
+            "term": "",
+            "first": 25
+          },
+          "description": "{ term: string (required search text), first?: number }."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "linear_get_issue",
+      "description": "Get a single issue by its id or identifier (e.g. ENG-123). GraphQL 'issue' query.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "query GetIssue($id: String!) { issue(id: $id) { id identifier title description priority url createdAt updatedAt state { name type } assignee { name email } team { key name } labels { nodes { name } } comments { nodes { body user { name } createdAt } } } }",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "default": {
+            "id": ""
+          },
+          "description": "{ id: string } — issue UUID or identifier like 'ENG-123'."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "linear_list_teams",
+      "description": "List teams in the workspace. GraphQL 'teams' query.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "query Teams($first: Int = 50) { teams(first: $first) { nodes { id key name description issueCount } } }",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "default": {
+            "first": 50
+          },
+          "description": "Optional: { first: number }."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "linear_list_projects",
+      "description": "List projects in the workspace. GraphQL 'projects' query.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "query Projects($first: Int = 50) { projects(first: $first) { nodes { id name description state progress url startDate targetDate lead { name } } } }",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "default": {
+            "first": 50
+          },
+          "description": "Optional: { first: number }."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "linear_list_team_issues",
+      "description": "List issues for a specific team by team id. GraphQL 'team.issues' query.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "query TeamIssues($teamId: String!, $first: Int = 25) { team(id: $teamId) { id key name issues(first: $first, orderBy: updatedAt) { nodes { id identifier title priority url updatedAt state { name type } assignee { name } } } } }",
+          "description": "Fixed GraphQL query — do not change."
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "default": {
+            "teamId": "",
+            "first": 25
+          },
+          "description": "{ teamId: string (team UUID from linear_list_teams), first?: number }."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "linear_create_comment",
+      "description": "Add a comment to an issue. GraphQL 'commentCreate' mutation.",
+      "method": "POST",
+      "path": "/graphql",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "mutation CreateComment($input: CommentCreateInput!) { commentCreate(input: $input) { success comment { id body url createdAt } } }",
+          "description": "Fixed GraphQL mutation — do not change."
+        },
+        {
+          "name": "variables",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "default": {
+            "input": {
+              "issueId": "",
+              "body": ""
+            }
+          },
+          "description": "{ input: { issueId: string, body: string (markdown) } }."
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

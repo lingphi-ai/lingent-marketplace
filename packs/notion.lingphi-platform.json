@@ -1,0 +1,270 @@
+{
+  "id": "notion-manifest",
+  "version": "1.0.0",
+  "displayName": "Notion",
+  "description": "Notion API via an internal integration token — search, read pages and databases, query databases, and create content. Every request also sends the required 'Notion-Version' header. Share the pages/databases you want to access with your integration first.",
+  "iconColor": "bg-gray-100 text-gray-800",
+  "category": "knowledge",
+  "hosts": [
+    "https://api.notion.com/*"
+  ],
+  "baseUrl": "https://api.notion.com/v1",
+  "auth": {
+    "type": "bearer",
+    "tokenField": "integrationToken",
+    "scheme": "Bearer"
+  },
+  "transport": {
+    "preferred": "sw"
+  },
+  "credentialFields": [
+    {
+      "name": "integrationToken",
+      "label": "Internal Integration Token",
+      "type": "secret",
+      "required": true,
+      "placeholder": "ntn_... or secret_...",
+      "description": "Create an internal integration at https://www.notion.com/my-integrations and copy its token. Then share each page/database with the integration (Share menu) so it can be accessed. Sent as 'Authorization: Bearer <token>'."
+    }
+  ],
+  "tools": [
+    {
+      "name": "notion_search",
+      "description": "Search pages and databases shared with the integration by title. Omit 'query' in the body to list everything the integration can access.",
+      "method": "POST",
+      "path": "/search",
+      "params": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "default": "2026-03-11",
+          "description": "Required Notion API version header. Sent on every request."
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "default": {
+            "page_size": 20
+          },
+          "description": "{ \"query\"?: string, \"filter\"?: { \"property\": \"object\", \"value\": \"page\" | \"database\" }, \"page_size\"?: number, \"start_cursor\"?: string }"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "notion_get_page",
+      "description": "Retrieve a page's properties by page id. Returns property values, not the page body — use notion_get_block_children for the content blocks.",
+      "method": "GET",
+      "path": "/pages/{page_id}",
+      "params": [
+        {
+          "name": "page_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Page id (the 32-char id from the page URL, with or without dashes)."
+        },
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "default": "2026-03-11",
+          "description": "Required Notion API version header. Sent on every request."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "notion_get_block_children",
+      "description": "Get the child blocks (the actual content) of a page or block. Pass a page id to read a page's body.",
+      "method": "GET",
+      "path": "/blocks/{block_id}/children",
+      "params": [
+        {
+          "name": "block_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Block or page id."
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        },
+        {
+          "name": "start_cursor",
+          "in": "query",
+          "type": "string",
+          "description": "Pagination cursor from a previous response's next_cursor."
+        },
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "default": "2026-03-11",
+          "description": "Required Notion API version header. Sent on every request."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "notion_get_database",
+      "description": "Retrieve a database's metadata and schema (its properties/columns) by database id.",
+      "method": "GET",
+      "path": "/databases/{database_id}",
+      "params": [
+        {
+          "name": "database_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Database id (the 32-char id from the database URL)."
+        },
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "default": "2026-03-11",
+          "description": "Required Notion API version header. Sent on every request."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "notion_query_database",
+      "description": "Query a database's rows (pages) with optional filter and sorts.",
+      "method": "POST",
+      "path": "/databases/{database_id}/query",
+      "params": [
+        {
+          "name": "database_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Database id to query."
+        },
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "default": "2026-03-11",
+          "description": "Required Notion API version header. Sent on every request."
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "default": {
+            "page_size": 20
+          },
+          "description": "{ \"filter\"?: object, \"sorts\"?: array, \"page_size\"?: number, \"start_cursor\"?: string } — see Notion 'Query a database' docs for filter syntax."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "notion_list_users",
+      "description": "List all users in the workspace (members and bots).",
+      "method": "GET",
+      "path": "/users",
+      "params": [
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        },
+        {
+          "name": "start_cursor",
+          "in": "query",
+          "type": "string",
+          "description": "Pagination cursor from a previous response's next_cursor."
+        },
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "default": "2026-03-11",
+          "description": "Required Notion API version header. Sent on every request."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "notion_create_page",
+      "description": "Create a new page, either as a child of a page (parent.page_id) or a row in a database (parent.database_id with matching properties).",
+      "method": "POST",
+      "path": "/pages",
+      "params": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "default": "2026-03-11",
+          "description": "Required Notion API version header. Sent on every request."
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"parent\": { \"page_id\": string } | { \"database_id\": string }, \"properties\": object, \"children\"?: array of block objects }"
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    },
+    {
+      "name": "notion_append_block_children",
+      "description": "Append content blocks to a page or block.",
+      "method": "PATCH",
+      "path": "/blocks/{block_id}/children",
+      "params": [
+        {
+          "name": "block_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "Block or page id to append children to."
+        },
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "default": "2026-03-11",
+          "description": "Required Notion API version header. Sent on every request."
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"children\": array of block objects } e.g. { \"children\": [ { \"object\": \"block\", \"type\": \"paragraph\", \"paragraph\": { \"rich_text\": [ { \"type\": \"text\", \"text\": { \"content\": \"Hello\" } } ] } } ] }"
+        }
+      ],
+      "responseType": "json",
+      "requiresApproval": true
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true,
+    "baseDelayMs": 1000,
+    "maxDelayMs": 10000
+  },
+  "timeoutMs": 30000
+}

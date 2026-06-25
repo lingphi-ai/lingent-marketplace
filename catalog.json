@@ -15,6 +15,16 @@
           "allowMultiple": false,
           "defaultLabel": "Jira",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jira-cloud.lingphi-platform.json"
+        },
+        {
+          "id": "linear-manifest",
+          "displayName": "Linear",
+          "description": "Read assigned issues, search issues, browse teams and projects, and add comments via the Linear GraphQL API with a personal API key.",
+          "iconColor": "bg-indigo-100 text-indigo-700",
+          "integrationType": "linear",
+          "allowMultiple": false,
+          "defaultLabel": "Linear",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/linear.lingphi-platform.json"
         }
       ]
     },
@@ -41,6 +51,16 @@
           "allowMultiple": false,
           "defaultLabel": "Gitee",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gitee.lingphi-platform.json"
+        },
+        {
+          "id": "gitlab-manifest",
+          "displayName": "GitLab",
+          "description": "Search projects, review merge requests, and track issues and pipelines via the GitLab REST API with a Personal Access Token.",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "gitlab",
+          "allowMultiple": false,
+          "defaultLabel": "GitLab",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gitlab.lingphi-platform.json"
         }
       ]
     },
@@ -67,6 +87,16 @@
           "allowMultiple": false,
           "defaultLabel": "语雀",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/yuque.lingphi-platform.json"
+        },
+        {
+          "id": "notion-manifest",
+          "displayName": "Notion",
+          "description": "Search, read pages and databases, query databases, and create content via the Notion API with an internal integration token.",
+          "iconColor": "bg-gray-100 text-gray-800",
+          "integrationType": "notion",
+          "allowMultiple": false,
+          "defaultLabel": "Notion",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/notion.lingphi-platform.json"
         }
       ]
     },
