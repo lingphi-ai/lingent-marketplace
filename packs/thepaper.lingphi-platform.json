@@ -1,0 +1,42 @@
+{
+  "id": "thepaper-manifest",
+  "version": "0.2.0",
+  "displayName": "澎湃新闻",
+  "description": "VERIFIED LIVE: 澎湃新闻 (ThePaper) via its public JSON API (no login, no key) — structured + paginated, preferred over DOM scraping. api.thepaper.cn returns article lists with contId/title/pubTime. Tested live by Claude Code: nodeCont/getByNodeId returned 10 articles (hasNext cursor) and the sidebar endpoint 200. Article page = https://www.thepaper.cn/newsDetail_forward_<contId>.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "news",
+  "hosts": [
+    "https://api.thepaper.cn/*"
+  ],
+  "baseUrl": "https://api.thepaper.cn",
+  "auth": { "type": "none" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "thepaper_channel",
+      "description": "Articles in a 澎湃 channel (node). POST body { nodeId: number, pageSize?: number (default 20), startTime?: number (0 for first page; pass the response's startTime to page further) }. Returns data.list[] with contId, name (title), pubTime, pic. Open an article at https://www.thepaper.cn/newsDetail_forward_<contId>. Common nodeId: 25462 (时事). VERIFIED.",
+      "method": "POST",
+      "path": "/contentapi/nodeCont/getByNodeId",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"nodeId\": number (required, e.g. 25462), \"pageSize\"?: number, \"startTime\"?: number }"
+        }
+      ]
+    },
+    {
+      "name": "thepaper_sidebar",
+      "description": "澎湃 homepage right-sidebar feed (hot/recommended). No body needed. Returns data with propaganda/recommended lists. VERIFIED.",
+      "method": "GET",
+      "path": "/contentapi/wwwIndex/rightSidebar",
+      "responseType": "json"
+    }
+  ],
+  "transport": { "preferred": "sw" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

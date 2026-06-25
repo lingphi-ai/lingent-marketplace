@@ -955,14 +955,14 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/google-news-dom.lingphi-platform.json"
         },
         {
-          "id": "thepaper-dom-manifest",
-          "displayName": "澎湃新闻 (page reader)",
-          "description": "澎湃新闻 headlines via content-script DOM extraction — no login (reads the rendered page).",
+          "id": "thepaper-manifest",
+          "displayName": "澎湃新闻",
+          "description": "澎湃新闻 articles via its public JSON API (no login, no key) — structured + paginated, preferred over DOM.",
           "iconColor": "bg-red-100 text-red-700",
-          "integrationType": "thepaper-dom",
+          "integrationType": "thepaper",
           "allowMultiple": false,
           "defaultLabel": "澎湃新闻",
-          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/thepaper-dom.lingphi-platform.json"
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/thepaper.lingphi-platform.json"
         },
         {
           "id": "36kr-dom-manifest",
