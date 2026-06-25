@@ -77,6 +77,17 @@
       ]
     },
     {
+      "name": "juejin_follow_feed",
+      "description": "The feed of posts from people you follow (关注). VERIFIED.",
+      "method": "POST",
+      "path": "/recommend_api/v1/article/recommend_follow_feed",
+      "responseType": "json",
+      "params": [
+        { "name": "cursor", "in": "body", "type": "string", "required": true, "default": "0" },
+        { "name": "limit", "in": "body", "type": "number", "required": true, "default": 10 }
+      ]
+    },
+    {
       "name": "juejin_search",
       "description": "Full-text search across articles, users and more. VERIFIED.",
       "method": "POST",
