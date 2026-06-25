@@ -367,6 +367,16 @@
           "allowMultiple": false,
           "defaultLabel": "网易云音乐",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/netease-music.lingphi-platform.json"
+        },
+        {
+          "id": "weibo-manifest",
+          "displayName": "微博 Weibo",
+          "description": "Weibo user profile, detail, posts and hot-search via your logged-in session (session bridge).",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "weibo",
+          "allowMultiple": false,
+          "defaultLabel": "微博",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/weibo.lingphi-platform.json"
         }
       ]
     }

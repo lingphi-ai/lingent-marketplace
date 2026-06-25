@@ -1,0 +1,95 @@
+{
+  "id": "weibo-manifest",
+  "version": "0.1.0",
+  "displayName": "微博 Weibo",
+  "description": "VERIFIED LIVE: Weibo via your logged-in session (session bridge — no token). A user's profile, profile detail, and posts work via the web ajax API; the XSRF-TOKEN cookie is forwarded as an x-xsrf-token header. Hot-search is public. Tested live by Claude Code against a logged-in session: profile/info, profile/detail and mymblog all returned ok:1 with real data.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "social",
+  "hosts": [
+    "https://weibo.com/*"
+  ],
+  "baseUrl": "https://weibo.com",
+  "auth": {
+    "type": "cookie",
+    "csrf": {
+      "source": "cookie",
+      "name": "XSRF-TOKEN",
+      "headerName": "x-xsrf-token"
+    }
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "weibo_user_info",
+      "description": "A user's profile by numeric uid (screen_name, counts, verified). Pass your own uid for yourself. VERIFIED.",
+      "method": "GET",
+      "path": "/ajax/profile/info",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "uid",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "weibo_user_detail",
+      "description": "A user's extended profile detail by uid (created_at, gender, description, location). VERIFIED.",
+      "method": "GET",
+      "path": "/ajax/profile/detail",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "uid",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "weibo_user_posts",
+      "description": "A user's posts (weibo) by uid, paged. VERIFIED.",
+      "method": "GET",
+      "path": "/ajax/statuses/mymblog",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "uid",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        },
+        {
+          "name": "feature",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "name": "weibo_hot_search",
+      "description": "The current Weibo hot-search board (trending topics). VERIFIED.",
+      "method": "GET",
+      "path": "/ajax/side/hotSearch",
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
