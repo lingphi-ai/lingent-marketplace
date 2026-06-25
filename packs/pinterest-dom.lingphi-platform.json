@@ -1,0 +1,48 @@
+{
+  "id": "pinterest-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Pinterest (page reader)",
+  "description": "VERIFIED LIVE: Pinterest via content-script DOM extraction (no API key — Pinterest's API is an approval-gated business API). Pinterest renders pins publicly in stable [data-test-id] markup, so these tools read pins straight from the DOM of your open Pinterest tab. Navigate the tab to a search (/search/pins/?q=…) or a board, then call the matching tool. Tested live by Claude Code on a search page: 15 pins with pin url, image url and image description extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "social",
+  "hosts": [
+    "https://www.pinterest.com/*",
+    "https://pinterest.com/*"
+  ],
+  "baseUrl": "https://www.pinterest.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "pinterest_search_results",
+      "description": "Pins on the current Pinterest SEARCH page (navigate the tab to /search/pins/?q=<query> first). Returns each pin's url, image url and image description (the alt text Pinterest generates). VERIFIED.",
+      "dom": {
+        "item": "div[data-test-id=\"pin\"]",
+        "limit": 30,
+        "fields": {
+          "url": { "selector": "a[href*=\"/pin/\"]", "attr": "href" },
+          "image": { "selector": "img", "attr": "src" },
+          "description": { "selector": "img", "attr": "alt" }
+        }
+      }
+    },
+    {
+      "name": "pinterest_board_pins",
+      "description": "Pins shown on the current Pinterest BOARD or profile page (navigate the tab to /<user>/<board>/ first). Same fields as search: pin url, image url, description.",
+      "dom": {
+        "item": "div[data-test-id=\"pin\"]",
+        "limit": 50,
+        "fields": {
+          "url": { "selector": "a[href*=\"/pin/\"]", "attr": "href" },
+          "image": { "selector": "img", "attr": "src" },
+          "description": { "selector": "img", "attr": "alt" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

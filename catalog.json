@@ -647,6 +647,36 @@
           "allowMultiple": false,
           "defaultLabel": "YouTube",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youtube.lingphi-platform.json"
+        },
+        {
+          "id": "reddit-dom-manifest",
+          "displayName": "Reddit (page reader)",
+          "description": "Reddit posts, comments and search results via content-script DOM extraction — no API key, no OAuth (reads old.reddit.com's rendered page).",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "reddit-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Reddit",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/reddit-dom.lingphi-platform.json"
+        },
+        {
+          "id": "pinterest-dom-manifest",
+          "displayName": "Pinterest (page reader)",
+          "description": "Pinterest search and board pins via content-script DOM extraction — no API key (reads the rendered page).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "pinterest-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Pinterest",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/pinterest-dom.lingphi-platform.json"
+        },
+        {
+          "id": "quora-dom-manifest",
+          "displayName": "Quora (page reader)",
+          "description": "Quora question title and answer texts via content-script DOM extraction — no API (reads the rendered page).",
+          "iconColor": "bg-red-100 text-red-800",
+          "integrationType": "quora-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Quora",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/quora-dom.lingphi-platform.json"
         }
       ]
     }

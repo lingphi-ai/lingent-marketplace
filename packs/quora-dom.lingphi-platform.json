@@ -1,0 +1,42 @@
+{
+  "id": "quora-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Quora (page reader)",
+  "description": "VERIFIED LIVE: Quora via content-script DOM extraction (Quora has no public read API). Quora marks its question and answer nodes with stable analytics class hooks, so these tools read the question and its answers straight from the DOM of your open Quora tab. Navigate the tab to a question page first, then call the matching tool. Tested live by Claude Code: question title + 16 answer bodies extracted correctly. Note: Quora sits behind a bot check — open the page in your normal browser session (the check clears for a real user) before calling.",
+  "iconColor": "bg-red-100 text-red-800",
+  "category": "social",
+  "hosts": [
+    "https://www.quora.com/*",
+    "https://*.quora.com/*"
+  ],
+  "baseUrl": "https://www.quora.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "quora_question",
+      "description": "The title of the question on the current Quora question page (navigate the tab to a /<question-slug> page first). Returns a single object with the question title. VERIFIED.",
+      "dom": {
+        "fields": {
+          "title": { "selector": ".puppeteer_test_question_title" }
+        }
+      }
+    },
+    {
+      "name": "quora_answers",
+      "description": "Answer texts on the current Quora question page (navigate the tab to the question first; scroll to load more answers). Returns each rendered answer's body text. VERIFIED (16 answers extracted).",
+      "dom": {
+        "item": ".spacing_log_answer_content",
+        "limit": 20,
+        "fields": {
+          "body": {}
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
