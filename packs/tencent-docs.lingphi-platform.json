@@ -1,0 +1,100 @@
+{
+  "id": "tencent-docs-manifest",
+  "version": "0.1.0",
+  "displayName": "腾讯文档 Tencent Docs",
+  "description": "Tencent Docs (腾讯文档) via your logged-in session (session bridge — no token). Auto-discovered + VERIFIED LIVE by Claude Code: REST /api/* with cookie auth + xsrf = the TOK cookie (raw). user_info and list/recent returned real data.",
+  "iconColor": "bg-sky-100 text-sky-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://docs.qq.com/*"
+  ],
+  "baseUrl": "https://docs.qq.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "tdocs_user_info",
+      "description": "Your Tencent Docs account (uid, login, vip info). VERIFIED.",
+      "method": "GET",
+      "path": "/cgi-bin/online_docs/user_info",
+      "params": [
+        {
+          "name": "get_vip_info",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        },
+        {
+          "name": "xsrf",
+          "in": "query",
+          "from": "cookie",
+          "cookieName": "TOK",
+          "required": true,
+          "description": "Auto: CSRF = TOK cookie (raw). Filled by the session bridge."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tdocs_recent_docs",
+      "description": "Your recently visited docs + folder space ids. VERIFIED.",
+      "method": "POST",
+      "path": "/api/list/recent",
+      "params": [
+        {
+          "name": "xsrf",
+          "in": "query",
+          "from": "cookie",
+          "cookieName": "TOK",
+          "required": true,
+          "description": "Auto: CSRF = TOK cookie (raw). Filled by the session bridge."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tdocs_pinned_docs",
+      "description": "Your pinned/top docs.",
+      "method": "POST",
+      "path": "/api/list/top",
+      "params": [
+        {
+          "name": "xsrf",
+          "in": "query",
+          "from": "cookie",
+          "cookieName": "TOK",
+          "required": true,
+          "description": "Auto: CSRF = TOK cookie (raw). Filled by the session bridge."
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tdocs_unread_count",
+      "description": "Unread notification count.",
+      "method": "POST",
+      "path": "/api/notification/unread_num",
+      "params": [
+        {
+          "name": "xsrf",
+          "in": "query",
+          "from": "cookie",
+          "cookieName": "TOK",
+          "required": true,
+          "description": "Auto: CSRF = TOK cookie (raw). Filled by the session bridge."
+        }
+      ],
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
