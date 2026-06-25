@@ -1,0 +1,133 @@
+{
+  "id": "juejin-manifest",
+  "version": "0.1.0",
+  "displayName": "稀土掘金 Juejin",
+  "description": "VERIFIED LIVE: Juejin (稀土掘金) via your logged-in session (session bridge — no token). Your content counts, daily check-in status, the recommended article feed, and full-text search work cookie-only on api.juejin.cn. Tested live by Claude Code against a logged-in session: counts, today-status, feed and search all returned err_no:0 with real data.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "development",
+  "hosts": [
+    "https://api.juejin.cn/*",
+    "https://juejin.cn/*"
+  ],
+  "baseUrl": "https://api.juejin.cn",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "juejin_my_counts",
+      "description": "Your authored-content counts (articles etc.). VERIFIED.",
+      "method": "GET",
+      "path": "/growth_api/v1/get_counts",
+      "responseType": "json"
+    },
+    {
+      "name": "juejin_checkin_status",
+      "description": "Whether you have checked in (签到) today. VERIFIED.",
+      "method": "GET",
+      "path": "/growth_api/v1/get_today_status",
+      "responseType": "json"
+    },
+    {
+      "name": "juejin_feed",
+      "description": "The recommended article feed. VERIFIED.",
+      "method": "POST",
+      "path": "/recommend_api/v1/article/recommend_all_feed",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "id_type",
+          "in": "body",
+          "type": "number",
+          "required": true,
+          "default": 2,
+          "description": "Fixed — do not change."
+        },
+        {
+          "name": "client_type",
+          "in": "body",
+          "type": "number",
+          "required": true,
+          "default": 2608,
+          "description": "Fixed — do not change."
+        },
+        {
+          "name": "sort_type",
+          "in": "body",
+          "type": "number",
+          "required": true,
+          "default": 200,
+          "description": "200 = recommended, 300 = hot."
+        },
+        {
+          "name": "cursor",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "0"
+        },
+        {
+          "name": "limit",
+          "in": "body",
+          "type": "number",
+          "required": true,
+          "default": 10
+        }
+      ]
+    },
+    {
+      "name": "juejin_search",
+      "description": "Full-text search across articles, users and more. VERIFIED.",
+      "method": "POST",
+      "path": "/search_api/v1/search",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "key_word",
+          "in": "body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "id_type",
+          "in": "body",
+          "type": "number",
+          "required": true,
+          "default": 0,
+          "description": "Fixed — do not change."
+        },
+        {
+          "name": "search_type",
+          "in": "body",
+          "type": "number",
+          "required": true,
+          "default": 0,
+          "description": "0 = comprehensive."
+        },
+        {
+          "name": "cursor",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "0"
+        },
+        {
+          "name": "limit",
+          "in": "body",
+          "type": "number",
+          "required": true,
+          "default": 10
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

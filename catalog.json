@@ -111,6 +111,16 @@
           "allowMultiple": false,
           "defaultLabel": "极狐GitLab",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jihulab.lingphi-platform.json"
+        },
+        {
+          "id": "juejin-manifest",
+          "displayName": "稀土掘金 Juejin",
+          "description": "Juejin content counts, check-in status, article feed and search via your logged-in session (session bridge).",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "juejin",
+          "allowMultiple": false,
+          "defaultLabel": "掘金",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/juejin.lingphi-platform.json"
         }
       ]
     },
