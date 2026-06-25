@@ -1,0 +1,35 @@
+{
+  "id": "producthunt-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Product Hunt (page reader)",
+  "description": "VERIFIED LIVE: Product Hunt via content-script DOM extraction (Product Hunt's API is OAuth/approval-gated). Product Hunt sits behind a Cloudflare bot check, but it clears for a real browser session and then renders the ranked products in the page — these tools read them straight from the DOM of your open Product Hunt tab. Navigate the tab to the homepage / a daily or weekly leaderboard, let the page finish loading, then call the tool. Tested live by Claude Code: 41 ranked products with name, url and upvote count extracted correctly.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "social",
+  "hosts": [
+    "https://www.producthunt.com/*",
+    "https://producthunt.com/*"
+  ],
+  "baseUrl": "https://www.producthunt.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "producthunt_leaderboard",
+      "description": "Ranked products on the current Product Hunt page (the homepage, /leaderboard/daily/… or /leaderboard/weekly/…). Navigate the tab there and let it finish loading first. Returns each product's rank+name, product url and upvote count. VERIFIED.",
+      "dom": {
+        "item": "section.group.flex-row",
+        "limit": 40,
+        "fields": {
+          "name": { "selector": "a[href^=\"/products/\"]" },
+          "url": { "selector": "a[href^=\"/products/\"]", "attr": "href" },
+          "votes": { "selector": "[data-test$=\"vote-button\"]" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

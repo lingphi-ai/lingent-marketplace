@@ -677,6 +677,16 @@
           "allowMultiple": false,
           "defaultLabel": "Quora",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/quora-dom.lingphi-platform.json"
+        },
+        {
+          "id": "producthunt-dom-manifest",
+          "displayName": "Product Hunt (page reader)",
+          "description": "Product Hunt ranked products (homepage / leaderboards) via content-script DOM extraction — no API key (reads the rendered page after the bot check clears).",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "producthunt-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Product Hunt",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/producthunt-dom.lingphi-platform.json"
         }
       ]
     }
