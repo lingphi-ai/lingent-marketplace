@@ -1,0 +1,61 @@
+{
+  "id": "huggingface-manifest",
+  "version": "0.1.0",
+  "displayName": "Hugging Face",
+  "description": "VERIFIED LIVE: the Hugging Face Hub public API — search models and datasets and read model metadata. No token needed (public read; whoami/private repos would need an access token). Tested live by Claude Code: models and datasets search both returned 200 with real data.",
+  "iconColor": "bg-yellow-100 text-yellow-700",
+  "category": "development",
+  "hosts": [
+    "https://huggingface.co/*"
+  ],
+  "baseUrl": "https://huggingface.co",
+  "auth": {
+    "type": "none"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "hf_search_models",
+      "description": "Search models on the Hugging Face Hub. VERIFIED.",
+      "method": "GET",
+      "path": "/api/models",
+      "responseType": "json",
+      "params": [
+        { "name": "search", "in": "query", "type": "string" },
+        { "name": "filter", "in": "query", "type": "string", "description": "e.g. a task tag like text-generation." },
+        { "name": "sort", "in": "query", "type": "string", "enum": ["downloads", "likes", "lastModified"], "default": "downloads" },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "hf_search_datasets",
+      "description": "Search datasets on the Hugging Face Hub. VERIFIED.",
+      "method": "GET",
+      "path": "/api/datasets",
+      "responseType": "json",
+      "params": [
+        { "name": "search", "in": "query", "type": "string" },
+        { "name": "sort", "in": "query", "type": "string", "enum": ["downloads", "likes", "lastModified"], "default": "downloads" },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "hf_model",
+      "description": "Full metadata for a model by id (e.g. meta-llama/Llama-3.2-3B-Instruct). VERIFIED.",
+      "method": "GET",
+      "path": "/api/models/{modelId}",
+      "responseType": "json",
+      "params": [
+        { "name": "modelId", "in": "path", "type": "string", "required": true, "encode": false }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

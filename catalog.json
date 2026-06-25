@@ -161,6 +161,16 @@
           "allowMultiple": false,
           "defaultLabel": "npm",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/npm.lingphi-platform.json"
+        },
+        {
+          "id": "huggingface-manifest",
+          "displayName": "Hugging Face",
+          "description": "Search models and datasets and read model metadata on the Hugging Face Hub via the public API — no token.",
+          "iconColor": "bg-yellow-100 text-yellow-700",
+          "integrationType": "huggingface",
+          "allowMultiple": false,
+          "defaultLabel": "Hugging Face",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/huggingface.lingphi-platform.json"
         }
       ]
     },
