@@ -1,8 +1,8 @@
 {
   "id": "servicenow-manifest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "ServiceNow",
-  "description": "VERIFIED LIVE: ServiceNow ITSM via your logged-in instance (content-script session bridge — no API token). Reads incidents, tasks, change requests, problems, service requests, knowledge articles, users and groups through /api/now; the instance's UI token (window.g_ck) is read from the page MAIN world and sent as X-UserToken, with the session cookie. Tested live by Claude Code against a logged-in instance — every table below returned 200 with real data. Set your instance subdomain (the part before .service-now.com) when installing.",
+  "description": "VERIFIED LIVE: ServiceNow ITSM via your logged-in instance (content-script session bridge — no API token). Full read surface over /api/now: a generic table query (any table), single-record lookup, and aggregate stats, plus typed shortcuts for incidents, tasks, changes/change-tasks, problems, requests/RITMs/catalog-tasks, catalog items, CMDB CIs, approvals, knowledge, journal (work notes), attachments, users and groups. The instance UI token (window.g_ck) is read from the page MAIN world and sent as X-UserToken, with the session cookie. Tested live by Claude Code — every endpoint below returned 200. Set your instance subdomain when installing.",
   "iconColor": "bg-green-100 text-green-700",
   "category": "project-management",
   "hosts": [
@@ -21,7 +21,7 @@
       "type": "string",
       "required": true,
       "placeholder": "dev12345",
-      "description": "Your instance subdomain — the part before .service-now.com (e.g. for dev12345.service-now.com enter dev12345)."
+      "description": "Your instance subdomain — the part before .service-now.com."
     }
   ],
   "tools": [
@@ -33,26 +33,66 @@
       "responseType": "json"
     },
     {
+      "name": "snow_table",
+      "description": "Query ANY table by name (incident, change_request, cmdb_ci, sys_user, …). Use sysparm_query for encoded filters. The most flexible tool. VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/{table}",
+      "responseType": "json",
+      "params": [
+        { "name": "table", "in": "path", "type": "string", "required": true },
+        { "name": "sysparm_query", "in": "query", "type": "string", "description": "Encoded query, e.g. active=true^priority=1^ORDERBYDESCsys_updated_on" },
+        { "name": "sysparm_fields", "in": "query", "type": "string", "description": "Comma-separated fields to return." },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_offset", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "snow_record",
+      "description": "Get a single record from any table by sys_id. VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/{table}/{sys_id}",
+      "responseType": "json",
+      "params": [
+        { "name": "table", "in": "path", "type": "string", "required": true },
+        { "name": "sys_id", "in": "path", "type": "string", "required": true },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_stats",
+      "description": "Aggregate stats for a table (count, optionally grouped). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/stats/{table}",
+      "responseType": "json",
+      "params": [
+        { "name": "table", "in": "path", "type": "string", "required": true },
+        { "name": "sysparm_count", "in": "query", "type": "string", "default": "true" },
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_group_by", "in": "query", "type": "string", "description": "Field to group counts by, e.g. state or priority." }
+      ]
+    },
+    {
       "name": "snow_incidents",
-      "description": "Incidents. Use sysparm_query to filter (e.g. active=true^assigned_to=javascript:gs.getUserID()). VERIFIED.",
+      "description": "Incidents. Filter with sysparm_query. VERIFIED.",
       "method": "GET",
       "path": "/api/now/table/incident",
       "responseType": "json",
       "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string" },
         { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_query", "in": "query", "type": "string", "description": "Encoded query filter." },
         { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
       ]
     },
     {
       "name": "snow_tasks",
-      "description": "Tasks (the base table for incidents/changes/etc.). VERIFIED.",
+      "description": "Tasks (base table for incidents/changes/etc.). VERIFIED.",
       "method": "GET",
       "path": "/api/now/table/task",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
       ]
     },
@@ -63,8 +103,20 @@
       "path": "/api/now/table/change_request",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_change_tasks",
+      "description": "Change tasks. VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/change_task",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
       ]
     },
@@ -75,32 +127,114 @@
       "path": "/api/now/table/problem",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
       ]
     },
     {
-      "name": "snow_service_requests",
+      "name": "snow_requests",
       "description": "Service Catalog requests (sc_request). VERIFIED.",
       "method": "GET",
       "path": "/api/now/table/sc_request",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
       ]
     },
     {
+      "name": "snow_request_items",
+      "description": "Requested items (sc_req_item / RITM). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/sc_req_item",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_catalog_tasks",
+      "description": "Catalog tasks (sc_task). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/sc_task",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_catalog_items",
+      "description": "Service catalog items (sc_cat_item). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/sc_cat_item",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_cmdb",
+      "description": "Configuration items (cmdb_ci). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/cmdb_ci",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_approvals",
+      "description": "Approval records (sysapproval_approver). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/sysapproval_approver",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_journal",
+      "description": "Journal entries — work notes & comments (sys_journal_field). Filter by element_id (a record's sys_id). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/sys_journal_field",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string", "description": "e.g. element_id=<record sys_id>^ORDERBYsys_created_on" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "snow_attachments",
+      "description": "Attachment metadata. Filter by table_sys_id to a record. VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/attachment",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_query", "in": "query", "type": "string", "description": "e.g. table_name=incident^table_sys_id=<sys_id>" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
       "name": "snow_kb_articles",
-      "description": "Knowledge base articles. VERIFIED.",
+      "description": "Knowledge base articles (kb_knowledge). VERIFIED.",
       "method": "GET",
       "path": "/api/now/table/kb_knowledge",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
       ]
     },
@@ -111,8 +245,8 @@
       "path": "/api/now/table/sys_user",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
       ]
     },
@@ -123,8 +257,8 @@
       "path": "/api/now/table/sys_user_group",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
         { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
       ]
     }
