@@ -637,6 +637,16 @@
           "allowMultiple": false,
           "defaultLabel": "SoundCloud",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/soundcloud.lingphi-platform.json"
+        },
+        {
+          "id": "youtube-manifest",
+          "displayName": "YouTube",
+          "description": "YouTube search results, feed and playlist videos via content-script DOM extraction — no API key (reads the rendered page).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "youtube",
+          "allowMultiple": false,
+          "defaultLabel": "YouTube",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youtube.lingphi-platform.json"
         }
       ]
     }

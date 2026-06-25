@@ -1,0 +1,61 @@
+{
+  "id": "youtube-manifest",
+  "version": "0.1.0",
+  "displayName": "YouTube",
+  "description": "VERIFIED LIVE: YouTube via content-script DOM extraction (no API key). YouTube's data API is signed/quota-gated, but the rendered page holds the data — these tools read it straight from the DOM of your open YouTube tab. Navigate the tab to a search results / feed / playlist page, then call the matching tool. Tested live by Claude Code on a search page: 4 videos with title, url, channel and view/age metadata extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "social",
+  "hosts": [
+    "https://www.youtube.com/*"
+  ],
+  "baseUrl": "https://www.youtube.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "youtube_search_results",
+      "description": "Videos on the current YouTube SEARCH results page (navigate the tab to /results?search_query=… first). Returns title, url, channel and view/age metadata. VERIFIED.",
+      "dom": {
+        "item": "ytd-video-renderer",
+        "limit": 20,
+        "fields": {
+          "title": { "selector": "#video-title", "attr": "title" },
+          "url": { "selector": "#video-title", "attr": "href" },
+          "channel": { "selector": "ytd-channel-name a" },
+          "meta": { "selector": "#metadata-line" }
+        }
+      }
+    },
+    {
+      "name": "youtube_feed",
+      "description": "Videos in the current grid FEED (home, subscriptions, a channel's Videos tab, or a playlist page). Navigate the tab there first. Returns title, url and channel.",
+      "dom": {
+        "item": "ytd-rich-item-renderer",
+        "limit": 30,
+        "fields": {
+          "title": { "selector": "#video-title", "attr": "title" },
+          "url": { "selector": "a#video-title-link, a#thumbnail", "attr": "href" },
+          "channel": { "selector": "ytd-channel-name #text" }
+        }
+      }
+    },
+    {
+      "name": "youtube_playlist_items",
+      "description": "Videos listed on the current PLAYLIST page (navigate the tab to /playlist?list=… first). Returns title and url.",
+      "dom": {
+        "item": "ytd-playlist-video-renderer",
+        "limit": 50,
+        "fields": {
+          "title": { "selector": "#video-title", "attr": "title" },
+          "url": { "selector": "a#video-title", "attr": "href" },
+          "channel": { "selector": "ytd-channel-name a" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
