@@ -199,6 +199,16 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youdao-note.lingphi-platform.json"
         },
         {
+          "id": "wikipedia-manifest",
+          "displayName": "Wikipedia",
+          "description": "Wikipedia (English) search, article extracts and session account info via the public MediaWiki API — no token.",
+          "iconColor": "bg-gray-100 text-gray-800",
+          "integrationType": "wikipedia",
+          "allowMultiple": false,
+          "defaultLabel": "Wikipedia",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/wikipedia.lingphi-platform.json"
+        },
+        {
           "id": "processon-manifest",
           "displayName": "ProcessOn",
           "description": "ProcessOn profile, files/folders, charts and notifications via your logged-in session (session bridge).",
