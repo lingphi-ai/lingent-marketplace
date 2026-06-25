@@ -1,0 +1,104 @@
+{
+  "id": "douban-manifest",
+  "version": "0.1.0",
+  "displayName": "豆瓣 Douban",
+  "description": "VERIFIED LIVE: Douban data via your logged-in session (session bridge — no token). Profile, a user's movie/book/music marks (interests), and unified search work cookie-only on the m.douban.com rexxar API. Tested live by Claude Code: user profile, interests and search all returned real data.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "social",
+  "hosts": [
+    "https://m.douban.com/*",
+    "https://www.douban.com/*"
+  ],
+  "baseUrl": "https://m.douban.com/rexxar/api/v2",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "douban_user",
+      "description": "A Douban user's public profile by numeric user id (name, avatar, stats). VERIFIED.",
+      "method": "GET",
+      "path": "/user/{userId}",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "userId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "douban_user_interests",
+      "description": "A user's marked items (movies/books/music) by status. VERIFIED.",
+      "method": "GET",
+      "path": "/user/{userId}/interests",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "userId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "enum": ["movie", "book", "music"],
+          "default": "movie"
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "type": "string",
+          "enum": ["mark", "doing", "done"],
+          "default": "done"
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "start",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "name": "douban_search",
+      "description": "Unified search across movies, books, music and more. VERIFIED.",
+      "method": "GET",
+      "path": "/search",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

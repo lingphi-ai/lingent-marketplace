@@ -287,6 +287,16 @@
           "allowMultiple": false,
           "defaultLabel": "微信读书",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/weread.lingphi-platform.json"
+        },
+        {
+          "id": "douban-manifest",
+          "displayName": "豆瓣 Douban",
+          "description": "Douban profile, movie/book/music marks, and search (session bridge).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "douban",
+          "allowMultiple": false,
+          "defaultLabel": "豆瓣",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/douban.lingphi-platform.json"
         }
       ]
     }
