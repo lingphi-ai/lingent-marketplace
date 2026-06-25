@@ -95,6 +95,16 @@
           "allowMultiple": false,
           "defaultLabel": "Asana",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/asana-session.lingphi-platform.json"
+        },
+        {
+          "id": "basecamp-session-manifest",
+          "displayName": "Basecamp (session)",
+          "description": "Basecamp projects, project details, profile, and a project's messages/to-dos/comments via your logged-in app.basecamp.com session — no OAuth (session bridge). Set your account ID.",
+          "iconColor": "bg-green-100 text-green-800",
+          "integrationType": "basecamp-session",
+          "allowMultiple": false,
+          "defaultLabel": "Basecamp",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/basecamp-session.lingphi-platform.json"
         }
       ]
     },

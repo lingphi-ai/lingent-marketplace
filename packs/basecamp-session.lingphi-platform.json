@@ -1,0 +1,70 @@
+{
+  "id": "basecamp-session-manifest",
+  "version": "0.1.0",
+  "displayName": "Basecamp (session)",
+  "description": "VERIFIED LIVE: Basecamp 3/4 via your logged-in app.basecamp.com session (session bridge — no OAuth app). Your projects, project details, profile, and a project's messages / to-dos / comments / documents work cookie-only on the same-origin JSON API. Tested live by Claude Code against a logged-in account — projects (2), a project detail, my profile, and recordings (5 messages, 10 to-dos) all returned 200. Set your account ID (the number in app.basecamp.com/<account>/).",
+  "iconColor": "bg-green-100 text-green-800",
+  "category": "project-management",
+  "hosts": [
+    "https://app.basecamp.com/*"
+  ],
+  "baseUrl": "https://app.basecamp.com/{account}",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [
+    {
+      "name": "account",
+      "label": "Basecamp account ID",
+      "type": "string",
+      "required": true,
+      "placeholder": "1234567",
+      "description": "The numeric account ID in your Basecamp URL — app.basecamp.com/<account>/."
+    }
+  ],
+  "tools": [
+    {
+      "name": "basecamp_projects",
+      "description": "Projects you have access to (id, name, description, dock of tools). VERIFIED.",
+      "method": "GET",
+      "path": "/projects.json",
+      "responseType": "json",
+      "params": [
+        { "name": "page", "in": "query", "type": "number", "default": 1 }
+      ]
+    },
+    {
+      "name": "basecamp_project",
+      "description": "One project's details, including its 'dock' (message board, to-do set, schedule, etc. with their ids). VERIFIED.",
+      "method": "GET",
+      "path": "/projects/{projectId}.json",
+      "responseType": "json",
+      "params": [
+        { "name": "projectId", "in": "path", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "basecamp_my_profile",
+      "description": "Your Basecamp profile (id, name, email, admin flag). VERIFIED.",
+      "method": "GET",
+      "path": "/my/profile.json",
+      "responseType": "json"
+    },
+    {
+      "name": "basecamp_recordings",
+      "description": "Recordings of a given type inside one project (bucket): messages, to-dos, comments, documents or uploads. Returns title/content, author, status, urls. VERIFIED (Message + Todo).",
+      "method": "GET",
+      "path": "/projects/recordings.json",
+      "responseType": "json",
+      "params": [
+        { "name": "type", "in": "query", "type": "string", "required": true, "enum": ["Message", "Todo", "Comment", "Document", "Upload", "Schedule::Entry", "Question::Answer"], "default": "Message" },
+        { "name": "bucket", "in": "query", "type": "string", "required": true, "description": "The project id (bucket) to read from." },
+        { "name": "status", "in": "query", "type": "string", "enum": ["active", "archived", "trashed"], "default": "active" },
+        { "name": "sort", "in": "query", "type": "string", "enum": ["created_at", "updated_at"], "default": "created_at" }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
