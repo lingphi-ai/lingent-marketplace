@@ -269,6 +269,16 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/archive-org.lingphi-platform.json"
         },
         {
+          "id": "coursera-manifest",
+          "displayName": "Coursera",
+          "description": "Browse the Coursera course catalog, look up courses by slug and list specializations via the public API — no token.",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "coursera",
+          "allowMultiple": false,
+          "defaultLabel": "Coursera",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/coursera.lingphi-platform.json"
+        },
+        {
           "id": "processon-manifest",
           "displayName": "ProcessOn",
           "description": "ProcessOn profile, files/folders, charts and notifications via your logged-in session (session bridge).",

@@ -1,0 +1,59 @@
+{
+  "id": "coursera-manifest",
+  "version": "0.1.0",
+  "displayName": "Coursera",
+  "description": "VERIFIED LIVE: Coursera public catalog API — browse courses, look up a course by slug, and list specializations. No token needed (public catalog). Tested live by Claude Code: courses.v1 listing, courses.v1 by-slug and onDemandSpecializations.v1 all returned 200 with real data.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://www.coursera.org/*"
+  ],
+  "baseUrl": "https://www.coursera.org",
+  "auth": {
+    "type": "none"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "coursera_courses",
+      "description": "Browse the Coursera course catalog. VERIFIED.",
+      "method": "GET",
+      "path": "/api/courses.v1",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "start", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "coursera_course_by_slug",
+      "description": "Look up a course by its slug (e.g. machine-learning), with name + description. VERIFIED.",
+      "method": "GET",
+      "path": "/api/courses.v1",
+      "responseType": "json",
+      "params": [
+        { "name": "q", "in": "query", "type": "string", "required": true, "default": "slug", "description": "Fixed." },
+        { "name": "slug", "in": "query", "type": "string", "required": true },
+        { "name": "fields", "in": "query", "type": "string", "default": "name,description,slug,photoUrl" }
+      ]
+    },
+    {
+      "name": "coursera_specializations",
+      "description": "List Coursera specializations. VERIFIED.",
+      "method": "GET",
+      "path": "/api/onDemandSpecializations.v1",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
