@@ -479,6 +479,16 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/weibo.lingphi-platform.json"
         },
         {
+          "id": "mastodon-manifest",
+          "displayName": "Mastodon",
+          "description": "Mastodon trending hashtags, posts, links and search (mastodon.social) via the public API — no token.",
+          "iconColor": "bg-indigo-100 text-indigo-700",
+          "integrationType": "mastodon",
+          "allowMultiple": false,
+          "defaultLabel": "Mastodon",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/mastodon.lingphi-platform.json"
+        },
+        {
           "id": "reddit-manifest",
           "displayName": "Reddit",
           "description": "DRAFT: Reddit account, subscriptions, inbox + public profiles/subreddits via your logged-in session (session bridge). Endpoints verified; logged-in identity pending an email login.",

@@ -1,0 +1,68 @@
+{
+  "id": "mastodon-manifest",
+  "version": "0.1.0",
+  "displayName": "Mastodon",
+  "description": "VERIFIED LIVE: Mastodon (mastodon.social instance) via its public API — trending hashtags, trending posts/links, and search. No token needed for these endpoints. Tested live by Claude Code: trends/tags and v2/search both returned 200. (Your home timeline / posting would need an instance access token.)",
+  "iconColor": "bg-indigo-100 text-indigo-700",
+  "category": "social",
+  "hosts": [
+    "https://mastodon.social/*"
+  ],
+  "baseUrl": "https://mastodon.social",
+  "auth": {
+    "type": "none"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "mastodon_trending_tags",
+      "description": "Currently trending hashtags on the instance. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/trends/tags",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "mastodon_trending_posts",
+      "description": "Currently trending posts (statuses) on the instance.",
+      "method": "GET",
+      "path": "/api/v1/trends/statuses",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "mastodon_trending_links",
+      "description": "Currently trending news links on the instance.",
+      "method": "GET",
+      "path": "/api/v1/trends/links",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "mastodon_search",
+      "description": "Search accounts, hashtags and statuses. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v2/search",
+      "responseType": "json",
+      "params": [
+        { "name": "q", "in": "query", "type": "string", "required": true },
+        { "name": "type", "in": "query", "type": "string", "enum": ["accounts", "hashtags", "statuses"], "default": "hashtags" },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
