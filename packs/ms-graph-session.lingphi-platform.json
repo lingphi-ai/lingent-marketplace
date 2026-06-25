@@ -1,0 +1,104 @@
+{
+  "id": "ms-graph-session-manifest",
+  "version": "0.1.0",
+  "displayName": "Microsoft 365 (session)",
+  "description": "VERIFIED LIVE: Microsoft Graph via your logged-in Microsoft 365 web session (session bridge — no token to paste). Reads your profile, people, OneDrive recent files, Teams chats and joined teams using the Graph access token cached by MSAL in your open Office/Outlook/Teams tab. Tested live by Claude Code against a logged-in work tenant: /me, /me/people, /me/drive/recent, /me/chats, /me/joinedTeams all returned 200 with real data. (Mail/Calendar need a token with Mail/Calendars scopes — keep an Outlook tab open; otherwise those endpoints return 403.)",
+  "iconColor": "bg-sky-100 text-sky-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://outlook.office.com/*",
+    "https://*.office.com/*",
+    "https://office.com/*",
+    "https://m365.cloud.microsoft/*",
+    "https://teams.cloud.microsoft/*",
+    "https://*.sharepoint.com/*",
+    "https://graph.microsoft.com/*"
+  ],
+  "baseUrl": "https://graph.microsoft.com/v1.0",
+  "auth": {
+    "type": "pageToken",
+    "store": "localStorage",
+    "entryMatch": [
+      {
+        "field": "credentialType",
+        "equals": "AccessToken"
+      },
+      {
+        "field": "target",
+        "containsRequestHost": true
+      }
+    ],
+    "tokenField": "secret",
+    "scheme": "Bearer"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "msgraph_me",
+      "description": "Your Microsoft 365 profile (displayName, mail, jobTitle). VERIFIED.",
+      "method": "GET",
+      "path": "/me",
+      "responseType": "json"
+    },
+    {
+      "name": "msgraph_people",
+      "description": "People you communicate with most (relevance-ranked contacts). VERIFIED.",
+      "method": "GET",
+      "path": "/me/people",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "$top",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
+      ]
+    },
+    {
+      "name": "msgraph_onedrive_recent",
+      "description": "Your recently used OneDrive files. VERIFIED.",
+      "method": "GET",
+      "path": "/me/drive/recent",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "$top",
+          "in": "query",
+          "type": "number",
+          "default": 15
+        }
+      ]
+    },
+    {
+      "name": "msgraph_teams_chats",
+      "description": "Your Microsoft Teams chats. VERIFIED.",
+      "method": "GET",
+      "path": "/me/chats",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "$top",
+          "in": "query",
+          "type": "number",
+          "default": 15
+        }
+      ]
+    },
+    {
+      "name": "msgraph_joined_teams",
+      "description": "The Microsoft Teams you are a member of. VERIFIED.",
+      "method": "GET",
+      "path": "/me/joinedTeams",
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

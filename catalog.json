@@ -199,6 +199,16 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/kdocs.lingphi-platform.json"
         },
         {
+          "id": "ms-graph-session-manifest",
+          "displayName": "Microsoft 365 (session)",
+          "description": "Microsoft Graph — profile, people, OneDrive recent, Teams chats and teams — via your logged-in M365 web session (session bridge, MSAL token).",
+          "iconColor": "bg-sky-100 text-sky-700",
+          "integrationType": "ms-graph-session",
+          "allowMultiple": false,
+          "defaultLabel": "Microsoft 365",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/ms-graph-session.lingphi-platform.json"
+        },
+        {
           "id": "tencent-docs-manifest",
           "displayName": "腾讯文档 Tencent Docs",
           "description": "Tencent Docs via session bridge.",
