@@ -1,0 +1,77 @@
+{
+  "id": "shimo-manifest",
+  "version": "0.1.0",
+  "displayName": "石墨文档 Shimo",
+  "description": "Shimo Docs (石墨文档) via your logged-in session (session bridge — no token). Auto-discovered + VERIFIED LIVE by Claude Code: clean REST (lizard-api / panda-api) with cookie auth (GET reads). users/me + files returned real data.",
+  "iconColor": "bg-emerald-100 text-emerald-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://shimo.im/*"
+  ],
+  "baseUrl": "https://shimo.im",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "shimo_me",
+      "description": "Your Shimo account. VERIFIED.",
+      "method": "GET",
+      "path": "/lizard-api/users/me",
+      "responseType": "json"
+    },
+    {
+      "name": "shimo_files",
+      "description": "Your files (recent/used). VERIFIED.",
+      "method": "GET",
+      "path": "/lizard-api/files",
+      "params": [
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "default": "used",
+          "description": "used | star | mine."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "shimo_spaces",
+      "description": "Your spaces/folders.",
+      "method": "GET",
+      "path": "/panda-api/file/spaces",
+      "params": [
+        {
+          "name": "orderBy",
+          "in": "query",
+          "type": "string",
+          "default": "updatedAt"
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "shimo_unread_count",
+      "description": "Unread notification count.",
+      "method": "GET",
+      "path": "/lizard-api/notifications/unpeeked_count",
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

@@ -117,6 +117,16 @@
           "allowMultiple": false,
           "defaultLabel": "腾讯文档",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/tencent-docs.lingphi-platform.json"
+        },
+        {
+          "id": "shimo-manifest",
+          "displayName": "石墨文档 Shimo",
+          "description": "Shimo Docs (session bridge).",
+          "iconColor": "bg-emerald-100 text-emerald-700",
+          "integrationType": "shimo",
+          "allowMultiple": false,
+          "defaultLabel": "石墨",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/shimo.lingphi-platform.json"
         }
       ]
     },
