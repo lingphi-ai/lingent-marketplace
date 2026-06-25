@@ -1015,14 +1015,14 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/netease-news.lingphi-platform.json"
         },
         {
-          "id": "sina-news-dom-manifest",
-          "displayName": "新浪新闻 (page reader)",
-          "description": "新浪新闻 headlines via content-script DOM extraction — no login (reads the rendered page).",
+          "id": "sina-news-manifest",
+          "displayName": "新浪新闻",
+          "description": "新浪新闻 articles via its public roll-feed JSON API (no login, no key) — structured + paginated, preferred over DOM.",
           "iconColor": "bg-red-100 text-red-700",
-          "integrationType": "sina-news-dom",
+          "integrationType": "sina-news",
           "allowMultiple": false,
           "defaultLabel": "新浪新闻",
-          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sina-news-dom.lingphi-platform.json"
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sina-news.lingphi-platform.json"
         },
         {
           "id": "sohu-dom-manifest",

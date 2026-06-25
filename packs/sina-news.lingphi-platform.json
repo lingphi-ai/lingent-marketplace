@@ -1,0 +1,32 @@
+{
+  "id": "sina-news-manifest",
+  "version": "0.2.0",
+  "displayName": "新浪新闻",
+  "description": "VERIFIED LIVE: 新浪新闻 (Sina News) via its public roll-feed JSON API (no login, no key) — structured + paginated, preferred over DOM. feed.mix.sina.com.cn/api/roll/get returns result.data[] with title, url, ctime. Tested live by Claude Code: 20 articles, clean JSON.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "news",
+  "hosts": [
+    "https://feed.mix.sina.com.cn/*"
+  ],
+  "baseUrl": "https://feed.mix.sina.com.cn",
+  "auth": { "type": "none" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "sina_news_roll",
+      "description": "新浪 rolling news feed. Returns result.data[] (each: title, url, ctime, intime). Page with the page param. VERIFIED (20 articles). Common lid: 2509 (全部/要闻), 2510 (国内), 2511 (国际), 2669 (社会).",
+      "method": "GET",
+      "path": "/api/roll/get",
+      "responseType": "json",
+      "params": [
+        { "name": "pageid", "in": "query", "type": "number", "default": 153, "description": "Feed page id (153 = news roll)." },
+        { "name": "lid", "in": "query", "type": "number", "default": 2509, "description": "Channel id; 2509=全部, 2510=国内, 2511=国际, 2669=社会." },
+        { "name": "num", "in": "query", "type": "number", "default": 20 },
+        { "name": "page", "in": "query", "type": "number", "default": 1 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "sw" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
