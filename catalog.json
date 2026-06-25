@@ -85,6 +85,16 @@
           "allowMultiple": false,
           "defaultLabel": "Trello",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/trello-session.lingphi-platform.json"
+        },
+        {
+          "id": "asana-session-manifest",
+          "displayName": "Asana (session)",
+          "description": "Asana profile, workspaces, projects, your tasks and project tasks via your logged-in session — no token (session bridge).",
+          "iconColor": "bg-rose-100 text-rose-700",
+          "integrationType": "asana-session",
+          "allowMultiple": false,
+          "defaultLabel": "Asana",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/asana-session.lingphi-platform.json"
         }
       ]
     },

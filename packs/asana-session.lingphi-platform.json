@@ -1,0 +1,82 @@
+{
+  "id": "asana-session-manifest",
+  "version": "0.1.0",
+  "displayName": "Asana (session)",
+  "description": "VERIFIED LIVE: Asana via your logged-in app.asana.com session (session bridge — no Personal Access Token). Your profile, workspaces, projects, your assigned tasks, a project's tasks, and workspace members work cookie-only on the same-origin /api/1.0. Tested live by Claude Code against a logged-in account — every endpoint below returned 200. (For server-to-server use the Asana token pack instead.)",
+  "iconColor": "bg-rose-100 text-rose-700",
+  "category": "project-management",
+  "hosts": [
+    "https://app.asana.com/*"
+  ],
+  "baseUrl": "https://app.asana.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "asana_me",
+      "description": "Your Asana profile (gid, name, email, workspaces). VERIFIED.",
+      "method": "GET",
+      "path": "/api/1.0/users/me",
+      "responseType": "json"
+    },
+    {
+      "name": "asana_workspaces",
+      "description": "Workspaces/organizations you belong to (note the gid for other tools). VERIFIED.",
+      "method": "GET",
+      "path": "/api/1.0/workspaces",
+      "responseType": "json"
+    },
+    {
+      "name": "asana_projects",
+      "description": "Projects in a workspace (pass the workspace gid). VERIFIED.",
+      "method": "GET",
+      "path": "/api/1.0/projects",
+      "responseType": "json",
+      "params": [
+        { "name": "workspace", "in": "query", "type": "string", "required": true },
+        { "name": "archived", "in": "query", "type": "boolean", "default": false },
+        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "asana_my_tasks",
+      "description": "Tasks assigned to you in a workspace. VERIFIED.",
+      "method": "GET",
+      "path": "/api/1.0/tasks",
+      "responseType": "json",
+      "params": [
+        { "name": "assignee", "in": "query", "type": "string", "required": true, "default": "me" },
+        { "name": "workspace", "in": "query", "type": "string", "required": true },
+        { "name": "completed_since", "in": "query", "type": "string", "default": "now", "description": "'now' returns only incomplete tasks." },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    },
+    {
+      "name": "asana_project_tasks",
+      "description": "Tasks in a project (pass the project gid). VERIFIED.",
+      "method": "GET",
+      "path": "/api/1.0/tasks",
+      "responseType": "json",
+      "params": [
+        { "name": "project", "in": "query", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    },
+    {
+      "name": "asana_workspace_users",
+      "description": "Members of a workspace (pass the workspace gid). VERIFIED.",
+      "method": "GET",
+      "path": "/api/1.0/workspaces/{workspace}/users",
+      "responseType": "json",
+      "params": [
+        { "name": "workspace", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
