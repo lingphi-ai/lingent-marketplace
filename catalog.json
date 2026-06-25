@@ -697,6 +697,16 @@
           "allowMultiple": false,
           "defaultLabel": "X",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/x-dom.lingphi-platform.json"
+        },
+        {
+          "id": "linkedin-dom-manifest",
+          "displayName": "LinkedIn (page reader)",
+          "description": "LinkedIn feed post text via content-script DOM extraction — no API key (reads your logged-in rendered page via stable data-testid hooks). Text only; requires being logged into LinkedIn.",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "linkedin-dom",
+          "allowMultiple": false,
+          "defaultLabel": "LinkedIn",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/linkedin-dom.lingphi-platform.json"
         }
       ]
     }

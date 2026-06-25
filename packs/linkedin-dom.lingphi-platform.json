@@ -1,0 +1,32 @@
+{
+  "id": "linkedin-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "LinkedIn (page reader)",
+  "description": "VERIFIED LIVE: LinkedIn feed via content-script DOM extraction. LinkedIn's API is partner-gated and it renders nothing logged out; its new server-driven feed hashes every CSS class, so the ONLY stable hooks are its [data-testid] markers — these tools read post text from them in your open, logged-in LinkedIn tab. Navigate to your /feed/ and let it load, then call the tool. Tested live by Claude Code: 7 feed posts' text extracted correctly. LIMITATIONS: returns post TEXT only — author name and reaction counts live in hashed-class nodes outside the stable text box and are not reliably reachable; selectors are brittle to LinkedIn's frequent feed redesigns. Requires being logged into LinkedIn.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "social",
+  "hosts": [
+    "https://www.linkedin.com/*"
+  ],
+  "baseUrl": "https://www.linkedin.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "linkedin_feed_posts",
+      "description": "Text of the posts in the current LinkedIn FEED (navigate the tab to /feed/ and let it load; scroll to load more). Returns each rendered post's body text. Click 'see more' is not needed — the expandable text box holds the full text. VERIFIED (7 posts). Note: text only — no author/reactions (hashed-class nodes, not reachable).",
+      "dom": {
+        "item": "[data-testid=\"mainFeed\"] [data-testid=\"expandable-text-box\"]",
+        "limit": 25,
+        "fields": {
+          "text": {}
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
