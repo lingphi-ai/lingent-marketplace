@@ -417,6 +417,26 @@
           "allowMultiple": false,
           "defaultLabel": "微博",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/weibo.lingphi-platform.json"
+        },
+        {
+          "id": "reddit-manifest",
+          "displayName": "Reddit",
+          "description": "DRAFT: Reddit account, subscriptions, inbox + public profiles/subreddits via your logged-in session (session bridge). Endpoints verified; logged-in identity pending an email login.",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "reddit",
+          "allowMultiple": false,
+          "defaultLabel": "Reddit",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/reddit.lingphi-platform.json"
+        },
+        {
+          "id": "substack-manifest",
+          "displayName": "Substack",
+          "description": "DRAFT: Substack subscriptions and reader feed via your logged-in session (session bridge). Endpoints confirmed cookie-gated; logged-in data pending an email login.",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "substack",
+          "allowMultiple": false,
+          "defaultLabel": "Substack",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/substack.lingphi-platform.json"
         }
       ]
     }

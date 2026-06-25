@@ -1,0 +1,74 @@
+{
+  "id": "reddit-manifest",
+  "version": "0.1.0",
+  "displayName": "Reddit",
+  "description": "Reddit via your logged-in www.reddit.com session (session bridge — no token). The cookie .json API was verified live by Claude Code (all endpoints returned 200); personal data (me / subscriptions / inbox) needs a real reddit_session login — log in with email (not Google, which is blocked in automation) and smoke-test before signing. [DRAFT — endpoints verified, logged-in identity pending.]",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "social",
+  "hosts": [
+    "https://www.reddit.com/*"
+  ],
+  "baseUrl": "https://www.reddit.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "reddit_me",
+      "description": "Your Reddit account (name, karma, settings). Requires a logged-in reddit_session.",
+      "method": "GET",
+      "path": "/api/me.json",
+      "responseType": "json"
+    },
+    {
+      "name": "reddit_my_subreddits",
+      "description": "Subreddits you subscribe to.",
+      "method": "GET",
+      "path": "/subreddits/mine/subscriber.json",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    },
+    {
+      "name": "reddit_inbox",
+      "description": "Your message inbox.",
+      "method": "GET",
+      "path": "/message/inbox.json",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    },
+    {
+      "name": "reddit_user_about",
+      "description": "Public profile of any user by username. Works without login.",
+      "method": "GET",
+      "path": "/user/{username}/about.json",
+      "responseType": "json",
+      "params": [
+        { "name": "username", "in": "path", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "reddit_subreddit_hot",
+      "description": "Hot posts in a subreddit. Works without login.",
+      "method": "GET",
+      "path": "/r/{subreddit}/hot.json",
+      "responseType": "json",
+      "params": [
+        { "name": "subreddit", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

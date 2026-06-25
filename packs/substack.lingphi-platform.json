@@ -1,0 +1,43 @@
+{
+  "id": "substack-manifest",
+  "version": "0.1.0",
+  "displayName": "Substack",
+  "description": "Substack via your logged-in substack.com session (session bridge — no token). The cookie /api/v1 endpoints were confirmed live by Claude Code (return 401 'Please sign in' when logged out — i.e. correct, cookie-gated, same-origin); reading your subscriptions and reader feed needs a real login. Log in with email and smoke-test before signing. [DRAFT — endpoints confirmed, logged-in data pending.]",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "social",
+  "hosts": [
+    "https://substack.com/*"
+  ],
+  "baseUrl": "https://substack.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "substack_subscriptions",
+      "description": "Publications you subscribe to. Requires login.",
+      "method": "GET",
+      "path": "/api/v1/subscriptions",
+      "responseType": "json"
+    },
+    {
+      "name": "substack_reader_posts",
+      "description": "Your reader feed posts. Requires login.",
+      "method": "GET",
+      "path": "/api/v1/reader/posts",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
