@@ -747,6 +747,16 @@
           "allowMultiple": false,
           "defaultLabel": "Apple Music",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/apple-music-dom.lingphi-platform.json"
+        },
+        {
+          "id": "medium-dom-manifest",
+          "displayName": "Medium (page reader)",
+          "description": "Medium stories (tag / publication / profile) via content-script DOM extraction — no login, no API key (reads the rendered page).",
+          "iconColor": "bg-neutral-200 text-neutral-900",
+          "integrationType": "medium-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Medium",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/medium-dom.lingphi-platform.json"
         }
       ]
     },
