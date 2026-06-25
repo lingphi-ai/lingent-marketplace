@@ -1,0 +1,69 @@
+{
+  "id": "stackoverflow-manifest",
+  "version": "0.1.0",
+  "displayName": "Stack Overflow",
+  "description": "VERIFIED LIVE: Stack Overflow (and any Stack Exchange site) via the public Stack Exchange API 2.3 — search questions, browse by tag, and read answers. No token needed. Tested live by Claude Code: search/advanced and questions both returned 200 with real data.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "development",
+  "hosts": [
+    "https://api.stackexchange.com/*"
+  ],
+  "baseUrl": "https://api.stackexchange.com/2.3",
+  "auth": {
+    "type": "none"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "so_search",
+      "description": "Search questions across a Stack Exchange site. VERIFIED.",
+      "method": "GET",
+      "path": "/search/advanced",
+      "responseType": "json",
+      "params": [
+        { "name": "q", "in": "query", "type": "string", "required": true },
+        { "name": "site", "in": "query", "type": "string", "required": true, "default": "stackoverflow" },
+        { "name": "order", "in": "query", "type": "string", "default": "desc" },
+        { "name": "sort", "in": "query", "type": "string", "enum": ["relevance", "votes", "activity", "creation"], "default": "relevance" },
+        { "name": "pagesize", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "so_questions",
+      "description": "List questions on a site, optionally filtered by tag. VERIFIED.",
+      "method": "GET",
+      "path": "/questions",
+      "responseType": "json",
+      "params": [
+        { "name": "site", "in": "query", "type": "string", "required": true, "default": "stackoverflow" },
+        { "name": "tagged", "in": "query", "type": "string" },
+        { "name": "order", "in": "query", "type": "string", "default": "desc" },
+        { "name": "sort", "in": "query", "enum": ["votes", "activity", "hot", "creation"], "type": "string", "default": "votes" },
+        { "name": "pagesize", "in": "query", "type": "number", "default": 10 }
+      ]
+    },
+    {
+      "name": "so_answers",
+      "description": "Top answers for one or more question ids (semicolon-separated). Pass filter=withbody for answer text.",
+      "method": "GET",
+      "path": "/questions/{ids}/answers",
+      "responseType": "json",
+      "params": [
+        { "name": "ids", "in": "path", "type": "string", "required": true },
+        { "name": "site", "in": "query", "type": "string", "required": true, "default": "stackoverflow" },
+        { "name": "order", "in": "query", "type": "string", "default": "desc" },
+        { "name": "sort", "in": "query", "type": "string", "default": "votes" },
+        { "name": "filter", "in": "query", "type": "string", "default": "withbody" },
+        { "name": "pagesize", "in": "query", "type": "number", "default": 5 }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

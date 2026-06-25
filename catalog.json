@@ -141,6 +141,16 @@
           "allowMultiple": false,
           "defaultLabel": "Cloudflare",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/cloudflare.lingphi-platform.json"
+        },
+        {
+          "id": "stackoverflow-manifest",
+          "displayName": "Stack Overflow",
+          "description": "Search questions, browse by tag, and read answers across Stack Overflow / Stack Exchange via the public API — no token.",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "stackoverflow",
+          "allowMultiple": false,
+          "defaultLabel": "Stack Overflow",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/stackoverflow.lingphi-platform.json"
         }
       ]
     },
