@@ -1,0 +1,34 @@
+{
+  "id": "apnews-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "AP News (page reader)",
+  "description": "VERIFIED LIVE: Associated Press News via content-script DOM extraction — no login, no API key. AP renders story promos as .PagePromo with a .PagePromo-title, so this tool reads the headlines straight from the DOM of your open AP News tab. Navigate the tab to apnews.com or any section (/world-news, /politics, …) and call the tool. Tested live by Claude Code: 137 promos with headline and article url extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "news",
+  "hosts": [
+    "https://apnews.com/*"
+  ],
+  "baseUrl": "https://apnews.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "apnews_headlines",
+      "description": "Story promos on the current AP News page (apnews.com or any section/topic). Navigate the tab there first. Returns each story's headline, article url and (when present) description. VERIFIED (137 promos).",
+      "dom": {
+        "item": ".PagePromo",
+        "limit": 40,
+        "fields": {
+          "headline": { "selector": ".PagePromo-title" },
+          "url": { "selector": "a.Link", "attr": "href" },
+          "description": { "selector": ".PagePromo-description" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

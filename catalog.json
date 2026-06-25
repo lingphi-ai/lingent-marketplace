@@ -749,6 +749,62 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/apple-music-dom.lingphi-platform.json"
         }
       ]
+    },
+    {
+      "id": "news",
+      "label": "News",
+      "entries": [
+        {
+          "id": "bbc-dom-manifest",
+          "displayName": "BBC News (page reader)",
+          "description": "BBC News headlines (any section) via content-script DOM extraction — no login, no API key (reads the rendered page).",
+          "iconColor": "bg-red-100 text-red-800",
+          "integrationType": "bbc-dom",
+          "allowMultiple": false,
+          "defaultLabel": "BBC",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/bbc-dom.lingphi-platform.json"
+        },
+        {
+          "id": "guardian-dom-manifest",
+          "displayName": "The Guardian (page reader)",
+          "description": "The Guardian headlines (front page or any section) via content-script DOM extraction — no login, no API key.",
+          "iconColor": "bg-blue-100 text-blue-900",
+          "integrationType": "guardian-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Guardian",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/guardian-dom.lingphi-platform.json"
+        },
+        {
+          "id": "reuters-dom-manifest",
+          "displayName": "Reuters (page reader)",
+          "description": "Reuters headlines (any section) via content-script DOM extraction — no login, no API key.",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "reuters-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Reuters",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/reuters-dom.lingphi-platform.json"
+        },
+        {
+          "id": "apnews-dom-manifest",
+          "displayName": "AP News (page reader)",
+          "description": "Associated Press headlines (any section) via content-script DOM extraction — no login, no API key.",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "apnews-dom",
+          "allowMultiple": false,
+          "defaultLabel": "AP News",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/apnews-dom.lingphi-platform.json"
+        },
+        {
+          "id": "aljazeera-dom-manifest",
+          "displayName": "Al Jazeera (page reader)",
+          "description": "Al Jazeera headlines (any section) via content-script DOM extraction — no login, no API key.",
+          "iconColor": "bg-amber-100 text-amber-800",
+          "integrationType": "aljazeera-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Al Jazeera",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/aljazeera-dom.lingphi-platform.json"
+        }
+      ]
     }
   ]
 }

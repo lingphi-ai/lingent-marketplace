@@ -1,0 +1,35 @@
+{
+  "id": "bbc-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "BBC News (page reader)",
+  "description": "VERIFIED LIVE: BBC News via content-script DOM extraction — no login, no API key. BBC renders story cards in stable [data-testid] markup, so this tool reads the headlines straight from the DOM of your open BBC tab. Navigate the tab to any BBC section (bbc.com/news, /sport, /business, a topic page) and call the tool. Tested live by Claude Code on bbc.com/news: 49 stories with headline, article url and summary extracted correctly.",
+  "iconColor": "bg-red-100 text-red-800",
+  "category": "news",
+  "hosts": [
+    "https://www.bbc.com/*",
+    "https://www.bbc.co.uk/*"
+  ],
+  "baseUrl": "https://www.bbc.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "bbc_headlines",
+      "description": "Story cards on the current BBC page (bbc.com/news, /sport, /business, or any topic/section page). Navigate the tab there first. Returns each story's headline, article url and summary. VERIFIED (49 stories).",
+      "dom": {
+        "item": "a[data-testid=\"internal-link\"]:has([data-testid=\"card-headline\"])",
+        "limit": 40,
+        "fields": {
+          "url": { "attr": "href" },
+          "headline": { "selector": "[data-testid=\"card-headline\"]" },
+          "summary": { "selector": "[data-testid=\"card-description\"]" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

@@ -1,0 +1,33 @@
+{
+  "id": "reuters-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Reuters (page reader)",
+  "description": "VERIFIED LIVE: Reuters via content-script DOM extraction — no login, no API key. Reuters tags each story link with data-testid=\"TitleLink\", so this tool reads the headlines straight from the DOM of your open Reuters tab. Navigate the tab to reuters.com or any section (/world, /business, /technology, …) and call the tool. Tested live by Claude Code on /world: 20 stories with headline and article url extracted correctly.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "news",
+  "hosts": [
+    "https://www.reuters.com/*"
+  ],
+  "baseUrl": "https://www.reuters.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "reuters_headlines",
+      "description": "Story links on the current Reuters page (reuters.com or any section/topic). Navigate the tab there first. Returns each story's headline and article url. VERIFIED (20 stories).",
+      "dom": {
+        "item": "a[data-testid=\"TitleLink\"]",
+        "limit": 40,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

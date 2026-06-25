@@ -1,0 +1,34 @@
+{
+  "id": "aljazeera-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Al Jazeera (page reader)",
+  "description": "VERIFIED LIVE: Al Jazeera via content-script DOM extraction — no login, no API key. Al Jazeera renders story cards as article.article-card with a semantic h2 headline, so this tool reads them straight from the DOM of your open Al Jazeera tab. Navigate the tab to aljazeera.com/news or any section and call the tool. Tested live by Claude Code: 10 stories with headline, article url and excerpt extracted correctly.",
+  "iconColor": "bg-amber-100 text-amber-800",
+  "category": "news",
+  "hosts": [
+    "https://www.aljazeera.com/*"
+  ],
+  "baseUrl": "https://www.aljazeera.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "aljazeera_headlines",
+      "description": "Story cards on the current Al Jazeera page (aljazeera.com/news or any section/topic). Navigate the tab there first. Returns each story's headline, article url and excerpt. VERIFIED (10 stories).",
+      "dom": {
+        "item": "article.article-card",
+        "limit": 30,
+        "fields": {
+          "headline": { "selector": "h2" },
+          "url": { "selector": "a[href]", "attr": "href" },
+          "excerpt": { "selector": ".gc__excerpt" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

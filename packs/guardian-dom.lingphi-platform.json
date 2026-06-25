@@ -1,0 +1,33 @@
+{
+  "id": "guardian-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "The Guardian (page reader)",
+  "description": "VERIFIED LIVE: The Guardian via content-script DOM extraction — no login, no API key. The Guardian tags every story link with data-link-name=\"article\", so this tool reads the headlines straight from the DOM of your open Guardian tab. Navigate the tab to the front page or any section (theguardian.com/international, /world, /technology, …) and call the tool. Tested live by Claude Code: 30 stories with headline and article url extracted correctly.",
+  "iconColor": "bg-blue-100 text-blue-900",
+  "category": "news",
+  "hosts": [
+    "https://www.theguardian.com/*"
+  ],
+  "baseUrl": "https://www.theguardian.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "guardian_headlines",
+      "description": "Story links on the current Guardian page (front page or any section/topic). Navigate the tab there first. Returns each story's headline and article url. VERIFIED (30 stories).",
+      "dom": {
+        "item": "a[data-link-name=\"article\"]",
+        "limit": 40,
+        "fields": {
+          "url": { "attr": "href" },
+          "headline": { "selector": "h3" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
