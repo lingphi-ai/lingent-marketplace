@@ -1,8 +1,8 @@
 {
   "id": "coda-manifest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Coda",
-  "description": "VERIFIED LIVE: Coda via your logged-in coda.io session (session bridge — no API token). Your identity, your docs, and a doc's tables work on the official /apis/v1 endpoints using the session cookie. Tested live by Claude Code against a logged-in account: whoami and docs both returned 200 with real data.",
+  "description": "VERIFIED LIVE: Coda via your logged-in coda.io session (session bridge — no API token). A full read surface over the official /apis/v1: your identity, docs, a doc's pages + page content, and its tables → columns → rows → a single row. Tested live by Claude Code against a logged-in account: whoami, docs, pages and tables returned 200 with real data; table/column/row endpoints are the canonical Coda API (need a doc that has tables).",
   "iconColor": "bg-red-100 text-red-700",
   "category": "knowledge",
   "hosts": [
@@ -16,31 +16,104 @@
   "tools": [
     {
       "name": "coda_whoami",
-      "description": "Your Coda identity (name, loginId, workspace). VERIFIED.",
+      "description": "Your Coda identity (name, loginId, workspace, scoped). VERIFIED.",
       "method": "GET",
       "path": "/apis/v1/whoami",
       "responseType": "json"
     },
     {
       "name": "coda_docs",
-      "description": "Your Coda docs. VERIFIED.",
+      "description": "List/search your Coda docs. VERIFIED.",
       "method": "GET",
       "path": "/apis/v1/docs",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 20 },
-        { "name": "query", "in": "query", "type": "string", "description": "Optional search text." }
+        { "name": "query", "in": "query", "type": "string", "description": "Optional search text." },
+        { "name": "isOwner", "in": "query", "type": "boolean" },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
       ]
     },
     {
-      "name": "coda_doc_tables",
-      "description": "Tables in a doc by docId (from coda_docs).",
+      "name": "coda_doc",
+      "description": "Metadata for one doc by id (name, owner, folder, workspace).",
+      "method": "GET",
+      "path": "/apis/v1/docs/{docId}",
+      "responseType": "json",
+      "params": [
+        { "name": "docId", "in": "path", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "coda_pages",
+      "description": "List the pages (sections) of a doc. VERIFIED.",
+      "method": "GET",
+      "path": "/apis/v1/docs/{docId}/pages",
+      "responseType": "json",
+      "params": [
+        { "name": "docId", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    },
+    {
+      "name": "coda_page",
+      "description": "Details of one page by id or name (title, subtitle, parent, children).",
+      "method": "GET",
+      "path": "/apis/v1/docs/{docId}/pages/{pageIdOrName}",
+      "responseType": "json",
+      "params": [
+        { "name": "docId", "in": "path", "type": "string", "required": true },
+        { "name": "pageIdOrName", "in": "path", "type": "string", "required": true }
+      ]
+    },
+    {
+      "name": "coda_tables",
+      "description": "List the tables (and views) in a doc. VERIFIED.",
       "method": "GET",
       "path": "/apis/v1/docs/{docId}/tables",
       "responseType": "json",
       "params": [
         { "name": "docId", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+        { "name": "tableTypes", "in": "query", "type": "string", "enum": ["table", "view"], "description": "Optional filter." },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    },
+    {
+      "name": "coda_columns",
+      "description": "List the columns of a table by table id/name.",
+      "method": "GET",
+      "path": "/apis/v1/docs/{docId}/tables/{tableId}/columns",
+      "responseType": "json",
+      "params": [
+        { "name": "docId", "in": "path", "type": "string", "required": true },
+        { "name": "tableId", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 50 }
+      ]
+    },
+    {
+      "name": "coda_rows",
+      "description": "List rows of a table. Set useColumnNames=true for human-readable keys; query='ColumnName:value' to filter.",
+      "method": "GET",
+      "path": "/apis/v1/docs/{docId}/tables/{tableId}/rows",
+      "responseType": "json",
+      "params": [
+        { "name": "docId", "in": "path", "type": "string", "required": true },
+        { "name": "tableId", "in": "path", "type": "string", "required": true },
+        { "name": "useColumnNames", "in": "query", "type": "boolean", "default": true },
+        { "name": "query", "in": "query", "type": "string", "description": "Filter like \"ColumnName:\\\"value\\\"\"." },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    },
+    {
+      "name": "coda_row",
+      "description": "A single row by id/name, with its cell values.",
+      "method": "GET",
+      "path": "/apis/v1/docs/{docId}/tables/{tableId}/rows/{rowId}",
+      "responseType": "json",
+      "params": [
+        { "name": "docId", "in": "path", "type": "string", "required": true },
+        { "name": "tableId", "in": "path", "type": "string", "required": true },
+        { "name": "rowId", "in": "path", "type": "string", "required": true },
+        { "name": "useColumnNames", "in": "query", "type": "boolean", "default": true }
       ]
     }
   ],
