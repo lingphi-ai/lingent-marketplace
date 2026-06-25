@@ -1,8 +1,8 @@
 {
   "id": "cloudflare-manifest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Cloudflare",
-  "description": "VERIFIED LIVE: Cloudflare via your logged-in dash.cloudflare.com session (session bridge — no API token to paste). Your account, memberships, accounts and zones (domains) work cookie-only on the same-origin dash.cloudflare.com/api/v4. Tested live by Claude Code against a logged-in account: user, memberships and zones all returned 200 with real data.",
+  "description": "VERIFIED LIVE: Cloudflare via your logged-in dash.cloudflare.com session (session bridge — no API token). A broad read surface over the same-origin /api/v4: account, memberships, zones, per-zone DNS records + settings, and per-account Workers, Pages, R2 buckets, KV namespaces and Tunnels. Tested live by Claude Code against a logged-in account — every endpoint below returned 200.",
   "iconColor": "bg-orange-100 text-orange-700",
   "category": "development",
   "hosts": [
@@ -27,23 +27,11 @@
       "method": "GET",
       "path": "/api/v4/memberships",
       "responseType": "json",
-      "params": [
-        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
-      ]
-    },
-    {
-      "name": "cloudflare_accounts",
-      "description": "Accounts you can access.",
-      "method": "GET",
-      "path": "/api/v4/accounts",
-      "responseType": "json",
-      "params": [
-        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
-      ]
+      "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
     },
     {
       "name": "cloudflare_zones",
-      "description": "Your zones (domains) with status and plan. VERIFIED.",
+      "description": "Your zones (domains). Note each zone's id + account id for the other tools. VERIFIED.",
       "method": "GET",
       "path": "/api/v4/zones",
       "responseType": "json",
@@ -51,14 +39,69 @@
         { "name": "per_page", "in": "query", "type": "number", "default": 20 },
         { "name": "name", "in": "query", "type": "string" }
       ]
+    },
+    {
+      "name": "cloudflare_dns_records",
+      "description": "DNS records for a zone (pass the zone id from cloudflare_zones). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/zones/{zoneId}/dns_records",
+      "responseType": "json",
+      "params": [
+        { "name": "zoneId", "in": "path", "type": "string", "required": true },
+        { "name": "per_page", "in": "query", "type": "number", "default": 50 },
+        { "name": "type", "in": "query", "type": "string", "description": "Optional record type filter (A, CNAME, TXT…)." }
+      ]
+    },
+    {
+      "name": "cloudflare_zone_settings",
+      "description": "All settings for a zone (SSL mode, caching, security level…). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/zones/{zoneId}/settings",
+      "responseType": "json",
+      "params": [ { "name": "zoneId", "in": "path", "type": "string", "required": true } ]
+    },
+    {
+      "name": "cloudflare_workers",
+      "description": "Worker scripts in an account (pass account id). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/accounts/{accountId}/workers/scripts",
+      "responseType": "json",
+      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+    },
+    {
+      "name": "cloudflare_pages_projects",
+      "description": "Cloudflare Pages projects in an account. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/accounts/{accountId}/pages/projects",
+      "responseType": "json",
+      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+    },
+    {
+      "name": "cloudflare_r2_buckets",
+      "description": "R2 object-storage buckets in an account. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/accounts/{accountId}/r2/buckets",
+      "responseType": "json",
+      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+    },
+    {
+      "name": "cloudflare_kv_namespaces",
+      "description": "Workers KV namespaces in an account. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/accounts/{accountId}/storage/kv/namespaces",
+      "responseType": "json",
+      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+    },
+    {
+      "name": "cloudflare_tunnels",
+      "description": "Cloudflare Tunnels (cloudflared) in an account. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/accounts/{accountId}/tunnels",
+      "responseType": "json",
+      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
     }
   ],
-  "transport": {
-    "preferred": "cs"
-  },
-  "retry": {
-    "maxAttempts": 3,
-    "respectRetryAfter": true
-  },
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
   "timeoutMs": 30000
 }
