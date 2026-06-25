@@ -813,6 +813,26 @@
           "allowMultiple": false,
           "defaultLabel": "Al Jazeera",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/aljazeera-dom.lingphi-platform.json"
+        },
+        {
+          "id": "cnn-dom-manifest",
+          "displayName": "CNN (page reader)",
+          "description": "CNN headlines (any section) via content-script DOM extraction — no login, no API key (reads the rendered page).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "cnn-dom",
+          "allowMultiple": false,
+          "defaultLabel": "CNN",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/cnn-dom.lingphi-platform.json"
+        },
+        {
+          "id": "google-news-dom-manifest",
+          "displayName": "Google News (page reader)",
+          "description": "Google News headlines (home / topic / search) via content-script DOM extraction — no login, no API key (reads the rendered page).",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "google-news-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Google News",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/google-news-dom.lingphi-platform.json"
         }
       ]
     }

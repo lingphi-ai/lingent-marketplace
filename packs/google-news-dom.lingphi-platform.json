@@ -1,0 +1,33 @@
+{
+  "id": "google-news-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Google News (page reader)",
+  "description": "VERIFIED LIVE: Google News via content-script DOM extraction — no login, no API key. Google News renders each story as an article link (href starting ./read/) whose text is the headline, so this tool reads them straight from the DOM of your open Google News tab. Navigate the tab to news.google.com (home, a topic, or a search) and let it load, then call the tool. Tested live by Claude Code on the home page: 82 stories with headline and (relative) article url extracted correctly.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "news",
+  "hosts": [
+    "https://news.google.com/*"
+  ],
+  "baseUrl": "https://news.google.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "google_news_headlines",
+      "description": "Story links on the current Google News page (home, a topic section, or search results). Navigate the tab there and let it load first. Returns each story's headline and (relative ./read/…) article url. VERIFIED (82 stories).",
+      "dom": {
+        "item": "a[href^=\"./read/\"]",
+        "limit": 50,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
