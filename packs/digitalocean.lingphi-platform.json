@@ -1,8 +1,8 @@
 {
   "id": "digitalocean-manifest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "DigitalOcean",
-  "description": "VERIFIED LIVE: DigitalOcean via your logged-in cloud.digitalocean.com session (session bridge — no API token). Your droplets, App Platform apps, and available regions work cookie-only on the same-origin dashboard API. Tested live by Claude Code against a logged-in account: droplets, apps and regions all returned 200 with real data.",
+  "description": "VERIFIED LIVE: DigitalOcean via your logged-in cloud.digitalocean.com session (session bridge — no API token). A full read surface over your infrastructure: droplets, App Platform apps, Kubernetes clusters, volumes, load balancers, domains, Spaces keys, and regions. Tested live by Claude Code against a logged-in account — every endpoint below returned 200 JSON.",
   "iconColor": "bg-blue-100 text-blue-700",
   "category": "development",
   "hosts": [
@@ -29,6 +29,41 @@
       "responseType": "json"
     },
     {
+      "name": "do_kubernetes_clusters",
+      "description": "Your DOKS (Kubernetes) clusters. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/kubernetes/clusters",
+      "responseType": "json"
+    },
+    {
+      "name": "do_volumes",
+      "description": "Your block-storage volumes. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/volumes",
+      "responseType": "json"
+    },
+    {
+      "name": "do_load_balancers",
+      "description": "Your load balancers. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/load_balancers",
+      "responseType": "json"
+    },
+    {
+      "name": "do_domains",
+      "description": "Domains managed in your DigitalOcean DNS. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/domains",
+      "responseType": "json"
+    },
+    {
+      "name": "do_spaces_keys",
+      "description": "Your Spaces (object storage) access keys. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/spaces/keys",
+      "responseType": "json"
+    },
+    {
       "name": "do_regions",
       "description": "Available DigitalOcean regions and their features. VERIFIED.",
       "method": "GET",
@@ -36,12 +71,7 @@
       "responseType": "json"
     }
   ],
-  "transport": {
-    "preferred": "cs"
-  },
-  "retry": {
-    "maxAttempts": 3,
-    "respectRetryAfter": true
-  },
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
   "timeoutMs": 30000
 }
