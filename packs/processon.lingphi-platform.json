@@ -1,0 +1,92 @@
+{
+  "id": "processon-manifest",
+  "version": "0.1.0",
+  "displayName": "ProcessOn",
+  "description": "VERIFIED LIVE: ProcessOn (flowcharts / mind maps) via your logged-in session (session bridge — no token to paste). Your profile, files/folders, charts, and notifications work via the personal API; the JWT in the 'token' cookie is forwarded as a 'token' header. Tested live by Claude Code against a logged-in session: user/info, load_files and chart list all returned code 200 with real data.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://www.processon.com/*"
+  ],
+  "baseUrl": "https://www.processon.com",
+  "auth": {
+    "type": "cookie",
+    "csrf": {
+      "source": "cookie",
+      "name": "token",
+      "headerName": "token"
+    }
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "processon_user_info",
+      "description": "Your ProcessOn account/profile and config. VERIFIED.",
+      "method": "GET",
+      "path": "/api/personal/user/info",
+      "responseType": "json"
+    },
+    {
+      "name": "processon_files",
+      "description": "Your files and folders under a folder (default root): charts + sub-folders, paged. VERIFIED.",
+      "method": "GET",
+      "path": "/api/personal/folder/load_files",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "folderId",
+          "in": "query",
+          "type": "string",
+          "default": "root"
+        },
+        {
+          "name": "sidx",
+          "in": "query",
+          "type": "string",
+          "default": "lastModify"
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": ["desc", "asc"],
+          "default": "desc"
+        },
+        {
+          "name": "pageSize",
+          "in": "query",
+          "type": "number",
+          "default": 30
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        }
+      ]
+    },
+    {
+      "name": "processon_recent_charts",
+      "description": "Your recently edited charts. VERIFIED.",
+      "method": "GET",
+      "path": "/api/personal/chart/get/edit/chart/list",
+      "responseType": "json"
+    },
+    {
+      "name": "processon_notification_count",
+      "description": "Your unread notification count. VERIFIED.",
+      "method": "GET",
+      "path": "/api/personal/notification/count",
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
