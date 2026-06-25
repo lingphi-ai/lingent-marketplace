@@ -37,6 +37,16 @@
       "responseType": "json"
     },
     {
+      "name": "weread_book_info",
+      "description": "Detailed info for a book by bookId (title, author, intro, ratings). VERIFIED.",
+      "method": "GET",
+      "path": "/web/book/info",
+      "responseType": "json",
+      "params": [
+        { "name": "bookId", "in": "query", "type": "string", "required": true }
+      ]
+    },
+    {
       "name": "weread_book_reviews",
       "description": "Top reviews / highlighted notes for a book by bookId. VERIFIED.",
       "method": "GET",

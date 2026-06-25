@@ -72,6 +72,28 @@
       ]
     },
     {
+      "name": "douban_user_following",
+      "description": "Who a user follows, by numeric user id. VERIFIED.",
+      "method": "GET",
+      "path": "/user/{userId}/following",
+      "responseType": "json",
+      "params": [
+        { "name": "userId", "in": "path", "type": "string", "required": true },
+        { "name": "count", "in": "query", "type": "number", "default": 20 },
+        { "name": "start", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "douban_movie",
+      "description": "Full detail for a movie/TV subject by id (rating, cast, genres, intro). VERIFIED.",
+      "method": "GET",
+      "path": "/movie/{subjectId}",
+      "responseType": "json",
+      "params": [
+        { "name": "subjectId", "in": "path", "type": "string", "required": true }
+      ]
+    },
+    {
       "name": "douban_search",
       "description": "Unified search across movies, books, music and more. VERIFIED.",
       "method": "GET",
