@@ -1,0 +1,68 @@
+{
+  "id": "trello-session-manifest",
+  "version": "0.1.0",
+  "displayName": "Trello (session)",
+  "description": "VERIFIED LIVE: Trello via your logged-in trello.com session (session bridge — no API key + token). Your profile, boards, organizations, and a board's lists + cards work cookie-only on the /1 REST API. Tested live by Claude Code against a logged-in account: members/me, boards and organizations all returned 200. (For server-to-server use the Trello key+token pack instead.)",
+  "iconColor": "bg-sky-100 text-sky-700",
+  "category": "project-management",
+  "hosts": [
+    "https://trello.com/*"
+  ],
+  "baseUrl": "https://trello.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "trello_me",
+      "description": "Your Trello profile (username, fullName, email). VERIFIED.",
+      "method": "GET",
+      "path": "/1/members/me",
+      "responseType": "json",
+      "params": [ { "name": "fields", "in": "query", "type": "string", "default": "username,fullName,email,url" } ]
+    },
+    {
+      "name": "trello_boards",
+      "description": "Your boards. VERIFIED.",
+      "method": "GET",
+      "path": "/1/members/me/boards",
+      "responseType": "json",
+      "params": [
+        { "name": "fields", "in": "query", "type": "string", "default": "name,url,closed,idOrganization" },
+        { "name": "limit", "in": "query", "type": "number", "default": 30 }
+      ]
+    },
+    {
+      "name": "trello_organizations",
+      "description": "Workspaces (organizations) you belong to. VERIFIED.",
+      "method": "GET",
+      "path": "/1/members/me/organizations",
+      "responseType": "json",
+      "params": [ { "name": "fields", "in": "query", "type": "string", "default": "displayName,name,url" } ]
+    },
+    {
+      "name": "trello_board_lists",
+      "description": "Lists (columns) on a board by board id.",
+      "method": "GET",
+      "path": "/1/boards/{boardId}/lists",
+      "responseType": "json",
+      "params": [ { "name": "boardId", "in": "path", "type": "string", "required": true } ]
+    },
+    {
+      "name": "trello_board_cards",
+      "description": "Cards on a board by board id.",
+      "method": "GET",
+      "path": "/1/boards/{boardId}/cards",
+      "responseType": "json",
+      "params": [
+        { "name": "boardId", "in": "path", "type": "string", "required": true },
+        { "name": "fields", "in": "query", "type": "string", "default": "name,desc,due,idList,labels,url" },
+        { "name": "limit", "in": "query", "type": "number", "default": 50 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

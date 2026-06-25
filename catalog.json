@@ -75,6 +75,16 @@
           "allowMultiple": false,
           "defaultLabel": "ServiceNow",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/servicenow.lingphi-platform.json"
+        },
+        {
+          "id": "trello-session-manifest",
+          "displayName": "Trello (session)",
+          "description": "Trello profile, boards, organizations, lists and cards via your logged-in session — no key+token (session bridge).",
+          "iconColor": "bg-sky-100 text-sky-700",
+          "integrationType": "trello-session",
+          "allowMultiple": false,
+          "defaultLabel": "Trello",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/trello-session.lingphi-platform.json"
         }
       ]
     },
