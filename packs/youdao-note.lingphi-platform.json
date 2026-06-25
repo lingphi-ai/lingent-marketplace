@@ -1,0 +1,117 @@
+{
+  "id": "youdao-note-manifest",
+  "version": "0.1.0",
+  "displayName": "有道云笔记 Youdao Note",
+  "description": "VERIFIED LIVE: Youdao Cloud Note via your logged-in session (session bridge — no token). Your account/quota, recent notes, and note metadata work cookie-only; the personal file API uses a cstk CSRF token read from the YNOTE_CSTK cookie and passed as a query param. Tested live by Claude Code against a logged-in session: user, listRecent and getById all returned real data.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://note.youdao.com/*"
+  ],
+  "baseUrl": "https://note.youdao.com",
+  "auth": {
+    "type": "cookie",
+    "csrf": {
+      "source": "cookie",
+      "name": "YNOTE_CSTK",
+      "in": "query",
+      "paramName": "cstk"
+    }
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "youdao_user",
+      "description": "Your Youdao account: role, quota (esq), version. VERIFIED.",
+      "method": "POST",
+      "path": "/yws/mapi/user",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "method",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "get",
+          "description": "Fixed — do not change."
+        }
+      ]
+    },
+    {
+      "name": "youdao_list_recent",
+      "description": "Your most recently edited notes (id, name, modifyTime). VERIFIED.",
+      "method": "POST",
+      "path": "/yws/api/personal/file",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "method",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "listRecent",
+          "description": "Fixed — do not change."
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 30
+        },
+        {
+          "name": "keyfrom",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "web",
+          "description": "Fixed — do not change."
+        }
+      ]
+    },
+    {
+      "name": "youdao_get_note",
+      "description": "Metadata for a single note by its file id (from youdao_list_recent). VERIFIED.",
+      "method": "POST",
+      "path": "/yws/api/personal/file/{fileId}",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "fileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "method",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "getById",
+          "description": "Fixed — do not change."
+        },
+        {
+          "name": "keyfrom",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "web",
+          "description": "Fixed — do not change."
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

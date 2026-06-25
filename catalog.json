@@ -169,6 +169,16 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/notion-session.lingphi-platform.json"
         },
         {
+          "id": "youdao-note-manifest",
+          "displayName": "有道云笔记 Youdao Note",
+          "description": "Youdao Cloud Note account, recent notes and note metadata via your logged-in session (session bridge).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "youdao-note",
+          "allowMultiple": false,
+          "defaultLabel": "有道云笔记",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youdao-note.lingphi-platform.json"
+        },
+        {
           "id": "tencent-docs-manifest",
           "displayName": "腾讯文档 Tencent Docs",
           "description": "Tencent Docs via session bridge.",
