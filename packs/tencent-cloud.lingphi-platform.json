@@ -1,0 +1,167 @@
+{
+  "id": "tencent-cloud-manifest",
+  "version": "0.1.0",
+  "displayName": "腾讯云 Tencent Cloud",
+  "description": "Read Tencent Cloud account, billing, region, and CVM data via the session cookie of your open Tencent Cloud console tab — no SecretId/SecretKey to paste. Requests go through the console's own gateway (console.cloud.tencent.com/cgi/capi); the CSRF token (csrfCode) and your account id (uin/ownerUin) are read from the session cookies for you. Open https://console.cloud.tencent.com and stay logged in. NOTE: the cgi/capi endpoints, cmd/serviceType values, and API Versions below were captured from live console observation and should be confirmed on first real run.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "cloud-ops",
+  "hosts": [
+    "https://console.cloud.tencent.com/*"
+  ],
+  "baseUrl": "https://console.cloud.tencent.com/cgi/capi",
+  "auth": {
+    "type": "cookie",
+    "csrf": {
+      "source": "cookie",
+      "name": "qcmainCSRFToken",
+      "in": "query",
+      "paramName": "csrfCode"
+    }
+  },
+  "transport": {
+    "preferred": "cs"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "tc_account_summary",
+      "description": "Get a summary of the current Tencent Cloud account (CAM GetAccountSummary): policy/user/group/role counts.",
+      "method": "POST",
+      "path": "",
+      "params": [
+        { "name": "cmd", "in": "query", "type": "string", "default": "GetAccountSummary" },
+        { "name": "action", "in": "query", "type": "string", "default": "delegate" },
+        { "name": "serviceType", "in": "query", "type": "string", "default": "cam" },
+        { "name": "secure", "in": "query", "type": "string", "default": "1" },
+        { "name": "version", "in": "query", "type": "string", "default": "3" },
+        { "name": "uin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        { "name": "ownerUin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "default": {
+            "serviceType": "cam",
+            "cmd": "GetAccountSummary",
+            "regionId": 1,
+            "data": { "Version": "2019-01-16" }
+          }
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tc_describe_regions",
+      "description": "List Tencent Cloud regions and availability zones (DescribeRegionsAndZones).",
+      "method": "POST",
+      "path": "",
+      "params": [
+        { "name": "cmd", "in": "query", "type": "string", "default": "DescribeRegionsAndZones" },
+        { "name": "action", "in": "query", "type": "string", "default": "delegate" },
+        { "name": "serviceType", "in": "query", "type": "string", "default": "region" },
+        { "name": "secure", "in": "query", "type": "string", "default": "1" },
+        { "name": "version", "in": "query", "type": "string", "default": "3" },
+        { "name": "uin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        { "name": "ownerUin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "default": {
+            "serviceType": "region",
+            "cmd": "DescribeRegionsAndZones",
+            "regionId": 1,
+            "data": { "Version": "2022-06-27" }
+          }
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tc_describe_products",
+      "description": "List Tencent Cloud products available in the account region (region DescribeProducts).",
+      "method": "POST",
+      "path": "",
+      "params": [
+        { "name": "cmd", "in": "query", "type": "string", "default": "DescribeProducts" },
+        { "name": "action", "in": "query", "type": "string", "default": "delegate" },
+        { "name": "serviceType", "in": "query", "type": "string", "default": "region" },
+        { "name": "secure", "in": "query", "type": "string", "default": "1" },
+        { "name": "version", "in": "query", "type": "string", "default": "3" },
+        { "name": "uin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        { "name": "ownerUin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "default": {
+            "serviceType": "region",
+            "cmd": "DescribeProducts",
+            "regionId": 1,
+            "data": { "Version": "2022-06-27" }
+          }
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tc_unpaid_orders",
+      "description": "List unpaid / pending Tencent Cloud billing orders (billing DescribeUnPayOrders).",
+      "method": "POST",
+      "path": "",
+      "params": [
+        { "name": "cmd", "in": "query", "type": "string", "default": "DescribeUnPayOrders" },
+        { "name": "action", "in": "query", "type": "string", "default": "delegate" },
+        { "name": "serviceType", "in": "query", "type": "string", "default": "billing" },
+        { "name": "secure", "in": "query", "type": "string", "default": "1" },
+        { "name": "version", "in": "query", "type": "string", "default": "3" },
+        { "name": "uin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        { "name": "ownerUin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "default": {
+            "serviceType": "billing",
+            "cmd": "DescribeUnPayOrders",
+            "regionId": 1,
+            "data": { "Version": "2018-07-09" }
+          }
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tc_cvm_instances",
+      "description": "List CVM (Cloud Virtual Machine) instances (cvm DescribeInstances). Pass an optional body with data.Limit / data.Offset to page; defaults to Limit 20.",
+      "method": "POST",
+      "path": "",
+      "params": [
+        { "name": "cmd", "in": "query", "type": "string", "default": "DescribeInstances" },
+        { "name": "action", "in": "query", "type": "string", "default": "delegate" },
+        { "name": "serviceType", "in": "query", "type": "string", "default": "cvm" },
+        { "name": "secure", "in": "query", "type": "string", "default": "1" },
+        { "name": "version", "in": "query", "type": "string", "default": "3" },
+        { "name": "uin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        { "name": "ownerUin", "in": "query", "from": "cookie", "cookieName": "uin", "transform": "digits", "required": true },
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "default": {
+            "serviceType": "cvm",
+            "cmd": "DescribeInstances",
+            "regionId": 1,
+            "data": { "Version": "2017-03-12", "Limit": 20 }
+          }
+        }
+      ],
+      "responseType": "json"
+    }
+  ],
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

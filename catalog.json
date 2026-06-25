@@ -113,6 +113,16 @@
           "allowMultiple": false,
           "defaultLabel": "Azure",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/azure.lingphi-platform.json"
+        },
+        {
+          "id": "tencent-cloud-manifest",
+          "displayName": "腾讯云 Tencent Cloud",
+          "description": "Read account, billing, region, and CVM data via the session cookie of your open Tencent Cloud console tab — no SecretId/SecretKey to paste. Endpoints are from live console observation; confirm on first run.",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "tencent-cloud",
+          "allowMultiple": false,
+          "defaultLabel": "Tencent Cloud",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/tencent-cloud.lingphi-platform.json"
         }
       ]
     }
