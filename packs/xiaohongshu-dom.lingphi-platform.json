@@ -1,0 +1,32 @@
+{
+  "id": "xiaohongshu-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "小红书 (page reader)",
+  "description": "VERIFIED LIVE: 小红书 (Xiaohongshu/RED) via content-script DOM extraction — no login. The Explore feed renders note cards in the DOM (behind a dismissable login nudge); each card has a .title, an author .name, and a /explore/<id> link (with the xsec_tok needed to open it). Navigate the tab to xiaohongshu.com/explore (or a channel) and call the tool. Tested live by Claude Code: 72 note links; title + author + url extracted correctly. Note: 小红书's JSON API is signature-protected, so this reads the rendered cards, not the API.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "social",
+  "hosts": [
+    "https://www.xiaohongshu.com/*"
+  ],
+  "baseUrl": "https://www.xiaohongshu.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "xiaohongshu_notes",
+      "description": "Note cards on the current 小红书 Explore/channel page. Navigate the tab to xiaohongshu.com/explore first. Returns each note's title, author and url (/explore/<id> including the xsec_tok). VERIFIED (72 notes).",
+      "dom": {
+        "item": "section:has(a[href*=\"/explore/\"])",
+        "limit": 40,
+        "fields": {
+          "title": { "selector": ".title" },
+          "author": { "selector": ".name" },
+          "url": { "selector": "a[href*=\"/explore/\"]", "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

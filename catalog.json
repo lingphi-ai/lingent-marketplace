@@ -857,6 +857,16 @@
           "allowMultiple": false,
           "defaultLabel": "虎扑",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/hupu-dom.lingphi-platform.json"
+        },
+        {
+          "id": "xiaohongshu-dom-manifest",
+          "displayName": "小红书 (page reader)",
+          "description": "小红书 Explore note cards (title/author/link) via content-script DOM extraction — no login (reads the rendered cards; the API is signature-protected).",
+          "iconColor": "bg-red-100 text-red-700",
+          "integrationType": "xiaohongshu-dom",
+          "allowMultiple": false,
+          "defaultLabel": "小红书",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/xiaohongshu-dom.lingphi-platform.json"
         }
       ]
     },
