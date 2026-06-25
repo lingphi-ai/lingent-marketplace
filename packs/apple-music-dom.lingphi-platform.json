@@ -1,0 +1,34 @@
+{
+  "id": "apple-music-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Apple Music (page reader)",
+  "description": "VERIFIED LIVE: Apple Music via content-script DOM extraction (Apple's MusicKit API needs a developer token). The Apple Music web player renders album and playlist tracklists in stable songs-list-row markup — public album/playlist pages need no login — so this tool reads the tracklist straight from the DOM of your open Apple Music tab. Navigate the tab to an album or playlist (music.apple.com/…/album/… or /playlist/…) and let it load, then call the tool. Tested live by Claude Code on a public album: tracks with title and duration extracted correctly.",
+  "iconColor": "bg-rose-100 text-rose-700",
+  "category": "social",
+  "hosts": [
+    "https://music.apple.com/*"
+  ],
+  "baseUrl": "https://music.apple.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "apple_music_tracklist",
+      "description": "Tracks on the current Apple Music ALBUM or PLAYLIST page (navigate the tab to music.apple.com/<region>/album/… or /playlist/… first; scroll to load more). Returns each track's title, duration and (when shown per-row) artist. VERIFIED.",
+      "dom": {
+        "item": ".songs-list-row",
+        "limit": 100,
+        "fields": {
+          "title": { "selector": ".songs-list-row__song-name" },
+          "duration": { "selector": ".songs-list-row__length" },
+          "artist": { "selector": ".songs-list-row__by-line" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

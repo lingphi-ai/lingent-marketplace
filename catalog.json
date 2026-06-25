@@ -727,6 +727,26 @@
           "allowMultiple": false,
           "defaultLabel": "Twitch",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/twitch-dom.lingphi-platform.json"
+        },
+        {
+          "id": "spotify-dom-manifest",
+          "displayName": "Spotify (page reader)",
+          "description": "Spotify playlist/album tracklists via content-script DOM extraction — no OAuth app (reads the web player's rendered page; public playlists/albums need no login).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "spotify-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Spotify",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/spotify-dom.lingphi-platform.json"
+        },
+        {
+          "id": "apple-music-dom-manifest",
+          "displayName": "Apple Music (page reader)",
+          "description": "Apple Music album/playlist tracklists via content-script DOM extraction — no developer token (reads the web player's rendered page; public pages need no login).",
+          "iconColor": "bg-rose-100 text-rose-700",
+          "integrationType": "apple-music-dom",
+          "allowMultiple": false,
+          "defaultLabel": "Apple Music",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/apple-music-dom.lingphi-platform.json"
         }
       ]
     }

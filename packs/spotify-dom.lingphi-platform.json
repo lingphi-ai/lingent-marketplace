@@ -1,0 +1,35 @@
+{
+  "id": "spotify-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "Spotify (page reader)",
+  "description": "VERIFIED LIVE: Spotify via content-script DOM extraction (Spotify's Web API needs an OAuth app). The Spotify web player renders playlist and album tracklists in stable [data-testid] markup — public playlists/albums need no login; your own library uses the same markup when logged in — so this tool reads the tracklist straight from the DOM of your open Spotify tab. Navigate the tab to a playlist or album (open.spotify.com/playlist/… or /album/…) and let it load, then call the tool. Tested live by Claude Code on a public playlist: 26 tracks with title, track url, artist and album extracted correctly.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "social",
+  "hosts": [
+    "https://open.spotify.com/*"
+  ],
+  "baseUrl": "https://open.spotify.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "spotify_tracklist",
+      "description": "Tracks on the current Spotify PLAYLIST or ALBUM page (navigate the tab to open.spotify.com/playlist/<id> or /album/<id> first; scroll to load more — the list virtualizes). Returns each track's title, track url, primary artist and album. VERIFIED (26 tracks).",
+      "dom": {
+        "item": "[data-testid=\"tracklist-row\"]",
+        "limit": 50,
+        "fields": {
+          "track": { "selector": "[data-testid=\"internal-track-link\"]" },
+          "trackUrl": { "selector": "a[href^=\"/track/\"]", "attr": "href" },
+          "artist": { "selector": "a[href^=\"/artist/\"]" },
+          "album": { "selector": "a[href^=\"/album/\"]" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
