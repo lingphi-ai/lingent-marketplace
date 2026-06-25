@@ -69,6 +69,28 @@
       "method": "GET",
       "path": "/api/mine/group_quick_links",
       "responseType": "json"
+    },
+    {
+      "name": "yuque_book_stacks",
+      "description": "Your knowledge-base stacks (grouped books). VERIFIED.",
+      "method": "GET",
+      "path": "/api/mine/book_stacks",
+      "responseType": "json"
+    },
+    {
+      "name": "yuque_personal_books",
+      "description": "Your personal knowledge bases (repos). VERIFIED.",
+      "method": "GET",
+      "path": "/api/mine/personal_books",
+      "responseType": "json",
+      "params": [ { "name": "limit", "in": "query", "type": "number", "default": 30 } ]
+    },
+    {
+      "name": "yuque_groups",
+      "description": "Teams/groups you belong to. VERIFIED.",
+      "method": "GET",
+      "path": "/api/mine/groups",
+      "responseType": "json"
     }
   ],
   "transport": {
