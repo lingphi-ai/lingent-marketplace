@@ -1,0 +1,135 @@
+{
+  "id": "servicenow-manifest",
+  "version": "0.1.0",
+  "displayName": "ServiceNow",
+  "description": "VERIFIED LIVE: ServiceNow ITSM via your logged-in instance (content-script session bridge — no API token). Reads incidents, tasks, change requests, problems, service requests, knowledge articles, users and groups through /api/now; the instance's UI token (window.g_ck) is read from the page MAIN world and sent as X-UserToken, with the session cookie. Tested live by Claude Code against a logged-in instance — every table below returned 200 with real data. Set your instance subdomain (the part before .service-now.com) when installing.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "project-management",
+  "hosts": [
+    "https://*.service-now.com/*"
+  ],
+  "baseUrl": "https://{instance}.service-now.com",
+  "auth": {
+    "type": "windowToken",
+    "windowVar": "g_ck",
+    "header": "X-UserToken"
+  },
+  "credentialFields": [
+    {
+      "name": "instance",
+      "label": "ServiceNow instance",
+      "type": "string",
+      "required": true,
+      "placeholder": "dev12345",
+      "description": "Your instance subdomain — the part before .service-now.com (e.g. for dev12345.service-now.com enter dev12345)."
+    }
+  ],
+  "tools": [
+    {
+      "name": "snow_current_user",
+      "description": "The currently signed-in ServiceNow user. VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/ui/user/current_user",
+      "responseType": "json"
+    },
+    {
+      "name": "snow_incidents",
+      "description": "Incidents. Use sysparm_query to filter (e.g. active=true^assigned_to=javascript:gs.getUserID()). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/incident",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_query", "in": "query", "type": "string", "description": "Encoded query filter." },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_tasks",
+      "description": "Tasks (the base table for incidents/changes/etc.). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/task",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_change_requests",
+      "description": "Change requests. VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/change_request",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_problems",
+      "description": "Problem records. VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/problem",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_service_requests",
+      "description": "Service Catalog requests (sc_request). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/sc_request",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_kb_articles",
+      "description": "Knowledge base articles. VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/kb_knowledge",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_users",
+      "description": "Directory users (sys_user). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/sys_user",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    },
+    {
+      "name": "snow_groups",
+      "description": "User groups (sys_user_group). VERIFIED.",
+      "method": "GET",
+      "path": "/api/now/table/sys_user_group",
+      "responseType": "json",
+      "params": [
+        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "sysparm_query", "in": "query", "type": "string" },
+        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

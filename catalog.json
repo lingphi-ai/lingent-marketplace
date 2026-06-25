@@ -65,6 +65,16 @@
           "allowMultiple": false,
           "defaultLabel": "ClickUp",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/clickup.lingphi-platform.json"
+        },
+        {
+          "id": "servicenow-manifest",
+          "displayName": "ServiceNow",
+          "description": "ServiceNow ITSM — incidents, tasks, changes, problems, KB, users — via your logged-in instance (content-script session bridge, window.g_ck → X-UserToken). Set your instance subdomain on install.",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "servicenow",
+          "allowMultiple": false,
+          "defaultLabel": "ServiceNow",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/servicenow.lingphi-platform.json"
         }
       ]
     },
