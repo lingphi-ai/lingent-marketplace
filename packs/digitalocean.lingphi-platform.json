@@ -1,0 +1,47 @@
+{
+  "id": "digitalocean-manifest",
+  "version": "0.1.0",
+  "displayName": "DigitalOcean",
+  "description": "VERIFIED LIVE: DigitalOcean via your logged-in cloud.digitalocean.com session (session bridge — no API token). Your droplets, App Platform apps, and available regions work cookie-only on the same-origin dashboard API. Tested live by Claude Code against a logged-in account: droplets, apps and regions all returned 200 with real data.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "development",
+  "hosts": [
+    "https://cloud.digitalocean.com/*"
+  ],
+  "baseUrl": "https://cloud.digitalocean.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "do_droplets",
+      "description": "Your droplets (VMs) with status, region and size. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/droplets",
+      "responseType": "json"
+    },
+    {
+      "name": "do_apps",
+      "description": "Your App Platform apps. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/apps",
+      "responseType": "json"
+    },
+    {
+      "name": "do_regions",
+      "description": "Available DigitalOcean regions and their features. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/regions",
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

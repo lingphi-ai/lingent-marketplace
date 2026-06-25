@@ -181,6 +181,16 @@
           "allowMultiple": false,
           "defaultLabel": "Docker Hub",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/dockerhub.lingphi-platform.json"
+        },
+        {
+          "id": "digitalocean-manifest",
+          "displayName": "DigitalOcean",
+          "description": "DigitalOcean droplets, App Platform apps and regions via your logged-in dashboard session (session bridge).",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "digitalocean",
+          "allowMultiple": false,
+          "defaultLabel": "DigitalOcean",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/digitalocean.lingphi-platform.json"
         }
       ]
     },
