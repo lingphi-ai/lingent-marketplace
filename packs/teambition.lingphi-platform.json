@@ -1,0 +1,124 @@
+{
+  "id": "teambition-manifest",
+  "version": "0.1.0",
+  "displayName": "Teambition",
+  "description": "Teambition (阿里, team collaboration) via your logged-in session (session bridge — no token). Auto-discovered + VERIFIED LIVE by Claude Code: clean REST /api/* with cookie auth (GET reads, no CSRF). users/me + organizations returned real data.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "project-management",
+  "hosts": [
+    "https://www.teambition.com/*"
+  ],
+  "baseUrl": "https://www.teambition.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "tb_me",
+      "description": "Your Teambition account. VERIFIED.",
+      "method": "GET",
+      "path": "/api/users/me",
+      "responseType": "json"
+    },
+    {
+      "name": "tb_organizations",
+      "description": "Your organizations (id + name). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v2/organizations",
+      "responseType": "json"
+    },
+    {
+      "name": "tb_my_projects",
+      "description": "Projects you've joined in an organization.",
+      "method": "GET",
+      "path": "/api/v3/projects",
+      "params": [
+        {
+          "name": "_organizationId",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Organization id (from tb_organizations)."
+        },
+        {
+          "name": "selectBy",
+          "in": "query",
+          "type": "string",
+          "default": "joined",
+          "description": "joined | starred."
+        },
+        {
+          "name": "orderBy",
+          "in": "query",
+          "type": "string",
+          "default": "updated"
+        },
+        {
+          "name": "pageSize",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tb_search",
+      "description": "Search across an organization (tasks/projects/work/event/post).",
+      "method": "GET",
+      "path": "/api/v3/search",
+      "params": [
+        {
+          "name": "_organizationId",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Organization id (from tb_organizations)."
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Keywords."
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "default": "task",
+          "description": "task | project | work | event | post."
+        },
+        {
+          "name": "spaceType",
+          "in": "query",
+          "type": "string",
+          "default": "organization"
+        },
+        {
+          "name": "pageSize",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ],
+      "responseType": "json"
+    },
+    {
+      "name": "tb_overdue_count",
+      "description": "Count of your overdue tasks.",
+      "method": "GET",
+      "path": "/my/api/tasks/countDelay",
+      "responseType": "json"
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}

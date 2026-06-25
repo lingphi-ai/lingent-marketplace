@@ -25,6 +25,16 @@
           "allowMultiple": false,
           "defaultLabel": "Linear",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/linear.lingphi-platform.json"
+        },
+        {
+          "id": "teambition-manifest",
+          "displayName": "Teambition",
+          "description": "Teambition collaboration (session bridge).",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "teambition",
+          "allowMultiple": false,
+          "defaultLabel": "Teambition",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/teambition.lingphi-platform.json"
         }
       ]
     },
