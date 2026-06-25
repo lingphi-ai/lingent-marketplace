@@ -1,0 +1,45 @@
+{
+  "id": "soundcloud-manifest",
+  "version": "0.1.0",
+  "displayName": "SoundCloud",
+  "description": "VERIFIED LIVE: SoundCloud via your logged-in session (session bridge — no token to paste). Your profile and your library work on api-v2.soundcloud.com; the oauth_token cookie is forwarded as an 'Authorization: OAuth <token>' header by the content-script bridge. Tested live by Claude Code against a logged-in account: /me and /me/library/all both returned 200 with real data.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "social",
+  "hosts": [
+    "https://soundcloud.com/*",
+    "https://api-v2.soundcloud.com/*"
+  ],
+  "baseUrl": "https://api-v2.soundcloud.com",
+  "auth": {
+    "type": "cookie",
+    "csrf": {
+      "source": "cookie",
+      "name": "oauth_token",
+      "headerName": "Authorization",
+      "prefix": "OAuth "
+    }
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "soundcloud_me",
+      "description": "Your SoundCloud profile (username, followers, track count). VERIFIED.",
+      "method": "GET",
+      "path": "/me",
+      "responseType": "json"
+    },
+    {
+      "name": "soundcloud_library",
+      "description": "Your library: liked tracks, playlists and reposts. VERIFIED.",
+      "method": "GET",
+      "path": "/me/library/all",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

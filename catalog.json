@@ -587,6 +587,16 @@
           "allowMultiple": false,
           "defaultLabel": "Substack",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/substack.lingphi-platform.json"
+        },
+        {
+          "id": "soundcloud-manifest",
+          "displayName": "SoundCloud",
+          "description": "SoundCloud profile and library via your logged-in session — no token (session bridge, oauth_token cookie→Authorization header).",
+          "iconColor": "bg-orange-100 text-orange-700",
+          "integrationType": "soundcloud",
+          "allowMultiple": false,
+          "defaultLabel": "SoundCloud",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/soundcloud.lingphi-platform.json"
         }
       ]
     }
