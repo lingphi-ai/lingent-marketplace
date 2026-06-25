@@ -1,0 +1,32 @@
+{
+  "id": "csdn-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "CSDN (page reader)",
+  "description": "VERIFIED LIVE: CSDN via content-script DOM extraction — no login, no API key. Article links use the /article/details/ path with the title as link text. Navigate the tab to csdn.net (home, a feed, or a search) and call the tool. Tested live by Claude Code: 41 articles with title and url extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "development",
+  "hosts": [
+    "https://www.csdn.net/*",
+    "https://blog.csdn.net/*"
+  ],
+  "baseUrl": "https://www.csdn.net",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "csdn_articles",
+      "description": "Article links on the current CSDN page (home, a feed, or search). Navigate the tab there first. Returns each article's title and url (blog.csdn.net/.../article/details/<id>). VERIFIED (41 articles).",
+      "dom": {
+        "item": "a[href*=\"/article/details/\"]",
+        "limit": 40,
+        "fields": {
+          "title": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

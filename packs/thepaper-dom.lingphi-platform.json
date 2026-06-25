@@ -1,0 +1,31 @@
+{
+  "id": "thepaper-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "澎湃新闻 (page reader)",
+  "description": "VERIFIED LIVE: 澎湃新闻 (ThePaper) via content-script DOM extraction — no login, no API key. Article links carry the headline text, so this tool reads them straight from the DOM of your open ThePaper tab. Navigate the tab to thepaper.cn (home or any channel) and call the tool. Tested live by Claude Code: 38 article links with headline and url extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "news",
+  "hosts": [
+    "https://www.thepaper.cn/*"
+  ],
+  "baseUrl": "https://www.thepaper.cn",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "thepaper_headlines",
+      "description": "Article headlines on the current 澎湃新闻 page (home or a channel). Navigate the tab there first. Returns each story's headline and article url (/newsDetail_forward_<id>). VERIFIED (38 articles).",
+      "dom": {
+        "item": "a[href*=\"newsDetail_forward_\"]",
+        "limit": 40,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

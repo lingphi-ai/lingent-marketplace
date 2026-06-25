@@ -1,0 +1,34 @@
+{
+  "id": "people-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "人民网 (page reader)",
+  "description": "VERIFIED LIVE: 人民网 (People's Daily Online) via content-script DOM extraction — no login, no API key. Article links use the /n1/ path with the headline as link text. Navigate the tab to people.com.cn (home or a channel like politics./finance.) and call the tool. Tested live by Claude Code: 149 article links — headline + url extracted correctly.",
+  "iconColor": "bg-red-100 text-red-700",
+  "category": "news",
+  "hosts": [
+    "http://*.people.com.cn/*",
+    "https://*.people.com.cn/*",
+    "http://www.people.com.cn/*",
+    "https://www.people.com.cn/*"
+  ],
+  "baseUrl": "http://www.people.com.cn",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "people_headlines",
+      "description": "Article links on the current 人民网 page (home or any channel). Navigate the tab there first. Returns each story's headline and full article url (the /n1/…html links). VERIFIED (149 articles).",
+      "dom": {
+        "item": "a[href*=\"/n1/\"]",
+        "limit": 40,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

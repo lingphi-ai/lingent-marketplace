@@ -1,0 +1,32 @@
+{
+  "id": "36kr-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "36氪 (page reader)",
+  "description": "VERIFIED LIVE: 36氪 (36Kr) via content-script DOM extraction — no login, no API key. Article links (/p/<id>) carry the headline text. Navigate the tab to 36kr.com (home or a channel) and call the tool. Tested live by Claude Code: 53 articles with headline and url extracted correctly.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "news",
+  "hosts": [
+    "https://36kr.com/*",
+    "https://www.36kr.com/*"
+  ],
+  "baseUrl": "https://36kr.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "kr36_articles",
+      "description": "Article links on the current 36氪 page (home or a channel). Navigate the tab there first. Returns each article's headline and url (/p/<id>). VERIFIED (53 articles).",
+      "dom": {
+        "item": "a[href*=\"/p/\"]",
+        "limit": 50,
+        "fields": {
+          "headline": {},
+          "url": { "attr": "href" }
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
