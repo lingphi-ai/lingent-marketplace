@@ -149,6 +149,16 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/notion.lingphi-platform.json"
         },
         {
+          "id": "notion-session-manifest",
+          "displayName": "Notion (session)",
+          "description": "Notion workspaces, user content, and search via your logged-in session — no integration token (session bridge).",
+          "iconColor": "bg-gray-100 text-gray-800",
+          "integrationType": "notion-session",
+          "allowMultiple": false,
+          "defaultLabel": "Notion",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/notion-session.lingphi-platform.json"
+        },
+        {
           "id": "tencent-docs-manifest",
           "displayName": "腾讯文档 Tencent Docs",
           "description": "Tencent Docs via session bridge.",

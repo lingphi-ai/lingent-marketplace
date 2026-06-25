@@ -1,0 +1,112 @@
+{
+  "id": "notion-session-manifest",
+  "version": "0.1.0",
+  "displayName": "Notion (session)",
+  "description": "VERIFIED LIVE: Notion via your logged-in www.notion.so session (session bridge — no integration token). Lists your workspaces, loads your user content (spaces + top-level pages), and full-text search work cookie-only on the internal v3 API. Tested live by Claude Code: getSpaces, loadUserContent and search all returned 200 with real data. (For server-to-server use the official Notion API token pack instead.)",
+  "iconColor": "bg-gray-100 text-gray-800",
+  "category": "knowledge",
+  "hosts": [
+    "https://www.notion.so/*"
+  ],
+  "baseUrl": "https://www.notion.so",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "notion_get_spaces",
+      "description": "List the workspaces you belong to (ids, names, members). Call this first to obtain a spaceId for search. VERIFIED.",
+      "method": "POST",
+      "path": "/api/v3/getSpaces",
+      "responseType": "json"
+    },
+    {
+      "name": "notion_user_content",
+      "description": "Load your user content: your profile, your spaces, and their top-level pages. VERIFIED.",
+      "method": "POST",
+      "path": "/api/v3/loadUserContent",
+      "responseType": "json"
+    },
+    {
+      "name": "notion_search",
+      "description": "Full-text search pages within a workspace. Pass a spaceId from notion_get_spaces. VERIFIED.",
+      "method": "POST",
+      "path": "/api/v3/search",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "query",
+          "in": "body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "spaceId",
+          "in": "body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "type",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "BlocksInSpace",
+          "description": "Fixed — do not change."
+        },
+        {
+          "name": "limit",
+          "in": "body",
+          "type": "number",
+          "required": false,
+          "default": 20
+        },
+        {
+          "name": "filters",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "default": {
+            "isDeletedOnly": false,
+            "excludeTemplates": false,
+            "isNavigableOnly": false,
+            "requireEditPermissions": false,
+            "ancestors": [],
+            "createdBy": [],
+            "editedBy": [],
+            "lastEditedTime": {},
+            "createdTime": {}
+          },
+          "description": "Fixed default filter set — do not change."
+        },
+        {
+          "name": "sort",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "default": {
+            "field": "relevance"
+          },
+          "description": "Fixed — do not change."
+        },
+        {
+          "name": "source",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "default": "quick_find_input_change",
+          "description": "Fixed — do not change."
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
