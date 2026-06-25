@@ -29,7 +29,9 @@
       "responseType": "json",
       "params": [
         { "name": "membership", "in": "query", "type": "boolean", "default": true },
+        { "name": "starred", "in": "query", "type": "boolean" },
         { "name": "search", "in": "query", "type": "string" },
+        { "name": "order_by", "in": "query", "type": "string", "enum": ["created_at", "last_activity_at", "name"], "default": "last_activity_at" },
         { "name": "per_page", "in": "query", "type": "number", "default": 20 }
       ]
     },
@@ -72,6 +74,37 @@
       "path": "/api/v4/groups",
       "responseType": "json",
       "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
+    },
+    {
+      "name": "gitlab_events",
+      "description": "Your recent activity events (pushes, comments, MRs, issues). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/events",
+      "responseType": "json",
+      "params": [
+        { "name": "action", "in": "query", "type": "string", "description": "Filter by action, e.g. pushed, commented." },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ]
+    },
+    {
+      "name": "gitlab_snippets",
+      "description": "Your snippets. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/snippets",
+      "responseType": "json",
+      "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
+    },
+    {
+      "name": "gitlab_users_search",
+      "description": "Search users by username or name. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v4/users",
+      "responseType": "json",
+      "params": [
+        { "name": "username", "in": "query", "type": "string" },
+        { "name": "search", "in": "query", "type": "string" },
+        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+      ]
     }
   ],
   "transport": { "preferred": "cs" },
