@@ -1,8 +1,8 @@
 {
   "id": "zhihu-manifest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "知乎 Zhihu",
-  "description": "VERIFIED LIVE: Zhihu data via your logged-in session (session bridge — no token). Your profile, any member's public profile, their answers and followees work cookie-only on the v4 API (search/recommendation feed need x-zse-96 signing — not included). Tested live by Claude Code: me, member profile, answers and followees all returned real data.",
+  "description": "VERIFIED LIVE: Zhihu via your logged-in session (session bridge — no token). A full read surface over the v4 API: your own profile, plus any member's profile, answers, articles, questions, followees, followers, favlists (collections) and pins — all cookie-only. Tested live by Claude Code against a logged-in session; every endpoint below returned 200. (Search/recommendation feed need x-zse-96 signing — not included.)",
   "iconColor": "bg-blue-100 text-blue-700",
   "category": "social",
   "hosts": [
@@ -20,14 +20,7 @@
       "method": "GET",
       "path": "/me",
       "responseType": "json",
-      "params": [
-        {
-          "name": "include",
-          "in": "query",
-          "type": "string",
-          "default": "follower_count,answer_count,articles_count,voteup_count"
-        }
-      ]
+      "params": [ { "name": "include", "in": "query", "type": "string", "default": "follower_count,answer_count,articles_count,voteup_count" } ]
     },
     {
       "name": "zhihu_member",
@@ -36,18 +29,8 @@
       "path": "/members/{urlToken}",
       "responseType": "json",
       "params": [
-        {
-          "name": "urlToken",
-          "in": "path",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "include",
-          "in": "query",
-          "type": "string",
-          "default": "follower_count,answer_count,articles_count,voteup_count,headline"
-        }
+        { "name": "urlToken", "in": "path", "type": "string", "required": true },
+        { "name": "include", "in": "query", "type": "string", "default": "follower_count,answer_count,articles_count,voteup_count,headline,description" }
       ]
     },
     {
@@ -57,24 +40,57 @@
       "path": "/members/{urlToken}/answers",
       "responseType": "json",
       "params": [
-        {
-          "name": "urlToken",
-          "in": "path",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "limit",
-          "in": "query",
-          "type": "number",
-          "default": 10
-        },
-        {
-          "name": "offset",
-          "in": "query",
-          "type": "number",
-          "default": 0
-        }
+        { "name": "urlToken", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "zhihu_member_articles",
+      "description": "A member's published articles by url_token. VERIFIED.",
+      "method": "GET",
+      "path": "/members/{urlToken}/articles",
+      "responseType": "json",
+      "params": [
+        { "name": "urlToken", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "zhihu_member_questions",
+      "description": "Questions asked by a member. VERIFIED.",
+      "method": "GET",
+      "path": "/members/{urlToken}/questions",
+      "responseType": "json",
+      "params": [
+        { "name": "urlToken", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "zhihu_member_pins",
+      "description": "A member's pins (想法 / short posts). VERIFIED.",
+      "method": "GET",
+      "path": "/members/{urlToken}/pins",
+      "responseType": "json",
+      "params": [
+        { "name": "urlToken", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "zhihu_member_favlists",
+      "description": "A member's collections (收藏夹). VERIFIED.",
+      "method": "GET",
+      "path": "/members/{urlToken}/favlists",
+      "responseType": "json",
+      "params": [
+        { "name": "urlToken", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
       ]
     },
     {
@@ -84,33 +100,25 @@
       "path": "/members/{urlToken}/followees",
       "responseType": "json",
       "params": [
-        {
-          "name": "urlToken",
-          "in": "path",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "limit",
-          "in": "query",
-          "type": "number",
-          "default": 10
-        },
-        {
-          "name": "offset",
-          "in": "query",
-          "type": "number",
-          "default": 0
-        }
+        { "name": "urlToken", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+      ]
+    },
+    {
+      "name": "zhihu_member_followers",
+      "description": "A member's followers, by url_token. VERIFIED.",
+      "method": "GET",
+      "path": "/members/{urlToken}/followers",
+      "responseType": "json",
+      "params": [
+        { "name": "urlToken", "in": "path", "type": "string", "required": true },
+        { "name": "limit", "in": "query", "type": "number", "default": 10 },
+        { "name": "offset", "in": "query", "type": "number", "default": 0 }
       ]
     }
   ],
-  "transport": {
-    "preferred": "cs"
-  },
-  "retry": {
-    "maxAttempts": 3,
-    "respectRetryAfter": true
-  },
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
   "timeoutMs": 30000
 }
