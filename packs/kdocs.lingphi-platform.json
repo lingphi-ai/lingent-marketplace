@@ -1,0 +1,64 @@
+{
+  "id": "kdocs-manifest",
+  "version": "0.1.0",
+  "displayName": "金山文档 Kdocs",
+  "description": "VERIFIED LIVE: Kingsoft Docs (金山文档) via your logged-in session (session bridge — no token). Your profile and your recent/roaming files work cookie-only on the drive.kdocs.cn API. Tested live by Claude Code against a logged-in session: userinfo and roaming(recent) both returned real data.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://drive.kdocs.cn/*",
+    "https://www.kdocs.cn/*",
+    "https://account.kdocs.cn/*"
+  ],
+  "baseUrl": "https://drive.kdocs.cn",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "kdocs_userinfo",
+      "description": "Your Kdocs account profile (id, name, avatar, vip). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v3/userinfo",
+      "responseType": "json"
+    },
+    {
+      "name": "kdocs_recent_files",
+      "description": "Your recently opened / roaming files (name, fileid, modify time). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v5/roaming",
+      "responseType": "json",
+      "params": [
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "recent",
+          "description": "Fixed — do not change."
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ]
+    }
+  ],
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000
+}
