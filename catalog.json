@@ -279,6 +279,36 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/coursera.lingphi-platform.json"
         },
         {
+          "id": "duolingo-manifest",
+          "displayName": "Duolingo",
+          "description": "Duolingo user profile, streak, XP and course progress via your logged-in session (session bridge).",
+          "iconColor": "bg-green-100 text-green-700",
+          "integrationType": "duolingo",
+          "allowMultiple": false,
+          "defaultLabel": "Duolingo",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/duolingo.lingphi-platform.json"
+        },
+        {
+          "id": "miro-manifest",
+          "displayName": "Miro",
+          "description": "Miro account and boards via your logged-in session (session bridge).",
+          "iconColor": "bg-yellow-100 text-yellow-700",
+          "integrationType": "miro",
+          "allowMultiple": false,
+          "defaultLabel": "Miro",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/miro.lingphi-platform.json"
+        },
+        {
+          "id": "quizlet-manifest",
+          "displayName": "Quizlet",
+          "description": "Quizlet activity feed — study sessions and sets — via your logged-in session (session bridge).",
+          "iconColor": "bg-indigo-100 text-indigo-700",
+          "integrationType": "quizlet",
+          "allowMultiple": false,
+          "defaultLabel": "Quizlet",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/quizlet.lingphi-platform.json"
+        },
+        {
           "id": "processon-manifest",
           "displayName": "ProcessOn",
           "description": "ProcessOn profile, files/folders, charts and notifications via your logged-in session (session bridge).",

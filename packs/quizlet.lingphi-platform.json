@@ -1,0 +1,28 @@
+{
+  "id": "quizlet-manifest",
+  "version": "0.1.0",
+  "displayName": "Quizlet",
+  "description": "VERIFIED LIVE: Quizlet via your logged-in quizlet.com session (session bridge — no token). Your activity feed — recent study sessions and sets — works cookie-only on the same-origin webapi. Tested live by Claude Code against a logged-in account: webapi/3.4/feed returned 200 with real data.",
+  "iconColor": "bg-indigo-100 text-indigo-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://quizlet.com/*"
+  ],
+  "baseUrl": "https://quizlet.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "quizlet_feed",
+      "description": "Your Quizlet activity feed — recent study sessions and the sets behind them. VERIFIED.",
+      "method": "GET",
+      "path": "/webapi/3.4/feed",
+      "responseType": "json"
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

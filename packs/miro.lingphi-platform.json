@@ -1,0 +1,38 @@
+{
+  "id": "miro-manifest",
+  "version": "0.1.0",
+  "displayName": "Miro",
+  "description": "VERIFIED LIVE: Miro via your logged-in miro.com session (session bridge — no token). Your account and your boards work cookie-only on the same-origin v1 API. Tested live by Claude Code against a logged-in account: users/me and boards both returned 200 with real data.",
+  "iconColor": "bg-yellow-100 text-yellow-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://miro.com/*"
+  ],
+  "baseUrl": "https://miro.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "miro_me",
+      "description": "Your Miro account and a summary of your boards. VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/users/me",
+      "responseType": "json"
+    },
+    {
+      "name": "miro_boards",
+      "description": "Your Miro boards (id, title, owner, links). VERIFIED.",
+      "method": "GET",
+      "path": "/api/v1/boards",
+      "responseType": "json",
+      "params": [
+        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}

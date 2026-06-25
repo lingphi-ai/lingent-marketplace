@@ -1,0 +1,42 @@
+{
+  "id": "duolingo-manifest",
+  "version": "0.1.0",
+  "displayName": "Duolingo",
+  "description": "VERIFIED LIVE: Duolingo via your logged-in session (session bridge — no token). Look up a user by id or username — streak, total XP, courses and progress — cookie-only on the 2017-06-30 API. Tested live by Claude Code against a logged-in account: user-by-id and user-by-username both returned 200 with real data.",
+  "iconColor": "bg-green-100 text-green-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://www.duolingo.com/*"
+  ],
+  "baseUrl": "https://www.duolingo.com",
+  "auth": {
+    "type": "cookie"
+  },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "duolingo_user",
+      "description": "A user's profile and learning progress by numeric id (streak, totalXp, courses). VERIFIED.",
+      "method": "GET",
+      "path": "/2017-06-30/users/{userId}",
+      "responseType": "json",
+      "params": [
+        { "name": "userId", "in": "path", "type": "string", "required": true },
+        { "name": "fields", "in": "query", "type": "string", "default": "username,name,streak,totalXp,courses,picture" }
+      ]
+    },
+    {
+      "name": "duolingo_user_by_name",
+      "description": "Look up users by username. VERIFIED.",
+      "method": "GET",
+      "path": "/2017-06-30/users",
+      "responseType": "json",
+      "params": [
+        { "name": "username", "in": "query", "type": "string", "required": true }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
