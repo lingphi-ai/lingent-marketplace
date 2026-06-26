@@ -487,6 +487,16 @@
           "allowMultiple": false,
           "defaultLabel": "网易公开课",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/open163-dom.lingphi-platform.json"
+        },
+        {
+          "id": "baidu-pan-session-manifest",
+          "displayName": "百度网盘 (session)",
+          "description": "百度网盘 file/folder listing + storage quota via your logged-in session — no token (session bridge, cookie API).",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "baidu-pan-session",
+          "allowMultiple": false,
+          "defaultLabel": "百度网盘",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/baidu-pan-session.lingphi-platform.json"
         }
       ]
     },

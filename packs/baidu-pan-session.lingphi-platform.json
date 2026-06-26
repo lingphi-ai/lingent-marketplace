@@ -1,0 +1,45 @@
+{
+  "id": "baidu-pan-session-manifest",
+  "version": "0.1.0",
+  "displayName": "百度网盘 (session)",
+  "description": "VERIFIED LIVE: 百度网盘 (Baidu Netdisk) via your logged-in pan.baidu.com session — no token (session bridge). List folders/files and check storage quota work cookie-only on the same-origin web API. Tested live by Claude Code against a logged-in account: /api/list (errno 0, 11 entries) and /api/quota both 200. (Read-only: uploads/moves need a bdstoken CSRF, not included.)",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://pan.baidu.com/*"
+  ],
+  "baseUrl": "https://pan.baidu.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "baidupan_list",
+      "description": "List files/folders in a 百度网盘 directory. Returns list[] with server_filename, isdir (1=folder), size, fs_id, path, server_mtime. VERIFIED (11 entries at /).",
+      "method": "GET",
+      "path": "/api/list",
+      "responseType": "json",
+      "params": [
+        { "name": "dir", "in": "query", "type": "string", "required": true, "default": "/", "description": "Directory path, e.g. / or /我的资源." },
+        { "name": "order", "in": "query", "type": "string", "enum": ["time", "name", "size"], "default": "time" },
+        { "name": "desc", "in": "query", "type": "number", "default": 1 },
+        { "name": "num", "in": "query", "type": "number", "default": 100 },
+        { "name": "page", "in": "query", "type": "number", "default": 1 },
+        { "name": "web", "in": "query", "type": "number", "default": 1 }
+      ]
+    },
+    {
+      "name": "baidupan_quota",
+      "description": "Your 百度网盘 storage quota (total/used in bytes). VERIFIED.",
+      "method": "GET",
+      "path": "/api/quota",
+      "responseType": "json",
+      "params": [
+        { "name": "checkfree", "in": "query", "type": "number", "default": 1 },
+        { "name": "checkexpire", "in": "query", "type": "number", "default": 1 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
