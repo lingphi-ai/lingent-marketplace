@@ -459,14 +459,14 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/airtable.lingphi-platform.json"
         },
         {
-          "id": "edx-dom-manifest",
-          "displayName": "edX (page reader)",
-          "description": "edX course search/listing results via content-script DOM extraction — no login, no API key (reads the rendered page).",
+          "id": "edx-manifest",
+          "displayName": "edX",
+          "description": "edX course search via its public Algolia index (no login) — structured + paginated, preferred over DOM.",
           "iconColor": "bg-indigo-100 text-indigo-700",
-          "integrationType": "edx-dom",
+          "integrationType": "edx",
           "allowMultiple": false,
           "defaultLabel": "edX",
-          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/edx-dom.lingphi-platform.json"
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/edx.lingphi-platform.json"
         },
         {
           "id": "icourse163-dom-manifest",

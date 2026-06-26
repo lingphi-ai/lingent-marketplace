@@ -1,0 +1,29 @@
+{
+  "id": "edx-manifest",
+  "version": "0.2.0",
+  "displayName": "edX",
+  "description": "VERIFIED LIVE: edX course search via its public Algolia index (no login; the search-only API key is the one edX embeds client-side) — structured + paginated, preferred over DOM. Tested live by Claude Code: query 'python' → 242 hits with title, partner, productOverview, marketing_url, weeksToComplete, etc.",
+  "iconColor": "bg-indigo-100 text-indigo-700",
+  "category": "knowledge",
+  "hosts": [
+    "https://igsyv1z1xi-dsn.algolia.net/*"
+  ],
+  "baseUrl": "https://igsyv1z1xi-dsn.algolia.net",
+  "auth": { "type": "none" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "edx_search",
+      "description": "Search edX courses/programs. POST body { query: string, hitsPerPage?: number (default 20), page?: number (0-based), filters?: string }. Returns hits[] with title, partner, productOverview, marketing_url, activeRunKey, weeksToCompleteMax; plus nbHits/nbPages. VERIFIED (242 hits for 'python').",
+      "method": "POST",
+      "path": "/1/indexes/rv_product_summary/query?x-algolia-api-key=1c5f82302ef2300f01551b182943c9b0&x-algolia-application-id=IGSYV1Z1XI",
+      "responseType": "json",
+      "params": [
+        { "name": "body", "in": "body", "type": "object", "required": true, "description": "{ \"query\": string (required), \"hitsPerPage\"?: number, \"page\"?: number, \"filters\"?: string }" }
+      ]
+    }
+  ],
+  "transport": { "preferred": "sw" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
