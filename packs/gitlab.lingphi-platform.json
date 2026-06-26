@@ -8,6 +8,7 @@
   "hosts": [
     "https://gitlab.com/*"
   ],
+  "supportsCustomHost": true,
   "baseUrl": "https://gitlab.com/api/v4",
   "auth": {
     "type": "bearer",
@@ -401,6 +402,6 @@
   "signature": {
     "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
     "keyId": "lingphi-official-2026",
-    "value": "MYw/78QXPgsyDXGP/o75+P4AVxHIXTPegkER0vU5ixEXqvmk3YwbCO3v3aBSmUuiB7pC+YNmMUTJG1RbNfwjcJKmNMC4CYL6uX4zpR4i4CC1hU0YJnbd6pyJLALtsSAQKe5nEu6KDET6qBVs6hDcLBsamxG9+/WEiFU35sqGJm5FiQh+lSntyiKAntFZw8hATD9Kv0TzUH2tveUWJbWOgkCGDudyUUUhAOu1EbVJfgvji1kLsF5kNMj/c6/fPdveNyob8VdAm0ayR2BezLNJmXRvJqab7FQ9FjND9IJ9CvXOXm8ENDELHiIq9StPtgy3I0eDbs3v5bzO3XpChaBrcw=="
+    "value": "Xk5c+ZDONed1oaM8x2PvmGgabfIa7a1Xm6AT+NJRGJRAP669NGQmY6nfc3d1T40RAQxil/zP7wQPn0JTth+E+cZdSRFefHbl6azs9hbeDPK1CSeKxBo9lOHMfBp9ZDKviqEg6pbfMd1EyOA/8LwtuYm2R0ApzeK7GWgaxrkp9HySQir2ARGDNG7OTpcGSye6Q0MBb06/czAvUYae4dGt8LxLnf7Lsnispt/3GQTXUkYVQwxRZsaDYr+VfQSsp3lfhaAGHdTS8PEqXRNne61/lOEH1O01JzVrtpY3QM45gARSeyckLhnpVPP23eqGwHHhbF/Q3eYYZG77Y5rKn5B37g=="
   }
 }
