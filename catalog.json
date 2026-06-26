@@ -601,6 +601,16 @@
           "allowMultiple": false,
           "defaultLabel": "和风天气",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/qweather.lingphi-platform.json"
+        },
+        {
+          "id": "zhaopin-dom-manifest",
+          "displayName": "智联招聘 (page reader)",
+          "description": "智联招聘 search-results job cards via content-script DOM extraction — no token (the search API is signed; reads the rendered page). Requires being logged in.",
+          "iconColor": "bg-blue-100 text-blue-700",
+          "integrationType": "zhaopin-dom",
+          "allowMultiple": false,
+          "defaultLabel": "智联招聘",
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/zhaopin-dom.lingphi-platform.json"
         }
       ]
     },

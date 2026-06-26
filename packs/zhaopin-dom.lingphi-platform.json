@@ -1,0 +1,33 @@
+{
+  "id": "zhaopin-dom-manifest",
+  "version": "0.1.0",
+  "displayName": "智联招聘 (page reader)",
+  "description": "VERIFIED LIVE: 智联招聘 (Zhaopin) via content-script DOM extraction. Zhaopin's search API is signed, but the rendered results page lists jobs as .joblist-box__item cards — this reads them straight from the DOM of your logged-in Zhaopin search tab. Navigate the tab to a search (zhaopin.com/sou/… or sou.zhaopin.com/?kw=…) and call the tool. Tested live by Claude Code: 20 job cards with salary, company and full card text extracted correctly. Requires being logged into Zhaopin.",
+  "iconColor": "bg-blue-100 text-blue-700",
+  "category": "tools",
+  "hosts": [
+    "https://www.zhaopin.com/*",
+    "https://sou.zhaopin.com/*"
+  ],
+  "baseUrl": "https://www.zhaopin.com",
+  "auth": { "type": "cookie" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "zhaopin_jobs",
+      "description": "Job cards on the current 智联招聘 search-results page (navigate the tab to a /sou/ search first). Returns each job's salary, company, and the full card text (job title, skills, city, experience, education — parse from summary). VERIFIED (20 jobs).",
+      "dom": {
+        "item": ".joblist-box__item",
+        "limit": 40,
+        "fields": {
+          "salary": { "selector": "[class*=\"salary\"]" },
+          "company": { "selector": "[class*=\"company\"]" },
+          "summary": {}
+        }
+      }
+    }
+  ],
+  "transport": { "preferred": "cs" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
