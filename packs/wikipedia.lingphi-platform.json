@@ -21,11 +21,42 @@
       "path": "/w/api.php",
       "responseType": "json",
       "params": [
-        { "name": "action", "in": "query", "type": "string", "required": true, "default": "query", "description": "Fixed." },
-        { "name": "list", "in": "query", "type": "string", "required": true, "default": "search", "description": "Fixed." },
-        { "name": "format", "in": "query", "type": "string", "required": true, "default": "json", "description": "Fixed." },
-        { "name": "srsearch", "in": "query", "type": "string", "required": true },
-        { "name": "srlimit", "in": "query", "type": "number", "default": 5 }
+        {
+          "name": "action",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "query",
+          "description": "Fixed."
+        },
+        {
+          "name": "list",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "search",
+          "description": "Fixed."
+        },
+        {
+          "name": "format",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "json",
+          "description": "Fixed."
+        },
+        {
+          "name": "srsearch",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "srlimit",
+          "in": "query",
+          "type": "number",
+          "default": 5
+        }
       ]
     },
     {
@@ -35,12 +66,52 @@
       "path": "/w/api.php",
       "responseType": "json",
       "params": [
-        { "name": "action", "in": "query", "type": "string", "required": true, "default": "query", "description": "Fixed." },
-        { "name": "prop", "in": "query", "type": "string", "required": true, "default": "extracts", "description": "Fixed." },
-        { "name": "exintro", "in": "query", "type": "number", "required": true, "default": 1, "description": "Fixed." },
-        { "name": "explaintext", "in": "query", "type": "number", "required": true, "default": 1, "description": "Fixed." },
-        { "name": "format", "in": "query", "type": "string", "required": true, "default": "json", "description": "Fixed." },
-        { "name": "titles", "in": "query", "type": "string", "required": true }
+        {
+          "name": "action",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "query",
+          "description": "Fixed."
+        },
+        {
+          "name": "prop",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "extracts",
+          "description": "Fixed."
+        },
+        {
+          "name": "exintro",
+          "in": "query",
+          "type": "number",
+          "required": true,
+          "default": 1,
+          "description": "Fixed."
+        },
+        {
+          "name": "explaintext",
+          "in": "query",
+          "type": "number",
+          "required": true,
+          "default": 1,
+          "description": "Fixed."
+        },
+        {
+          "name": "format",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "json",
+          "description": "Fixed."
+        },
+        {
+          "name": "titles",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -50,9 +121,30 @@
       "path": "/w/api.php",
       "responseType": "json",
       "params": [
-        { "name": "action", "in": "query", "type": "string", "required": true, "default": "query", "description": "Fixed." },
-        { "name": "meta", "in": "query", "type": "string", "required": true, "default": "userinfo", "description": "Fixed." },
-        { "name": "format", "in": "query", "type": "string", "required": true, "default": "json", "description": "Fixed." }
+        {
+          "name": "action",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "query",
+          "description": "Fixed."
+        },
+        {
+          "name": "meta",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "userinfo",
+          "description": "Fixed."
+        },
+        {
+          "name": "format",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "json",
+          "description": "Fixed."
+        }
       ]
     }
   ],
@@ -63,5 +155,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "NXyEEHIibKNtRKn3pEzvhVPRM7j7PiyGlvEUjV5Wn2NNm+JhzmmY00FiRzytHK/xd+KrmQhuv702am1+fk3eXiYsBylmDoO74K/Dy/Tx4e+z2vtZ1MHrSCAzPXLB30ycxd4W/9dQ9nVTazDXqhi1HQuH7i/Qq5F3r70wyJnLaEDtiqE+928tY4sqSo1sg09b1l8M0ywTC20NMtWu3WEkUIWWu+2fet/YKWPZiSrFfa+dUKLkJgOKaoBiS+pmMfZ72uBShCId1x/ozhkwpD47BWQBIqfiff/utAGjAleM5+I5NpIGH4KsJrR/i8Zu3soZZGFLY0OwKz6YL2nqwJ7L2A=="
+  }
 }

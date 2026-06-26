@@ -35,9 +35,24 @@
       "path": "/api/1.0/projects",
       "responseType": "json",
       "params": [
-        { "name": "workspace", "in": "query", "type": "string", "required": true },
-        { "name": "archived", "in": "query", "type": "boolean", "default": false },
-        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "workspace",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "archived",
+          "in": "query",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     },
     {
@@ -47,10 +62,32 @@
       "path": "/api/1.0/tasks",
       "responseType": "json",
       "params": [
-        { "name": "assignee", "in": "query", "type": "string", "required": true, "default": "me" },
-        { "name": "workspace", "in": "query", "type": "string", "required": true },
-        { "name": "completed_since", "in": "query", "type": "string", "default": "now", "description": "'now' returns only incomplete tasks." },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "assignee",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "me"
+        },
+        {
+          "name": "workspace",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "completed_since",
+          "in": "query",
+          "type": "string",
+          "default": "now",
+          "description": "'now' returns only incomplete tasks."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     },
     {
@@ -60,8 +97,18 @@
       "path": "/api/1.0/tasks",
       "responseType": "json",
       "params": [
-        { "name": "project", "in": "query", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "project",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     },
     {
@@ -71,12 +118,33 @@
       "path": "/api/1.0/workspaces/{workspace}/users",
       "responseType": "json",
       "params": [
-        { "name": "workspace", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "workspace",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "r6JimRWtZvee9uVxPw4BoO2fwvZ4Kp94zsK5HJHh/RbBGV7pH+3McaO0qGXkJVok9J57zrojEtYJ46HhTlVdrajSN8V0fi+jQuObkTzVPlbaNTrHX/xhwBv3zznU6MhKzQq5Arm+O+yrOi1lIlVrrbfMEKqjai/UxjOoLyk9dtHEcmzqyiAx7QQbkTCCsm9U5MPwwBCY3DPXRrLEb9HqMSVFPqdJA6g+tbBcFBI7wI7GCJh33qoCD+YDLnMDq/MwRURtS6SEkMGwOCdwVT5OiHj0+hTFw7MAYBufrSm6R3YX5wkEYtcb+89MIxwDDDkh0br6veLol0PpSelMWpQfIA=="
+  }
 }

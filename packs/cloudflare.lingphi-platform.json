@@ -27,7 +27,14 @@
       "method": "GET",
       "path": "/api/v4/memberships",
       "responseType": "json",
-      "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
+      "params": [
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ]
     },
     {
       "name": "cloudflare_zones",
@@ -36,8 +43,17 @@
       "path": "/api/v4/zones",
       "responseType": "json",
       "params": [
-        { "name": "per_page", "in": "query", "type": "number", "default": 20 },
-        { "name": "name", "in": "query", "type": "string" }
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "name",
+          "in": "query",
+          "type": "string"
+        }
       ]
     },
     {
@@ -47,9 +63,24 @@
       "path": "/api/v4/zones/{zoneId}/dns_records",
       "responseType": "json",
       "params": [
-        { "name": "zoneId", "in": "path", "type": "string", "required": true },
-        { "name": "per_page", "in": "query", "type": "number", "default": 50 },
-        { "name": "type", "in": "query", "type": "string", "description": "Optional record type filter (A, CNAME, TXT…)." }
+        {
+          "name": "zoneId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "description": "Optional record type filter (A, CNAME, TXT…)."
+        }
       ]
     },
     {
@@ -58,7 +89,14 @@
       "method": "GET",
       "path": "/api/v4/zones/{zoneId}/settings",
       "responseType": "json",
-      "params": [ { "name": "zoneId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "zoneId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "cloudflare_workers",
@@ -66,7 +104,14 @@
       "method": "GET",
       "path": "/api/v4/accounts/{accountId}/workers/scripts",
       "responseType": "json",
-      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "accountId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "cloudflare_pages_projects",
@@ -74,7 +119,14 @@
       "method": "GET",
       "path": "/api/v4/accounts/{accountId}/pages/projects",
       "responseType": "json",
-      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "accountId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "cloudflare_r2_buckets",
@@ -82,7 +134,14 @@
       "method": "GET",
       "path": "/api/v4/accounts/{accountId}/r2/buckets",
       "responseType": "json",
-      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "accountId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "cloudflare_kv_namespaces",
@@ -90,7 +149,14 @@
       "method": "GET",
       "path": "/api/v4/accounts/{accountId}/storage/kv/namespaces",
       "responseType": "json",
-      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "accountId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "cloudflare_tunnels",
@@ -98,10 +164,28 @@
       "method": "GET",
       "path": "/api/v4/accounts/{accountId}/tunnels",
       "responseType": "json",
-      "params": [ { "name": "accountId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "accountId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "d2IaJN2qt7ISafk+5slp4GRZqmmHN/72IwhYngfYhgxq5PN5l42c65Fi4Qs1B/pAe08OxYvBssB8sv1OplxIZqhW7tJC1/qmQE8UmdMTDLo5uTJrhS9f++fJ+tKhPtVLONe5qBeDqkyv6Vi881QOyHFwHXcAs2XVyOoWRKQHCCWjrP/TkhnCGyDN1x5JQgj519HYv+9K9GyiJaq7SI4Nc8aTWKzVon48ZlCQv2uQMEXptxJ7xXOoQKzymSuWC/6+YIBg1RsDX1x5RJ90ZWepDKRguULW5CmRRZTThStnBCGZXhXHm3SqOD6cBkRRJKV5GlL8/odXHqgrDTvro3wWhA=="
+  }
 }

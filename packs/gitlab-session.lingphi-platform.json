@@ -28,11 +28,39 @@
       "path": "/api/v4/projects",
       "responseType": "json",
       "params": [
-        { "name": "membership", "in": "query", "type": "boolean", "default": true },
-        { "name": "starred", "in": "query", "type": "boolean" },
-        { "name": "search", "in": "query", "type": "string" },
-        { "name": "order_by", "in": "query", "type": "string", "enum": ["created_at", "last_activity_at", "name"], "default": "last_activity_at" },
-        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "membership",
+          "in": "query",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "starred",
+          "in": "query",
+          "type": "boolean"
+        },
+        {
+          "name": "search",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "order_by",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "created_at",
+            "last_activity_at",
+            "name"
+          ],
+          "default": "last_activity_at"
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     },
     {
@@ -41,7 +69,14 @@
       "method": "GET",
       "path": "/api/v4/todos",
       "responseType": "json",
-      "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
+      "params": [
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ]
     },
     {
       "name": "gitlab_my_merge_requests",
@@ -50,9 +85,35 @@
       "path": "/api/v4/merge_requests",
       "responseType": "json",
       "params": [
-        { "name": "scope", "in": "query", "type": "string", "enum": ["assigned_to_me", "created_by_me", "all"], "default": "assigned_to_me" },
-        { "name": "state", "in": "query", "type": "string", "enum": ["opened", "closed", "merged", "all"], "default": "opened" },
-        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "scope",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "assigned_to_me",
+            "created_by_me",
+            "all"
+          ],
+          "default": "assigned_to_me"
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "opened",
+            "closed",
+            "merged",
+            "all"
+          ],
+          "default": "opened"
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     },
     {
@@ -62,9 +123,34 @@
       "path": "/api/v4/issues",
       "responseType": "json",
       "params": [
-        { "name": "scope", "in": "query", "type": "string", "enum": ["assigned_to_me", "created_by_me", "all"], "default": "assigned_to_me" },
-        { "name": "state", "in": "query", "type": "string", "enum": ["opened", "closed", "all"], "default": "opened" },
-        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "scope",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "assigned_to_me",
+            "created_by_me",
+            "all"
+          ],
+          "default": "assigned_to_me"
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "opened",
+            "closed",
+            "all"
+          ],
+          "default": "opened"
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     },
     {
@@ -73,7 +159,14 @@
       "method": "GET",
       "path": "/api/v4/groups",
       "responseType": "json",
-      "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
+      "params": [
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ]
     },
     {
       "name": "gitlab_events",
@@ -82,8 +175,18 @@
       "path": "/api/v4/events",
       "responseType": "json",
       "params": [
-        { "name": "action", "in": "query", "type": "string", "description": "Filter by action, e.g. pushed, commented." },
-        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "action",
+          "in": "query",
+          "type": "string",
+          "description": "Filter by action, e.g. pushed, commented."
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     },
     {
@@ -92,7 +195,14 @@
       "method": "GET",
       "path": "/api/v4/snippets",
       "responseType": "json",
-      "params": [ { "name": "per_page", "in": "query", "type": "number", "default": 20 } ]
+      "params": [
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
+      ]
     },
     {
       "name": "gitlab_users_search",
@@ -101,13 +211,37 @@
       "path": "/api/v4/users",
       "responseType": "json",
       "params": [
-        { "name": "username", "in": "query", "type": "string" },
-        { "name": "search", "in": "query", "type": "string" },
-        { "name": "per_page", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "username",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "search",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "JDC9PtG7ap0JBhCFWnYL6cCrtnSPhEop05oPEFhVftTHeXZefNICqPFL07L//dSqTk+Y5uU7BapvMm62vsJg2VDSu/DZ2LeHfHLVlyzA+Cpxkc4Jc8Lgl3EeKwFDRSr4c/n2P+894lhxxiDfmVsQ1d37ikbCqS4X3ux2Fi0tdkKK2CfVJt9gVMQvuYfLGxwnL74GucvGfHlf51S5SQyQK+bwsiRnDaMZndnv18priXgpf1Jao0Ns1EavkcMxH/lUeOaoghz5jTbYNMw83S1LJKPbP2X68OGhBsxPT6qcTfS/Ftp9I1mUlJ/XPA+sHEmF+nK1CcsYGscQjg0Ci97flg=="
+  }
 }

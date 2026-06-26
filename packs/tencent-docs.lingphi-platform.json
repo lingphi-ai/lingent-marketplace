@@ -94,7 +94,14 @@
       "method": "POST",
       "path": "/api/list/star",
       "params": [
-        { "name": "xsrf", "in": "query", "from": "cookie", "cookieName": "TOK", "required": true, "description": "Auto: CSRF = TOK cookie." }
+        {
+          "name": "xsrf",
+          "in": "query",
+          "from": "cookie",
+          "cookieName": "TOK",
+          "required": true,
+          "description": "Auto: CSRF = TOK cookie."
+        }
       ],
       "responseType": "json"
     },
@@ -104,7 +111,14 @@
       "method": "POST",
       "path": "/api/list/share",
       "params": [
-        { "name": "xsrf", "in": "query", "from": "cookie", "cookieName": "TOK", "required": true, "description": "Auto: CSRF = TOK cookie." }
+        {
+          "name": "xsrf",
+          "in": "query",
+          "from": "cookie",
+          "cookieName": "TOK",
+          "required": true,
+          "description": "Auto: CSRF = TOK cookie."
+        }
       ],
       "responseType": "json"
     },
@@ -114,7 +128,14 @@
       "method": "POST",
       "path": "/api/list/mine",
       "params": [
-        { "name": "xsrf", "in": "query", "from": "cookie", "cookieName": "TOK", "required": true, "description": "Auto: CSRF = TOK cookie." }
+        {
+          "name": "xsrf",
+          "in": "query",
+          "from": "cookie",
+          "cookieName": "TOK",
+          "required": true,
+          "description": "Auto: CSRF = TOK cookie."
+        }
       ],
       "responseType": "json"
     }
@@ -126,5 +147,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "hA0ee1jCNAAP369mvmZpwNjp/FF0OdC+d1eWI+npQTXTlfuE6ikXn47GvZrl4F651Wrn/V31pY0xV0YCVS/SjYJOwUXCJjgG3zFHm4RgYmc487KjDmP2jkUBMRzuTZ1LE9eO5fwtyfdgLJuRvYBnfJltgqYoStSPmJb5jw5TwJBzRnwokvKBij2c5Y5fZGr+f2oRNH9p9tbpeH4zgQOTtDDYWSAU/WFCfJPQ7ZP233qUYWBSkZKgXIzgxYflcp04hvkD02Vm0KOaEK6vslvOw8wIyCx5nYAFn/yVV5ePX+XqSEas3XocDbRAUTsptzx6tM74zhMsrnC7tj0TNcq9FQ=="
+  }
 }

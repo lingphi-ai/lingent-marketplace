@@ -10,7 +10,9 @@
     "https://blog.csdn.net/*"
   ],
   "baseUrl": "https://www.csdn.net",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -21,12 +23,25 @@
         "limit": 40,
         "fields": {
           "title": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "XarsQb3J9KW/6a342QDSAEFHzZHu+EHucyeoas65aC5EJMbKKW2cAS0+YO2cBsHJd+QXIFaomjgXxTSlbtlrsLwrg7QFSB+xNKW2UF9VAska+qw+RzDzxCc622cICm8oSOpXcwcG3cvjuP0mF6xQBWX1uVroBQyD9U6eZv1csgDcG5XqnGoa4Ht7tRENpggQD+2P/i8RkZL28wtpQiuNqvK36RhfwnLpwKVn353W1iWuD6dobIzzWQeaIqmK3ruSXBuU5ybxgFmJaAmn1tw8Wc7mphPmmraB0rDcaeaxA5aeOPY9Pcq/gAlG4OHn8XMnIaoiNWjlnLhx6qUEtt8i7Q=="
+  }
 }

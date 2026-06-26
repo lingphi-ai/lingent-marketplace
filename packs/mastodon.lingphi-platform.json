@@ -21,7 +21,12 @@
       "path": "/api/v1/trends/tags",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -31,7 +36,12 @@
       "path": "/api/v1/trends/statuses",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -41,7 +51,12 @@
       "path": "/api/v1/trends/links",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -51,9 +66,29 @@
       "path": "/api/v2/search",
       "responseType": "json",
       "params": [
-        { "name": "q", "in": "query", "type": "string", "required": true },
-        { "name": "type", "in": "query", "type": "string", "enum": ["accounts", "hashtags", "statuses"], "default": "hashtags" },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "accounts",
+            "hashtags",
+            "statuses"
+          ],
+          "default": "hashtags"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     }
   ],
@@ -64,5 +99,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "WhNecFVXtbzFg68i/yx5CaZRb0wX1shf3E553n804rMVc/JIgYRTDedvxUqBT17uBI0Qiy50gOr5yBF9rpbKTa6N9zggyDouaRxeCtMgJi3q0mHosDzf4iXthmRGSHBONjA4FuuTAOIRIfagHeQhkp3xbQv3QR/ftxX+hv9wcwmPteLAoPVoL/HBVte7unGjBWsParnkrkCtkISqF2kNtdHa3JkFf9VT5vcGrmhUmHKiF/jIvEWzLPcvHQ1ie64gFQlsECPjyZ4gIbBcTLSGxya+AKtSEbHhwsivN0mbe4OVTanwd+ouYL5JWZg7ESBM6xfRHrZ7srH7txcBsxVWoQ=="
+  }
 }

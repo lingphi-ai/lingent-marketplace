@@ -22,12 +22,25 @@
         "limit": 50,
         "fields": {
           "headline": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "DmGB4/ygXbdKIuZGiLZ0SqhbGBYGEjvUpHlzmtmv6q5W5MfQF8DN4Uuagun8NlAzFcTzkD322m19YysFthZiUsRAqihcs/7mhmoZ2HKknSxqtAS+eQTXbnYylnl86VYAEPcEE+sBoBU2Hgg/P2/+vQFuRr9JNh+fkdchCJghukCzqDgEv/bfucbme8QczW2xp4/FRdcbYWq6byTuNK7F4/6UkBS9bEiYR6f3O0btGnUs4GEBs/g8w4e9A4ZWCKDr5/aTkAJAmWV68gLuPj7IC1VOFlV923IIUcX2QdeEkaLVfdv55zvYoXxwu1YXaKHiChOguH0EC5WjgncEXzNwwQ=="
+  }
 }

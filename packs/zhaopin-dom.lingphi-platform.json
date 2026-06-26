@@ -10,7 +10,9 @@
     "https://sou.zhaopin.com/*"
   ],
   "baseUrl": "https://www.zhaopin.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -20,14 +22,29 @@
         "item": ".joblist-box__item",
         "limit": 40,
         "fields": {
-          "salary": { "selector": "[class*=\"salary\"]" },
-          "company": { "selector": "[class*=\"company\"]" },
+          "salary": {
+            "selector": "[class*=\"salary\"]"
+          },
+          "company": {
+            "selector": "[class*=\"company\"]"
+          },
           "summary": {}
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "mgJlUyE60/irglG9L8GgtyjfA4fgVOQrZHX3QzCf9nWJITTWzGyu+Ra7daw4OskqjGvKgjgkmhAxbF7p6FlJBxHsaocB60Q6eNas3D+xyNFUhsmYszfcrB1VfNJ+lZGV0gBM7zhlryS9AT9LQTAKDr4EDiuM7HzfCTN6uCGQD+zsUcax+2z2FjVvsSX0jLFD8AvNFCBOVVaxCKL4hqwZJ/udXBgl7I1f6qEepwTCYOYK6SfSKO3U6T7XSfVLI1P6zI41d7bh/h08PmmwArTkVpbVUeMTsxkCxnAFiBBhSzlLbt4/Uo8LyM48rtbMDVKEeO2oLAMFUWRvJF5niiIviQ=="
+  }
 }

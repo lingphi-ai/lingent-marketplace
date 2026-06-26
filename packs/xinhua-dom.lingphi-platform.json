@@ -11,7 +11,9 @@
     "https://*.news.cn/*"
   ],
   "baseUrl": "https://www.news.cn",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -22,12 +24,25 @@
         "limit": 40,
         "fields": {
           "headline": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "i5AknalUXjnNelaIOuoCQfFHlnRdZklWuN6ICAxiGf1qmzpcTuihlBh7fQK32wVqRSnVulIYg9VtsrFHEZa4gKFQDKy9sgI6j9aoFxFaQVSTvRzlw/Z7KV3RVNSO3veZtVngT86HalOscy9c/g/w3CAGyuBuDC5azwSK2bw1MRv8NeFWnfOd465GhkUgnc0WwzBEbUdnCly/tr3hZ3N27D4EE3oPTnsbSwZvKEZasy1cicUysJIjXMOHT1+tqkMTk7GdF3zD6J633u4Cp+mW+dhWDsdzYDqR+GN+bd8NDKzuS8VPRib4nN2nLUaZBC2Fb3QRaaxwmSfrhjsCaCtvVw=="
+  }
 }

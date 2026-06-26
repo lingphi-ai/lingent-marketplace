@@ -9,7 +9,9 @@
     "https://www.reddit.com/*"
   ],
   "baseUrl": "https://www.reddit.com",
-  "auth": { "type": "none" },
+  "auth": {
+    "type": "none"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -19,11 +21,54 @@
       "path": "/r/{subreddit}/{sort}.json",
       "responseType": "json",
       "params": [
-        { "name": "subreddit", "in": "path", "type": "string", "required": true, "default": "popular", "description": "Subreddit name without r/ (e.g. popular, all, news, programming)." },
-        { "name": "sort", "in": "path", "type": "string", "required": true, "default": "hot", "enum": ["hot", "new", "top", "rising", "controversial"] },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 },
-        { "name": "t", "in": "query", "type": "string", "enum": ["hour", "day", "week", "month", "year", "all"], "description": "Timeframe for sort=top/controversial." },
-        { "name": "after", "in": "query", "type": "string", "description": "Pagination cursor from the previous response's data.after." }
+        {
+          "name": "subreddit",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "default": "popular",
+          "description": "Subreddit name without r/ (e.g. popular, all, news, programming)."
+        },
+        {
+          "name": "sort",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "default": "hot",
+          "enum": [
+            "hot",
+            "new",
+            "top",
+            "rising",
+            "controversial"
+          ]
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        },
+        {
+          "name": "t",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "hour",
+            "day",
+            "week",
+            "month",
+            "year",
+            "all"
+          ],
+          "description": "Timeframe for sort=top/controversial."
+        },
+        {
+          "name": "after",
+          "in": "query",
+          "type": "string",
+          "description": "Pagination cursor from the previous response's data.after."
+        }
       ]
     },
     {
@@ -33,10 +78,39 @@
       "path": "/r/{subreddit}/comments/{id}.json",
       "responseType": "json",
       "params": [
-        { "name": "subreddit", "in": "path", "type": "string", "required": true },
-        { "name": "id", "in": "path", "type": "string", "required": true, "description": "The post id (the base36 in /comments/<id>/...)." },
-        { "name": "sort", "in": "query", "type": "string", "enum": ["confidence", "top", "new", "controversial", "old", "qa"], "default": "top" },
-        { "name": "limit", "in": "query", "type": "number", "default": 50 }
+        {
+          "name": "subreddit",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "The post id (the base36 in /comments/<id>/...)."
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "confidence",
+            "top",
+            "new",
+            "controversial",
+            "old",
+            "qa"
+          ],
+          "default": "top"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        }
       ]
     },
     {
@@ -46,14 +120,60 @@
       "path": "/search.json",
       "responseType": "json",
       "params": [
-        { "name": "q", "in": "query", "type": "string", "required": true },
-        { "name": "sort", "in": "query", "type": "string", "enum": ["relevance", "hot", "top", "new", "comments"], "default": "relevance" },
-        { "name": "t", "in": "query", "type": "string", "enum": ["hour", "day", "week", "month", "year", "all"], "default": "all" },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "relevance",
+            "hot",
+            "top",
+            "new",
+            "comments"
+          ],
+          "default": "relevance"
+        },
+        {
+          "name": "t",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "hour",
+            "day",
+            "week",
+            "month",
+            "year",
+            "all"
+          ],
+          "default": "all"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     }
   ],
-  "transport": { "preferred": "sw" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "kZlgIt78nJh+AOISCfGguGNMP9m22bCOda75VDeTdEIAykhTQHGzrM3NtYiNtCgQUyh+TQC7zvW4m8tmsl6bITOn58inVlwW46x8n2xfINRyBmvn6pewASzyOws2/dWx6CxnwfwCGHKe5g7Ybw/Rs3lN0Hy74Bux2BtrdE0rldjcrM+nY3JcbhBJXmYtwdpmQWyxYdESrI9XGyNvLU3PpLdofBEGch3ZQPbjT1rqo85p8UFpIToVUO9/4JenTdWjeOPonE0Lj9BNPMAgQFKeMooHu7SGElmKIi2ZpBHxXAZk8ARJ31hc3pAss0yyEOAzb+H7k/6uHwFrnnFBnfb8bg=="
+  }
 }

@@ -20,7 +20,14 @@
       "method": "GET",
       "path": "/me",
       "responseType": "json",
-      "params": [ { "name": "include", "in": "query", "type": "string", "default": "follower_count,answer_count,articles_count,voteup_count" } ]
+      "params": [
+        {
+          "name": "include",
+          "in": "query",
+          "type": "string",
+          "default": "follower_count,answer_count,articles_count,voteup_count"
+        }
+      ]
     },
     {
       "name": "zhihu_member",
@@ -29,8 +36,18 @@
       "path": "/members/{urlToken}",
       "responseType": "json",
       "params": [
-        { "name": "urlToken", "in": "path", "type": "string", "required": true },
-        { "name": "include", "in": "query", "type": "string", "default": "follower_count,answer_count,articles_count,voteup_count,headline,description" }
+        {
+          "name": "urlToken",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "type": "string",
+          "default": "follower_count,answer_count,articles_count,voteup_count,headline,description"
+        }
       ]
     },
     {
@@ -40,9 +57,24 @@
       "path": "/members/{urlToken}/answers",
       "responseType": "json",
       "params": [
-        { "name": "urlToken", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "urlToken",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -52,9 +84,24 @@
       "path": "/members/{urlToken}/articles",
       "responseType": "json",
       "params": [
-        { "name": "urlToken", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "urlToken",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -64,9 +111,24 @@
       "path": "/members/{urlToken}/questions",
       "responseType": "json",
       "params": [
-        { "name": "urlToken", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "urlToken",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -76,9 +138,24 @@
       "path": "/members/{urlToken}/pins",
       "responseType": "json",
       "params": [
-        { "name": "urlToken", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "urlToken",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -88,9 +165,24 @@
       "path": "/members/{urlToken}/favlists",
       "responseType": "json",
       "params": [
-        { "name": "urlToken", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "urlToken",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -100,9 +192,24 @@
       "path": "/members/{urlToken}/followees",
       "responseType": "json",
       "params": [
-        { "name": "urlToken", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "urlToken",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -112,13 +219,39 @@
       "path": "/members/{urlToken}/followers",
       "responseType": "json",
       "params": [
-        { "name": "urlToken", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "urlToken",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "rTxdGn7E3qBq2/zGtrIh0SMJduMu4ID4iwEZPAJqlL1r1r7al8KO5hvyBzWsq+tlsj+YJazxZE+TLtFqWJCNQcoaDOSk/2IrCQvTh1x3bcvpant3cksyKx6d4pUhk0CqE9dfAWtPehY+8wrsiSq3WGw7bToA6a611wREBYtx1WTlOCLdBSNzXyCOVsCXhmwg4RlIvi24nsZVh5/4gVCpgOuOMlmeq6UZkkiGTH694OpRbfdwzzkUxzRNvJVuS22h0aTgm+CmavpKI6doh/UfV2rVz65UTda1qv5yHD9JBqn5xAtG935ObgCeIsLMoyTYCn+AKvl7mAwYai2DEKXu+Q=="
+  }
 }

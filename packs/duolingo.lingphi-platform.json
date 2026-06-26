@@ -21,8 +21,18 @@
       "path": "/2017-06-30/users/{userId}",
       "responseType": "json",
       "params": [
-        { "name": "userId", "in": "path", "type": "string", "required": true },
-        { "name": "fields", "in": "query", "type": "string", "default": "username,name,streak,totalXp,courses,picture" }
+        {
+          "name": "userId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "username,name,streak,totalXp,courses,picture"
+        }
       ]
     },
     {
@@ -32,11 +42,27 @@
       "path": "/2017-06-30/users",
       "responseType": "json",
       "params": [
-        { "name": "username", "in": "query", "type": "string", "required": true }
+        {
+          "name": "username",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "OU6RK1EIS9ePP1Vka+aGXKbuAZ11akrNE/WJOxq1xdq4aqBmBMqoIzMHMdyUW03RzdM3UQKdq3M0b3JCkEql55QVL2guc7QVdp61P7TkLt1ZMeF79oE1LDYVrust1hF4vUTgY6wa3tt88l/JNu6eQhjlXQqIUUgVCsrc5XLYNLSMXc22HKVLgjTDGNb3+ce3QPltxNGEr+POe1/UC11kXN+ptO636TZUlLbOVFs4Y+hhcl5qyjQoGSkh9iPUl8xnvKeVKRRtfKY/dE+ztU84o/23ktW5SA9buCFnlAGr0CNUASdf0dKddlSqj/628SGP7N2isUuY+/8xQnK5Tvz3Ag=="
+  }
 }

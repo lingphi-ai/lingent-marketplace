@@ -21,15 +21,35 @@
         "item": "tr.zA",
         "limit": 50,
         "fields": {
-          "sender": { "selector": ".yW span" },
-          "subject": { "selector": ".bog" },
-          "snippet": { "selector": ".y2" },
-          "date": { "selector": ".xW span", "attr": "title" }
+          "sender": {
+            "selector": ".yW span"
+          },
+          "subject": {
+            "selector": ".bog"
+          },
+          "snippet": {
+            "selector": ".y2"
+          },
+          "date": {
+            "selector": ".xW span",
+            "attr": "title"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "4ybfn7RJyTT70h8O96qxi/yCVWHM4BpvAZ3/EN4U7k2lBCqn+V0Q/kwRyQ4zqxVOlY2IM+sOJrCHO3oFeHShfaci7rqrPx9siynQO9g7x+nB7aA4aTudN1vRw847Uaj0tu6w8Q2nNCWku4agmEDtUfbq2GnO2v49KRsOq+b6z8sRUzMBAL3sdXM+CUhoMVB6j9Qyjk4KS15D5fpdl+1v5NeC9R9dONAiE4HkLgYCEp8cxmpuLoAFwS1INT5io7yW7CqTPMYibKWRbeNAhbkNasnMtPHpW6KLEKkc3PaPSgbd6vVe17QMwyxy62Llq8JzRlscMgf/GwvCl/SjUlbndw=="
+  }
 }

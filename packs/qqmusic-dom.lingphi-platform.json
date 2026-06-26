@@ -9,7 +9,9 @@
     "https://y.qq.com/*"
   ],
   "baseUrl": "https://y.qq.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -19,13 +21,28 @@
         "item": "a[href*=\"/songDetail/\"]",
         "limit": 40,
         "fields": {
-          "song": { "attr": "title" },
-          "url": { "attr": "href" }
+          "song": {
+            "attr": "title"
+          },
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "5EAwYeEknpP/uVi/nQG7adgZcrYm3HnWdeuUcKuNhGv21+Ya0IJaBGiuV+9usWMVVX8JArYj0Ux4EMQKQKOFegzEEC8xAWLUrWaqlA/z4TjoF6pVruhatxhzvBWX0RlwzNLpj50HtmkSfzeJfnQCIV9RO7qiMtFrfqb290LEnVGQ5NCfIPjCzOh6YA4OOMQVjmRgr6Hh/ziFhHRUV95iDR7b1r6E3uV1Yh7gAvuwj7pcgH72u+EXwp75cOA29Dojs+frf/Yh6P6twrfwDFdlhV0vZSJmrFo54IdFdDukTXToNnNUxITDhHWL8dCA8JnH1+U2deD4S8wyAnWoRpihHA=="
+  }
 }

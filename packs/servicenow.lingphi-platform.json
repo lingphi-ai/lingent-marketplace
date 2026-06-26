@@ -39,12 +39,42 @@
       "path": "/api/now/table/{table}",
       "responseType": "json",
       "params": [
-        { "name": "table", "in": "path", "type": "string", "required": true },
-        { "name": "sysparm_query", "in": "query", "type": "string", "description": "Encoded query, e.g. active=true^priority=1^ORDERBYDESCsys_updated_on" },
-        { "name": "sysparm_fields", "in": "query", "type": "string", "description": "Comma-separated fields to return." },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "table",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string",
+          "description": "Encoded query, e.g. active=true^priority=1^ORDERBYDESCsys_updated_on"
+        },
+        {
+          "name": "sysparm_fields",
+          "in": "query",
+          "type": "string",
+          "description": "Comma-separated fields to return."
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -54,9 +84,24 @@
       "path": "/api/now/table/{table}/{sys_id}",
       "responseType": "json",
       "params": [
-        { "name": "table", "in": "path", "type": "string", "required": true },
-        { "name": "sys_id", "in": "path", "type": "string", "required": true },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "table",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sys_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -66,10 +111,29 @@
       "path": "/api/now/stats/{table}",
       "responseType": "json",
       "params": [
-        { "name": "table", "in": "path", "type": "string", "required": true },
-        { "name": "sysparm_count", "in": "query", "type": "string", "default": "true" },
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_group_by", "in": "query", "type": "string", "description": "Field to group counts by, e.g. state or priority." }
+        {
+          "name": "table",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sysparm_count",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        },
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_group_by",
+          "in": "query",
+          "type": "string",
+          "description": "Field to group counts by, e.g. state or priority."
+        }
       ]
     },
     {
@@ -79,9 +143,23 @@
       "path": "/api/now/table/incident",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -91,9 +169,23 @@
       "path": "/api/now/table/task",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -103,9 +195,23 @@
       "path": "/api/now/table/change_request",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -115,9 +221,23 @@
       "path": "/api/now/table/change_task",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -127,9 +247,23 @@
       "path": "/api/now/table/problem",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -139,9 +273,23 @@
       "path": "/api/now/table/sc_request",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -151,9 +299,23 @@
       "path": "/api/now/table/sc_req_item",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -163,9 +325,23 @@
       "path": "/api/now/table/sc_task",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -175,9 +351,23 @@
       "path": "/api/now/table/sc_cat_item",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -187,9 +377,23 @@
       "path": "/api/now/table/cmdb_ci",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -199,9 +403,23 @@
       "path": "/api/now/table/sysapproval_approver",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -211,8 +429,18 @@
       "path": "/api/now/table/sys_journal_field",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string", "description": "e.g. element_id=<record sys_id>^ORDERBYsys_created_on" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string",
+          "description": "e.g. element_id=<record sys_id>^ORDERBYsys_created_on"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     },
     {
@@ -222,8 +450,18 @@
       "path": "/api/now/attachment",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string", "description": "e.g. table_name=incident^table_sys_id=<sys_id>" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string",
+          "description": "e.g. table_name=incident^table_sys_id=<sys_id>"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     },
     {
@@ -233,9 +471,23 @@
       "path": "/api/now/table/kb_knowledge",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -245,9 +497,23 @@
       "path": "/api/now/table/sys_user",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     },
     {
@@ -257,13 +523,38 @@
       "path": "/api/now/table/sys_user_group",
       "responseType": "json",
       "params": [
-        { "name": "sysparm_query", "in": "query", "type": "string" },
-        { "name": "sysparm_limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "sysparm_display_value", "in": "query", "type": "string", "default": "true" }
+        {
+          "name": "sysparm_query",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sysparm_limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "sysparm_display_value",
+          "in": "query",
+          "type": "string",
+          "default": "true"
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "VtKs+m1ETxBS1P14MLFtA0uXo7RP1WvvdF4vTDehZ0KWGNFQllQeLGpv1qwLhS3J28LORDucbU6gkcc+qTG/EvGULhsvRKQ/3pDLQ1uzjbGIZ0EYHp2Fd/9fyZX4kYrpSY8qKC+jQDVmwSXoULyy+Tr6APdKrKfc1QGHA/pJho3DM7EclQES60JgcSp2IK3gh1WRiOfqVgIp1zhJixfpaDe/kHhmv7VEk3e7Xa6/gMtf/8TyDavdhmL9A4HX7L/Hz8BGUBogrB8+G0G4hDFTzglEHpTRyQRzINcaGj38j9S2FVv1rR3OXzP466pAwYrWH8WFWHJ8Lt4BFmE7BTHvRw=="
+  }
 }

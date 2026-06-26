@@ -21,10 +21,34 @@
       "path": "/api/models",
       "responseType": "json",
       "params": [
-        { "name": "search", "in": "query", "type": "string" },
-        { "name": "filter", "in": "query", "type": "string", "description": "e.g. a task tag like text-generation." },
-        { "name": "sort", "in": "query", "type": "string", "enum": ["downloads", "likes", "lastModified"], "default": "downloads" },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "search",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "filter",
+          "in": "query",
+          "type": "string",
+          "description": "e.g. a task tag like text-generation."
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "downloads",
+            "likes",
+            "lastModified"
+          ],
+          "default": "downloads"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -34,9 +58,28 @@
       "path": "/api/datasets",
       "responseType": "json",
       "params": [
-        { "name": "search", "in": "query", "type": "string" },
-        { "name": "sort", "in": "query", "type": "string", "enum": ["downloads", "likes", "lastModified"], "default": "downloads" },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "search",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "downloads",
+            "likes",
+            "lastModified"
+          ],
+          "default": "downloads"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -46,7 +89,13 @@
       "path": "/api/models/{modelId}",
       "responseType": "json",
       "params": [
-        { "name": "modelId", "in": "path", "type": "string", "required": true, "encode": false }
+        {
+          "name": "modelId",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "encode": false
+        }
       ]
     }
   ],
@@ -57,5 +106,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "1JXpknR9lZDcIhLmRERg2m5xpC9CNCJ4fY6OmtH8k/hf67n9pUT6rPn0NZpDpRlbcmkAGM6PmcQu/GcrTdGsenE3ok6swxt3aPFRFzCjMOOXGDAWT8GRamK0WU4Vxbkie+mjqcG1pUP4tr6VZB9BINydDrJEuTl3/Y1vTl5qgEyDrF9L9puoNVqI08M21EeT1ilF5iUnr7+iiPAZHEh6B1l4HPL9e1ufPs6KjzxqmvLrafhBKUqPTZRr7lMegi5VpfJFOkJsroXGdEhGdv2CcVKts5JrdufH3M7jWotIyQ+3OwtYg0a1xejcCtTUfKRtpY2qSG9jds0jbfCDQnb1Rg=="
+  }
 }

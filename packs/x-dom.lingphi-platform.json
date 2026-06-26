@@ -22,13 +22,32 @@
         "item": "article[data-testid=\"tweet\"]",
         "limit": 25,
         "fields": {
-          "author": { "selector": "[data-testid=\"User-Name\"]" },
-          "text": { "selector": "[data-testid=\"tweetText\"]" },
-          "timestamp": { "selector": "time", "attr": "datetime" },
-          "permalink": { "selector": "a[href*=\"/status/\"]:has(time)", "attr": "href" },
-          "replies": { "selector": "[data-testid=\"reply\"]", "attr": "aria-label" },
-          "reposts": { "selector": "[data-testid=\"retweet\"]", "attr": "aria-label" },
-          "likes": { "selector": "[data-testid=\"like\"]", "attr": "aria-label" }
+          "author": {
+            "selector": "[data-testid=\"User-Name\"]"
+          },
+          "text": {
+            "selector": "[data-testid=\"tweetText\"]"
+          },
+          "timestamp": {
+            "selector": "time",
+            "attr": "datetime"
+          },
+          "permalink": {
+            "selector": "a[href*=\"/status/\"]:has(time)",
+            "attr": "href"
+          },
+          "replies": {
+            "selector": "[data-testid=\"reply\"]",
+            "attr": "aria-label"
+          },
+          "reposts": {
+            "selector": "[data-testid=\"retweet\"]",
+            "attr": "aria-label"
+          },
+          "likes": {
+            "selector": "[data-testid=\"like\"]",
+            "attr": "aria-label"
+          }
         }
       }
     },
@@ -39,18 +58,48 @@
         "item": "article[data-testid=\"tweet\"]",
         "limit": 25,
         "fields": {
-          "author": { "selector": "[data-testid=\"User-Name\"]" },
-          "text": { "selector": "[data-testid=\"tweetText\"]" },
-          "timestamp": { "selector": "time", "attr": "datetime" },
-          "permalink": { "selector": "a[href*=\"/status/\"]:has(time)", "attr": "href" },
-          "replies": { "selector": "[data-testid=\"reply\"]", "attr": "aria-label" },
-          "reposts": { "selector": "[data-testid=\"retweet\"]", "attr": "aria-label" },
-          "likes": { "selector": "[data-testid=\"like\"]", "attr": "aria-label" }
+          "author": {
+            "selector": "[data-testid=\"User-Name\"]"
+          },
+          "text": {
+            "selector": "[data-testid=\"tweetText\"]"
+          },
+          "timestamp": {
+            "selector": "time",
+            "attr": "datetime"
+          },
+          "permalink": {
+            "selector": "a[href*=\"/status/\"]:has(time)",
+            "attr": "href"
+          },
+          "replies": {
+            "selector": "[data-testid=\"reply\"]",
+            "attr": "aria-label"
+          },
+          "reposts": {
+            "selector": "[data-testid=\"retweet\"]",
+            "attr": "aria-label"
+          },
+          "likes": {
+            "selector": "[data-testid=\"like\"]",
+            "attr": "aria-label"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "ey9FM/wvIj2PJ6uYCPCIfsBD/G2ISBlGnB6np1mNSxrlfrYPtMDV/zEP30F6Opf6+/Q4hXUwA4Dlf0spNTAInr01/CnGcb8tjh6anPcBa/58Vm6oVi7kD9c9lh0ya7EyFW6npxhttzB8yhBWZKEaW/Mekv5vHQv6HiX9VOR71zUOd5bkVHcZdc3dMCLI2mGmcpWmw0d8aFa2EDsuUMm/xuFIqRY99vr/DxPzJV6Eo3LfjBcZ0w1aGpfyA0X1Z0AmzBtgR+LQ+EIvdHS+CpcrG3rIczYPJ7htoHTZsovrqVtJj6lz4zAJt+u8miuhYPBNg+2x00oZaXAGCuNoyciipA=="
+  }
 }

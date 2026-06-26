@@ -43,7 +43,12 @@
       "path": "/web/book/info",
       "responseType": "json",
       "params": [
-        { "name": "bookId", "in": "query", "type": "string", "required": true }
+        {
+          "name": "bookId",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -75,5 +80,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "O5BulYPBPd+PPDOMc/vEwP68eSspPceXl+0a7S9KS4BB2cH2whvBaTC+Fa2Azk3/0XlxCdcLm3TmNOpeiDoRQqdg1NY1VJ/Ur6BaKCa2Ls53iaFWLkO/Wpwhks8XhqND1bjmqWhHNq5Tdq5RwKrTWsOf7uo8K1H3/42R4ZiwQp90M6wbJs51v3kV4xZcSkI46eOWFlajl2LvF0WGi8iVEvLy17dQiChk9vPjCGk3G5InictFvyywu8EmN33ob804VNcUPnc3bCtfwREo4DhAJpiHLDYjH58ZmSC22T0YBs0E+sWGo8AGtgFoTmMC6ZfWv3v8VBxxjcGNoO+hwtS4qA=="
+  }
 }

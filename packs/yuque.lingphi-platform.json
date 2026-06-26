@@ -83,7 +83,14 @@
       "method": "GET",
       "path": "/api/mine/personal_books",
       "responseType": "json",
-      "params": [ { "name": "limit", "in": "query", "type": "number", "default": 30 } ]
+      "params": [
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 30
+        }
+      ]
     },
     {
       "name": "yuque_groups",
@@ -100,5 +107,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "YPdt35AtMvq/xXboDdHkx3SBzr/lVwtRovoiiAonFRGhvwSJnIJZcY96nJJNS0zTCB65nrQ4+zUYFBV0Olq8ijWvmqnOyfMfygD7MFaDOgMxA3TJPDBstniYncK4FEqahApmFXY9r0N6vh7JMkNUUlVM+9W72rVDdQwAiRlQhTdg6zXUU28b42FMNE0nf6HEtSf0h+dgWeZwV78HVKRff/u4p85zLHkw6RZ01A67/Qhg+U/e2ASX07HC3gir8zkrQVL8sKP96jsDYbSwEVO4TZs7hMj34FqjJy2LI59IqjhM5eSXyBP7xF7FCMj0mMEXZQcjWwUtf5XJVz8sz/hM2A=="
+  }
 }

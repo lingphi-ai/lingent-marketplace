@@ -21,15 +21,35 @@
         "item": "[data-testid=\"tracklist-row\"]",
         "limit": 50,
         "fields": {
-          "track": { "selector": "[data-testid=\"internal-track-link\"]" },
-          "trackUrl": { "selector": "a[href^=\"/track/\"]", "attr": "href" },
-          "artist": { "selector": "a[href^=\"/artist/\"]" },
-          "album": { "selector": "a[href^=\"/album/\"]" }
+          "track": {
+            "selector": "[data-testid=\"internal-track-link\"]"
+          },
+          "trackUrl": {
+            "selector": "a[href^=\"/track/\"]",
+            "attr": "href"
+          },
+          "artist": {
+            "selector": "a[href^=\"/artist/\"]"
+          },
+          "album": {
+            "selector": "a[href^=\"/album/\"]"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "b7yCL7o3sDsv6caLS+DhKhjHz7gEf9bHuJsJ3DRS3lt2IBgkVe4TER6nTERv3WLufLvz3+XzpiFjW3qfvji1X6oJHLoPX5c89Dz/tCK/60vYa2jLBoRTMivJyPWcYbvkc+n9S5fIpGVU8RRdyFa1VGYsqUvRcbewP9sLXazAGIKpnfBUpmp7fE550QNT5FT1+rjnLdpzJ06AsYWPRrKnJWzxLacShRrVAYSaZ6ZV2aKYVBWFZdGd+gzIHCSKU5dM+yKkl/NZRp/m2I0aOKyPVRfPttcFG416WzYG5eebL2OHT2TYelqRMnIdrkYThZaaZn0f8RfoN9osKdt5TSwCIw=="
+  }
 }

@@ -9,7 +9,9 @@
     "https://segmentfault.com/*"
   ],
   "baseUrl": "https://segmentfault.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -20,7 +22,9 @@
         "limit": 40,
         "fields": {
           "title": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     },
@@ -32,12 +36,25 @@
         "limit": 40,
         "fields": {
           "title": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "vOhF8iZ41MWF+nlos0pePDNBR4TEJ8vKcc8TqFI1kSRXsY68BCA+z8PBn4fy4KxdjkbyAwVlcY5/Ex3mn8Z0cnZh2iFaEvL36+z9wFsdWqDGofxutYgLQQ+dmdOgj2WPZCNOOVQ7rUmIYl3iMgRu845kNDizzCBrfW1UCwzY0qQqNs14b1RY4+pO3uOKdks8267XEwpKDSiFaVsuphYmgs8/vVv4hxU6q4hXHEU+FTt9IXwyyRptuq6ovg6mMR382haCkHD1g9h4HROKkckT4bHeJIauaSDLnwwn54RD6T7SSR2nI+ju5RauCDqt4e+N53JuyUAWPesiqyfPixBjxw=="
+  }
 }

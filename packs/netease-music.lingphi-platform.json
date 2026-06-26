@@ -27,7 +27,14 @@
       "method": "POST",
       "path": "/api/v1/user/detail/{uid}",
       "responseType": "json",
-      "params": [ { "name": "uid", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "uid",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "netease_user_playlists",
@@ -36,9 +43,24 @@
       "path": "/api/user/playlist",
       "responseType": "json",
       "params": [
-        { "name": "uid", "in": "query", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 30 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "uid",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 30
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -48,8 +70,18 @@
       "path": "/api/user/follows/{uid}",
       "responseType": "json",
       "params": [
-        { "name": "uid", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 30 }
+        {
+          "name": "uid",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 30
+        }
       ]
     },
     {
@@ -59,8 +91,18 @@
       "path": "/api/v1/play/record",
       "responseType": "json",
       "params": [
-        { "name": "uid", "in": "query", "type": "string", "required": true },
-        { "name": "type", "in": "query", "type": "number", "default": 1 }
+        {
+          "name": "uid",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        }
       ]
     },
     {
@@ -70,8 +112,18 @@
       "path": "/api/v1/user/cloud",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 30 },
-        { "name": "offset", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 30
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -80,7 +132,14 @@
       "method": "POST",
       "path": "/api/playlist/detail",
       "responseType": "json",
-      "params": [ { "name": "id", "in": "query", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "netease_song_detail",
@@ -88,7 +147,15 @@
       "method": "POST",
       "path": "/api/song/detail",
       "responseType": "json",
-      "params": [ { "name": "ids", "in": "query", "type": "string", "required": true, "description": "JSON array string like [5267060]." } ]
+      "params": [
+        {
+          "name": "ids",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "JSON array string like [5267060]."
+        }
+      ]
     },
     {
       "name": "netease_artist",
@@ -96,7 +163,14 @@
       "method": "POST",
       "path": "/api/artist/{artistId}",
       "responseType": "json",
-      "params": [ { "name": "artistId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "artistId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "netease_album",
@@ -104,10 +178,28 @@
       "method": "POST",
       "path": "/api/album/{albumId}",
       "responseType": "json",
-      "params": [ { "name": "albumId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "albumId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "cKrT138sNV+gMdIqNRQxmXKIgYn2BY2FnNj141YWVXYfcv4DmgBRitnTYcH6/XQ4nU5r5IoeYCP6aPy1/3GMyYggqWUDbLdNwzLY1gQAiUYJOvciZ2J45VgJDcCjUwpjZa4Ej1gcGIO9Q1hxJPO0oPIp+Vttr22iJbRANGCY6gFtz1IkiSSFO4+RWyu6KCHyT1Q7SBCqIzEgG5nyeznj/6EFQSrWR4tSb633RSyYAP4MDHNRPkmLBrSQGk8FCBv5F82joZaOBcelEnSjzsiouejYKcw75An7b+YnibFQLRS+fIC3jkHJSr3Cb0dCI5qKIrmC6iOz2Js0/7gjRYAVfQ=="
+  }
 }

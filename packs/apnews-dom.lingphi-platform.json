@@ -21,14 +21,32 @@
         "item": ".PagePromo",
         "limit": 40,
         "fields": {
-          "headline": { "selector": ".PagePromo-title" },
-          "url": { "selector": "a.Link", "attr": "href" },
-          "description": { "selector": ".PagePromo-description" }
+          "headline": {
+            "selector": ".PagePromo-title"
+          },
+          "url": {
+            "selector": "a.Link",
+            "attr": "href"
+          },
+          "description": {
+            "selector": ".PagePromo-description"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "3CeoyolzTguwA122IVth9ZDIhOGLMTKjYVarReSbahxLppmJHr3TXlUNmJ9aRPbydGzxQ1KnBD39d2gGLOTfyZpFWVwF6Ll2rA/eJ/+9rwASpxaWbYmOa88MhkPya6HkxNWtcL6b3Wnb3tLimgfmkzF1eRXTGlrL1kI44h+aZ/VBUq5vmAukPm0cdmJlDYGx+/K9MHCvevMCt1ecNmnue7Wjg3noRrnLIF2N7afE/rkb+Ux5iFgXKK0zvwvIMRsaFLQNt5QZaQmqOHeazwvC5YSCAmHGywJBowiA+VGBGSwC6iSCIpQN6mKbHUrNv00W+5SVOap/JZ1/EHMluhmttw=="
+  }
 }

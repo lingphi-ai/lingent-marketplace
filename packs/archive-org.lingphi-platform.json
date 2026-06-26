@@ -21,9 +21,26 @@
       "path": "/advancedsearch.php",
       "responseType": "json",
       "params": [
-        { "name": "q", "in": "query", "type": "string", "required": true },
-        { "name": "output", "in": "query", "type": "string", "required": true, "default": "json", "description": "Fixed." },
-        { "name": "rows", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "output",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "json",
+          "description": "Fixed."
+        },
+        {
+          "name": "rows",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -33,7 +50,12 @@
       "path": "/metadata/{identifier}",
       "responseType": "json",
       "params": [
-        { "name": "identifier", "in": "path", "type": "string", "required": true }
+        {
+          "name": "identifier",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -43,8 +65,18 @@
       "path": "/wayback/available",
       "responseType": "json",
       "params": [
-        { "name": "url", "in": "query", "type": "string", "required": true },
-        { "name": "timestamp", "in": "query", "type": "string", "description": "Optional YYYYMMDD to find the snapshot nearest that date." }
+        {
+          "name": "url",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "timestamp",
+          "in": "query",
+          "type": "string",
+          "description": "Optional YYYYMMDD to find the snapshot nearest that date."
+        }
       ]
     }
   ],
@@ -55,5 +87,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "uSLsIiyBbZf9Kb33fp4aSwB8tRmZiybQiJ5h+Pw3vP4T4UCmHlrCFkPwcLuyyuQVFulz8yy3E26IozfnW/P0p++lFiggh+owvcVJXRAQjvfPB48VZHVvHJ9G1fqFhU3/xDfAjhK/z4vrjTc1Q5E9ee8zzLQrFdWSaJE/RfLn8MDov1ATXLFNDA0GdW71Fu9LVEOGpJV6lx81pcV5VxDD/hLrZ/ZtI6LOZRXsQj63FuYGjLeCjAd9R7+wEk/y5oOGJWx2RK0pSCPscrCUJHIHrNbiKZ7CrZ4RbZQizAkRFdjX6LZdAyLaoeSn1OUjWoPeqzhk/xsTce0RQ7Iy4neC8Q=="
+  }
 }

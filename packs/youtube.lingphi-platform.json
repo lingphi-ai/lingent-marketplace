@@ -21,10 +21,20 @@
         "item": "ytd-video-renderer",
         "limit": 20,
         "fields": {
-          "title": { "selector": "#video-title", "attr": "title" },
-          "url": { "selector": "#video-title", "attr": "href" },
-          "channel": { "selector": "ytd-channel-name a" },
-          "meta": { "selector": "#metadata-line" }
+          "title": {
+            "selector": "#video-title",
+            "attr": "title"
+          },
+          "url": {
+            "selector": "#video-title",
+            "attr": "href"
+          },
+          "channel": {
+            "selector": "ytd-channel-name a"
+          },
+          "meta": {
+            "selector": "#metadata-line"
+          }
         }
       }
     },
@@ -35,9 +45,17 @@
         "item": "ytd-rich-item-renderer",
         "limit": 30,
         "fields": {
-          "title": { "selector": "#video-title", "attr": "title" },
-          "url": { "selector": "a#video-title-link, a#thumbnail", "attr": "href" },
-          "channel": { "selector": "ytd-channel-name #text" }
+          "title": {
+            "selector": "#video-title",
+            "attr": "title"
+          },
+          "url": {
+            "selector": "a#video-title-link, a#thumbnail",
+            "attr": "href"
+          },
+          "channel": {
+            "selector": "ytd-channel-name #text"
+          }
         }
       }
     },
@@ -48,14 +66,33 @@
         "item": "ytd-playlist-video-renderer",
         "limit": 50,
         "fields": {
-          "title": { "selector": "#video-title", "attr": "title" },
-          "url": { "selector": "a#video-title", "attr": "href" },
-          "channel": { "selector": "ytd-channel-name a" }
+          "title": {
+            "selector": "#video-title",
+            "attr": "title"
+          },
+          "url": {
+            "selector": "a#video-title",
+            "attr": "href"
+          },
+          "channel": {
+            "selector": "ytd-channel-name a"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "w23uyRZYhzOH/aD/IxKgSEoRQalwDsjD85T7kcIa95n7D4MEepx+VqJXmQqX6uV3jPb3Onuo1UHYyynYKQrCmFt6Hd1UDM2TdFTZt3EZr2vDT1JWn+2DiuX2/WgmS2d5G7RRMwQgwEs/t6UtgpSEnrk5PPuJQNh6nggFfk4HOPAgOahvP9HP2kKp1Q4n3JSSZNfU2NZxyh8w3Z+BiyCp8YSgOmtzSNEaP8CgY257jwCEJlDjraOV0xUQWfq6oMQZO5bMi7EKbPgGJ9NfUY49bQmzRz6xjpYnJNs/0DHrIqdvSYLU1BewrIS+O2H/969ViqLTKoKXcNF8qZ8D3hjmCg=="
+  }
 }

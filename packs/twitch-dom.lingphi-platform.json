@@ -21,15 +21,35 @@
         "item": "article",
         "limit": 30,
         "fields": {
-          "title": { "selector": "a[data-a-target=\"preview-card-channel-link\"]" },
-          "channelUrl": { "selector": "a[data-a-target=\"preview-card-image-link\"]", "attr": "href" },
-          "category": { "selector": "a[data-a-target=\"preview-card-game-link\"]" },
-          "viewers": { "selector": ".tw-media-card-stat" }
+          "title": {
+            "selector": "a[data-a-target=\"preview-card-channel-link\"]"
+          },
+          "channelUrl": {
+            "selector": "a[data-a-target=\"preview-card-image-link\"]",
+            "attr": "href"
+          },
+          "category": {
+            "selector": "a[data-a-target=\"preview-card-game-link\"]"
+          },
+          "viewers": {
+            "selector": ".tw-media-card-stat"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "Mxkjc+TGSfy6OmPpu4fSOQV7kkvlPRwNOgikaucG+q2JBWI45s5wrqLnt4dQcfALlbrDuOdNYIx+5H5awlNv5X6K+dORHdOztfcYdkZYn7ZgwqUon+jfcthhNvywdbkIh7Uk5UVD3X/khob5cv8Yf3k2OE3/kglvh9UiDbi8g0CrCQXxavX0a9hNmDZQOaO7r4u7CikbkqDftTFmuUcP4d9lxu6oTuCv8NCwLq+d8z2xroTeLQX6fVdJGruiPVAYN/EV13EvJ+6gZzBCrx23j0lCv0m5qHFnxgSn4r7HAEfN6LFH2sWtdWrfykJHrepdiHH0cGP8yhADMY0/749uJg=="
+  }
 }

@@ -21,7 +21,12 @@
       "path": "/app.bsky.actor.getProfile",
       "responseType": "json",
       "params": [
-        { "name": "actor", "in": "query", "type": "string", "required": true }
+        {
+          "name": "actor",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -31,8 +36,18 @@
       "path": "/app.bsky.actor.searchActors",
       "responseType": "json",
       "params": [
-        { "name": "q", "in": "query", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -42,12 +57,33 @@
       "path": "/app.bsky.feed.getAuthorFeed",
       "responseType": "json",
       "params": [
-        { "name": "actor", "in": "query", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "actor",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     }
   ],
-  "transport": { "preferred": "sw" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "wlqcXEmS7l1Px/bjF7v60+xouMMJbwxBVGLEYtJFPRTYKeoi9/opRhDCa/QWY1WaLY2K3d1M73yUpMjCsRbBkicI02oXbYH5CrxKVa49SKaLVcwXe1UMSfTrVrFylNggNwUmB4U2yOmtDkw2m9nG/LRVXVUTcXdGg1EBHX2B2NpZ6uDz/WI++BqBO/5UDd8IfWddJ944r9Ov81sxHOETC7UCzRWkw6cPQKol0INNxdeCqLDMPc39aSAGobuaae2bD3pXBHMZOCuBpyTdPgjb5/JOKywVB4fBoVnfs6ouZCx+poKlyyVzy9/jAWmu5QyZfFFRVyihvhAgjHD8PFRtTg=="
+  }
 }

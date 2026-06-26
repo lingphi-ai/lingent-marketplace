@@ -83,8 +83,18 @@
       "path": "/ajax/friendships/friends",
       "responseType": "json",
       "params": [
-        { "name": "uid", "in": "query", "type": "string", "required": true },
-        { "name": "page", "in": "query", "type": "number", "default": 1 }
+        {
+          "name": "uid",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        }
       ]
     },
     {
@@ -116,5 +126,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "GzwCU5mBEGyfOYLOx9f8Tl5nCbJ7hHiOSaMnBdR9W+dkq34xNrl+08cC056N+Emr6MTvG4svSGu1WCGstvDSGZvlwhsIJcFhNU+XNNa+3q8qoEPMQJIOSpWwlVQqbiCuWUDoiVv7WG0dgOOLNmqXDp5McgIH9HRzVe/OyI3gWLj6HbtMLarIlV1ZevU/0crU/3R1JvxrHk6joz2+7wZ19kAw8fMn+07KMjkcyKUJxCg62LUfbz4VVYhAcFU/KcIvFr9cwICZRm+23H3uQmnoFUAnOV5S+O6wtjesBpDg5wkAeDfc9hwJWiMZprR8GxkIpT/Y87gAlxul4ze3bdq6RQ=="
+  }
 }

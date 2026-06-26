@@ -9,7 +9,9 @@
     "https://www.iqiyi.com/*"
   ],
   "baseUrl": "https://www.iqiyi.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -19,13 +21,28 @@
         "item": "a[href*=\"/v_\"]",
         "limit": 40,
         "fields": {
-          "title": { "attr": "title" },
-          "url": { "attr": "href" }
+          "title": {
+            "attr": "title"
+          },
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "5xM2cpul7ED0XtILX6ssdR20pLf0ZXVwOguSsFNm8sy8VmbtC0vBFsBeMlotV3VKfh/4UitVQAwKbNuhIXT1auY6SFjf1SHEWvh/2bCDIajCAdz+kHZGofEOI71V10e9LhcRSoYVemVoEhIxyDV9E5SOQQWqX8s+Ax/CN3g4u6rUkurHf3JUOUbxzZ60FmJCLp4BTmiSy2h4SxMdUH8yRHDA+mc3IadiJrr+g1yxiX8FWFbjN4OtFEgkx3XXifTK9ItwXEsnNEapC4dNi9He24RxBj0cj0KAtGNUNJHCKNpaEPeohrdBTYjiwE6FkE6NVmPJnFDuFdKx7ndZgvR3ew=="
+  }
 }

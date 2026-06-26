@@ -28,7 +28,12 @@
       "path": "/subreddits/mine/subscriber.json",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     },
     {
@@ -38,7 +43,12 @@
       "path": "/message/inbox.json",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     },
     {
@@ -48,7 +58,12 @@
       "path": "/user/{username}/about.json",
       "responseType": "json",
       "params": [
-        { "name": "username", "in": "path", "type": "string", "required": true }
+        {
+          "name": "username",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -58,8 +73,18 @@
       "path": "/r/{subreddit}/hot.json",
       "responseType": "json",
       "params": [
-        { "name": "subreddit", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "subreddit",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     }
   ],
@@ -70,5 +95,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "XbsK0EsPnxTVYNGQiOh4RTo3B33mpuadDtC8KsalOgtAGUz25wu+WV1rkLec35EVBReub0uLTk+2/5I8tY4wyOyCnNrorBNvGi38NKRyPfJ4/390EWd+7Ri6D3eEAoO4fKz6Mgxtk/e1QEXCfrn1slCHylmCUueJNm2GYPc3BuxeQlI61Os6H52uzSLZQekDpkbcbsDtOAgfTIEtByoJNCm2n0EQGDlj9BvMOsSvLj3o1LWnzSE4f4LPYIfsaLJaLS857QJszheNsb3Ok8AjagT3nLiWEMNm/TZHNkSeJFTgKqkdIK5na/dD1JMKAQKPl7cr+c1xgID/P6j+3vjS9Q=="
+  }
 }

@@ -30,7 +30,12 @@
       "path": "/projects.json",
       "responseType": "json",
       "params": [
-        { "name": "page", "in": "query", "type": "number", "default": 1 }
+        {
+          "name": "page",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        }
       ]
     },
     {
@@ -40,7 +45,12 @@
       "path": "/projects/{projectId}.json",
       "responseType": "json",
       "params": [
-        { "name": "projectId", "in": "path", "type": "string", "required": true }
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -57,14 +67,65 @@
       "path": "/projects/recordings.json",
       "responseType": "json",
       "params": [
-        { "name": "type", "in": "query", "type": "string", "required": true, "enum": ["Message", "Todo", "Comment", "Document", "Upload", "Schedule::Entry", "Question::Answer"], "default": "Message" },
-        { "name": "bucket", "in": "query", "type": "string", "required": true, "description": "The project id (bucket) to read from." },
-        { "name": "status", "in": "query", "type": "string", "enum": ["active", "archived", "trashed"], "default": "active" },
-        { "name": "sort", "in": "query", "type": "string", "enum": ["created_at", "updated_at"], "default": "created_at" }
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "Message",
+            "Todo",
+            "Comment",
+            "Document",
+            "Upload",
+            "Schedule::Entry",
+            "Question::Answer"
+          ],
+          "default": "Message"
+        },
+        {
+          "name": "bucket",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "The project id (bucket) to read from."
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "active",
+            "archived",
+            "trashed"
+          ],
+          "default": "active"
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "created_at",
+            "updated_at"
+          ],
+          "default": "created_at"
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "ah3u/sqfoL8wKgGF1YJXvTLUU8Xdn+B0th//rSMnVK1vQp4iNmqY6XJGifsZKXCaQCiM2eAm5KEOJPQZeAdJxt9ZlrJQR0nxer+6+80mIABLxIWddymDAHCNfs7+ZMVvy5PrHMGS/Ha49F1eweSZhM3x7MJ0gUspvIKfrBBRpP0H07OQWN6ve8l3aSly4+K5FAnmkhU7+PasVT7MpRtiNTkXpH9KOCnwnQICquxwp4zlyHRJoxM4qUXw1qlDchokpxTvwFkIzKWtjy7ktoOPtuKn2Ij7wnzbx6eU1dREcikkUf+5UCG3L+OHgecVPMX9dFM9XU856BWFDUEf7KsKJw=="
+  }
 }

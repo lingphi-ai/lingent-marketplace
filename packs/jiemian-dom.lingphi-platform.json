@@ -9,7 +9,9 @@
     "https://www.jiemian.com/*"
   ],
   "baseUrl": "https://www.jiemian.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -20,12 +22,25 @@
         "limit": 40,
         "fields": {
           "headline": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "jo4qtLIUv30FDpGafTI2tic01z/SB5aIrC2pmkMJkzLHDukycTAh5VQBm7rV3X8I6B8OPag+xb97Rs4qgnR160NlLkVsGiR5NrMxSgDLWd9UxCMyehQrabwPfKM89lQlN5GlygCQGOn4OcyPZDfVOydcB5SMGJQgRfQpbiZvUPuPEYzxmuUyB3ljzVkN5fLHTKEx2oizkBkT7h7YyvhB9hd1XFkHUwHUAKE5tnKv8VSBl2RmV6pZf+C3Ca0YxcIklkRStD3JY3tVOoPF81YErABOvCX/KRXMhFSgTTKPR0R+AslW3Prlg8EPyq1DCoQpNShzceG7jOaX6JVhuM5g7Q=="
+  }
 }

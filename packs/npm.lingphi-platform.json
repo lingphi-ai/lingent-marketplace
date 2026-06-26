@@ -21,8 +21,18 @@
       "path": "/-/v1/search",
       "responseType": "json",
       "params": [
-        { "name": "text", "in": "query", "type": "string", "required": true },
-        { "name": "size", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "text",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "size",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -32,7 +42,12 @@
       "path": "/{package}",
       "responseType": "json",
       "params": [
-        { "name": "package", "in": "path", "type": "string", "required": true }
+        {
+          "name": "package",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -42,7 +57,12 @@
       "path": "/{package}/latest",
       "responseType": "json",
       "params": [
-        { "name": "package", "in": "path", "type": "string", "required": true }
+        {
+          "name": "package",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     }
   ],
@@ -53,5 +73,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "UqgwA81fHDLctBud1wpBuDM01osYbqGcK50cVB7E0fhpwYQc9TGzlQAbX70zxUNqnGYiG42ykuvEOOl7QgEvkpc9PM/7hJjl56a2CFb4AgyFN5sgBBDAtwO96WwzzKnyKqgmrjuRiywK4JWGVcpNLU7rxslUSvBqyhmu/EqkKAe6wSmLTm+Wh6Fndk3kCwJrlAOI0jIEEN9pvHsrLB1JnlII71PtqkbawysHaTtTke6fEuW0fLFFgSvrWdyo3nPhLtvOir2aTtuwvsZipX08FN+K5Rnzbzn0LjS1hcU6rMTTICw0c5ruucL/gpLWXmo5Ja5FfDGRGh1p7YLb+X9Gzw=="
+  }
 }

@@ -9,7 +9,9 @@
     "https://open.163.com/*"
   ],
   "baseUrl": "https://open.163.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -20,12 +22,25 @@
         "limit": 40,
         "fields": {
           "name": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "5C4EwSE5w6BGPZRNx+JAJoQZSXec89YVWiKX/UZvTGC1Nu5U+ZRwMtzFxEsyr7I/Mjo/xabR0SCFTxqkUpEEKjT9hID/P/bKL7p4JmpCPc33mFlFAXBYImL5w5jGCsCX+CvYKles3eo3bdQ9PGzEtUFDnr3tH5YkIMtCeLfhOHU+fVAVmadKe0Z8bsAN0naPuwbY29WplKLYsQDQS2ftoyqdIw4sytN4GoEm2C+HtgyjL6p/DNOgFrzHe4hknyngW3jTfysMbjQdzA99Lt23kTZInLTw/2cIHEKDtZfFW3PYcpXh09DD8b5wCByeqGpzP9kxdCuaRkQ4gnB1hGUc/w=="
+  }
 }

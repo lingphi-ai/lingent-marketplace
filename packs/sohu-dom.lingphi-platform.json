@@ -10,7 +10,9 @@
     "https://*.sohu.com/*"
   ],
   "baseUrl": "https://www.sohu.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -21,12 +23,25 @@
         "limit": 40,
         "fields": {
           "headline": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "DIshilDj7N7u1WCAUt8q+w04xoJOfgIh7XeKjXBZAq6y0eZXX98zomNPpSw0NlXeLCenr856cQ85PFh0yn2tAT3G1RTg1Piw3qGAyXQDEr2JB8rZRim4zoTZM72JR4sFWQTGMG4qfxrbJ0Cx60Ree6CXBhRc9MOt9+PZRCyIhzJochtO4q+Rlh58TylltyeY9U8rsfq/RzZrwOHrVU2MfWVGhyWDmSGkfyghoSchSpWCNH651H5ht6x3UIQNA13JP8Ha6ljECXR4zldL2m7Du3mMURxWgYW7ANv3AZTlN9oVBqM3oglXy5BP9VGYclo0FOW51HLt1Gzu5bQcYgma2g=="
+  }
 }

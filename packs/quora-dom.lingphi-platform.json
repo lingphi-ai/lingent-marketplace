@@ -20,7 +20,9 @@
       "description": "The title of the question on the current Quora question page (navigate the tab to a /<question-slug> page first). Returns a single object with the question title. VERIFIED.",
       "dom": {
         "fields": {
-          "title": { "selector": ".puppeteer_test_question_title" }
+          "title": {
+            "selector": ".puppeteer_test_question_title"
+          }
         }
       }
     },
@@ -36,7 +38,18 @@
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "e4EZYgGV317AgbNHtFmMF2Pif0iK35TX1vVVaf8dgiDbg9KnYE7qjE0SdVnvBWybg1UNVTC9jj6WhmTGa9dI764Kobdp7xmTh+Z+S9f2tQOySGucts1HX2pacr0tURJsxUXd0qmDc+Jt2gSd6vKQFp5iVoKgMfY5PSflpSlNzFfNUpS6zgdQrmswRTOqDywRFaBPGry1znoG/of4OUyrn6h3g4wdL5cUF36sabR+jaDKpPNXJnbtJXlMeppO+XSCCvpGOZjDGJxKo6kIlZxW5ETe5tk9tdhskf9lZXuhJrVRysodWc/zOu1XXobbt5EX0LsRGLezw2joe49WL4JsXA=="
+  }
 }

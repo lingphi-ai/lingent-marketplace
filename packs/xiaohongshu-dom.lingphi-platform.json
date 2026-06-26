@@ -9,7 +9,9 @@
     "https://www.xiaohongshu.com/*"
   ],
   "baseUrl": "https://www.xiaohongshu.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -19,14 +21,32 @@
         "item": "section:has(a[href*=\"/explore/\"])",
         "limit": 40,
         "fields": {
-          "title": { "selector": ".title" },
-          "author": { "selector": ".name" },
-          "url": { "selector": "a[href*=\"/explore/\"]", "attr": "href" }
+          "title": {
+            "selector": ".title"
+          },
+          "author": {
+            "selector": ".name"
+          },
+          "url": {
+            "selector": "a[href*=\"/explore/\"]",
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "vERm/Qp/uKhIheAHXjXNpIM8VXq4E4fNKNfvozFG6vk0Cs1Qs9zLdElzLYXX0xWU5VlzTalLb9/QPgYqSirpvT6ohoDfnnwyKqxjFmoz0Q2A0G7NNPv7IzQiscIMvtaDYY8OgbHL+GMnipnIxIWiY1b6cl1BHWxdyAMoECvsP9SsWadMoWyuKXkJRgc2G7h/c92lMtX+VnMGfvdyBAgYd58vN+zgGh9k4IptfR7Ln9sF+bfpzE8bbCRN+3/cuTSsMFGNZkvzu8clKj4cnYj6v9WF4m9cnYrzL64QJXphWulHS7aXVl2OtE/hN2Yy5iw8K9UoSm0hoy76r1jXSK8Y9Q=="
+  }
 }

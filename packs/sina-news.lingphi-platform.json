@@ -9,7 +9,9 @@
     "https://feed.mix.sina.com.cn/*"
   ],
   "baseUrl": "https://feed.mix.sina.com.cn",
-  "auth": { "type": "none" },
+  "auth": {
+    "type": "none"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -19,14 +21,47 @@
       "path": "/api/roll/get",
       "responseType": "json",
       "params": [
-        { "name": "pageid", "in": "query", "type": "number", "default": 153, "description": "Feed page id (153 = news roll)." },
-        { "name": "lid", "in": "query", "type": "number", "default": 2509, "description": "Channel id; 2509=全部, 2510=国内, 2511=国际, 2669=社会." },
-        { "name": "num", "in": "query", "type": "number", "default": 20 },
-        { "name": "page", "in": "query", "type": "number", "default": 1 }
+        {
+          "name": "pageid",
+          "in": "query",
+          "type": "number",
+          "default": 153,
+          "description": "Feed page id (153 = news roll)."
+        },
+        {
+          "name": "lid",
+          "in": "query",
+          "type": "number",
+          "default": 2509,
+          "description": "Channel id; 2509=全部, 2510=国内, 2511=国际, 2669=社会."
+        },
+        {
+          "name": "num",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "number",
+          "default": 1
+        }
       ]
     }
   ],
-  "transport": { "preferred": "sw" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "4V+WkayDSIfdaz1FnU4+h4+Oo4wvQmaA6VRQdJhZuGCw1hl3TaeXjFCgKhgEXGU2zf3tsjyy6jZ7j3d4kMAFajJZe+nOjgqZeV4rn6b/7ZsKW5eocvDQ1UUgVv7bF8lD/vu2QV5M4YXOyciCqLDEHhN97AswL7INskMw678K1xbFSoUlKv97BcONRHmuZ0f8cWYgvTpIXZIwebH0TpSkV8esBtpEPdL8+TVOYV65gSocNnuNch5Xs1zBOP8r5dzqUznDrgp/KQF9kJb/OdD29ji+IeBTFMo6E2d7vWaDkDwrgFuSt5m5VIXsMClnnS4aFv5QLmrgVQx2ofunP4kbFw=="
+  }
 }

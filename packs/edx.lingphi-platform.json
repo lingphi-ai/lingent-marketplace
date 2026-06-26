@@ -9,7 +9,9 @@
     "https://igsyv1z1xi-dsn.algolia.net/*"
   ],
   "baseUrl": "https://igsyv1z1xi-dsn.algolia.net",
-  "auth": { "type": "none" },
+  "auth": {
+    "type": "none"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -19,11 +21,28 @@
       "path": "/1/indexes/rv_product_summary/query?x-algolia-api-key=1c5f82302ef2300f01551b182943c9b0&x-algolia-application-id=IGSYV1Z1XI",
       "responseType": "json",
       "params": [
-        { "name": "body", "in": "body", "type": "object", "required": true, "description": "{ \"query\": string (required), \"hitsPerPage\"?: number, \"page\"?: number, \"filters\"?: string }" }
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": true,
+          "description": "{ \"query\": string (required), \"hitsPerPage\"?: number, \"page\"?: number, \"filters\"?: string }"
+        }
       ]
     }
   ],
-  "transport": { "preferred": "sw" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "bgjNRyvLkm9zJZj4Ca2xDnPqJD1ESpiqWuDW4Ao4um3nVdOz16bwMNS9CnREjVgFV7c9c+AYfcqYdAJU+m+t6hCmAdF2JXjNhvzr5fI1Ak8csDGk2UZoJ7NRwZ3szAah+Y144fDNEdfWHmPDwZ26ee1hX8pbPYanBQV5C0TmxMNikDFBAGxu+ekcUhCkQXd1yQWCjm0AbqM/9yoeI0g41GQmzILCI4g9YQmTQy7npN/+4cvTAUvrHHMZ+ZQL5GiJ3OFCYa0GmUOxf67KpvZkB4O+WaMm+S872QTjC38q8mI0Gq9/9XUL0dDzyPpEL6a7giA7fATNPLulK/2qv3I13Q=="
+  }
 }

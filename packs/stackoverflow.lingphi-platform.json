@@ -21,11 +21,43 @@
       "path": "/search/advanced",
       "responseType": "json",
       "params": [
-        { "name": "q", "in": "query", "type": "string", "required": true },
-        { "name": "site", "in": "query", "type": "string", "required": true, "default": "stackoverflow" },
-        { "name": "order", "in": "query", "type": "string", "default": "desc" },
-        { "name": "sort", "in": "query", "type": "string", "enum": ["relevance", "votes", "activity", "creation"], "default": "relevance" },
-        { "name": "pagesize", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "site",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "stackoverflow"
+        },
+        {
+          "name": "order",
+          "in": "query",
+          "type": "string",
+          "default": "desc"
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "relevance",
+            "votes",
+            "activity",
+            "creation"
+          ],
+          "default": "relevance"
+        },
+        {
+          "name": "pagesize",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -35,11 +67,42 @@
       "path": "/questions",
       "responseType": "json",
       "params": [
-        { "name": "site", "in": "query", "type": "string", "required": true, "default": "stackoverflow" },
-        { "name": "tagged", "in": "query", "type": "string" },
-        { "name": "order", "in": "query", "type": "string", "default": "desc" },
-        { "name": "sort", "in": "query", "enum": ["votes", "activity", "hot", "creation"], "type": "string", "default": "votes" },
-        { "name": "pagesize", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "site",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "stackoverflow"
+        },
+        {
+          "name": "tagged",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "order",
+          "in": "query",
+          "type": "string",
+          "default": "desc"
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "enum": [
+            "votes",
+            "activity",
+            "hot",
+            "creation"
+          ],
+          "type": "string",
+          "default": "votes"
+        },
+        {
+          "name": "pagesize",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -49,12 +112,43 @@
       "path": "/questions/{ids}/answers",
       "responseType": "json",
       "params": [
-        { "name": "ids", "in": "path", "type": "string", "required": true },
-        { "name": "site", "in": "query", "type": "string", "required": true, "default": "stackoverflow" },
-        { "name": "order", "in": "query", "type": "string", "default": "desc" },
-        { "name": "sort", "in": "query", "type": "string", "default": "votes" },
-        { "name": "filter", "in": "query", "type": "string", "default": "withbody" },
-        { "name": "pagesize", "in": "query", "type": "number", "default": 5 }
+        {
+          "name": "ids",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "site",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "stackoverflow"
+        },
+        {
+          "name": "order",
+          "in": "query",
+          "type": "string",
+          "default": "desc"
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "default": "votes"
+        },
+        {
+          "name": "filter",
+          "in": "query",
+          "type": "string",
+          "default": "withbody"
+        },
+        {
+          "name": "pagesize",
+          "in": "query",
+          "type": "number",
+          "default": 5
+        }
       ]
     }
   ],
@@ -65,5 +159,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "tfnILvKkaDuFezgk1JSRCwCqNA6GCpfrp+Vl87GeTji9/wMxC5rApD/kjew25n85WPyE427UmBrGXplTqkU7cR+I5PBnmy03GRc2w3TIHbvfGchTK6kGBM7ez5v0ri3hUAdCI7yElE/Nns3fXD0IZrm4zC3VTk9GLdk+vYk6QBYZ6fHr3bqacLiSO7m4GX9RdzeY1WC1p6nhRzsjZV/WRum046z581Z5pdM4n91vtgs8BvBN+syWKquzaSOaiC754u4mrSHV4R1plExoDpuA8BJrEzU2/7GujGnN3wjY/3SDtAZdi05C2LXzqkgf80jwWNTb4vexH2Xo4leyN5Ry7Q=="
+  }
 }

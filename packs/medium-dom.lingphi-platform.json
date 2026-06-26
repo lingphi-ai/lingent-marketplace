@@ -21,13 +21,29 @@
         "item": "article",
         "limit": 30,
         "fields": {
-          "headline": { "selector": "h2" },
-          "url": { "selector": "a:has(h2)", "attr": "href" }
+          "headline": {
+            "selector": "h2"
+          },
+          "url": {
+            "selector": "a:has(h2)",
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "hr3jg++0f0WguS6sfvZ+Yc3dQXfIfgUUGe36EBtISLIvdegzfptg+1QrKDMuXVq4ZhID83ARNZLmuvF1MQAAc6fp/gvfDFKN0iUBcGdADvnWakqFwDXZ48KPiU/czUkLuf+Pk+ZZ/m1iFgEVAXqgoV18XR4Fy/LyEoK1CseYqOwm/8cFobWaFIw0i2pKYbmH4g8qmCcDAcRGaFexB1h7s5olSQVCxoRsrngcSoBf4/J8GDfktI93ZXHqIEgbfq8xA+eZUBsBo8E2kxlmvrWJ/T67ljJip7kX7b9MhLZHf4zLcECW00u+AAMAlHjKcoZfdrUOB6bT+Htz6YGKbEqb1A=="
+  }
 }

@@ -9,7 +9,9 @@
     "https://3g.163.com/*"
   ],
   "baseUrl": "https://3g.163.com",
-  "auth": { "type": "none" },
+  "auth": {
+    "type": "none"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -19,12 +21,37 @@
       "path": "/touch/reconstruct/article/list/{section}/{range}.html",
       "responseType": "json",
       "params": [
-        { "name": "section", "in": "path", "type": "string", "required": true, "default": "BBM54PGAwangning", "description": "Section id; BBM54PGAwangning = 头条/推荐." },
-        { "name": "range", "in": "path", "type": "string", "required": true, "default": "0-20", "description": "Offset-count window, e.g. 0-20 (first 20), 20-20 (next 20)." }
+        {
+          "name": "section",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "default": "BBM54PGAwangning",
+          "description": "Section id; BBM54PGAwangning = 头条/推荐."
+        },
+        {
+          "name": "range",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "default": "0-20",
+          "description": "Offset-count window, e.g. 0-20 (first 20), 20-20 (next 20)."
+        }
       ]
     }
   ],
-  "transport": { "preferred": "sw" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "WT31jrnrXCkLjQ4heMGWJ9EZ4PiW1GMdC/dlAY2RHAASFwDJiVWZ5fTCuR+uVjxKgYZz8ROFBPKpsbPotR4jhkT6LfKEpenn0lgp1GhL4spmoywBUWADWWZQk0zCcudByzx+QaZWtpN24MZVbDHPVTM9kYEcHgO5L+P/Pg4BDWoHmGZ8Ir7fv7sG1jH/fSuvpwa7eWAXdlqu/3govgj4uboybMKk3HoOutW9RTAhu7vPKbVp3+R0bSU0Uqw+2Kxv77UCGwqR1GzcvOTdCihJkjNytJPWU81250VI/kK/YoGEbBPi06mSIampTwXJxtKT7StR0pnBpjMC5qHvtJxkSg=="
+  }
 }

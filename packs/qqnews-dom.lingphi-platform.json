@@ -10,7 +10,9 @@
     "https://new.qq.com/*"
   ],
   "baseUrl": "https://news.qq.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -21,12 +23,25 @@
         "limit": 40,
         "fields": {
           "headline": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "Cy6oDPet40+WV72Yn1L5VZ1hsyB8I4SG/9OYY6nlhZ1G+E37JaCFJaEYmpbTzSjjNurN56XzISnTIBajrY9wvkHtnuM0f00qvXyjljK1isSBaOJqHdEKzseSzNWFF7piYTJpP/jZo5u23W8yvQU62nCY+W7ReQMo1woVIiQkKUyeUqSY+TrKByKR1kRYYtXtZ7tkKhwZ27kQ3cQIBwJxQM4aqpbt64KNy6D82yGyI+mCCxglMkU1X34+1QAtGiS5DOREnIeyZ8HfkZiFWN/1SHV/6WGEdUlr2Ao5MD8X7K/3d8J0JjV5Zks2szod1vUfUhY+bTnzjQL+6oJwzyRsaA=="
+  }
 }

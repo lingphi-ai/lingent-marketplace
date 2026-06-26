@@ -10,7 +10,9 @@
     "https://bbs.hupu.com/*"
   ],
   "baseUrl": "https://www.hupu.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -21,12 +23,25 @@
         "limit": 40,
         "fields": {
           "title": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "NewhWwgnVSY9IoMlaMy9SLvijsA5XFbX174SjXLepLXEEHtE2lEIYRJQF/er9P3qAu6gFhOFyo+renlapBffUTIC12pLAKQT0DWOWLNUuDeUbb33Se/z4+1Is9V61qHIoJZYD2Yrmq7sl9u+PXgSUNxxPzeMyuTCFuR8FVN1idwYUHMWQq7AgiIJhuITIH6H6XJkckmq1Kx7RzHC7XxyE/CWQhFw65QHp+SaBx2/FqTXgC80tBozPgrD6E0uh4+2wSjp8P0U0jI3VT0Miw+yxDkkPZ92lm2imDIJBVdLyj3nUt5BiVAY4j5664rGHfy63W+CV3wiPyJXmxrVjLVz5A=="
+  }
 }

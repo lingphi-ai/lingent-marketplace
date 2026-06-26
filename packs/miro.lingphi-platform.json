@@ -28,7 +28,12 @@
       "path": "/api/v1/boards",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 20 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        }
       ]
     },
     {
@@ -38,11 +43,27 @@
       "path": "/api/v1/boards/{boardId}",
       "responseType": "json",
       "params": [
-        { "name": "boardId", "in": "path", "type": "string", "required": true }
+        {
+          "name": "boardId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "x8Sgu/RJkWcxBtUmzHdU0NWF5kBzUbtl2a938cW4yzIAa/B10bfoEAbddLYSRgFDzALW781ArO4G9qA4CzfmfVLflqplXsmc61eavk0M4Bre0gO0Hacmha5mYCBzVJhFeM6689eDenrxewnaR9Pt2bwKU76XKvI/i/NfzKjT7SsV6k8hTLYCXhhI042TKY+e60L5+HzEvJaHSHmD+fZcc2g39A8ezdwFuvO3KT0o1VrsrF6DzeLuA+vHUcQuYbhBg+MjynzmCLt5Eyeu1msVX8oh6SCDmrrQmo110GRHAMQCFen14xVBP+BonRiBxRn2Qg38njNJ/sudM3KN4G38OA=="
+  }
 }

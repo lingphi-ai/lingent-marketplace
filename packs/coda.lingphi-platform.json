@@ -28,9 +28,23 @@
       "path": "/apis/v1/docs",
       "responseType": "json",
       "params": [
-        { "name": "query", "in": "query", "type": "string", "description": "Optional search text." },
-        { "name": "isOwner", "in": "query", "type": "boolean" },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "query",
+          "in": "query",
+          "type": "string",
+          "description": "Optional search text."
+        },
+        {
+          "name": "isOwner",
+          "in": "query",
+          "type": "boolean"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     },
     {
@@ -40,7 +54,12 @@
       "path": "/apis/v1/docs/{docId}",
       "responseType": "json",
       "params": [
-        { "name": "docId", "in": "path", "type": "string", "required": true }
+        {
+          "name": "docId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -50,8 +69,18 @@
       "path": "/apis/v1/docs/{docId}/pages",
       "responseType": "json",
       "params": [
-        { "name": "docId", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "docId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     },
     {
@@ -61,8 +90,18 @@
       "path": "/apis/v1/docs/{docId}/pages/{pageIdOrName}",
       "responseType": "json",
       "params": [
-        { "name": "docId", "in": "path", "type": "string", "required": true },
-        { "name": "pageIdOrName", "in": "path", "type": "string", "required": true }
+        {
+          "name": "docId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "pageIdOrName",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -72,9 +111,28 @@
       "path": "/apis/v1/docs/{docId}/tables",
       "responseType": "json",
       "params": [
-        { "name": "docId", "in": "path", "type": "string", "required": true },
-        { "name": "tableTypes", "in": "query", "type": "string", "enum": ["table", "view"], "description": "Optional filter." },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "docId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tableTypes",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "table",
+            "view"
+          ],
+          "description": "Optional filter."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     },
     {
@@ -84,9 +142,24 @@
       "path": "/apis/v1/docs/{docId}/tables/{tableId}/columns",
       "responseType": "json",
       "params": [
-        { "name": "docId", "in": "path", "type": "string", "required": true },
-        { "name": "tableId", "in": "path", "type": "string", "required": true },
-        { "name": "limit", "in": "query", "type": "number", "default": 50 }
+        {
+          "name": "docId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tableId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        }
       ]
     },
     {
@@ -96,11 +169,36 @@
       "path": "/apis/v1/docs/{docId}/tables/{tableId}/rows",
       "responseType": "json",
       "params": [
-        { "name": "docId", "in": "path", "type": "string", "required": true },
-        { "name": "tableId", "in": "path", "type": "string", "required": true },
-        { "name": "useColumnNames", "in": "query", "type": "boolean", "default": true },
-        { "name": "query", "in": "query", "type": "string", "description": "Filter like \"ColumnName:\\\"value\\\"\"." },
-        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+        {
+          "name": "docId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tableId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "useColumnNames",
+          "in": "query",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "query",
+          "in": "query",
+          "type": "string",
+          "description": "Filter like \"ColumnName:\\\"value\\\"\"."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 25
+        }
       ]
     },
     {
@@ -110,14 +208,45 @@
       "path": "/apis/v1/docs/{docId}/tables/{tableId}/rows/{rowId}",
       "responseType": "json",
       "params": [
-        { "name": "docId", "in": "path", "type": "string", "required": true },
-        { "name": "tableId", "in": "path", "type": "string", "required": true },
-        { "name": "rowId", "in": "path", "type": "string", "required": true },
-        { "name": "useColumnNames", "in": "query", "type": "boolean", "default": true }
+        {
+          "name": "docId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tableId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "rowId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "useColumnNames",
+          "in": "query",
+          "type": "boolean",
+          "default": true
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "l9aiw8XBkWBMardEGqIg9hVA/Hf5/7AP9nzz8V83xXNijAOjLcnHXBArjbHgL4OyPj0ukZFKfDXF4xxmDsB+L3QyhcnkE513xiZ4r87qORWMPrm1S8LyBPRK5eGoUplt3F+5j6VQD/dqA9VyPV9yGMQv8eTVu+PDI+WI9+2QYRnvxPjXyhUVXd+GH+zF4K2688pmy2Gdxq2El/dkbQIkPsTJLP5GFbMMptH4xsbW+0mojEaV4WjbFuIbmvXBEVWxWlKmUNzM1Am3onBuheFnfQvIXwiw8ZGaJ6x12sJU4MuvfeqYezwvyjElVbGtX2Ov8puUWSuthx0rM9ykZ6KRGw=="
+  }
 }

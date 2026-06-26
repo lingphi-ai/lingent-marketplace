@@ -22,13 +22,29 @@
         "item": "[data-component-name=\"card\"]",
         "limit": 40,
         "fields": {
-          "headline": { "selector": ".container__headline-text" },
-          "url": { "selector": "a.container__link", "attr": "href" }
+          "headline": {
+            "selector": ".container__headline-text"
+          },
+          "url": {
+            "selector": "a.container__link",
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "Cx274UJCHAct5eFvk7qTto41b/KyrF90NmC8y4EGOHWo4BPt+hQDdnwkFneeI4DTs5cWatpkQ6kVVBqIIT6kH66Weoe5XeMAjZQDLORwQTb0gvcOV0aQnD6Im105V6jfnEgSfqSJvkNmkovoQ31kfPUpgsaW3hFhjLFtwwknAAeDZF6sunJXbsEjeFM7qe9mul90fZObY3hXlt/jx2kJtVdMaUC0roYU8i5hvRyOM+34gWLgKUaUXi/ZlWUud1mP/gGFaPZHOHcktBm+hFxga+iiFIojWem2llwArJ2+rQUiYOE0ir+5mk8rjf6p2Bls5EKgOuxjwUa5riQyW7UHIw=="
+  }
 }

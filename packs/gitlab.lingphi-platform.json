@@ -396,5 +396,11 @@
     "baseDelayMs": 1000,
     "maxDelayMs": 10000
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "MYw/78QXPgsyDXGP/o75+P4AVxHIXTPegkER0vU5ixEXqvmk3YwbCO3v3aBSmUuiB7pC+YNmMUTJG1RbNfwjcJKmNMC4CYL6uX4zpR4i4CC1hU0YJnbd6pyJLALtsSAQKe5nEu6KDET6qBVs6hDcLBsamxG9+/WEiFU35sqGJm5FiQh+lSntyiKAntFZw8hATD9Kv0TzUH2tveUWJbWOgkCGDudyUUUhAOu1EbVJfgvji1kLsF5kNMj/c6/fPdveNyob8VdAm0ayR2BezLNJmXRvJqab7FQ9FjND9IJ9CvXOXm8ENDELHiIq9StPtgy3I0eDbs3v5bzO3XpChaBrcw=="
+  }
 }

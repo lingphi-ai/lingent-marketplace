@@ -47,14 +47,22 @@
           "name": "type",
           "in": "query",
           "type": "string",
-          "enum": ["movie", "book", "music"],
+          "enum": [
+            "movie",
+            "book",
+            "music"
+          ],
           "default": "movie"
         },
         {
           "name": "status",
           "in": "query",
           "type": "string",
-          "enum": ["mark", "doing", "done"],
+          "enum": [
+            "mark",
+            "doing",
+            "done"
+          ],
           "default": "done"
         },
         {
@@ -78,9 +86,24 @@
       "path": "/user/{userId}/following",
       "responseType": "json",
       "params": [
-        { "name": "userId", "in": "path", "type": "string", "required": true },
-        { "name": "count", "in": "query", "type": "number", "default": 20 },
-        { "name": "start", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "userId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "start",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -90,7 +113,12 @@
       "path": "/movie/{subjectId}",
       "responseType": "json",
       "params": [
-        { "name": "subjectId", "in": "path", "type": "string", "required": true }
+        {
+          "name": "subjectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -122,5 +150,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "gz19KFmfoRzzVKVboa13EebWUsVipT7D2CeO2u7fUh9bu3sWeSMBScV8uAI/AHJWMe53pzmKIikbs4xtqZ7G0sABczz14qNiV7AEEK55stlDrA7PGdp0DKFZPORhtgdAdJK6gJpiLhFeXzgJYKXs5B2tYTxRaN6e3aR8MfusrU//a/jyEy1BUJQUoebes9/3LlKOK5jzMpxkvXfzNsRjYnkOwjgynyNdduhPQLSVF7hFvHk3cfywbtsHrWtqojaLXxF9cv9/CXsJz4xDhWD+Uu9ljoEaCVbjUnvGpRrbfIiJwzMbIzOSlXVxU3M1U0aoeKcQ3Aq5bLPK5YrWiELOHQ=="
+  }
 }

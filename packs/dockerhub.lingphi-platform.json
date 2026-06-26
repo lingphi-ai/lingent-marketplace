@@ -21,8 +21,18 @@
       "path": "/v2/search/repositories/",
       "responseType": "json",
       "params": [
-        { "name": "query", "in": "query", "type": "string", "required": true },
-        { "name": "page_size", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "query",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     },
     {
@@ -32,8 +42,19 @@
       "path": "/v2/repositories/{namespace}/{name}/",
       "responseType": "json",
       "params": [
-        { "name": "namespace", "in": "path", "type": "string", "required": true, "default": "library" },
-        { "name": "name", "in": "path", "type": "string", "required": true }
+        {
+          "name": "namespace",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "default": "library"
+        },
+        {
+          "name": "name",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -43,9 +64,25 @@
       "path": "/v2/repositories/{namespace}/{name}/tags/",
       "responseType": "json",
       "params": [
-        { "name": "namespace", "in": "path", "type": "string", "required": true, "default": "library" },
-        { "name": "name", "in": "path", "type": "string", "required": true },
-        { "name": "page_size", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "namespace",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "default": "library"
+        },
+        {
+          "name": "name",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     }
   ],
@@ -56,5 +93,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "l6q6JbbBhreyWsoVIVnLPt2EjO+Z+Nodvg1TnfDk62QT+ryvJbiicyXctYBNkkprF1Thc07AbYdaZTISscoJP+xLjJXdbw4wXgQ5PxGmi5nTNAtdwfu2HAWC7kA9H8VIiCCP8H3I+mzR7Ii2DuF7EdwaWO05gPQpI4wpoHIptsa8NwP8/U4BgSNNEUQEttfIcIhLKuCCIzTQnoNEktINhKLLjRZ7EjGJN3mNFxEBPJSx/cB+Vjy5aSesuNbARpExLjN3Uw+afweFEnnW2XGaBtBjIoN4plhOEPT2EShi6Zt4mRRuy6H+jgqoPQ1e+GyVOGjSsN2G02GM4yW0ktwRgg=="
+  }
 }

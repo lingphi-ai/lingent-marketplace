@@ -10,7 +10,9 @@
     "https://*.cctv.com/*"
   ],
   "baseUrl": "https://news.cctv.com",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -21,12 +23,25 @@
         "limit": 40,
         "fields": {
           "headline": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "utX9EWLsAQsVqxI8lTfd+dZh73DLo+ICXfmtXwxanQbDEh+5Hr89a4pdA337BwVTpUYszsL2VjBj0rWrguMibwAY8EEvtZZ3t6prHHdoYQPBKG2dyYr5l8gYY5/vbsDGpxzyxkImx0OX2dRHbRA/uNrk8phlrz85OWsGLpC09xGxDpX/7pWiEOg+zK+woQvHymbnpfQPG1ar4hsRB76iTwUaIb7mqXQTzKsZVwWCtfZFOrUwWUuzt14sowuLbzMWu79ZPqrXXmqjd7S0ww2GbrBQu4InDH8sFcSfDawi8NiwGHtTLcRyVNW2pI9A5tYtRze3D8hd6/liqBUIZjaqDQ=="
+  }
 }

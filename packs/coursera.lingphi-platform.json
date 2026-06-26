@@ -21,8 +21,18 @@
       "path": "/api/courses.v1",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 10 },
-        { "name": "start", "in": "query", "type": "number", "default": 0 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "start",
+          "in": "query",
+          "type": "number",
+          "default": 0
+        }
       ]
     },
     {
@@ -32,9 +42,26 @@
       "path": "/api/courses.v1",
       "responseType": "json",
       "params": [
-        { "name": "q", "in": "query", "type": "string", "required": true, "default": "slug", "description": "Fixed." },
-        { "name": "slug", "in": "query", "type": "string", "required": true },
-        { "name": "fields", "in": "query", "type": "string", "default": "name,description,slug,photoUrl" }
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "default": "slug",
+          "description": "Fixed."
+        },
+        {
+          "name": "slug",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "name,description,slug,photoUrl"
+        }
       ]
     },
     {
@@ -44,7 +71,12 @@
       "path": "/api/onDemandSpecializations.v1",
       "responseType": "json",
       "params": [
-        { "name": "limit", "in": "query", "type": "number", "default": 10 }
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 10
+        }
       ]
     }
   ],
@@ -55,5 +87,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "y42OvinwYNskbCYOLp7nbyjQg2ZEQdtponbYdVQY+JRTNx2YDOCZQgyzcy9PUJU2wJ5131hxbx4+pwdA28RRPkRdiHzlvjBpTA9lwe373WziA3WUwCPBsuJe2muKtbHhmmX2etAYzjx4Q0G7X+Ezf0ij3CE4IZ4p5vhHR3XYdj7jX/UYuba7VAcluhQyQZ5DzZw0BJoA0B7VmZHN09GhgtOzUKTWY0wLLDxe1KIACmytWwDisbxK7civViKS9l66r0UqQOuNN6IPUyRkqpjBJ57hNCN0H81UCrdsb/CJYtXidUCHy2ExfFe8B+LwRDGiwJk1vAlmWjVXCZ4Cg6XgKQ=="
+  }
 }

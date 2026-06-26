@@ -80,7 +80,12 @@
       "path": "/x/relation/stat",
       "responseType": "json",
       "params": [
-        { "name": "vmid", "in": "query", "type": "string", "required": true }
+        {
+          "name": "vmid",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
       ]
     },
     {
@@ -90,7 +95,13 @@
       "path": "/x/v3/fav/folder/created/list-all",
       "responseType": "json",
       "params": [
-        { "name": "up_mid", "in": "query", "type": "string", "required": true, "description": "Your mid (from bili_nav)." }
+        {
+          "name": "up_mid",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "description": "Your mid (from bili_nav)."
+        }
       ]
     }
   ],
@@ -101,5 +112,11 @@
     "maxAttempts": 3,
     "respectRetryAfter": true
   },
-  "timeoutMs": 30000
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "e+ZzIp7sLln7XjLCtKhPRuZRaQJLsqo9A7Cc8WSIpmqhEeBNRsN1JpupXsuhfLRrOqMg8iil3ri+vXjaVG0fer5KMxfeGTR8dFMa6WVwjna6advx06hAcfVW5yw5kWtG24NSdxMdQw7SNTYduFoeLBXDXQgXWRkpgNEpn/oEtBteVrlShD0qFQOER9dg02n6AIQG0mYo2Y7fgpiRQW+rEb9CR6fnlhJfjM0Pi6q5+rB8FHQ2gw0CKPAwiJCh47Y9DMcL0h5K5tW2onIk2nbdrG/NX9PkU8pXJlI6rw5m1uszuKwb53V1UWAQ4sXR8BMXLlxdc79N2ax7wgwP/xrgzg=="
+  }
 }

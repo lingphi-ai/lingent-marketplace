@@ -20,7 +20,14 @@
       "method": "GET",
       "path": "/1/members/me",
       "responseType": "json",
-      "params": [ { "name": "fields", "in": "query", "type": "string", "default": "username,fullName,email,url" } ]
+      "params": [
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "username,fullName,email,url"
+        }
+      ]
     },
     {
       "name": "trello_boards",
@@ -29,8 +36,18 @@
       "path": "/1/members/me/boards",
       "responseType": "json",
       "params": [
-        { "name": "fields", "in": "query", "type": "string", "default": "name,url,closed,idOrganization" },
-        { "name": "limit", "in": "query", "type": "number", "default": 30 }
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "name,url,closed,idOrganization"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 30
+        }
       ]
     },
     {
@@ -39,7 +56,14 @@
       "method": "GET",
       "path": "/1/members/me/organizations",
       "responseType": "json",
-      "params": [ { "name": "fields", "in": "query", "type": "string", "default": "displayName,name,url" } ]
+      "params": [
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "displayName,name,url"
+        }
+      ]
     },
     {
       "name": "trello_board_lists",
@@ -47,7 +71,14 @@
       "method": "GET",
       "path": "/1/boards/{boardId}/lists",
       "responseType": "json",
-      "params": [ { "name": "boardId", "in": "path", "type": "string", "required": true } ]
+      "params": [
+        {
+          "name": "boardId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
     {
       "name": "trello_board_cards",
@@ -56,13 +87,39 @@
       "path": "/1/boards/{boardId}/cards",
       "responseType": "json",
       "params": [
-        { "name": "boardId", "in": "path", "type": "string", "required": true },
-        { "name": "fields", "in": "query", "type": "string", "default": "name,desc,due,idList,labels,url" },
-        { "name": "limit", "in": "query", "type": "number", "default": 50 }
+        {
+          "name": "boardId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "type": "string",
+          "default": "name,desc,due,idList,labels,url"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "number",
+          "default": 50
+        }
       ]
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 3, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "Bjp8HX6SofCk0jygM7o3j2wwkDGVcSzdkQwCefyrIZs+BSNEmg0edAGGfe0ERNpmK+P8ZLhD16QEjyAIVgp1/9gBf6YK4jR1Omz1NMgJHU/KoYgrK6meCgeCzJXdlWFVCtKoAYfUU90WPev4vWRJ1FETD3zMl8KaJ7qnBN/Yq5iUiPYRRX0PRp6483KUIqNQvDPFhjsRCuu2j2IF2e7aXUG4XPCGsw0Oi0KfW4mSxNdALAxj4iaoa0m21Pw+2GX1z/v6fVNjosYLo2CvPZRW+OpjFrSm56gaRi8jRAsfDulDMkJoZ3kONrKkuFslJQ6GEJ6LQ4LTk3BJpDXbuFTSzQ=="
+  }
 }

@@ -12,7 +12,9 @@
     "https://www.people.com.cn/*"
   ],
   "baseUrl": "http://www.people.com.cn",
-  "auth": { "type": "cookie" },
+  "auth": {
+    "type": "cookie"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -23,12 +25,25 @@
         "limit": 40,
         "fields": {
           "headline": {},
-          "url": { "attr": "href" }
+          "url": {
+            "attr": "href"
+          }
         }
       }
     }
   ],
-  "transport": { "preferred": "cs" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "cs"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "xO0M1cvOsgfWUzkwNCwsWTFgUMGHAccggPjvUvrXEENDUmkWyDetLdAbf+dRM2eMaYdywzLcT/cB6JVPY60PjPcM9i5amm2+N2OjBpUtIiPnQsvJ0tCTaJ0JR0fIKK9HcOiGkjJ44R09PDR4whwXWQnk4WZWvGBXNXpyxM0v91ARXRMdGpft64GVZW/hZh1ERPD8sAmpecrvH2h/2/8IbLhaKOESAABOWIPw1poNQO8kVHq63UQkBDLRQFKA+Mg8f53meWDL61DTxr/FFO8VmTQ75U9rR5LWS2kvPsR+exJS5zisKapfjley+rgUfu7uW6QQojw860jLmGBxNUZntg=="
+  }
 }

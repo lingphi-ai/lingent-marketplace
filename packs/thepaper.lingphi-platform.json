@@ -9,7 +9,9 @@
     "https://api.thepaper.cn/*"
   ],
   "baseUrl": "https://api.thepaper.cn",
-  "auth": { "type": "none" },
+  "auth": {
+    "type": "none"
+  },
   "credentialFields": [],
   "tools": [
     {
@@ -36,7 +38,18 @@
       "responseType": "json"
     }
   ],
-  "transport": { "preferred": "sw" },
-  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
-  "timeoutMs": 30000
+  "transport": {
+    "preferred": "sw"
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "respectRetryAfter": true
+  },
+  "timeoutMs": 30000,
+  "trustLevel": "verified",
+  "signature": {
+    "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
+    "keyId": "lingphi-official-2026",
+    "value": "BzTsEfXEl/QTtmWpp82piRjgH8MRk8SZY5P+TvsWYp68UHwq7h1eRE+Kcm9/87uxh5BOEABuS16r86OC7E/HKSGWImJ1+/HaFEd2ck1UgFVOIEHoP1InATdxSN1IicK1f6HjSVJcIDDhcgR25Z3fqhMJz+KuocwseWrvJaI92Lhpp18pHF3LXkjUYjTFwzRSrcrhERpdcHDSrzt2pn3dUCzd4H0uqImPmrs68OzMXZF0GAKyiAw1O2d1/mo5f+pirHeu9uccnqP8gppth9WsQ1D/8+68S6++vg2BxrXpADibqIOn+AeTvNQg3JUWwzqaENRFK557YfAc0KdVt4k7sQ=="
+  }
 }
