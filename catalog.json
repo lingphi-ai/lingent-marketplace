@@ -15,7 +15,7 @@
           "allowMultiple": false,
           "defaultLabel": "Jira",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jira-cloud.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=atlassian.net"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/jira-cloud-manifest.png"
         },
         {
           "id": "linear-manifest",
@@ -26,7 +26,7 @@
           "allowMultiple": false,
           "defaultLabel": "Linear",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/linear.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=linear.app"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/linear-manifest.png"
         },
         {
           "id": "teambition-manifest",
@@ -37,7 +37,7 @@
           "allowMultiple": false,
           "defaultLabel": "Teambition",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/teambition.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=teambition.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/teambition-manifest.png"
         },
         {
           "id": "asana-manifest",
@@ -48,7 +48,7 @@
           "allowMultiple": false,
           "defaultLabel": "Asana",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/asana.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=asana.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/asana-manifest.png"
         },
         {
           "id": "trello-manifest",
@@ -59,7 +59,7 @@
           "allowMultiple": false,
           "defaultLabel": "Trello",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/trello.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=trello.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/trello-manifest.png"
         },
         {
           "id": "clickup-manifest",
@@ -70,7 +70,7 @@
           "allowMultiple": false,
           "defaultLabel": "ClickUp",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/clickup.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=clickup.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/clickup-manifest.png"
         },
         {
           "id": "servicenow-manifest",
@@ -81,7 +81,7 @@
           "allowMultiple": false,
           "defaultLabel": "ServiceNow",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/servicenow.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=servicenow.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/servicenow-manifest.png"
         },
         {
           "id": "trello-session-manifest",
@@ -92,7 +92,7 @@
           "allowMultiple": false,
           "defaultLabel": "Trello",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/trello-session.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=trello.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/trello-session-manifest.png"
         },
         {
           "id": "asana-session-manifest",
@@ -103,7 +103,7 @@
           "allowMultiple": false,
           "defaultLabel": "Asana",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/asana-session.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=asana.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/asana-session-manifest.png"
         },
         {
           "id": "basecamp-session-manifest",
@@ -114,7 +114,7 @@
           "allowMultiple": false,
           "defaultLabel": "Basecamp",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/basecamp-session.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=basecamp.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/basecamp-session-manifest.png"
         }
       ]
     },
@@ -131,7 +131,7 @@
           "allowMultiple": false,
           "defaultLabel": "GitHub",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/github.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=github.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/github-manifest.png"
         },
         {
           "id": "gitee-manifest",
@@ -142,7 +142,7 @@
           "allowMultiple": false,
           "defaultLabel": "Gitee",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gitee.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=gitee.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/gitee-manifest.png"
         },
         {
           "id": "gitlab-manifest",
@@ -153,7 +153,7 @@
           "allowMultiple": false,
           "defaultLabel": "GitLab",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gitlab.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=gitlab.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/gitlab-manifest.png"
         },
         {
           "id": "jihulab-manifest",
@@ -164,7 +164,7 @@
           "allowMultiple": false,
           "defaultLabel": "极狐GitLab",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jihulab.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=jihulab.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/jihulab-manifest.png"
         },
         {
           "id": "juejin-manifest",
@@ -175,7 +175,7 @@
           "allowMultiple": false,
           "defaultLabel": "掘金",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/juejin.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=juejin.cn"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/juejin-manifest.png"
         },
         {
           "id": "vercel-manifest",
@@ -186,7 +186,7 @@
           "allowMultiple": false,
           "defaultLabel": "Vercel",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/vercel.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=vercel.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/vercel-manifest.png"
         },
         {
           "id": "cloudflare-manifest",
@@ -197,7 +197,7 @@
           "allowMultiple": false,
           "defaultLabel": "Cloudflare",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/cloudflare.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=cloudflare.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/cloudflare-manifest.png"
         },
         {
           "id": "stackoverflow-manifest",
@@ -208,7 +208,7 @@
           "allowMultiple": false,
           "defaultLabel": "Stack Overflow",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/stackoverflow.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=stackexchange.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/stackoverflow-manifest.png"
         },
         {
           "id": "npm-manifest",
@@ -219,7 +219,7 @@
           "allowMultiple": false,
           "defaultLabel": "npm",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/npm.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=npmjs.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/npm-manifest.png"
         },
         {
           "id": "huggingface-manifest",
@@ -230,7 +230,7 @@
           "allowMultiple": false,
           "defaultLabel": "Hugging Face",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/huggingface.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=huggingface.co"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/huggingface-manifest.png"
         },
         {
           "id": "dockerhub-manifest",
@@ -241,7 +241,7 @@
           "allowMultiple": false,
           "defaultLabel": "Docker Hub",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/dockerhub.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=hub.docker.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/dockerhub-manifest.png"
         },
         {
           "id": "digitalocean-manifest",
@@ -252,7 +252,7 @@
           "allowMultiple": false,
           "defaultLabel": "DigitalOcean",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/digitalocean.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=cloud.digitalocean.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/digitalocean-manifest.png"
         },
         {
           "id": "gitlab-session-manifest",
@@ -263,7 +263,7 @@
           "allowMultiple": false,
           "defaultLabel": "GitLab",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gitlab-session.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=gitlab.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/gitlab-session-manifest.png"
         },
         {
           "id": "csdn-dom-manifest",
@@ -274,7 +274,7 @@
           "allowMultiple": false,
           "defaultLabel": "CSDN",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/csdn-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=csdn.net"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/csdn-dom-manifest.png"
         },
         {
           "id": "segmentfault-dom-manifest",
@@ -284,8 +284,7 @@
           "integrationType": "segmentfault-dom",
           "allowMultiple": false,
           "defaultLabel": "SegmentFault",
-          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/segmentfault-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=segmentfault.com"
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/segmentfault-dom.lingphi-platform.json"
         }
       ]
     },
@@ -302,7 +301,7 @@
           "allowMultiple": false,
           "defaultLabel": "SharePoint",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sharepoint.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=sharepoint.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/sharepoint-manifest.png"
         },
         {
           "id": "yuque-manifest",
@@ -313,7 +312,7 @@
           "allowMultiple": false,
           "defaultLabel": "语雀",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/yuque.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=yuque.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/yuque-manifest.png"
         },
         {
           "id": "notion-manifest",
@@ -324,7 +323,7 @@
           "allowMultiple": false,
           "defaultLabel": "Notion",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/notion.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=notion.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/notion-manifest.png"
         },
         {
           "id": "notion-session-manifest",
@@ -335,7 +334,7 @@
           "allowMultiple": false,
           "defaultLabel": "Notion",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/notion-session.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=notion.so"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/notion-session-manifest.png"
         },
         {
           "id": "youdao-note-manifest",
@@ -346,7 +345,7 @@
           "allowMultiple": false,
           "defaultLabel": "有道云笔记",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youdao-note.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=note.youdao.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/youdao-note-manifest.png"
         },
         {
           "id": "wikipedia-manifest",
@@ -357,7 +356,7 @@
           "allowMultiple": false,
           "defaultLabel": "Wikipedia",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/wikipedia.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=en.wikipedia.org"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/wikipedia-manifest.png"
         },
         {
           "id": "archive-org-manifest",
@@ -368,7 +367,7 @@
           "allowMultiple": false,
           "defaultLabel": "Internet Archive",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/archive-org.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=archive.org"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/archive-org-manifest.png"
         },
         {
           "id": "coursera-manifest",
@@ -379,7 +378,7 @@
           "allowMultiple": false,
           "defaultLabel": "Coursera",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/coursera.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=coursera.org"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/coursera-manifest.png"
         },
         {
           "id": "duolingo-manifest",
@@ -390,7 +389,7 @@
           "allowMultiple": false,
           "defaultLabel": "Duolingo",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/duolingo.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=duolingo.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/duolingo-manifest.png"
         },
         {
           "id": "miro-manifest",
@@ -401,7 +400,7 @@
           "allowMultiple": false,
           "defaultLabel": "Miro",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/miro.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=miro.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/miro-manifest.png"
         },
         {
           "id": "quizlet-manifest",
@@ -412,7 +411,7 @@
           "allowMultiple": false,
           "defaultLabel": "Quizlet",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/quizlet.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=quizlet.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/quizlet-manifest.png"
         },
         {
           "id": "udemy-manifest",
@@ -423,7 +422,7 @@
           "allowMultiple": false,
           "defaultLabel": "Udemy",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/udemy.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=udemy.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/udemy-manifest.png"
         },
         {
           "id": "coda-manifest",
@@ -434,7 +433,7 @@
           "allowMultiple": false,
           "defaultLabel": "Coda",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/coda.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=coda.io"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/coda-manifest.png"
         },
         {
           "id": "processon-manifest",
@@ -445,7 +444,7 @@
           "allowMultiple": false,
           "defaultLabel": "ProcessOn",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/processon.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=processon.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/processon-manifest.png"
         },
         {
           "id": "kdocs-manifest",
@@ -456,7 +455,7 @@
           "allowMultiple": false,
           "defaultLabel": "金山文档",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/kdocs.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=kdocs.cn"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/kdocs-manifest.png"
         },
         {
           "id": "ms-graph-session-manifest",
@@ -467,7 +466,7 @@
           "allowMultiple": false,
           "defaultLabel": "Microsoft 365",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/ms-graph-session.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=outlook.office.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/ms-graph-session-manifest.png"
         },
         {
           "id": "tencent-docs-manifest",
@@ -478,7 +477,7 @@
           "allowMultiple": false,
           "defaultLabel": "腾讯文档",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/tencent-docs.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=docs.qq.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/tencent-docs-manifest.png"
         },
         {
           "id": "shimo-manifest",
@@ -489,7 +488,7 @@
           "allowMultiple": false,
           "defaultLabel": "石墨",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/shimo.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=shimo.im"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/shimo-manifest.png"
         },
         {
           "id": "airtable-manifest",
@@ -500,7 +499,7 @@
           "allowMultiple": false,
           "defaultLabel": "Airtable",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/airtable.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=airtable.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/airtable-manifest.png"
         },
         {
           "id": "edx-manifest",
@@ -511,7 +510,7 @@
           "allowMultiple": false,
           "defaultLabel": "edX",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/edx.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=edx.org"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/edx-manifest.png"
         },
         {
           "id": "icourse163-dom-manifest",
@@ -522,7 +521,7 @@
           "allowMultiple": false,
           "defaultLabel": "中国大学MOOC",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/icourse163-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=icourse163.org"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/icourse163-dom-manifest.png"
         },
         {
           "id": "open163-dom-manifest",
@@ -533,7 +532,7 @@
           "allowMultiple": false,
           "defaultLabel": "网易公开课",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/open163-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=163.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/open163-dom-manifest.png"
         },
         {
           "id": "baidu-pan-session-manifest",
@@ -544,7 +543,7 @@
           "allowMultiple": false,
           "defaultLabel": "百度网盘",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/baidu-pan-session.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=baidu.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/baidu-pan-session-manifest.png"
         }
       ]
     },
@@ -561,7 +560,7 @@
           "allowMultiple": false,
           "defaultLabel": "Azure",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/azure.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=azure.microsoft.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/azure-manifest.png"
         },
         {
           "id": "tencent-cloud-manifest",
@@ -572,7 +571,7 @@
           "allowMultiple": false,
           "defaultLabel": "Tencent Cloud",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/tencent-cloud.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=console.cloud.tencent.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/tencent-cloud-manifest.png"
         }
       ]
     },
@@ -589,7 +588,7 @@
           "allowMultiple": false,
           "defaultLabel": "Slack",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/slack.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=slack.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/slack-manifest.png"
         },
         {
           "id": "slack-session-manifest",
@@ -600,7 +599,7 @@
           "allowMultiple": false,
           "defaultLabel": "Slack",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/slack-session.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=slack.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/slack-session-manifest.png"
         },
         {
           "id": "gmail-dom-manifest",
@@ -611,7 +610,7 @@
           "allowMultiple": false,
           "defaultLabel": "Gmail",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/gmail-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=mail.google.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/gmail-dom-manifest.png"
         }
       ]
     },
@@ -628,7 +627,7 @@
           "allowMultiple": false,
           "defaultLabel": "Figma",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/figma.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=figma.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/figma-manifest.png"
         }
       ]
     },
@@ -645,7 +644,7 @@
           "allowMultiple": false,
           "defaultLabel": "高德地图",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/amap.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=restapi.amap.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/amap-manifest.png"
         },
         {
           "id": "qweather-manifest",
@@ -656,7 +655,7 @@
           "allowMultiple": false,
           "defaultLabel": "和风天气",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/qweather.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=qweatherapi.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/qweather-manifest.png"
         },
         {
           "id": "zhaopin-dom-manifest",
@@ -666,8 +665,7 @@
           "integrationType": "zhaopin-dom",
           "allowMultiple": false,
           "defaultLabel": "智联招聘",
-          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/zhaopin-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=zhaopin.com"
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/zhaopin-dom.lingphi-platform.json"
         }
       ]
     },
@@ -684,7 +682,7 @@
           "allowMultiple": false,
           "defaultLabel": "B站",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/bilibili.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=bilibili.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/bilibili-manifest.png"
         },
         {
           "id": "weread-manifest",
@@ -695,7 +693,7 @@
           "allowMultiple": false,
           "defaultLabel": "微信读书",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/weread.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=weread.qq.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/weread-manifest.png"
         },
         {
           "id": "douban-manifest",
@@ -706,7 +704,7 @@
           "allowMultiple": false,
           "defaultLabel": "豆瓣",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/douban.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=douban.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/douban-manifest.png"
         },
         {
           "id": "zhihu-manifest",
@@ -717,7 +715,7 @@
           "allowMultiple": false,
           "defaultLabel": "知乎",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/zhihu.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=zhihu.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/zhihu-manifest.png"
         },
         {
           "id": "netease-music-manifest",
@@ -728,7 +726,7 @@
           "allowMultiple": false,
           "defaultLabel": "网易云音乐",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/netease-music.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=music.163.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/netease-music-manifest.png"
         },
         {
           "id": "weibo-manifest",
@@ -739,7 +737,7 @@
           "allowMultiple": false,
           "defaultLabel": "微博",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/weibo.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=weibo.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/weibo-manifest.png"
         },
         {
           "id": "mastodon-manifest",
@@ -750,7 +748,7 @@
           "allowMultiple": false,
           "defaultLabel": "Mastodon",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/mastodon.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=mastodon.social"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/mastodon-manifest.png"
         },
         {
           "id": "bluesky-manifest",
@@ -761,7 +759,7 @@
           "allowMultiple": false,
           "defaultLabel": "Bluesky",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/bluesky.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=public.api.bsky.app"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/bluesky-manifest.png"
         },
         {
           "id": "reddit-manifest",
@@ -772,7 +770,7 @@
           "allowMultiple": false,
           "defaultLabel": "Reddit",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/reddit.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=reddit.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/reddit-manifest.png"
         },
         {
           "id": "substack-manifest",
@@ -783,7 +781,7 @@
           "allowMultiple": false,
           "defaultLabel": "Substack",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/substack.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=substack.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/substack-manifest.png"
         },
         {
           "id": "soundcloud-manifest",
@@ -794,7 +792,7 @@
           "allowMultiple": false,
           "defaultLabel": "SoundCloud",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/soundcloud.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=soundcloud.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/soundcloud-manifest.png"
         },
         {
           "id": "youtube-manifest",
@@ -805,7 +803,7 @@
           "allowMultiple": false,
           "defaultLabel": "YouTube",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youtube.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=youtube.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/youtube-manifest.png"
         },
         {
           "id": "reddit-public-manifest",
@@ -816,7 +814,7 @@
           "allowMultiple": false,
           "defaultLabel": "Reddit",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/reddit-public.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=reddit.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/reddit-public-manifest.png"
         },
         {
           "id": "pinterest-dom-manifest",
@@ -827,7 +825,7 @@
           "allowMultiple": false,
           "defaultLabel": "Pinterest",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/pinterest-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=pinterest.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/pinterest-dom-manifest.png"
         },
         {
           "id": "quora-dom-manifest",
@@ -838,7 +836,7 @@
           "allowMultiple": false,
           "defaultLabel": "Quora",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/quora-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=quora.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/quora-dom-manifest.png"
         },
         {
           "id": "producthunt-dom-manifest",
@@ -849,7 +847,7 @@
           "allowMultiple": false,
           "defaultLabel": "Product Hunt",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/producthunt-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=producthunt.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/producthunt-dom-manifest.png"
         },
         {
           "id": "x-dom-manifest",
@@ -860,7 +858,7 @@
           "allowMultiple": false,
           "defaultLabel": "X",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/x-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=x.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/x-dom-manifest.png"
         },
         {
           "id": "linkedin-dom-manifest",
@@ -871,7 +869,7 @@
           "allowMultiple": false,
           "defaultLabel": "LinkedIn",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/linkedin-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=linkedin.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/linkedin-dom-manifest.png"
         },
         {
           "id": "instagram-dom-manifest",
@@ -882,7 +880,7 @@
           "allowMultiple": false,
           "defaultLabel": "Instagram",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/instagram-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=instagram.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/instagram-dom-manifest.png"
         },
         {
           "id": "twitch-dom-manifest",
@@ -893,7 +891,7 @@
           "allowMultiple": false,
           "defaultLabel": "Twitch",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/twitch-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=twitch.tv"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/twitch-dom-manifest.png"
         },
         {
           "id": "spotify-dom-manifest",
@@ -904,7 +902,7 @@
           "allowMultiple": false,
           "defaultLabel": "Spotify",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/spotify-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=spotify.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/spotify-dom-manifest.png"
         },
         {
           "id": "apple-music-dom-manifest",
@@ -915,7 +913,7 @@
           "allowMultiple": false,
           "defaultLabel": "Apple Music",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/apple-music-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=music.apple.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/apple-music-dom-manifest.png"
         },
         {
           "id": "medium-dom-manifest",
@@ -926,7 +924,7 @@
           "allowMultiple": false,
           "defaultLabel": "Medium",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/medium-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=medium.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/medium-dom-manifest.png"
         },
         {
           "id": "iqiyi-dom-manifest",
@@ -937,7 +935,7 @@
           "allowMultiple": false,
           "defaultLabel": "爱奇艺",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/iqiyi-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=iqiyi.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/iqiyi-dom-manifest.png"
         },
         {
           "id": "youku-dom-manifest",
@@ -948,7 +946,7 @@
           "allowMultiple": false,
           "defaultLabel": "优酷",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youku-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=youku.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/youku-dom-manifest.png"
         },
         {
           "id": "hupu-dom-manifest",
@@ -959,7 +957,7 @@
           "allowMultiple": false,
           "defaultLabel": "虎扑",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/hupu-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=hupu.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/hupu-dom-manifest.png"
         },
         {
           "id": "xiaohongshu-dom-manifest",
@@ -970,7 +968,7 @@
           "allowMultiple": false,
           "defaultLabel": "小红书",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/xiaohongshu-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=xiaohongshu.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/xiaohongshu-dom-manifest.png"
         },
         {
           "id": "qqmusic-dom-manifest",
@@ -981,7 +979,7 @@
           "allowMultiple": false,
           "defaultLabel": "QQ音乐",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/qqmusic-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=qq.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/qqmusic-dom-manifest.png"
         }
       ]
     },
@@ -998,7 +996,7 @@
           "allowMultiple": false,
           "defaultLabel": "BBC",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/bbc-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=bbc.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/bbc-dom-manifest.png"
         },
         {
           "id": "guardian-dom-manifest",
@@ -1009,7 +1007,7 @@
           "allowMultiple": false,
           "defaultLabel": "Guardian",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/guardian-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=theguardian.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/guardian-dom-manifest.png"
         },
         {
           "id": "reuters-dom-manifest",
@@ -1020,7 +1018,7 @@
           "allowMultiple": false,
           "defaultLabel": "Reuters",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/reuters-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=reuters.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/reuters-dom-manifest.png"
         },
         {
           "id": "apnews-dom-manifest",
@@ -1031,7 +1029,7 @@
           "allowMultiple": false,
           "defaultLabel": "AP News",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/apnews-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=apnews.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/apnews-dom-manifest.png"
         },
         {
           "id": "aljazeera-dom-manifest",
@@ -1042,7 +1040,7 @@
           "allowMultiple": false,
           "defaultLabel": "Al Jazeera",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/aljazeera-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=aljazeera.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/aljazeera-dom-manifest.png"
         },
         {
           "id": "cnn-dom-manifest",
@@ -1053,7 +1051,7 @@
           "allowMultiple": false,
           "defaultLabel": "CNN",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/cnn-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=edition.cnn.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/cnn-dom-manifest.png"
         },
         {
           "id": "google-news-dom-manifest",
@@ -1064,7 +1062,7 @@
           "allowMultiple": false,
           "defaultLabel": "Google News",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/google-news-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=google.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/google-news-dom-manifest.png"
         },
         {
           "id": "thepaper-manifest",
@@ -1075,7 +1073,7 @@
           "allowMultiple": false,
           "defaultLabel": "澎湃新闻",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/thepaper.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=thepaper.cn"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/thepaper-manifest.png"
         },
         {
           "id": "36kr-dom-manifest",
@@ -1086,7 +1084,7 @@
           "allowMultiple": false,
           "defaultLabel": "36氪",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/36kr-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=36kr.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/36kr-dom-manifest.png"
         },
         {
           "id": "people-dom-manifest",
@@ -1097,7 +1095,7 @@
           "allowMultiple": false,
           "defaultLabel": "人民网",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/people-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=people.com.cn"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/people-dom-manifest.png"
         },
         {
           "id": "jiemian-dom-manifest",
@@ -1108,7 +1106,7 @@
           "allowMultiple": false,
           "defaultLabel": "界面新闻",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/jiemian-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=jiemian.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/jiemian-dom-manifest.png"
         },
         {
           "id": "cctv-dom-manifest",
@@ -1119,7 +1117,7 @@
           "allowMultiple": false,
           "defaultLabel": "央视网",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/cctv-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=cctv.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/cctv-dom-manifest.png"
         },
         {
           "id": "netease-news-manifest",
@@ -1130,7 +1128,7 @@
           "allowMultiple": false,
           "defaultLabel": "网易新闻",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/netease-news.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=163.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/netease-news-manifest.png"
         },
         {
           "id": "sina-news-manifest",
@@ -1141,7 +1139,7 @@
           "allowMultiple": false,
           "defaultLabel": "新浪新闻",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sina-news.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=sina.com.cn"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/sina-news-manifest.png"
         },
         {
           "id": "sohu-dom-manifest",
@@ -1152,7 +1150,7 @@
           "allowMultiple": false,
           "defaultLabel": "搜狐",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/sohu-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=sohu.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/sohu-dom-manifest.png"
         },
         {
           "id": "ifeng-dom-manifest",
@@ -1163,7 +1161,7 @@
           "allowMultiple": false,
           "defaultLabel": "凤凰网",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/ifeng-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=ifeng.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/ifeng-dom-manifest.png"
         },
         {
           "id": "qqnews-dom-manifest",
@@ -1174,7 +1172,7 @@
           "allowMultiple": false,
           "defaultLabel": "腾讯网",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/qqnews-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=qq.com"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/qqnews-dom-manifest.png"
         },
         {
           "id": "xinhua-dom-manifest",
@@ -1185,7 +1183,7 @@
           "allowMultiple": false,
           "defaultLabel": "新华网",
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/xinhua-dom.lingphi-platform.json",
-          "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=news.cn"
+          "iconUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/icons/xinhua-dom-manifest.png"
         }
       ]
     }
