@@ -8,6 +8,8 @@
   "hosts": [
     "https://api.github.com/*"
   ],
+  "supportsCustomHost": true,
+  "selfHostedPathPrefix": "/api/v3",
   "baseUrl": "https://api.github.com",
   "auth": {
     "type": "bearer",
@@ -691,6 +693,6 @@
   "signature": {
     "algorithm": "RSASSA-PKCS1-v1_5-SHA-256",
     "keyId": "lingphi-official-2026",
-    "value": "jUSpVC3dTarI7vswAmUtVV7wo4qW//1mMz1MJHiImPa956+Z3rmw8TERJqlzm7BycmXcnqtiKjWuTI16eRHbMtchG1W6MSePTIQA4ZFKvWXITFRX1JsbGi7a7ebJMxonRWsdQqdXaKcCiV5O0fi77u+8g27idDVUE0TVvVNJLrXP3XGQ0JQXyJTQpuPje+QBaaJmIQNZM2g+gC6uM6TZwicSb5HTKZx0tM4Gc8+roc1dLcYXEdg2VOwiJFaJukRlaLf6ATvJicseSfohyjNigJzEDsYNBPYnXaQ/5jvKCXdQSV9c99x+fKVT8auacUAYbodlBIPbziFGPbyLEkfGvg=="
+    "value": "s9OMNAvJsE5yGkU+o0SFgDCnWSY088w1ne+FILbhnh1gmdA+EdPdq3bvWe5RDUSFh5Eid+EC9PRGRoayKToIYnJjdbuDGZ758c9ywUXI7flMCbKoxBxFKlCZ7sWG8S8DLDojpJu/bKsIKP0Phd1sJT+dMQrF0YDQoH8ql2MQBJtxDHAnA91/o3SkxmbGcBiE02ox/GQcPN8ylN3k3DRYWmuKnn8ghNOp0yqaK5Z4B23brVRVb5DIBJYjR1UGS1P6rjWykIbusE9RnvazN0AB8uMqv4s9lRoVw/paiDlTiNl/JpvnbrF2iBjtgtY7Wshd6Kmywawo4ilSMt0FMCtehA=="
   }
 }
