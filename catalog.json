@@ -719,14 +719,14 @@
           "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/youtube.lingphi-platform.json"
         },
         {
-          "id": "reddit-dom-manifest",
-          "displayName": "Reddit (page reader)",
-          "description": "Reddit posts, comments and search results via content-script DOM extraction — no API key, no OAuth (reads old.reddit.com's rendered page).",
+          "id": "reddit-public-manifest",
+          "displayName": "Reddit",
+          "description": "Reddit listings, comments and search via its public .json API (no login, no OAuth) — structured, sortable, paginated; preferred over DOM.",
           "iconColor": "bg-orange-100 text-orange-700",
-          "integrationType": "reddit-dom",
+          "integrationType": "reddit-public",
           "allowMultiple": false,
           "defaultLabel": "Reddit",
-          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/reddit-dom.lingphi-platform.json"
+          "manifestUrl": "https://raw.githubusercontent.com/lingphi-ai/lingent-marketplace/main/packs/reddit-public.lingphi-platform.json"
         },
         {
           "id": "pinterest-dom-manifest",

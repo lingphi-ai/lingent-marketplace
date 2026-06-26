@@ -1,0 +1,59 @@
+{
+  "id": "reddit-public-manifest",
+  "version": "0.1.0",
+  "displayName": "Reddit",
+  "description": "VERIFIED LIVE: Reddit via its public .json API (no login, no OAuth app) — structured, sortable, paginated; preferred over DOM scraping. Append .json to any listing/comments/search path. Tested live by Claude Code: /r/popular/hot.json (10 posts) and /search.json (5) both 200 with title/subreddit/ups/author/permalink/num_comments. For your own logged-in account/inbox use the session pack instead.",
+  "iconColor": "bg-orange-100 text-orange-700",
+  "category": "social",
+  "hosts": [
+    "https://www.reddit.com/*"
+  ],
+  "baseUrl": "https://www.reddit.com",
+  "auth": { "type": "none" },
+  "credentialFields": [],
+  "tools": [
+    {
+      "name": "reddit_listing",
+      "description": "Posts in a subreddit by sort. Returns data.children[].data with title, subreddit, author, ups, num_comments, permalink, url, created_utc. Page with the 'after' cursor (data.after). VERIFIED.",
+      "method": "GET",
+      "path": "/r/{subreddit}/{sort}.json",
+      "responseType": "json",
+      "params": [
+        { "name": "subreddit", "in": "path", "type": "string", "required": true, "default": "popular", "description": "Subreddit name without r/ (e.g. popular, all, news, programming)." },
+        { "name": "sort", "in": "path", "type": "string", "required": true, "default": "hot", "enum": ["hot", "new", "top", "rising", "controversial"] },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 },
+        { "name": "t", "in": "query", "type": "string", "enum": ["hour", "day", "week", "month", "year", "all"], "description": "Timeframe for sort=top/controversial." },
+        { "name": "after", "in": "query", "type": "string", "description": "Pagination cursor from the previous response's data.after." }
+      ]
+    },
+    {
+      "name": "reddit_comments",
+      "description": "A post and its comment tree. Returns a 2-element array: [0] the post listing, [1] the comments listing. VERIFIED.",
+      "method": "GET",
+      "path": "/r/{subreddit}/comments/{id}.json",
+      "responseType": "json",
+      "params": [
+        { "name": "subreddit", "in": "path", "type": "string", "required": true },
+        { "name": "id", "in": "path", "type": "string", "required": true, "description": "The post id (the base36 in /comments/<id>/...)." },
+        { "name": "sort", "in": "query", "type": "string", "enum": ["confidence", "top", "new", "controversial", "old", "qa"], "default": "top" },
+        { "name": "limit", "in": "query", "type": "number", "default": 50 }
+      ]
+    },
+    {
+      "name": "reddit_search",
+      "description": "Search posts site-wide (or within a subreddit via the subreddit param + restrict_sr). Returns data.children[].data. VERIFIED.",
+      "method": "GET",
+      "path": "/search.json",
+      "responseType": "json",
+      "params": [
+        { "name": "q", "in": "query", "type": "string", "required": true },
+        { "name": "sort", "in": "query", "type": "string", "enum": ["relevance", "hot", "top", "new", "comments"], "default": "relevance" },
+        { "name": "t", "in": "query", "type": "string", "enum": ["hour", "day", "week", "month", "year", "all"], "default": "all" },
+        { "name": "limit", "in": "query", "type": "number", "default": 25 }
+      ]
+    }
+  ],
+  "transport": { "preferred": "sw" },
+  "retry": { "maxAttempts": 2, "respectRetryAfter": true },
+  "timeoutMs": 30000
+}
